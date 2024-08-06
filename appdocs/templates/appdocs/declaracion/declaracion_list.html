@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Lista de Declaracions</h1>
+
+    {% if declaracion_list %}
+    <ul>
+
+      {% for declaracion in declaracion_list %}
+      <li>
+        <a href="{{ declaracion.get_absolute_url }}">{{ declaracion.numero }}</a> ({{declaracion.fecha_emision}})
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>No hay declaracions registrados</p>
+    {% endif %}
+{% endblock %}

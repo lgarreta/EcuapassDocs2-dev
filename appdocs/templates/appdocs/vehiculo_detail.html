@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Vehículo: {{ vehiculo.placa }}</h1>
+  <p>{{ vehiculo.marca }}</p>
+
+  <p><strong>País:</strong> {{ vehiculo.pais }}</p>
+  <p><strong>Chasís:</strong> {{ vehiculo.chasis }}</p> 
+  <p><strong>Año fabricación:</strong> {{ vehiculo.anho }}</p>
+
+  <button><a href="{% url 'vehiculo-update' vehiculo.id %}">Editar</a></button>
+  <button><a href="{% url 'vehiculo-delete' vehiculo.id %}">Eliminar</a></button>
+{% endblock %}

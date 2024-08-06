@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Lista de empresas</h1>
+
+    {% if empresa_list %}
+    <ul>
+
+      {% for empresa in empresa_list %}
+      <li>
+        <a href="{{ empresa.get_absolute_url }}">{{ empresa.numeroId }}</a> ({{empresa.nombre}})
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>No hay empresas registradas</p>
+    {% endif %}
+{% endblock %}

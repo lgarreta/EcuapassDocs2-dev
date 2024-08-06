@@ -1,0 +1,1 @@
+/home/lg/BIO/iaprojects/ecuapassdocs/ecuapassdocs-creador/scripts/scripts-db/db-init/dbvars-lg.sh

@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Manifiesto borrada</h1>
+
+<p>¿Seguro quieres borrar este manifiesto: {{ manifiesto.numero }}, tipo: {{ manifiesto.tipo }}?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" action="" value="Si, borrar." />
+</form>
+
+{% endblock %}

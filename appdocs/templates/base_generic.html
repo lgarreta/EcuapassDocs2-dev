@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{% block title %}<title>EcuapassDocs</title>{% endblock %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+			
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<!-- Add additional CSS in static file -->
+	{% load static %}
+	<link rel="stylesheet"	href="{% static 'appdocs/css/styles.css' %}">
+	<link rel="stylesheet"	type="text/css" href="{% static 'appdocs/css/command_buttons.css' %}">
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-2">
+				<ul class="sidebar-nav">
+					<li><a href="{% url 'index' %}">Inicio</a></li>										 
+				</ul>
+
+				{% if user.is_active %}
+				<ul class="sidebar-nav">
+					<b>Elaboración:</b>
+					<li><a href="{% url 'cartaporte' %}{{ 'nuevo' }}" target="_blank">Cartas de Porte</a></li>
+					<li><a href="{% url 'manifiesto' %}{{ 'importacion' }}" target="_blank">Manifiestos</a></li>
+					<li><a href="{% url 'declaracion' %}" target="_blank">Declaraciones</a></li>
+				</ul>
+
+				<ul class="sidebar-nav">								 
+					<b>Consulta:</b>
+					<li><a href="{% url 'cartaportes_filter' %}">Cartas de Porte</a></li>
+					<li><a href="{% url 'manifiestos_filter' %}">Manifiestos</a></li>
+					<li><a href="{% url 'declaraciones' %}">Declaraciones</a></li>
+					<hr>
+					<li><a href="{% url 'empresas' %}">Empresas</a></li>
+					<li><a href="{% url 'vehiculos' %}">Vehiculos</a></li>
+					<li><a href="{% url 'conductors' %}">Conductores</a></li>
+				</ul>
+
+				{% if user.is_authenticated and user.es_director or user.is_staff %}
+					<ul class="sidebar-nav">								 
+						<b>Administración:</b>
+						<li><a href="{% url 'usuarios' %}">Usuarios y Entidades</a></li>
+						<li><a href="{% url 'reportes' %}">Reportes y Respaldos</a></li>
+					</ul>
+				{% endif %}  
+
+				<hr>
+				<ul class="sidebar-nav">
+					<li><a href="{% url 'info_view' %}">Información de Contacto</a></li>
+				</ul>
+				{% endif %}  
+
+				<hr>
+				<ul class="sidebar-nav">
+					{% if user.is_authenticated %}
+						<li>Usuario: {{ user.get_username }}</li>
+						<li>
+							<form method="post" action="{% url 'logout' %}">
+								{% csrf_token %}
+								<button type="submit">Cerrar sesión</button>
+							</form>
+						</li>
+					{% else %}
+						<li><a href="{% url 'login'%}?next={{request.path}}">Iniciar sesión</a></li>
+					{% endif %}
+				</ul>
+			</div>
+
+			<div class="col-sm-10 ">
+				{% block content %}
+				<!------------------------------ Block for external content --------------------->
+				<!------------------------------ Block for external content --------------------->
+				<!------------------------------ Block for external content --------------------->
+				{% endblock %}
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

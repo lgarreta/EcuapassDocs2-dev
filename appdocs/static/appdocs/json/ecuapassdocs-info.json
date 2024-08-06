@@ -1,0 +1,8 @@
+{
+	"name" : "ecuapassdocs",
+	"release" : "0.720",
+	"log": {
+		"r0.720" : "Modified links to open in new tabs. Improved DB scrips for load data to DB",
+		"r0.710" : "Fixed cartaporte PDF/PNG templates and bounds"
+		}
+}
