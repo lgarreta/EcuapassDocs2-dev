@@ -7,18 +7,18 @@ from django.urls import reverse  # To generate URLS by reversing URL patterns
 from ecuapassdocs.info.ecuapass_utils import Utils
 from ecuapassdocs.info.ecuapass_info_manifiesto_BYZA import ManifiestoByza
 
-from appdocs.models import EcuapassDoc, Cartaporte
-#from appdocsapp_cartaportes.models import Cartaporte
-#from appdocs.models_EcuapassDoc import EcuapassDoc
-
-from appusuarios.models import UsuarioEcuapass
-from appdocs.models_Entidades import Vehiculo
 from appdocs.models_EcuapassDoc import EcuapassDoc
+from app_cartaportes.models_cpi import Cartaporte
+
+from appdocs.models_Entidades import Vehiculo
 
 #--------------------------------------------------------------------
 # Model ManifiestoDoc
 #--------------------------------------------------------------------
 class ManifiestoDoc (models.Model):
+	class Meta:
+		db_table = "manifiestodoc"
+
 	numero = models.CharField (max_length=20)
 
 	txt0a = models.CharField (max_length=20, null=True)
@@ -73,6 +73,9 @@ class ManifiestoDoc (models.Model):
 	txt38 = models.CharField (max_length=200, null=True)
 	txt40 = models.CharField (max_length=200, null=True)
 
+	def getConductor (self):
+		return self.txt13
+
 	def __str__ (self):
 		return f"{self.numero}, {self.txt03}"
 	
@@ -80,6 +83,9 @@ class ManifiestoDoc (models.Model):
 # Model Manifiesto
 #--------------------------------------------------------------------
 class Manifiesto (EcuapassDoc):
+	class Meta:
+		db_table = "manifiesto"
+
 	documento     = models.OneToOneField (ManifiestoDoc, on_delete=models.CASCADE)
 
 	vehiculo      = models.ForeignKey (Vehiculo, on_delete=models.SET_NULL, related_name='vehiculo', null=True)
@@ -89,15 +95,22 @@ class Manifiesto (EcuapassDoc):
 		"""Returns the url to access a particular language instance."""
 		return reverse('manifiesto-detail', args=[str(self.id)])
 
-	def setValues (self, manifiestoDoc, fieldValues):
-		jsonFieldsPath, runningDir = self.createTemporalJson (fieldValues)
+	def setValues (self, manifiestoDoc, docFields, procedimiento, username):
+		# General values
+		self.numero        = manifiestoDoc.numero
+		self.documento     = manifiestoDoc
+		self.procedimiento = procedimiento
+		self.usuario       = self.getUserByUsername (username)
+
+		# Document values
+		jsonFieldsPath, runningDir = self.createTemporalJson (docFields)
 		manifiestoInfo             = ManifiestoByza (jsonFieldsPath, runningDir)
 
-		self.numero     = manifiestoDoc.numero
-		self.vehiculo   = self.getVehiculo (manifiestoInfo, "vehiculo")
-		self.remolque   = self.getVehiculo (manifiestoInfo, "remolque")
-		self.cartaporte = self.getCartaporte (manifiestoInfo)
-		self.documento  = manifiestoDoc
+		self.vehiculo      = self.getVehiculo (manifiestoInfo, "vehiculo")
+		self.remolque      = self.getVehiculo (manifiestoInfo, "remolque")
+		self.cartaporte    = self.getCartaporte (manifiestoInfo)
+		#print ("+++ ManifiestoInfo:", manifiestoInfo.fields)
+		print ("+++ Cartaporte:", self.cartaporte)
 		
 	def getCartaporte (self, manifiestoInfo):
 		numeroCartaporte = None
@@ -131,9 +144,9 @@ class Manifiesto (EcuapassDoc):
 			Utils.printException (f"Obteniedo información del vehiculo.")
 			return None
 
-	def createTemporalJson (self, fieldValues):
+	def createTemporalJson (self, docFields):
 		tmpPath        = tempfile.gettempdir ()
 		jsonFieldsPath = os.path.join (tmpPath, f"MANIFIESTO-{self.numero}.json")
-		json.dump (fieldValues, open (jsonFieldsPath, "w"))
+		json.dump (docFields, open (jsonFieldsPath, "w"))
 		return (jsonFieldsPath, tmpPath)
 

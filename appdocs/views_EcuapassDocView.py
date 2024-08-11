@@ -6,7 +6,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import View
-from django.urls import reverse  # To generate URLS by reversing URL patterns
 
 from django.contrib import messages
 from django.contrib.messages import add_message
@@ -22,7 +21,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import resolve   # To get calling URLs
 
 # Own imports
-from ecuapassdocs.info.resourceloader import ResourceLoader 
 from ecuapassdocs.info.ecuapass_utils import Utils 
 #from ecuapassdocs.ecuapassutils.pdfcreator import CreadorPDF 
 from .pdfcreator import CreadorPDF 
@@ -99,8 +97,8 @@ class EcuapassDocView (LoginRequiredMixin, View):
 			self.onClonCommand (commandButton, request, *args, **kwargs)
 			return redirect (f"clonar/{docId}")
 		else:
+			print ("ERROR: Boton de comando '{commandButton}' no existe")
 			pdfResponse = self.getResponseForCommand (commandButton, request, *args, **kwargs)
-			print (">>>> POST response:", pdfResponse)
 			return pdfResponse
 
 	#-------------------------------------------------------------------
@@ -114,6 +112,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		if pk and "clon" not in command:
 			self.inputParams = self.copySavedValuesToInputs (pk)
 			self.inputValues = Utils.getInputValuesFromInputParams (self.inputParams)
+
 	
 		if "guardar" in command:
 			docId, docNumber = self.saveDocumentToDB (self.inputValues, requestParams)
@@ -149,17 +148,18 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		self.setInitialValuesToInputs (requestParams)
 
 		# Send input fields parameters (bounds, maxLines, maxChars, ...)
-		urlEdit = self.document_type.lower()
+		docUrl = self.document_type.lower()
 		contextDic = {
 			"document_type"    : self.document_type, 
 			"procedimiento"    : requestParams ["procedimiento"],
 			"input_parameters" : self.inputParams, 
 			"background_image" : self.background_image,
-			"document_url"	   : urlEdit
+			"document_url"	   : docUrl
 		}
 		return render (request, self.template_name, contextDic)
 
 	#-------------------------------------------------------------------
+	# Updates current document to DB so "redirect" takes it from DB
 	#-------------------------------------------------------------------
 	def onClonCommand  (self, command, request, *args, **kwargs):
 		print ("+++ onClonCommand:", command)
@@ -186,6 +186,16 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		self.inputParams ["txt00"]["value"]  = "CLON"
 		self.inputParams ["numero"]["value"] = "CLON"
 
+		# Send input fields parameters (bounds, maxLines, maxChars, ...)
+		docUrl = self.document_type.lower()
+		contextDic = {
+			"document_type"    : self.document_type, 
+			"procedimiento"    : requestParams ["procedimiento"],
+			"input_parameters" : self.inputParams, 
+			"background_image" : self.background_image,
+			"document_url"	   : docUrl
+		}
+		return render (request, self.template_name, contextDic)
 	#-------------------------------------------------------------------
 	# Save document to DB checking max docs for user
 	#-------------------------------------------------------------------
@@ -224,6 +234,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		requestParams = {}
 		#pais  = request.POST ["txt0a"]		# Auto "CO" or "EC"
 		pais  = "CO"
+		requestParams ["pais"]  = pais
 		requestParams ["procedimiento"] = Utils.getProcedimientoFromPais (self.empresa, pais)
 		requestParams ["user"] = request.user
 		requestParams ["url"]  = resolve (request.path_info).url_name
@@ -393,6 +404,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	#-------------------------------------------------------------------
 	#-- Save document to DB
 	#-------------------------------------------------------------------
+	#-- Save document if form's values have changed
 	def updateDocumentToDB (self, inputValues, requestParams):
 		if self.hasChangedDocument (inputValues):
 			self.saveDocumentToDB (inputValues, requestParams)

@@ -1,10 +1,12 @@
 import os, tempfile, json
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from django.db import models
-from django.urls import reverse  # To generate URLS by reversing URL patterns
+from django.urls import reverse   # To generate URLS by reversing URL patterns
+from django.utils import timezone # For getting recent cartaportes
 
 from ecuapassdocs.info.ecuapass_utils import Utils
+from ecuapassdocs.info.ecuapass_data import EcuData
 from ecuapassdocs.info.ecuapass_info_cartaporte_BYZA import CartaporteByza
 
 from appusuarios.models import UsuarioEcuapass
@@ -16,6 +18,9 @@ from appusuarios.models import UsuarioEcuapass
 # Model CartaporteDoc
 #--------------------------------------------------------------------
 class CartaporteDoc (models.Model):
+	class Meta:
+		db_table = "cartaportedoc"
+
 	numero = models.CharField (max_length=20)
 
 	txt0a = models.CharField (max_length=20, null=True)
@@ -75,31 +80,39 @@ class CartaporteDoc (models.Model):
 		return (self.numero)
 
 	def getRemitente (self):
-		return txt02
+		return self.txt02
 
 	def getDestinatario (self):
-		return txt02
+		return self.txt03
 		
 #--------------------------------------------------------------------
 # Model Cartaporte
 #--------------------------------------------------------------------
 class Cartaporte (EcuapassDoc):
+	class Meta:
+		db_table = "cartaporte"
+
 	documento     = models.OneToOneField (CartaporteDoc, on_delete=models.CASCADE)
 	remitente     = models.ForeignKey (Empresa, related_name="Empresa_cartaporte_set_remitente",
 	                                   on_delete=models.SET_NULL, null=True)
 	destinatario  = models.ForeignKey (Empresa, related_name="Empresa_cartaporte_set_destinatario",
 	                                   on_delete=models.SET_NULL, null=True)
 
+	def __str__ (self):
+		return f"{self.numero}, {self.remitente}"
+
 	def get_absolute_url(self):
 		"""Returns the url to access a particular language instance."""
 		return reverse('cartaporte-detail', args=[str(self.id)])
 
 	def setValues (self, cartaporteDoc, docFields, procedimiento, username):
+		# General values
 		self.numero        = cartaporteDoc.numero
 		self.documento     = cartaporteDoc
 		self.procedimiento = procedimiento
 		self.usuario       = self.getUserByUsername (username)
-		# Get subject instance for 'remitente' and 'destinatario'
+
+		# Document values
 		self.remitente     = self.getSubjectInstance ("02_Remitente", docFields)
 		self.destinatario  = self.getSubjectInstance ("03_Destinatario", docFields)
 		# Get 'fecha recepcion'
@@ -151,10 +164,21 @@ class Cartaporte (EcuapassDoc):
 		json.dump (docFields, open (jsonFieldsPath, "w"))
 		return (jsonFieldsPath, tmpPath)
 
-	#-- Return user instance by username
-	def getUserByUsername (self, username):
-		user = UsuarioEcuapass.objects.get (username=username)
-		return user
+#	#-- Return user instance by username
+#   
+#	def getUserByUsername (self, username):
+#		user = UsuarioEcuapass.objects.get (username=username)
+#		return user
 		
+	#-- Return recent cartaportes (within the past week)
+	def getRecentCartaportes ():
+		diasRecientes = EcuData.configuracion ["dias_cartaportes_recientes"]
+		oneWeekAgo = timezone.now () - timedelta (days=diasRecientes)
+		recentCartaportes = Cartaporte.objects.filter (fecha_emision__gte=oneWeekAgo)
+		for cartaporte in recentCartaportes:
+			print (cartaporte.numero, cartaporte.fecha_emision)
+		return recentCartaportes
+
+
  
 

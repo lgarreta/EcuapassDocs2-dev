@@ -2,9 +2,11 @@
 
 {% block content %}
 
-<h1>Caratporte borrada</h1>
+<h1>Confirmación</h1>
 
-<p>¿Seguro quieres borrar esta cartaporte: {{ cartaporte.numero }}, tipo: {{ cartaporte.tipo }}?</p>
+<p>¿Seguro quieres borrar esta Carta de Porte número: 
+	  <a href="{% url 'cartaporte' %}editar/{{ cartaporte.id }}" target="_blank">{{ cartaporte.numero }}</a>
+</p>	  
 
 <form action="" method="POST">
   {% csrf_token %}

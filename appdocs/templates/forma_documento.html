@@ -11,7 +11,9 @@
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+
 	<!-- Own JS Scripts -->
+	<script src="{% static 'appdocs/js/csrf_utils.js' %}"></script>
 	<script src="{% static 'appdocs/js/createInputTextareas.js' %}"></script>
 	<script src="{% static 'appdocs/js/setParametersToInputs.js' %}"></script>
 	<script src="{% static 'appdocs/js/autocomplete-documents.js' %}"></script>
@@ -135,8 +137,8 @@
 <body>
 	<div id="background"></div>
 		<form action="{% url document_url  %}" method="post" id="forma_pdf">
+			{% csrf_token %}
 			<div class="container">
-				{% csrf_token %}
 				<!-- Panel superior que muestra cuatro opciones para realizar con el documento -->
 				<div class="top-panel">
 					<button class="submit" type="submit" id="boton_guardar" name="action" value="guardar">Guardar</button>
@@ -173,8 +175,10 @@
 		// Enable / Disable document buttons
 		let docNumber = document.getElementById ("numero")
 		let docNumberInput = document.getElementById ("txt00")
-		if (docNumber.value != "" && docNumber.value != "CLON")
-			enableDisableDocButtons ("ENABLE")
+
+		if (docNumber.value != "" && docNumber.value != "CLON") {
+			enableDisableDocButtons (document, "ENABLE")
+		}
 
 		//-------------------------------------------------------------
 		// For handling "original", "copia", and "clonar" options

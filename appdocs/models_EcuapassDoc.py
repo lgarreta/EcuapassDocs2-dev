@@ -26,6 +26,10 @@ class EcuapassDoc (models.Model):
 		DocumentClass.objects.filter (numero=self.numero).delete()
 		super().delete(*args, **kwargs)	
 
+	#-- Return user instance by username
+	def getUserByUsername (self, username):
+		user = UsuarioEcuapass.objects.get (username=username)
+		return user
 #--------------------------------------------------------------------
 # Model Cartaporte Form
 #--------------------------------------------------------------------

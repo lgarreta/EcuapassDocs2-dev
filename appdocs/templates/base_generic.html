@@ -33,20 +33,20 @@
 				{% if user.is_active %}
 				<ul class="sidebar-nav">
 					<b>Elaboración:</b>
-					<li><a href="{% url 'cartaporte' %}{{ 'nuevo' }}" target="_blank">Cartas de Porte</a></li>
-					<li><a href="{% url 'manifiesto' %}{{ 'importacion' }}" target="_blank">Manifiestos</a></li>
-					<li><a href="{% url 'declaracion' %}" target="_blank">Declaraciones</a></li>
+					<li><a href="{% url 'cartaporte' %}{{ 'nuevo' }}" target="_blank">Nueva Carta de Porte</a></li>
+					<li><a href="{% url 'manifiesto' %}{{ 'nuevo' }}" target="_blank">Nuevo Manifiesto</a></li>
+					<li><a href="{% url 'declaracion' %}{{ 'nuevo' }}" target="_blank">Nueva Declaración</a></li>
 				</ul>
 
 				<ul class="sidebar-nav">								 
 					<b>Consulta:</b>
-					<li><a href="{% url 'cartaportes_filter' %}">Cartas de Porte</a></li>
-					<li><a href="{% url 'manifiestos_filter' %}">Manifiestos</a></li>
-					<li><a href="{% url 'declaraciones' %}">Declaraciones</a></li>
+					<li><a href="{% url 'cartaporte-listado' %}">Lista de Cartas de Porte</a></li>
+					<li><a href="{% url 'manifiesto-listado' %}">Lista de Manifiestos</a></li>
+					<li><a href="{% url 'declaraciones' %}">Lista Declaraciones</a></li>
 					<hr>
-					<li><a href="{% url 'empresas' %}">Empresas</a></li>
-					<li><a href="{% url 'vehiculos' %}">Vehiculos</a></li>
-					<li><a href="{% url 'conductors' %}">Conductores</a></li>
+					<li><a href="{% url 'empresas' %}">Lista de Empresas</a></li>
+					<li><a href="{% url 'vehiculos' %}">Lista de Vehiculos</a></li>
+					<li><a href="{% url 'conductors' %}">Lista de Conductores</a></li>
 				</ul>
 
 				{% if user.is_authenticated and user.es_director or user.is_staff %}

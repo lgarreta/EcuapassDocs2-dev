@@ -1,17 +1,4 @@
-ALERTA: No se pudo determinar código del pais desde el número: 'None'
-ALERTA: No se pudo determinar código del pais desde el número: 'None'
-ALERTA: No se pudo determinar código del pais desde el número: 'None'
-ALERTA: No se pudo determinar código del pais desde el número: 'None'
-ALERTA: No se pudo determinar código del pais desde el número: 'None'
-SERVER: EXCEPCION:  No se pudo determinar tipo de procedimiento (Importación/Exportación)
-SERVER: Traceback (most recent call last):
-  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs2-dev/ecuapassdocs/info/ecuapass_info.py", line 129, in getTipoProcedimiento
-    tipoProcedimiento = procedimientos [codigoPais]
-KeyError: ''
-
-ALERTA: No se pudo determinar código del pais desde el número: 'None'
-ALERTA: No se pudo determinar código del pais desde el número: 'None'
-SERVER: Ciudad desconocida en texto: '' de '02_Remitente'
+SERVER: Ciudad desconocida en texto: 'MARIA' de '02_Remitente'
 SERVER: Ciudad desconocida en texto: '' de '03_Destinatario'
 SERVER: Ciudad desconocida en texto: '' de '04_Consignatario'
 SERVER: Ciudad desconocida en texto: '' de '05_Notificado'
@@ -31,6 +18,6 @@ SERVER: Traceback (most recent call last):
     raise ValueError("time data %r does not match format %r" %
 ValueError: time data '||LOW' does not match format '%d-%m-%Y'
 
-SERVER: Problemas extrayendo embalaje desde texto: ''
+SERVER: Problemas extrayendo embalaje desde texto: '100'
 SERVER: No existe fecha en texto ''
 SERVER: Ciudad desconocida en texto: '' de '19_Emision'

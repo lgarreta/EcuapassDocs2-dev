@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <h1>Lista de Cartaportes Filtrada</h1>
+    <h1>Lista de Cartas de Portes</h1>
     <form method="GET" action="">
 		{% csrf_token %}
 		{% crispy form %}
@@ -12,7 +12,7 @@
     <ul>
       {% for cartaporte in cartaporte_list %}
       <li>
-        <a href="{{ cartaporte.get_absolute_url }}" target="_blank">{{ cartaporte.numero }}</a> ({{cartaporte.fecha_emision}})
+        <a href="{{ cartaporte.get_absolute_url }}" target="_blank">{{ cartaporte.numero }}</a>, {{cartaporte.fecha_emision}}, {{cartaporte.documento.getRemitente}}
       </li>
       {% endfor %}
 

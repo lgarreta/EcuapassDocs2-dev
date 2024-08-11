@@ -1,18 +1,37 @@
 // Functions for autocomplete in document forms
+//
+// Get last CSRF token (after redirects)
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
 
 // Create autocomplete for an entity
 function createAutocomplete (entity) {
+	const csrftoken = getCookie('csrftoken');
+	console.log ("CSRF TOKEN createAutocomplete: ", csrftoken)
+
 	let inputSelector = entity.inputSelector
 	let sourceUrl     = entity.sourceUrl
 	
 	$(inputSelector).autocomplete({
 		// List of autocomplete options
 		source: function (request, response) {
-			$.ajax({ url: sourceUrl, dataType: 'json', data: { query: request.term},
+			$.ajax({ url: sourceUrl, type:'POST', dataType: 'json', data: {query: request.term},
 
 				beforeSend: function (xhr, settings) {
 					// Include the CSRF token in the request headers
-					xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+					xhr.setRequestHeader("X-CSRFToken", csrftoken);
 				},
 
 				success: function (data) {
@@ -67,13 +86,14 @@ function setAutocompleteForDocument (documentType) {
 		// Cartaportes
 		let cartaporteInputs = getTextAreasByClassName ("input_cartaporte")
 		cartaporteInputs.forEach (inputName => {
-			createAutocomplete(new AutoCompleteCartaporte (inputName, 'opciones-cartaporte', documentType)) 
+			createAutocomplete(new AutoCompleteCartaporte (inputName, 'opciones-cartaporte/', documentType)) 
 		});
+
 
 		// Vehiculo
 		let vehiculoInputs = getTextAreasByClassName ("input_placaPais")
 		vehiculoInputs.forEach (inputName => {
-			createAutocomplete(new AutoCompletePlacaPais (inputName, 'opciones-vehiculo')) 
+			createAutocomplete(new AutoCompletePlacaPais (inputName, 'opciones-vehiculo/')) 
 		});
 
 		// Conductor
@@ -121,16 +141,16 @@ class AutoComplete {
 //-- Autocomplet for "cartaporte" -----------------------------------
 //-------------------------------------------------------------------
 class AutoCompleteCartaporte extends AutoComplete {
-	// When an item is selected, populate the textarea 
+	// When a cartaporte number is selected, populate related inputs
 	onItemSelected (ui) {
 		let index = ui.item.value.split (".")[0]
 		let text = this.fullData [index]["itemText"]
 		let values = text.split ("||");
 		
 		let docInputsIds = null;
-		if (this.documentType === "manifiesto")
+		if (this.documentType === "MANIFIESTO")
 			docInputsIds = ["28","29","30","31","32_1","32_3","33_1","34","32_2","32_4","33_2"];
-		else if (this.documentType === "declaracion")
+		else if (this.documentType === "DECLARACION")
 			docInputsIds = ["15","16","17","18","19_1","19_3","20_1","21","19_2","19_4","20_2"];
 		else { 
 			console.log ("Tipo '" + this.documentType + "' no conocido para autocompletar cartaporte");

@@ -43,36 +43,66 @@ function convertToUpperCase (textArea) {
 
 // Handle the event went user leaves out textareas
 function handleBlur (textareaId, document_type, textAreasDict, textarea) {
-	if (document_type == "cartaporte") {
-		//-- Copy "ciudad-pais. fecha" to other inputs (BYZA)
-		if (textareaId == "txt06") {
-			textAreasDict ["txt07"].value = textAreasDict ["txt06"].value
-			textAreasDict ["txt19"].value = textAreasDict ["txt06"].value
-		}
-		//-- Calculate totals when change gastos table values
-		remitenteInputs = {"txt17_11":"txt17_21","txt17_12":"txt17_22","txt17_13":"txt17_23"}
-		if (Object.keys (remitenteInputs).includes (textareaId)) {
-			if (textarea.value != "") {
-				textarea.value = checkFormatNumber (textarea.value)
-				textAreasDict [remitenteInputs [textareaId]].value = "USD"
+	console.log ("+++ Handling Blur", document_type)
+	if (document_type == "MANIFIESTO") 
+		handleBlurForManifiesto (textareaId, document_type, textAreasDict, textarea) 
+	else
+		if (document_type == "CARTAPORTE") {
+			//-- Copy "ciudad-pais. fecha" to other inputs (BYZA)
+			if (textareaId == "txt06") {
+				textAreasDict ["txt07"].value = textAreasDict ["txt06"].value
+				textAreasDict ["txt19"].value = textAreasDict ["txt06"].value
+			}
+			//-- Calculate totals when change gastos table values
+			remitenteInputs = {"txt17_11":"txt17_21","txt17_12":"txt17_22","txt17_13":"txt17_23"}
+			if (Object.keys (remitenteInputs).includes (textareaId)) {
+				if (textarea.value != "") {
+					textarea.value = checkFormatNumber (textarea.value)
+		 			textAreasDict [remitenteInputs [textareaId]].value = "USD"
+				}
+
+				setTotal (Object.keys (remitenteInputs), "txt17_14", textAreasDict);
+				textAreasDict ["txt17_24"].value = "USD"
 			}
 
-			setTotal (Object.keys (remitenteInputs), "txt17_14", textAreasDict);
-			textAreasDict ["txt17_24"].value = "USD"
-		}
+			destinatarioInputs = {"txt17_31":"txt17_41","txt17_32":"txt17_42","txt17_33":"txt17_43"}
+			if (Object.keys (destinatarioInputs).includes (textareaId)) {
+				if (textarea.value != "") {
+					textarea.value = checkFormatNumber (textarea.value)
+					textAreasDict [destinatarioInputs [textareaId]].value = "USD"
+				}
 
-		destinatarioInputs = {"txt17_31":"txt17_41","txt17_32":"txt17_42","txt17_33":"txt17_43"}
-		if (Object.keys (destinatarioInputs).includes (textareaId)) {
-			if (textarea.value != "") {
-				textarea.value = checkFormatNumber (textarea.value)
-				textAreasDict [destinatarioInputs [textareaId]].value = "USD"
+				setTotal (Object.keys (destinatarioInputs), "txt17_34", textAreasDict);
+				textAreasDict ["txt17_44"].value = "USD"
 			}
-
-			setTotal (Object.keys (destinatarioInputs), "txt17_34", textAreasDict);
-			textAreasDict ["txt17_44"].value = "USD"
 		}
+}
+
+
+function handleBlurForManifiesto (textareaId, document_type, textAreasDict, textarea) {
+	console.log ("+++ Blur in manifiesto")
+	if (textareaId == "txt28") {
+		console.log ("+++ Blur in txt28")
+
+		const csrftoken = getCookie('csrftoken');
+		console.log ("CSRF TOKEN BlurManifiesto: ", csrftoken)
+		$.ajax({
+			type : 'POST',
+			url  : 'actualizar-cartaporte/',
+			data : {
+				'cartaporteNumber': textAreasDict [textareaId].value,
+				'csrfmiddlewaretoken': csrftoken 
+			},
+			success : function (response) {
+				console.log ("BD actualizada");
+			},
+			error: function (xhr, status, error) {
+				console.error ("Error actualizand lo BD:", error);
+			}
+		});
 	}
 }
+
 
 // Calculates the total of the textArray values and set to txtTotal
 function setTotal (textArray, txtTotal, textAreasDict) {
@@ -122,7 +152,7 @@ function setParametersToInputs (textAreas, inputParameters, document_type) {
   			textAreas.map (textarea => [textarea.id, textarea])
 		);
 
-		// Handle blur event for auto filling
+		// Handle blur (onExit) event for auto filling
 		textArea.addEventListener ("blur", function (event) {
 			handleBlur (event.target.id, document_type, textAreasDict, this);
 		});

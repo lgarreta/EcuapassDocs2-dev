@@ -1,6 +1,4 @@
-
 import re
-from datetime import date
 
 # Own imports
 from ecuapassdocs.info.resourceloader import ResourceLoader 

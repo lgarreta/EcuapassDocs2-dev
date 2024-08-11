@@ -1,24 +1,18 @@
 import json
 
 from django.shortcuts import render
-from django.shortcuts import get_object_or_404
 from django.views import View
 from django.views import generic
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from django.urls import reverse  # To generate URLS by reversing URL patterns
 
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.templatetags.static import static
 from django.conf import settings
 
-from django.contrib import messages
-from django.contrib.messages import add_message
-
-from app_cartaportes.models import Cartaporte, CartaporteDoc
-from .models_ManifiestoDoc import Manifiesto, ManifiestoDoc
+from app_cartaportes.models_cpi import Cartaporte, CartaporteDoc
+from app_manifiestos.models_mci import Manifiesto, ManifiestoDoc
 from .models_DeclaracionDoc import Declaracion, DeclaracionDoc
 from .models_Entidades import Empresa, Conductor, Vehiculo
 
@@ -92,11 +86,11 @@ class VehiculoListView(generic.ListView):
 class VehiculoDetailView(generic.DetailView):
 	model = Vehiculo
 
-class ManifiestoListView(generic.ListView):
-	model = Manifiesto
-
-class ManifiestoDetailView (generic.DetailView):
-	model = Manifiesto
+#class ManifiestoListView(generic.ListView):
+#	model = Manifiesto
+#
+#class ManifiestoDetailView (generic.DetailView):
+#	model = Manifiesto
 
 #--------------------------------------------------------------------
 #-- Vehiculo
@@ -135,73 +129,19 @@ class ConductorDelete(login_required_class(DeleteView)):
 	success_url = reverse_lazy('conductors')
 
 #--------------------------------------------------------------------
-#-- Cartaporte
-#--------------------------------------------------------------------
-
-class CartaporteListView(generic.ListView):
-	model = Cartaporte
-
-class CartaporteDetailView(generic.DetailView):
-	model = Cartaporte
-
-class CartaporteCreate(login_required_class(CreateView)):
-	model = Cartaporte
-	fields = '__all__'
-
-class CartaporteDoc(login_required_class(UpdateView)):
-	model = Cartaporte
-	fields = '__all__'
-	#fields = ['tipo','remitente','destinatario','fecha_emision']
-
-class CartaporteUpdate(login_required_class(UpdateView)):
-	model = Cartaporte
-	fields = '__all__'
-	#fields = ['tipo','remitente','destinatario','fecha_emision']
-
-class CartaporteDelete(login_required_class(DeleteView)):
-	model = Cartaporte
-	success_url = reverse_lazy('cartaportes_filter')
-
-#	def post (self, request, *args, **kwargs):
-#		print ("-- On post...")
-#		# Delete related objects or one-to-one relationships here
-#		# Get the object to be deleted
-#		self.object = self.get_object()		
-#		self.object.documento.delete()
-#
-#		add_message (request, messages.ERROR, "Cartaporte borrada.")
-#		#return return (request, 'messages.html')
-#		return reverse('cartaportes', args=[])
-#		#return reverse('empresa-detail', args=[str(self.id)])
-#
-	def delete(self, request, *args, **kwargs):
-		print ("-- On delete...")
-		# Delete related objects
-		related_objects = self.object.related_objects.all()
-		for obj in related_objects:
-			print ("--obj:", obj)
-
-		related_objects.delete()
-
-		# Delete the object using the default behavior
-		return super().delete(request, *args, **kwargs)
-
-#--------------------------------------------------------------------
 #-- Manifiesto
 #--------------------------------------------------------------------
-class ManifiestoCreate(login_required_class(CreateView)):
-	model = Manifiesto
-	fields = '__all__'
-
-class ManifiestoUpdate(login_required_class(UpdateView)):
-	model = Manifiesto
-	fields = ['vehiculo', 'cartaporte']
-
-class ManifiestoDelete (login_required_class(DeleteView)):
-	model = Manifiesto
-	success_url = reverse_lazy('manifiestos')
-
-
+#class ManifiestoCreate(login_required_class(CreateView)):
+#	model = Manifiesto
+#	fields = '__all__'
+#
+#class ManifiestoUpdate(login_required_class(UpdateView)):
+#	model = Manifiesto
+#	fields = ['vehiculo', 'cartaporte']
+#
+#class ManifiestoDelete (login_required_class(DeleteView)):
+#	model = Manifiesto
+#	success_url = reverse_lazy('manifiestos')
 
 class InfoView(View):
 	template_name = 'info_view.html'

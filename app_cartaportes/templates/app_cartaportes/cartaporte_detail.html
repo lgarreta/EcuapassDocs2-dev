@@ -2,19 +2,18 @@
 {% include "_command_buttons.html" %}
 
 {% block content %}
-	<h1>Cartaporte: {{ cartaporte.numero }}</h1>
-
-	<p><strong>Documento:</strong> 
+	<h1>Cartaporte: 
 	  <a href="{% url 'cartaporte' %}editar/{{ cartaporte.id }}" target="_blank">{{ cartaporte.numero }}</a>
-	</p>
+	</h1>
+
 	<p><strong>Fecha emision:</strong> {{ cartaporte.fecha_emision }}</p>
 
 	<p><strong>Remitente:</strong> 
-	  <a href="{{ cartaporte.remitente.get_absolute_url }}">{{ cartaporte.remitente }}</a>
+	  <a href="{{ cartaporte.remitente.get_absolute_url }}">{{ cartaporte.documento.getRemitente }}</a>
 	</p> 
 
 	<p><strong>Destinatario:</strong> 
-	  <a href="{{ cartaporte.destinatario.get_absolute_url }}">{{ cartaporte.destinatario }}</a>
+	  <a href="{{ cartaporte.destinatario.get_absolute_url }}">{{ cartaporte.documento.getDestinatario }}</a>
 	</p> 
 
 	<!----------------------------------- COMMANDS ----------------------------------->

@@ -9,24 +9,27 @@ from django.views import View
 from django.http import JsonResponse
 
 from ecuapassdocs.info.resourceloader import ResourceLoader 
+from ecuapassdocs.info.ecuapass_utils import Utils
 from .models import Cartaporte, Vehiculo, Conductor, Empresa
 
 #--------------------------------------------------------------------
 # Show all 'cartaportes' from current date (selected in manifiesto)
-# Return all "mercancia" info (nro cartaporte, descripcion, ..., totals
+# Fill from with "mercancia" info (cartaporte, descripcion, ..., totals
 # It doesn't totalize peso "bruto", "neto", and "otras"
 #--------------------------------------------------------------------
 class CartaporteOptionsView (View):
 	@method_decorator(csrf_protect)
-	def get (self, request, *args, **kwargs):
-		print ("--get CartaporteOptionsView")
+	def post (self, request, *args, **kwargs):
+		print ("+++ get CartaporteOptionsView")
 		itemOptions = []
 		try:
 			# Get cartaporte docs from query
-			query = request.GET.get ('query', '')
-			current_date = datetime.date.today()    
+			query = request.POST.get ('query', '')
+			print ("+++ query:", query)
 
-			cartaportes = Cartaporte.objects.filter (numero=query)
+			#current_date = datetime.date.today()    
+			#cartaportes = Cartaporte.objects.filter (numero=query)
+			cartaportes  = Cartaporte.getRecentCartaportes ()
 			if not cartaportes.exists():
 				cartaportes = Cartaporte.objects.filter (numero__startswith=query,
 				 									 fecha_emision=current_date)
@@ -51,17 +54,21 @@ class CartaporteOptionsView (View):
 				newOption = {"itemLine" : itemLine, "itemText" : itemText}
 				itemOptions.append (newOption)
 		except:
-			print (">>> Excepcion obteniendo opciones de cartaportes")
+			Utils.printException (">>> Excepcion obteniendo opciones de cartaportes")
 			
 		return JsonResponse (itemOptions, safe=False)
+
+		
 
 #--------------------------------------------------------------------
 # Show options when user types in "input_placaPais"
 #--------------------------------------------------------------------
 class VehiculoOptionsView (View):
 	@method_decorator(csrf_protect)
-	def get (self, request, *args, **kwargs):
-		query = request.GET.get('query', '')
+	def post (self, request, *args, **kwargs):
+		print ("+++ Vehiculo POST...") 
+		query = request.POST.get('query', '')
+		print ("+++ Vehiculo POST QUERY:", query) 
 		options = Vehiculo.objects.filter (placa__istartswith=query).values()
 
 		itemOptions = []
@@ -78,7 +85,7 @@ class VehiculoOptionsView (View):
 # Show options when user types in "input_placaPais"
 #--------------------------------------------------------------------
 class ConductorOptionsView (View):
-	@method_decorator(csrf_protect)
+	#@method_decorator(csrf_protect)
 	def get (self, request, *args, **kwargs):
 		query = request.GET.get('query', '')
 		options = Conductor.objects.filter (nombre__istartswith=query).values()
@@ -98,7 +105,7 @@ class ConductorOptionsView (View):
 # Options for autocomplete for "Ciudad-Pais. Fecha"
 #--------------------------------------------------------------------
 class CiudadPaisOptionsView (View):
-	@method_decorator(csrf_protect)
+	#@method_decorator(csrf_protect)
 	def get (self, request, *args, **kwargs):
 		query = request.GET.get('query', '')
 		ciudadesPaises = self.getCiudadesPaisesFromQuery (query)
@@ -142,7 +149,7 @@ class CiudadPaisFechaOptionsView (CiudadPaisOptionsView):
 #--EmpresaOptionsView
 #--------------------------------------------------------------------
 class EmpresaOptionsView (View):
-	@method_decorator(csrf_protect)
+	#@method_decorator(csrf_protect)
 	def get (self, request, *args, **kwargs):
 		query = request.GET.get('query', '')
 		options = Empresa.objects.filter (nombre__istartswith=query).values()

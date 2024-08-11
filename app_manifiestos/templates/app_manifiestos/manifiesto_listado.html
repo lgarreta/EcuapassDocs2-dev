@@ -12,7 +12,7 @@
     <ul>
       {% for manifiesto in manifiesto_list %}
       <li>
-        <a href="{{ manifiesto.get_absolute_url }}">{{ manifiesto.numero }}</a> ({{manifiesto.fecha_emision}})
+        <a href="{{ manifiesto.get_absolute_url }}">{{ manifiesto.numero }}</a> ,{{manifiesto.fecha_emision}}, {{manifiesto.documento.getConductor}}
       </li>
       {% endfor %}
 
