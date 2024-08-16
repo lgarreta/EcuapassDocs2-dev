@@ -37,6 +37,7 @@ CSRF_TRUSTED_ORIGINS = [
 # Application definition
 
 INSTALLED_APPS = [
+	"app_declaraciones",
 	"app_manifiestos",
 	"app_cartaportes",
 	"appreportes",

@@ -101,8 +101,10 @@ class CreadorPDF:
 			inputValues ["txt24"] = copyString
 		elif docType.upper () == "MANIFIESTO":
 			inputValues ["txt41"] = copyString
+		elif docType.upper () == "DECLARACION":
+			inputValues ["txt26"] = copyString
 		else:
-			print (f"ERROR. Tipo de documento desconocido: '{self.docType}'")
+			print (f"ERROR. Tipo de documento desconocido: '{docType}'")
 			
 		outPdfPath  = join (tmpPath, f"{self.prefix}-{docNumber}.pdf") 
 		outJsonPath = join (tmpPath, f"{self.prefix}-{docNumber}.json") 

@@ -20,15 +20,11 @@ from .models import Cartaporte, Vehiculo, Conductor, Empresa
 class CartaporteOptionsView (View):
 	@method_decorator(csrf_protect)
 	def post (self, request, *args, **kwargs):
-		print ("+++ get CartaporteOptionsView")
 		itemOptions = []
 		try:
 			# Get cartaporte docs from query
 			query = request.POST.get ('query', '')
-			print ("+++ query:", query)
 
-			#current_date = datetime.date.today()    
-			#cartaportes = Cartaporte.objects.filter (numero=query)
 			cartaportes  = Cartaporte.getRecentCartaportes ()
 			if not cartaportes.exists():
 				cartaportes = Cartaporte.objects.filter (numero__startswith=query,
@@ -58,17 +54,13 @@ class CartaporteOptionsView (View):
 			
 		return JsonResponse (itemOptions, safe=False)
 
-		
-
 #--------------------------------------------------------------------
 # Show options when user types in "input_placaPais"
 #--------------------------------------------------------------------
 class VehiculoOptionsView (View):
 	@method_decorator(csrf_protect)
 	def post (self, request, *args, **kwargs):
-		print ("+++ Vehiculo POST...") 
 		query = request.POST.get('query', '')
-		print ("+++ Vehiculo POST QUERY:", query) 
 		options = Vehiculo.objects.filter (placa__istartswith=query).values()
 
 		itemOptions = []
@@ -99,7 +91,6 @@ class ConductorOptionsView (View):
 			itemOptions.append (newOption)
 		
 		return JsonResponse (itemOptions, safe=False)
-
 
 #--------------------------------------------------------------------
 # Options for autocomplete for "Ciudad-Pais. Fecha"

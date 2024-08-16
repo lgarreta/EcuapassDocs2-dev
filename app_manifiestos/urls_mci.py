@@ -3,7 +3,7 @@ from django.urls import path
 
 from app_manifiestos.views_ManifiestoDocView import *
 from app_manifiestos import views_mci
-from appdocs.views_Entidades import *
+from appdocs.views_Events import *
 from appdocs import views_Filters 
 
 urlpatterns = [

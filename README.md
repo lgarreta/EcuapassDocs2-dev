@@ -4,5 +4,6 @@
 - Custom user management
 
 ## LOG
+Aut/16: r0.501: Redesigned to use onCommandFunctions in POST and GET.
 Aug/11: Working Manifiesto optionsView (.., cartaporte)
 Aug/06: Reorganizing code for menus. Menus uses only one function. POST request to GET request.

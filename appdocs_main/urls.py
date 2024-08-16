@@ -15,6 +15,7 @@ urlpatterns = [
     path("documentos/", include("appdocs.urls")),
     path("cartaporte/", include("app_cartaportes.urls")),
     path("manifiesto/", include("app_manifiestos.urls_mci")),
+    path("declaraciones/", include("app_declaraciones.urls_dti")),
     path("reportes/", include("appreportes.urls")),
     path('', views.index, name='index'),
 ]

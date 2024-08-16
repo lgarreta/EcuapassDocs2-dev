@@ -17,6 +17,9 @@ from appdocs.models_EcuapassDoc import EcuapassDoc
 # Model DeclaracionDoc
 #--------------------------------------------------------------------
 class DeclaracionDoc (models.Model):
+	class Meta:
+		db_table = "declaraciondoc"
+
 	numero = models.CharField (max_length=20)
 
 	txt0a = models.CharField (max_length=20, null=True)
@@ -60,6 +63,9 @@ class DeclaracionDoc (models.Model):
 # Model Declaracion
 #--------------------------------------------------------------------
 class Declaracion (EcuapassDoc):
+	class Meta:
+		db_table = "declaracion"
+
 	documento     = models.OneToOneField (DeclaracionDoc, on_delete=models.SET_NULL, null=True)
 
 	cartaporte    = models.ForeignKey (Cartaporte, on_delete=models.SET_NULL, null=True)
@@ -71,13 +77,18 @@ class Declaracion (EcuapassDoc):
 	def __str__ (self):
 		return f"{self.numero}, {self.cartaporte}"
 
-	def setValues (self, declaracionDoc, fieldValues):
-		jsonFieldsPath, runningDir = self.createTemporalJson (fieldValues)
+	def setValues (self, declaracionDoc, docFields, procedimiento, username):
+		# Base values
+		self.numero        = declaracionDoc.numero
+		self.documento     = declaracionDoc
+		self.procedimiento = procedimiento
+		self.usuario       = self.getUserByUsername (username)
+
+		# Document values
+		jsonFieldsPath, runningDir = self.createTemporalJson (docFields)
 		declaracionInfo            = Declaracion (jsonFieldsPath, runningDir)
 
-		self.numero     = declaracionDoc.numero
 		self.cartaporte = self.getCartaporte (declaracionInfo)
-		self.documento  = declaracionDoc
 		
 	def getCartaporte (self, declaracionInfo):
 		numero = None

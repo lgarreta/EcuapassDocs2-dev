@@ -22,8 +22,10 @@ from django.urls import resolve   # To get calling URLs
 
 # Own imports
 from ecuapassdocs.info.ecuapass_utils import Utils 
+from ecuapassdocs.info.ecuapass_data import EcuData 
 #from ecuapassdocs.ecuapassutils.pdfcreator import CreadorPDF 
 from .pdfcreator import CreadorPDF 
+from .sessioninfo import SessionInfo 
 
 from .models import Cartaporte, Manifiesto, Declaracion
 from .models import CartaporteDoc, ManifiestoDoc, DeclaracionDoc
@@ -55,12 +57,11 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	#-------------------------------------------------------------------
 	def get (self, request, *args, **kwargs):
 		print ("\n\n+++ GET : EcuapassDocView +++")
-		command = resolve(request.path_info).url_name
 		print ("+++ URL :", request.path_info)
+		command = resolve(request.path_info).url_name
 		print ("+++ URL name:", command)
-		print ("+++ USER:", request.user)
-		print ("+++ KWARGS:", kwargs)
 
+		documentParams = self.getDocumentParams (request, *args, **kwargs)
 		response = self.getResponseForCommand (command, request, *args, **kwargs)
 		return response
 
@@ -71,31 +72,21 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	@method_decorator(csrf_protect)
 	def post (self, request, *args, **kwargs):
 		print ("\n\n+++ POST : EcuapassDocView +++")
-		urlName = resolve(request.path_info).url_name
 		print ("+++ URL :", request.path_info)
-		print ("+++ URL name:", urlName)
 
-		# Get values from html form
 		self.inputValues = self.getInputValuesFromForm (request)		  # Values without CPI number
 
 		commandButton    = request.POST.get('boton_seleccionado', '').lower()
-		print ("+++ Command button:", commandButton)
 		docId            = self.inputValues ["id"]
 
 		# Handle commandButton actions from doc menu
-		print (f"+++ REDIRECT : {commandButton}")
-		if commandButton == "boton_guardar":
+		if "guardar" in commandButton:
 			docId = self.onSaveCommand (request) 
 			return redirect (f"editar/{docId}")
-		elif commandButton == "boton_pdf_original":
-			return redirect (f"pdf_original/{docId}")
-		elif commandButton == "boton_pdf_copia":
-			return redirect (f"pdf_copia/{docId}")
-		elif commandButton == "boton_pdf_paquete":
-			return redirect (f"pdf_paquete/{docId}")
-		elif commandButton == "boton_clonar":
-			self.onClonCommand (commandButton, request, *args, **kwargs)
-			return redirect (f"clonar/{docId}")
+		elif "pdf" in commandButton:
+			return self.onPdfCommand (commandButton, request, *args, **kwargs)
+		elif "clonar" in commandButton:
+			return self.onClonCommand (commandButton, request, *args, **kwargs)
 		else:
 			print ("ERROR: Boton de comando '{commandButton}' no existe")
 			pdfResponse = self.getResponseForCommand (commandButton, request, *args, **kwargs)
@@ -106,26 +97,21 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	#-------------------------------------------------------------------
 	def getResponseForCommand (self, command, request, *args, **kwargs):
 		response = None
-		requestParams = self.getRequestInfo (request, *args, **kwargs)
-		pk = requestParams ["pk"]
+		documentParams = self.getDocumentParams (request, *args, **kwargs)
+		pk = documentParams ["pk"]
+
 		# Check if new or existing document
 		if pk and "clon" not in command:
 			self.inputParams = self.copySavedValuesToInputs (pk)
 			self.inputValues = Utils.getInputValuesFromInputParams (self.inputParams)
-
 	
-		if "guardar" in command:
-			docId, docNumber = self.saveDocumentToDB (self.inputValues, requestParams)
-			response = JsonResponse ({"id": docId, 'numero': docNumber}, safe=False)
-
-		elif "editar" in command or "nuevo" in command:
-			response = self.onEditCommand (command, request, *args, **kwargs)
+		if "editar" in command or "nuevo" in command:
+			return self.onEditCommand (command, request, *args, **kwargs)
 
 		elif "clonar" in command:
-			response = self.onClonCommand (command, request, *args, **kwargs)
-
-		elif any (x in command for x in ["original", "copia", "paquete"]):
-			response = self.onPdfCommand (command, request, *args, **kwargs)
+			return self.onClonCommand (command, request, *args, **kwargs)
+		elif "pdf" in command:
+			return self.onPdfCommand (command, request, *args, **kwargs)
 
 		else:
 			print (">>> Error: No se conoce opción del botón presionado:", command)
@@ -137,21 +123,21 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	#-------------------------------------------------------------------
 	def onEditCommand  (self, command, request, *args, **kwargs):
 		print ("+++ onEditCommand:", command)
-		requestParams = self.getRequestInfo (request, *args, **kwargs)
-		pk = requestParams ["pk"]
+		documentParams = self.getDocumentParams (request, *args, **kwargs)
+		pk = documentParams ["pk"]
 		print ("+++ pk:", pk)
 		# Check if new or existing document
 		if pk:
 			self.inputParams = self.copySavedValuesToInputs (pk)
 			self.inputValues = Utils.getInputValuesFromInputParams (self.inputParams)
-	
-		self.setInitialValuesToInputs (requestParams)
+
+		self.setInitialValuesToInputs (documentParams)
 
 		# Send input fields parameters (bounds, maxLines, maxChars, ...)
 		docUrl = self.document_type.lower()
 		contextDic = {
 			"document_type"    : self.document_type, 
-			"procedimiento"    : requestParams ["procedimiento"],
+			"procedimiento"    : documentParams ["procedimiento"],
 			"input_parameters" : self.inputParams, 
 			"background_image" : self.background_image,
 			"document_url"	   : docUrl
@@ -164,61 +150,69 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	def onClonCommand  (self, command, request, *args, **kwargs):
 		print ("+++ onClonCommand:", command)
 		url = request.path_info
-		print ("+++ URL: ", url)
 
-		requestParams = self.getRequestInfo (request, *args, **kwargs)
-		pk = requestParams ["pk"]
-		print ("+++ pk:", pk)
+		documentParams = self.getDocumentParams (request, *args, **kwargs)
+		pk       = documentParams ["pk"]
+		username = documentParams ["user"] 
+		docType  = documentParams ["docType"] 
 
 		if request.POST:
 			print ("+++ Clon from current doc (POST)")
 			self.inputValues = self.getInputValuesFromForm (request)
 			self.inputParams = Utils.setInputValuesToInputParams (self.inputValues, self.inputParams)
-			if self.hasChangedDocument (self.inputValues):
-				self.saveDocumentToDB (self.inputValues, requestParams)
 		else:
 			print ("+++ Clon from DB doc (GET)")
 			self.inputParams = self.copySavedValuesToInputs (pk)
 			self.inputValues = Utils.getInputValuesFromInputParams (self.inputParams)
 
-		self.setInitialValuesToInputs (requestParams)
+		self.setInitialValuesToInputs (documentParams)
+		docId, docNumber, formModel, docModel = self.saveNewDocToDB (self.inputValues, username)
+		print ("+++ DEBUG: CLON id, docNumber:", docId, docNumber)
 
-		self.inputParams ["txt00"]["value"]  = "CLON"
-		self.inputParams ["numero"]["value"] = "CLON"
-
-		# Send input fields parameters (bounds, maxLines, maxChars, ...)
-		docUrl = self.document_type.lower()
-		contextDic = {
-			"document_type"    : self.document_type, 
-			"procedimiento"    : requestParams ["procedimiento"],
-			"input_parameters" : self.inputParams, 
-			"background_image" : self.background_image,
-			"document_url"	   : docUrl
-		}
-		return render (request, self.template_name, contextDic)
+		url = f"/{docType.lower()}/editar/{docId}"
+		return redirect (url)
+		#if request.POST:
+		#	return docId
+		#else:
+		#	return redirect (f"/cartaporte/editar/{docId}")
+	
+#			#self.inputParams ["txt00"]["value"]  = "CLON"
+#			#self.inputParams ["id"]["value"] = "CLON"
+#			#self.inputParams ["numero"]["value"] = "CLON"
+#
+#			# Send input fields parameters (bounds, maxLines, maxChars, ...)
+#			docUrl = self.document_type.lower()
+#			contextDic = {
+#				"document_type"    : self.document_type, 
+#				"procedimiento"    : documentParams ["procedimiento"],
+#				"input_parameters" : self.inputParams, 
+#				"background_image" : self.background_image,
+#				"document_url"	   : docUrl
+#			}
+#			return render (request, self.template_name, contextDic)
 	#-------------------------------------------------------------------
 	# Save document to DB checking max docs for user
 	#-------------------------------------------------------------------
 	def onSaveCommand (self, request, *args, **kwargs):
 		print ("+++ Save command")
-		requestParams    = self.getRequestInfo (request, *args, **kwargs)
+		documentParams    = self.getDocumentParams (request, *args, **kwargs)
 
 		# Check if user has reached his total number of documents
-		if self.checkLimiteDocumentos (requestParams ["user"], self.document_type):
+		if self.checkLimiteDocumentos (documentParams ["user"], self.document_type):
 			add_message (request, messages.ERROR, "Límite alcanzado para crear nuevos documentos.")
 			return render (request, 'messages.html')
 		else:
-			docId, docNumber = self.saveDocumentToDB (self.inputValues, requestParams)
+			docId, docNumber = self.saveDocumentToDB (self.inputValues, documentParams)
 			return docId
 
 	#-------------------------------------------------------------------
 	#-------------------------------------------------------------------
 	def onPdfCommand (self, pdfType, request, *args, **kwargs):
-		print ("+++ PDF command:" '{pdfType}')
-		requestParams    = self.getRequestInfo (request, *args, **kwargs)
-		self.updateDocumentToDB (self.inputValues, requestParams)
+		print ("+++ onPdfCommand...")
+		documentParams    = self.getDocumentParams (request, *args, **kwargs)
+		
 		if self.hasChangedDocument (self.inputValues):
-			self.saveDocumentToDB (self.inputValues, requestParams)
+			self.saveDocumentToDB (self.inputValues, documentParams)
 
 		# Create a single PDF or PDF with child documents (Cartaporte + Manifiestos)
 		if "paquete" in pdfType:
@@ -230,17 +224,18 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	#-------------------------------------------------------------------
 	#++ INCOMPLETE: pais?
 	#-------------------------------------------------------------------
-	def getRequestInfo (self, request, *args, **kwargs):
-		requestParams = {}
+	def getDocumentParams (self, request, *args, **kwargs):
+		documentParams = {}
 		#pais  = request.POST ["txt0a"]		# Auto "CO" or "EC"
 		pais  = "CO"
-		requestParams ["pais"]  = pais
-		requestParams ["procedimiento"] = Utils.getProcedimientoFromPais (self.empresa, pais)
-		requestParams ["user"] = request.user
-		requestParams ["url"]  = resolve (request.path_info).url_name
-		requestParams ["pk"]   = kwargs.get ('pk')
+		documentParams ["docType"]       = self.document_type.upper()
+		documentParams ["pais"]          = pais
+		documentParams ["procedimiento"] = Utils.getProcedimientoFromPais (self.empresa, pais)
+		documentParams ["user"]          = request.user
+		documentParams ["url"]           = resolve (request.path_info).url_name
+		documentParams ["pk"]            = kwargs.get ('pk')
 
-		return requestParams
+		return documentParams
 
 	#-------------------------------------------------------------------
 	# Create PDF for 'Cartaporte' plus its 'Manifiestos'
@@ -284,8 +279,9 @@ class EcuapassDocView (LoginRequiredMixin, View):
 
 				outInputValuesList.append (inputValues)
 				outDocTypesList.append ("MANIFIESTO")
-		except regCartaporte.DoesNotExist:
-			print (f"'No existe {docType}' con id '{id}'")
+		except Exception as ex:
+			Utils.printException ()
+			#print (f"'No existe {docType}' con id '{id}'")
 
 		return outInputValuesList, outDocTypesList
 
@@ -319,6 +315,8 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	#-------------------------------------------------------------------
 	# Check if document has changed
 	#-------------------------------------------------------------------
+
+
 	def hasChangedDocument (self, inputValues):
 		global LAST_SAVED_VALUES
 		if LAST_SAVED_VALUES == None:
@@ -327,8 +325,11 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		for k in inputValues.keys ():
 			try:
 				current, last = inputValues [k], LAST_SAVED_VALUES [k]
+
 				if current != last:
 					print (f"+++ Documento ha cambiado en clave '{k}': '{current}', '{last}'")
+					print ("+++ DEBUG: hasChangedDocument", len(current), len (last)) 
+					print ("+++ DEBUG: hasChangedDocument", type(current), type (last)) 
 					return True
 			except Exception as ex:
 				print (f"EXCEPCION: Clave '{k}' no existe")
@@ -339,11 +340,11 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	#-- Set constant values for the BYZA empresa
 	#-- Overloaded in sublclasses
 	#-------------------------------------------------------------------
-	def setInitialValuesToInputs (self, requestParams):
+	def setInitialValuesToInputs (self, documentParams):
 		global LAST_SAVED_VALUES
 		LAST_SAVED_VALUES = None
 		# Importacion/Exportacion code for BYZA
-		procedimiento = requestParams ["procedimiento"]
+		procedimiento = documentParams ["procedimiento"]
 		codigoPais = Utils.getCodigoPaisFromProcedimiento (self.empresa, procedimiento)
 		self.inputParams ["txt0a"]["value"] = codigoPais
 
@@ -371,7 +372,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	#-------------------------------------------------------------------
 	def getInputValuesFromForm (self, request):
 		inputValues = {}
-		requestValues = request.POST
+		requestValues = request.POST 
 
 		for key in requestValues:
 			if "boton" in key:
@@ -390,6 +391,8 @@ class EcuapassDocView (LoginRequiredMixin, View):
 			instanceDoc = CartaporteDoc.objects.get (id=recordId)
 		elif (self.document_type.upper() == "MANIFIESTO"):
 			instanceDoc = ManifiestoDoc.objects.get (id=recordId)
+		elif (self.document_type.upper() == "DECLARACION"):
+			instanceDoc = DeclaracionDoc.objects.get (id=recordId)
 		else:
 			print (f"Error: Tipo de documento '{self.document_type}' no soportado")
 			return None
@@ -405,68 +408,106 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	#-- Save document to DB
 	#-------------------------------------------------------------------
 	#-- Save document if form's values have changed
-	def updateDocumentToDB (self, inputValues, requestParams):
-		if self.hasChangedDocument (inputValues):
-			self.saveDocumentToDB (inputValues, requestParams)
-			self.inputValues  = inputValues 
+	def updateDocumentToDB (self, sessionInfo, documentParams):
+		if self.hasChangedDocumentValues (sessionInfo):
+			print ("+++ DEBUG: updateDocumentToDB:hasChangedDocument")
+			currentInputValues = sessionInfo.get ("currentInputValues")
+			savedtInputValues  = sessionInfo.get ("savedInputValues")
+			sessionInfo.set ("savedInputValues", currentInputValues)
+			print (sessionInfo)
+			self.saveDocumentToDB (currentInputValues, documentParams)
+			self.inputValues = currentInputValues
+
+			print ("+++ updateDoc:", sessionInfo)
 			return True
 		else:
 			return False
 
-	def saveDocumentToDB (self, inputValues, requestParams):
-		global LAST_SAVED_VALUES
-		# Create docModel and save it to get id
+	#-------------------------------------------------------------------
+	# Check if document input values has changed from the saved ones
+	#-------------------------------------------------------------------
+	def hasChangedDocumentValues (self, sessionInfo):
+		currentInputValues = sessionInfo.get ("currentInputValues")
+		savedInputValues  = sessionInfo.get ("savedInputValues")
+
+		if savedInputValues == None and currentInputValues == None:
+			return False
+		elif savedInputValues == None:
+			return True
+
+		# Check key by key
+		for k in currentInputValues.keys ():
+			try:
+				current, saved = currentInputValues [k], savedInputValues [k]
+				if current != saved:
+					print (f"+++ Documento ha cambiado en clave '{k}': '{current}', '{last}'")
+					print ("+++ DEBUG: hasChangedDocument", len(current), len (last)) 
+					print ("+++ DEBUG: hasChangedDocument", type(current), type (last)) 
+					return True
+			except Exception as ex:
+				print (f"EXCEPCION: Clave '{k}' no existe")
+
+		return False
+
+	#-------------------------------------------------------------------
+	#-------------------------------------------------------------------
+	def saveDocumentToDB (self, inputValues, documentParams):
+		# Create formModel and save it to get id
 		docNumber	  = inputValues ["numero"]
-		username	  = requestParams ["user"] 
-		procedimiento = requestParams ["procedimiento"]
+		username	  = documentParams ["user"] 
+		procedimiento = documentParams ["procedimiento"]
 
-		if docNumber == "" or docNumber == "CLON":
-			docId, docNumber, docModel, regModel = self.saveNewDocToDB (inputValues, username)
+		if docNumber == "":
+			docId, docNumber, formModel, docModel = self.saveNewDocToDB (inputValues, username)
+			inputValues ["id"]     = docId
+			inputValues ["numero"] = docNumber
+			inputValues ["txt00"]  = docNumber
 		else:
-			docId, docNumber, docModel, regModel = self.saveExistingDocToDB (inputValues, username)
+			docId, docNumber, formModel, docModel = self.saveExistingDocToDB (inputValues, username)
 
-		# Save regModel
+		# Save docModel
 		docFields	= Utils.getAzureValuesFromInputsValues (self.document_type, inputValues)
-		regModel.setValues (docModel, docFields, procedimiento,  username)
-		regModel.save ()
-
-		LAST_SAVED_VALUES = inputValues
+		docModel.setValues (formModel, docFields, procedimiento,  username)
+		docModel.save ()
 
 		return docId, docNumber
 
 	#-- Save new document
 	def saveNewDocToDB (self, inputValues, username):
 		print (">>> Guardando documento nuevo en la BD...")
-		DocModel, RegModel = self.getDocumentAndRegisterClass (self.document_type)
-		docModel = self.createValidDocModel (inputValues, DocModel)
-		if not docModel:
-			return None, None
+		FormModel, DocModel = self.getFormAndDocClass (self.document_type)
+		paisCode  = inputValues ["txt0a"]		
+
+		formModel = FormModel ()
+		formModel.save ()
+		formModel.numero = self.createDocNumber (formModel.id, paisCode)
 
 		# Set document values from form values
 		for key, value in inputValues.items():
 			if key not in ["id", "numero"]:
-				setattr(docModel, key, value)
+				setattr (formModel, key, value)
 
-		docModel.txt00 = docModel.numero
+		# Replace old by new number
+		formModel.txt00 = formModel.numero
+		formModel.save ()
+
+		# Save corresponding form document 
+		docId, docNumber = formModel.id, formModel.numero
+		docModel = DocModel (id=docId, numero=docNumber, documento=formModel)
 		docModel.save ()
 
 		# Update user quota
 		self.actualizarNroDocumentosCreados (username, self.document_type)
 
-		# Save initial document register
-		docId, docNumber = docModel.id, docModel.numero
-		regModel = RegModel (id=docId, numero=docNumber, documento=docModel)
-
-		return docId, docNumber, docModel, regModel
-	
+		return docId, docNumber, formModel, docModel
 
 	#-- Save existing document
 	def saveExistingDocToDB (self, inputValues, username):
 		print (">>> Guardando documento existente en la BD...")
-		DocModel, RegModel = self.getDocumentAndRegisterClass (self.document_type)
+		FormModel, DocModel = self.getFormAndDocClass (self.document_type)
 		docId	  = inputValues ["id"]
 		docNumber = inputValues ["numero"]
-		docModel  = get_object_or_404 (DocModel, id=docId)
+		docModel  = get_object_or_404 (FormModel, id=docId)
 
 		# Assign values to docModel from form values
 		for key, value in inputValues.items():
@@ -474,26 +515,32 @@ class EcuapassDocView (LoginRequiredMixin, View):
 
 		docModel.numero = inputValues ["txt00"]
 		docModel.save ()
-		regModel = get_object_or_404 (RegModel, id=docId)
+		regModel = get_object_or_404 (DocModel, id=docId)
 
 		return docId, docNumber, docModel, regModel
 
+
+	#-- Create doc number
+	def createDocNumber (self, id, paisCode):
+		initRange = EcuData.configuracion ["numero_documento_inicio"]
+		docNumber = f"{paisCode}{initRange + id}"
+		return docNumber
 	#-------------------------------------------------------------------
 	# Return form document class and register class from document type
 	#-------------------------------------------------------------------
-	def getDocumentAndRegisterClass (self, document_type):
-		DocModel, RegModel = None, None
+	def getFormAndDocClass (self, document_type):
+		FormModel, DocModel = None, None
 		if document_type.upper() == "CARTAPORTE":
-			DocModel, RegModel = CartaporteDoc, Cartaporte
+			FormModel, DocModel = CartaporteDoc, Cartaporte
 		elif document_type.upper() == "MANIFIESTO":
-			DocModel, RegModel = ManifiestoDoc, Manifiesto
+			FormModel, DocModel = ManifiestoDoc, Manifiesto
 		elif document_type.upper() == "DECLARACION":
-			DocModel, RegModel = DeclaracionDoc, Declaracion 
+			FormModel, DocModel = DeclaracionDoc, Declaracion 
 		else:
 			print (f"Error: Tipo de documento '{document_type}' no soportado")
 			sys.exit (0)
 
-		return DocModel, RegModel
+		return FormModel, DocModel
 
 	#-------------------------------------------------------------------
 	# Handle assigned documents for "externo" user profile
@@ -518,59 +565,16 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		user.save()		
 
 	#-------------------------------------------------------------------
-	#-- Return a new instance for a DocModel checking if the id is free
+	#-- Return a new instance for a FormModel 
 	#-- Create a formated document number ranging from 2000000 
 	#-- Uses "codigo pais" as prefix (for NTA, BYZA)
 	#-------------------------------------------------------------------
-	def createValidDocModel (self, inputValues, DocModel):
-		docModel  = None
-		docNumber = inputValues ["txt00"]
-
-		# If number asigned by user
-		if docNumber and docNumber != "CLON":
-			print ("+++ Creating DocModel for number assigned by user")
-			if DocModel.objects.filter (numero=docNumber).first():
-				print (f"ERROR: Ya existe número de documento '{docNumber}'")
-				return None
-			else:
-				docModel = DocModel ()
-				docModel.numero = docNumber
-				docModel.txt00  = docNumber
-		else: # Then system id, but if it is free. Not assigned for another doc
-			print ("+++ Creating DocModel by system id")
-			codigoPais = inputValues ["txt0a"]
-			while True:
-				docModel  = DocModel ()
-				docModel.save ()
-				docNumber = f"{codigoPais}{2000000 + docModel.id}"
-				if DocModel.objects.filter (numero=docNumber).first():
-					docModel.delete () # if number exists then delete
-				else:
-					docModel.numero = docNumber
-					docModel.txt00  = docNumber
-					break
-			print ("+++ DocModel number: ", docModel.numero)
-		
-		return docModel
-
-	def getValidDocumentNumber (self, inputValues, DocModel, id, numero):
-		outDocNumber = None
-		
-		if numero:			 # Assigned by user
-			outDocNumber = numero
-		else:				 # Assigned by system
-			codigoPais = inputValues ["txt0a"]
-			while True:
-				outDocNumber = f"{codigoPais}{2000000 + id}"
-				if DocModel.objects.filter (numero=outDocNumber).first():
-					lastDoc = DocModel.objects.get (id=id)
-					lastDoc.delete()
-
-
-		# Check if exists a previous register with that number
-		doc = DocModel.objects.filter (numero=outDocNumber).first()
-		if doc: 
-			outDocNumber = None
-
-		return outDocNumber
+	def newFormModelInstance (self, FormModel, paisCode):
+		print ("+++ Creating FormModel for system id")
+		formModel  = FormModel ()
+		formModel.save ()
+		docNumberInit    = EcuData.configuracion ["numero_documento_inicio"]
+		formModel.numero = f"{paisCode}{docNumberInit + formModel.id}"
+		print ("+++ FormModel id, number: ", formModel.id, formModel.numero)
+		return formModel
 

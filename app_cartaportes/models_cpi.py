@@ -15,7 +15,7 @@ from appdocs.models_EcuapassDoc import EcuapassDoc
 from appusuarios.models import UsuarioEcuapass
 
 #--------------------------------------------------------------------
-# Model CartaporteDoc
+# Model CartaporteForm
 #--------------------------------------------------------------------
 class CartaporteDoc (models.Model):
 	class Meta:
@@ -105,10 +105,10 @@ class Cartaporte (EcuapassDoc):
 		"""Returns the url to access a particular language instance."""
 		return reverse('cartaporte-detail', args=[str(self.id)])
 
-	def setValues (self, cartaporteDoc, docFields, procedimiento, username):
+	def setValues (self, cartaporteForm, docFields, procedimiento, username):
 		# General values
-		self.numero        = cartaporteDoc.numero
-		self.documento     = cartaporteDoc
+		self.numero        = cartaporteForm.numero
+		self.documento     = cartaporteForm
 		self.procedimiento = procedimiento
 		self.usuario       = self.getUserByUsername (username)
 

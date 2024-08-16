@@ -3,7 +3,7 @@
 
 {% block content %}
 	<h1>Cartaporte: 
-	  <a href="{% url 'cartaporte' %}editar/{{ cartaporte.id }}" target="_blank">{{ cartaporte.numero }}</a>
+	  <a href="{% url 'cartaporte' %}editar/{{ cartaporte.id }}" >{{ cartaporte.numero }}</a>
 	</h1>
 
 	<p><strong>Fecha emision:</strong> {{ cartaporte.fecha_emision }}</p>

@@ -96,7 +96,7 @@ class Manifiesto (EcuapassDoc):
 		return reverse('manifiesto-detail', args=[str(self.id)])
 
 	def setValues (self, manifiestoDoc, docFields, procedimiento, username):
-		# General values
+		# Base values
 		self.numero        = manifiestoDoc.numero
 		self.documento     = manifiestoDoc
 		self.procedimiento = procedimiento
@@ -112,6 +112,7 @@ class Manifiesto (EcuapassDoc):
 		#print ("+++ ManifiestoInfo:", manifiestoInfo.fields)
 		print ("+++ Cartaporte:", self.cartaporte)
 		
+	#-- Get cartaporte from manifiesto info
 	def getCartaporte (self, manifiestoInfo):
 		numeroCartaporte = None
 		try:

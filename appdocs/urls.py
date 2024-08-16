@@ -7,32 +7,32 @@ from .views import InfoView
 
 from app_manifiestos.views_ManifiestoDocView import *
 from app_cartaportes.views_CartaporteDocView import *
-from .views_DeclaracionDocView import *
-from .views_Entidades import *
+from app_declaraciones.views_DeclaracionDocView import *
+from .views_Events import *
 
 urlpatterns = [
     path('', views.index, name='index'),
 
-	#-- URLs declaracion -----------------------------------------------
-    path("declaracion/", DeclaracionDocView.as_view(), name="declaracion"),
-    path('declaracion/opciones-empresa/', EmpresaOptionsView.as_view(), name='opciones-empresa'),
-    path('declaracion/opciones-lugar/', CiudadPaisOptionsView.as_view(), name='opciones-lugar'),
-    path('declaracion/opciones-vehiculo/', VehiculoOptionsView.as_view(), name='opciones-vehiculo'),
-    path('declaracion/opciones-conductor/', ConductorOptionsView.as_view(), name='opciones-conductor'),
-    path('declaracion/opciones-cartaporte/', CartaporteOptionsView.as_view(), name='opciones-cartaporte'),
-
-    path('declaracion/<pk>/opciones-empresa/', EmpresaOptionsView.as_view(), name='opciones-empresa'),
-    path('declaracion/<pk>/opciones-lugar/', CiudadPaisOptionsView.as_view(), name='opciones-lugar'),
-    path('declaracion/<pk>/opciones-vehiculo/', VehiculoOptionsView.as_view(), name='opciones-vehiculo'),
-    path('declaracion/<pk>/opciones-conductor/', ConductorOptionsView.as_view(), name='opciones-conductor'),
-    path('declaracion/<pk>/opciones-cartaporte/', CartaporteOptionsView.as_view(), name='opciones-cartaporte'),
-    path('declaracion/<pk>/', DeclaracionDocView.as_view(), name='declaracion-documento'),
-
-    path('declaraciones/', views.DeclaracionListView.as_view(), name='declaraciones'),
-    path('declaraciones/<pk>', views.DeclaracionDetailView.as_view(), name='declaracion-detail'),
-    path('declaracion/create/', views.DeclaracionCreate.as_view(), name='declaracion-create'),
-    path('declaracion/<pk>/update/', views.DeclaracionUpdate.as_view(), name='declaracion-update'),
-    path('declaracion/<pk>/delete/', views.DeclaracionDelete.as_view(), name='declaracion-delete'),
+#	#-- URLs declaracion -----------------------------------------------
+#    path("declaracion/", DeclaracionDocView.as_view(), name="declaracion"),
+#    path('declaracion/opciones-empresa/', EmpresaOptionsView.as_view(), name='opciones-empresa'),
+#    path('declaracion/opciones-lugar/', CiudadPaisOptionsView.as_view(), name='opciones-lugar'),
+#    path('declaracion/opciones-vehiculo/', VehiculoOptionsView.as_view(), name='opciones-vehiculo'),
+#    path('declaracion/opciones-conductor/', ConductorOptionsView.as_view(), name='opciones-conductor'),
+#    path('declaracion/opciones-cartaporte/', CartaporteOptionsView.as_view(), name='opciones-cartaporte'),
+#
+#    path('declaracion/<pk>/opciones-empresa/', EmpresaOptionsView.as_view(), name='opciones-empresa'),
+#    path('declaracion/<pk>/opciones-lugar/', CiudadPaisOptionsView.as_view(), name='opciones-lugar'),
+#    path('declaracion/<pk>/opciones-vehiculo/', VehiculoOptionsView.as_view(), name='opciones-vehiculo'),
+#    path('declaracion/<pk>/opciones-conductor/', ConductorOptionsView.as_view(), name='opciones-conductor'),
+#    path('declaracion/<pk>/opciones-cartaporte/', CartaporteOptionsView.as_view(), name='opciones-cartaporte'),
+#    path('declaracion/<pk>/', DeclaracionDocView.as_view(), name='declaracion-documento'),
+#
+#    path('declaraciones/', views.DeclaracionListView.as_view(), name='declaraciones'),
+#    path('declaraciones/<pk>', views.DeclaracionDetailView.as_view(), name='declaracion-detail'),
+#    path('declaracion/create/', views.DeclaracionCreate.as_view(), name='declaracion-create'),
+#    path('declaracion/<pk>/update/', views.DeclaracionUpdate.as_view(), name='declaracion-update'),
+#    path('declaracion/<pk>/delete/', views.DeclaracionDelete.as_view(), name='declaracion-delete'),
 
 	#-- URLs entities --------------------------------------------------
     path('empresas/', views.EmpresaListView.as_view(), name='empresas'),

@@ -133,6 +133,18 @@
 
 	</style>
 </head>
+<script>
+     function setActionUrl(base_url) {
+        //var inputValue = document.getElementById('inputField').value;
+		let docId = document.getElementById ("id").value
+		console.log ("DOCID:", docId);
+		docUrl = docType.toLowerCase(); 
+		url = "/" + docUrl  + base_url + docId;
+		if base_url.includes ("clonar")
+			url = docUrl
+		document.getElementById('forma_pdf').action = url
+	}
+</script>
 
 <body>
 	<div id="background"></div>
@@ -141,11 +153,16 @@
 			<div class="container">
 				<!-- Panel superior que muestra cuatro opciones para realizar con el documento -->
 				<div class="top-panel">
-					<button class="submit" type="submit" id="boton_guardar" name="action" value="guardar">Guardar</button>
-					<button class="submit" type="submit" id="boton_pdf_original" name="action" value="original" disabled >PDF Original</button>
-					<button class="submit" type="submit" id="boton_pdf_copia" name="action" value="copia" disabled>PDF Copia</button>
-					<button class="submit" type="submit" id="boton_pdf_paquete" name="action" value="paquete" disabled>PDF Paquete</button>
-					<button class="submit" type="submit" id="boton_clonar" name="action" value="clonar" disabled>Clonar</button>
+					<button class="submit" type="submit" onclick="setActionUrl('/editar/')" 
+								id="boton_guardar" name="action" value="guardar">Guardar</button>
+					<button class="submit" type="submit" onclick="setActionUrl('/pdf_original/')" 
+									id="boton_pdf_original" name="action" value="original" disabled >PDF Original</button>
+					<button class="submit" type="submit" onclick="setActionUrl('/pdf_copia/')" 
+									id="boton_pdf_copia" name="action" value="copia" disabled>PDF Copia</button>
+					<button class="submit" type="submit" onclick="setActionUrl('/pdf_paquete/')" 
+									id="boton_pdf_paquete" name="action" value="paquete" disabled>PDF Paquete</button>
+					<button class="submit" type="submit" onclick="setActionUrl('/clonar/')" 
+									id="boton_clonar" name="action" value="clonar" disabled>Clonar</button>
 				</div>
 				<!--------------------------------------------------------------->
 				<!------------- Input fields added dynamically ------------------>
@@ -186,6 +203,7 @@
 		//-------------------------------------------------------------
 		$(document).ready(function () {
 			$('#forma_pdf').submit(function (event) {
+				console.log ("Event:", event)
 			 	let formaPdf = this;
 				let submitterButton = event["originalEvent"]["submitter"]["id"];
 
@@ -204,8 +222,8 @@
 //					enableDisableDocButtons ("ENABLE");
 //				}
 //			}, 5000);
-		});
 
+		});
 </script>
 </body>
 </html>

@@ -5,7 +5,7 @@ from django.utils import timezone
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column
 
-from .models import Cartaporte, Manifiesto
+from .models import Cartaporte, Manifiesto, Declaracion
 from appdocs.models_Entidades import Empresa
 #from .forms import CartaportesFilterForm, ManifiestosFilterForm
 
@@ -98,4 +98,46 @@ def manifiestosFilterView (request):
 			manifiestos = manifiestos.filter (documento__txt13=conductor) # Conductor
 
 	return render(request, 'app_manifiestos/manifiesto_listado.html', {'manifiesto_list': manifiestos, 'form': form})
+
+#--------------------------------------------------------------------
+#-- DeclaracionesFilter Form
+#--------------------------------------------------------------------
+class DeclaracionesFilterForm (forms.Form):
+	numero		   = forms.CharField(required=False)
+	fecha_emision  = forms.DateField(required=False, widget=forms.DateInput(attrs={'type': 'date'}))
+	conductor	   = forms.CharField(required=False)
+
+	def __init__(self, *args, **kwargs):
+		super (DeclaracionesFilterForm, self).__init__(*args, **kwargs)
+
+		self.helper = FormHelper()
+		self.helper.layout = Layout(
+			Row (
+				Column ('numero', css_class='col'),
+				Column ('fecha_emision', css_class='col'),
+				Column ('conductor', css_class='col'),
+				css_class='row'
+			),
+			Submit ('submit', 'Filtrar', css_class='btn btn-primary')
+		)
+
+#--------------------------------------------------------------------
+#-- DeclaracionesFilter View
+#--------------------------------------------------------------------
+def declaracionesFilterView (request):
+	declaraciones = Declaracion.objects.all()
+	form  = DeclaracionesFilterForm (request.GET)
+	if form.is_valid():
+		numero		  = form.cleaned_data.get('numero')
+		fecha_emision = form.cleaned_data.get('fecha_emision')
+		conductor	  = form.cleaned_data.get('conductor')
+
+		if numero:
+			declaraciones = declaraciones.filter (numero__icontains=numero)
+		if fecha_emision:
+			declaraciones = declaraciones.filter (fecha_emision=fecha_emision)
+		if conductor:
+			declaraciones = declaraciones.filter (documento__txt13=conductor) # Conductor
+
+	return render(request, 'app_declaraciones/declaracion_listado.html', {'declaracion_list': declaraciones, 'form': form})
 

@@ -13,7 +13,7 @@ from django.conf import settings
 
 from app_cartaportes.models_cpi import Cartaporte, CartaporteDoc
 from app_manifiestos.models_mci import Manifiesto, ManifiestoDoc
-from .models_DeclaracionDoc import Declaracion, DeclaracionDoc
+from app_declaraciones.models_dti import Declaracion, DeclaracionDoc
 from .models_Entidades import Empresa, Conductor, Vehiculo
 
 def index(request):
@@ -159,30 +159,29 @@ class DeclaracionListView(generic.ListView):
 #-- Declaracion
 #--------------------------------------------------------------------
 
-class DeclaracionListView(generic.ListView):
-	model = Declaracion
-
-class DeclaracionDetailView(generic.DetailView):
-	model = Declaracion
-
-class DeclaracionCreate(login_required_class(CreateView)):
-	model = Declaracion
-	fields = '__all__'
-
-class DeclaracionDoc(login_required_class(UpdateView)):
-	model = Declaracion
-	fields = '__all__'
-	#fields = ['tipo','remitente','destinatario','fecha_emision']
-
-class DeclaracionUpdate(login_required_class(UpdateView)):
-	model = Declaracion
-	fields = '__all__'
-	#fields = ['tipo','remitente','destinatario','fecha_emision']
-
-class DeclaracionDelete(login_required_class(DeleteView)):
-	model = Declaracion
-	success_url = reverse_lazy('declaraciones')
-
+#class DeclaracionListView(generic.ListView):
+#	model = Declaracion
+#
+#class DeclaracionDetailView(generic.DetailView):
+#	model = Declaracion
+#
+#class DeclaracionCreate(login_required_class(CreateView)):
+#	model = Declaracion
+#	fields = '__all__'
+#
+#class DeclaracionDoc(login_required_class(UpdateView)):
+#	model = Declaracion
+#	fields = '__all__'
+#	#fields = ['tipo','remitente','destinatario','fecha_emision']
+#
+#class DeclaracionUpdate(login_required_class(UpdateView)):
+#	model = Declaracion
+#	fields = '__all__'
+#	#fields = ['tipo','remitente','destinatario','fecha_emision']
+#
+#class DeclaracionDelete(login_required_class(DeleteView)):
+#	model = Declaracion
+#	success_url = reverse_lazy('declaraciones')
 
 #--------------------------------------------------------------------
 # Messages view

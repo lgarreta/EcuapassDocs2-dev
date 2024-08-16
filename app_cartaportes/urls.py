@@ -3,7 +3,7 @@ from django.urls import path
 
 from app_cartaportes.views_CartaporteDocView import *
 from app_cartaportes import views_cpi
-from appdocs.views_Entidades import *
+from appdocs.views_Events import *
 from appdocs import views_Filters 
 
 urlpatterns = [

@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from app_cartaportes.models_cpi import Cartaporte, CartaporteDoc
 from app_manifiestos.models_mci import Manifiesto, ManifiestoDoc
-from .models_DeclaracionDoc import Declaracion, DeclaracionDoc
+from app_declaraciones.models_dti import Declaracion, DeclaracionDoc
 from .models_Entidades import Empresa, Conductor, Vehiculo
 
 #admin.site.register(Empresa)
