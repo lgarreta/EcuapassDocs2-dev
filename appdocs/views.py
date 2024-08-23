@@ -11,9 +11,11 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.conf import settings
 
-from app_cartaportes.models_cpi import Cartaporte, CartaporteDoc
-from app_manifiestos.models_mci import Manifiesto, ManifiestoDoc
-from app_declaraciones.models_dti import Declaracion, DeclaracionDoc
+from django.contrib import messages
+
+from app_cartaporte.models_cpi import Cartaporte, CartaporteDoc
+from app_manifiesto.models_mci import Manifiesto, ManifiestoDoc
+from app_declaracion.models_dti import Declaracion, DeclaracionDoc
 from .models_Entidades import Empresa, Conductor, Vehiculo
 
 def index(request):
@@ -27,8 +29,7 @@ def index(request):
 	num_cartaportes = Cartaporte.objects.all().count()
 	num_manifestos = Manifiesto.objects.all().count()
 	release        = getRelease ()
-	
-	
+
 	# Number of visits to this view, as counted in the session variable.
 	num_visits = request.session.get('num_visits', 0)
 	request.session['num_visits'] = num_visits + 1
@@ -150,38 +151,17 @@ class InfoView(View):
 		return render(request, self.template_name)
 
 #--------------------------------------------------------------------
-#-- Declaraciones
+# Check if document exists. Base class for sublclases
 #--------------------------------------------------------------------
-class DeclaracionListView(generic.ListView):
-	model = Declaracion
-
-#--------------------------------------------------------------------
-#-- Declaracion
-#--------------------------------------------------------------------
-
-#class DeclaracionListView(generic.ListView):
-#	model = Declaracion
-#
-#class DeclaracionDetailView(generic.DetailView):
-#	model = Declaracion
-#
-#class DeclaracionCreate(login_required_class(CreateView)):
-#	model = Declaracion
-#	fields = '__all__'
-#
-#class DeclaracionDoc(login_required_class(UpdateView)):
-#	model = Declaracion
-#	fields = '__all__'
-#	#fields = ['tipo','remitente','destinatario','fecha_emision']
-#
-#class DeclaracionUpdate(login_required_class(UpdateView)):
-#	model = Declaracion
-#	fields = '__all__'
-#	#fields = ['tipo','remitente','destinatario','fecha_emision']
-#
-#class DeclaracionDelete(login_required_class(DeleteView)):
-#	model = Declaracion
-#	success_url = reverse_lazy('declaraciones')
+class EcuapassDocDetailView (generic.DetailView):
+	def get (self, request, *args, **kwargs):
+		try:
+			self.object = self.get_object()
+			context = self.get_context_data(object=self.object)
+			return self.render_to_response(context)
+		except: 
+			messages.add_message (request, messages.ERROR, "El documento no existe!")
+			return render (request, 'messages.html')
 
 #--------------------------------------------------------------------
 # Messages view

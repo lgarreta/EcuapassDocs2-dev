@@ -36,8 +36,9 @@ class CartaportesFilterForm (forms.Form):
 #-- CartaportesFilter View
 #--------------------------------------------------------------------
 def cartaportesFilterView (request):
-	print ("+++ cartaportesFilterView")
-	cartaportes = Cartaporte.objects.all()
+	print ("+++ cartaportesFilterView : Pais: ", request.session.get ("pais"))
+	pais = request.session.get ("pais")
+	cartaportes = Cartaporte.objects.filter (pais=pais)
 	form  = CartaportesFilterForm (request.GET)
 	if form.is_valid():
 		numero		  = form.cleaned_data.get('numero')
@@ -55,7 +56,7 @@ def cartaportesFilterView (request):
 		if remitente:
 			cartaportes = cartaportes.filter (documento__txt02=remitente) # Remitente
 
-	return render(request, 'app_cartaportes/cartaporte_listado.html', {'cartaporte_list': cartaportes, 'form': form})
+	return render(request, 'app_cartaporte/cartaporte_listado.html', {'cartaporte_list': cartaportes, 'form': form})
 
 #--------------------------------------------------------------------
 #-- ManifiestosFilter Form
@@ -97,7 +98,7 @@ def manifiestosFilterView (request):
 		if conductor:
 			manifiestos = manifiestos.filter (documento__txt13=conductor) # Conductor
 
-	return render(request, 'app_manifiestos/manifiesto_listado.html', {'manifiesto_list': manifiestos, 'form': form})
+	return render(request, 'app_manifiesto/manifiesto_listado.html', {'manifiesto_list': manifiestos, 'form': form})
 
 #--------------------------------------------------------------------
 #-- DeclaracionesFilter Form
@@ -139,5 +140,5 @@ def declaracionesFilterView (request):
 		if conductor:
 			declaraciones = declaraciones.filter (documento__txt13=conductor) # Conductor
 
-	return render(request, 'app_declaraciones/declaracion_listado.html', {'declaracion_list': declaraciones, 'form': form})
+	return render(request, 'app_declaracion/declaracion_listado.html', {'declaracion_list': declaraciones, 'form': form})
 

@@ -40,7 +40,7 @@
 			width: 1100px; 
 			height: 1424px; 
 
-			background: rgba(55, 55, 255, 0.05); 
+			background: rgba(55, 55, 255, 0.08); 
 			padding: 00px;
 			box-shadow: 0 0 10px rgba(255, 255, 255, 1.0); 
 		}
@@ -61,9 +61,9 @@
 		}
 
 		.top-panel {
-		  background-color: #fff0ff;
-		  padding: 03px;
-		  text-align: center;
+			background-color: #fff0ff;
+			padding: 03px;
+			text-align: center;
 		}
 
 		.submit:disabled {
@@ -105,10 +105,8 @@
 		}		
 
 		textarea {
-			/*
 			font-family: 'Times New Roman', Times, serif;
 			font-family: 'Courier New', Courier, monospace;
-			*/
 			/*
 			font-family: 'Helvetica', sans-serif;
 			*/
@@ -137,13 +135,15 @@
      function setActionUrl(base_url) {
         //var inputValue = document.getElementById('inputField').value;
 		let docId = document.getElementById ("id").value
-		console.log ("DOCID:", docId);
 		docUrl = docType.toLowerCase(); 
 		url = "/" + docUrl  + base_url + docId;
-		if base_url.includes ("clonar")
+		if (base_url.includes ("editar"))
+			url = "/"+docUrl+"/"
+		if (base_url.includes ("clonar"))
 			url = docUrl
 		document.getElementById('forma_pdf').action = url
 	}
+
 </script>
 
 <body>
@@ -179,7 +179,7 @@
 		// Get input parameters from server and apply to form inputs
 		//-------------------------------------------------------------
 		let inputsParameters = {{ input_parameters|safe }};
-		let docType	   = '{{ document_type }}';
+		let docType	   = '{{ docType }}';
 		let docProcess = '{{ procedimiento }}';
  
 		// Create input textareas for the html form

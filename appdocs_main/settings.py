@@ -37,12 +37,12 @@ CSRF_TRUSTED_ORIGINS = [
 # Application definition
 
 INSTALLED_APPS = [
-	"app_declaraciones",
-	"app_manifiestos",
-	"app_cartaportes",
+	"app_declaracion",
+	"app_manifiesto",
+	"app_cartaporte",
 	"appreportes",
 	"appdocs.apps.AppdocsConfig",
-	"appusuarios.apps.UsuariosConfig",
+	"app_usuarios.apps.UsuariosConfig",
 	'django_tables2',
 	"crispy_forms",
 	"crispy_bootstrap4",
@@ -128,9 +128,9 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
 	#{ "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator", },
-	{ "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator", },
+	#{ "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator", },
 	#{ "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator", },
-	{ "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator", },
+	#{ "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator", },
 ]
 
 
@@ -142,7 +142,7 @@ TIME_ZONE = 'America/Bogota'
 USE_I18N = True
 USE_TZ = True
 
-AUTH_USER_MODEL = 'appusuarios.UsuarioEcuapass'
+AUTH_USER_MODEL = 'app_usuarios.UsuarioEcuapass'
 
 LOGIN_URL = 'login'	# Replace with your login URL name
 

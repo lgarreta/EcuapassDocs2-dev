@@ -120,6 +120,7 @@ class CreadorPDF:
 	#----------------------------------------------------------------
 	def writeInputsToPdf (self, docType, inputParameters, inputValues):
 		FONTSIZE = 9                  # Font "normal"
+		LINESPACE = 2
 		packet = io.BytesIO()
 		can = canvas.Canvas(packet)
 
@@ -127,16 +128,12 @@ class CreadorPDF:
 			imgBounds = [params["x"], params["y"]-7, params ["width"], params ["height"]]
 			pdfBounds = self.convertToImageToPdfBounds (imgBounds)
 
-			if params ["font"] == "hidden":
-				FONTSIZE = 0
-			elif params ["font"] == "normal":
-				FONTSIZE = 9
-			elif params ["font"] == "large":
-				FONTSIZE = 16
-			elif params ["font"] == "small":
-				FONTSIZE = 7
+			fontTypes = {"hidden":0, "normal":8, "large":16, "small":7}
+			FONTSIZE = fontTypes [params ["font"]]
 
-			can.setFont ("Times-Bold", FONTSIZE)
+			#can.setFont ("Times-Bold", FONTSIZE)
+			#can.setFont("Helvetica", FONTSIZE)  # Set font size to 0 for hidden text
+			can.setFont ("Courier-Bold", FONTSIZE)  # Set font size to 0 for hidden text
 
 			#-- Set color to text 
 			if "restrictions" in params.keys ():
@@ -148,13 +145,16 @@ class CreadorPDF:
 			text      = inputValues [key]
 			textLines = text.split ("\n")
 			for i, line in enumerate (textLines):
-				top = pdfBounds[1] - (i+1)*FONTSIZE + i+2
+				x = pdfBounds [0] - 2
+				y = pdfBounds [1] - (i+1)*FONTSIZE + i+2  - i*LINESPACE
+
+				drawFun = can.drawString
 				if params ["align"] == "right":
-					can.drawRightString (pdfBounds[0] + pdfBounds [2], top, line.strip())
+					drawFun, x = can.drawRightString,   pdfBounds [0] + pdfBounds [2]
 				elif params ["align"] == "center":
-					can.drawCentredString (pdfBounds[0] + pdfBounds [2]/2, top, line.strip())
-				else:    # "left" align
-					can.drawString (pdfBounds[0], top, line.strip())
+					drawFun, x = can.drawCentredString, pdfBounds [0] + pdfBounds [2]/2
+
+				drawFun (x, y, line.strip())
 
 		jsonFieldsDic = self.embedFieldsIntoPDF (docType, can, inputParameters, inputValues)
 		can.save()

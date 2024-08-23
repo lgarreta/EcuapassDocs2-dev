@@ -19,7 +19,6 @@ function getCookie(name) {
 // Create autocomplete for an entity
 function createAutocomplete (entity) {
 	const csrftoken = getCookie('csrftoken');
-	console.log ("CSRF TOKEN createAutocomplete: ", csrftoken)
 
 	let inputSelector = entity.inputSelector
 	let sourceUrl     = entity.sourceUrl
@@ -64,7 +63,6 @@ function getTextAreasByClassName (className) {
 // Set autocomplete for document according to doc type
 // Doc types: "cartaporte", "manifiesto", "declaración
 function setAutocompleteForDocument (documentType) {
-	console.log ("-- Autocomplete...")
 		// Empresas
 		let empresaInputs = getTextAreasByClassName ("input_empresa")
 		empresaInputs.forEach (inputName => {
@@ -111,7 +109,6 @@ function setAutocompleteForDocument (documentType) {
 class AutoComplete {
 	// Init with input element and source URL which is handles in views
 	constructor (inputSelector, sourceUrl, documentType=null) {
-		console.log ("-- on constructor --");
 		let inputId        = "#" + inputSelector
 		this.inputSelector = inputSelector;
 		this.sourceUrl     = sourceUrl;
@@ -153,12 +150,8 @@ class AutoCompleteCartaporte extends AutoComplete {
 		else if (this.documentType === "DECLARACION")
 			docInputsIds = ["15","16","17","18","19_1","19_3","20_1","21","19_2","19_4","20_2"];
 		else { 
-			console.log ("Tipo '" + this.documentType + "' no conocido para autocompletar cartaporte");
 			return null
 		}
-
-		console.log ("-- documentType:", self.documentType);
-		console.log ("-- Ids:", docInputsIds);
 
 		for (let i=0; i < docInputsIds.length; i++) {
 			let txtId = "txt" + docInputsIds [i]

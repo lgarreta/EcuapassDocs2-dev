@@ -78,8 +78,8 @@ class VehiculoOptionsView (View):
 #--------------------------------------------------------------------
 class ConductorOptionsView (View):
 	#@method_decorator(csrf_protect)
-	def get (self, request, *args, **kwargs):
-		query = request.GET.get('query', '')
+	def post (self, request, *args, **kwargs):
+		query = request.POST.get('query', '')
 		options = Conductor.objects.filter (nombre__istartswith=query).values()
 
 		itemOptions = []
@@ -97,8 +97,8 @@ class ConductorOptionsView (View):
 #--------------------------------------------------------------------
 class CiudadPaisOptionsView (View):
 	#@method_decorator(csrf_protect)
-	def get (self, request, *args, **kwargs):
-		query = request.GET.get('query', '')
+	def post (self, request, *args, **kwargs):
+		query = request.POST.get('query', '')
 		ciudadesPaises = self.getCiudadesPaisesFromQuery (query)
 
 		itemOptions = []
@@ -132,7 +132,7 @@ class CiudadPaisFechaOptionsView (CiudadPaisOptionsView):
 		current_time = datetime.now()
 
 		# Format the current time as "YEAR-MONTH-DAY"
-		formatted_time = current_time.strftime("%Y-{}-%d").format(spanish_months[current_time.strftime("%B")])
+		formatted_time = current_time.strftime("%d-{}-%Y").format(spanish_months[current_time.strftime("%B")])
 
 		return (formatted_time)
 
@@ -141,8 +141,8 @@ class CiudadPaisFechaOptionsView (CiudadPaisOptionsView):
 #--------------------------------------------------------------------
 class EmpresaOptionsView (View):
 	#@method_decorator(csrf_protect)
-	def get (self, request, *args, **kwargs):
-		query = request.GET.get('query', '')
+	def post (self, request, *args, **kwargs):
+		query = request.POST.get('query', '')
 		options = Empresa.objects.filter (nombre__istartswith=query).values()
 
 		itemOptions = []

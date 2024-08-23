@@ -1,34 +1,7 @@
-// Control max number of lines and chars according to className
+// Convert to uppercase
 function handleInput (event) {
-	textArea = event.target;
-	convertToUpperCase (textArea);
-
-	MAXLINES = inputsParameters [textArea.id]["maxLines"];
-	//MAXCHARS = inputsParameters [textArea.id]["maxChars"] * 3.6;
-	MAXCHARS = inputsParameters [textArea.id]["maxChars"];
-
-	// Control maximum number of chars
-	//lines = pdf.splitTextToSize (textArea.value, MAXCHARS);
-	//textArea.value = lines.join("\n");
-	var lines = textArea.value.split('\n');
-
-	for (var i = 0; i < lines.length; i++) {
-		if (lines[i].length > MAXCHARS) {
-			// Truncate the line to the maximum allowed characters
-			var remainingChars = lines[i].substring(MAXCHARS);
-			lines[i] = lines[i].substring(0, MAXCHARS);
-			// Move the remaining characters to the next line
-			lines.splice(i + 1, 0, remainingChars);
-		}
-	}
-	// Join the modified lines and set the textarea value
-	textArea.value = lines.join('\n');			
-
-	// Control maximum number of lines
-	text = textArea.value;
-	lines = text.split('\n'); 
-	if (lines.length > MAXLINES) 
-		textArea.value = lines.slice (0, MAXLINES).join('\n');
+		textArea = event.target;
+		convertToUpperCase (textArea);
 }
 
 // Save the current cursor position
@@ -42,12 +15,12 @@ function convertToUpperCase (textArea) {
 }
 
 // Handle the event went user leaves out textareas
-function handleBlur (textareaId, document_type, textAreasDict, textarea) {
-	console.log ("+++ Handling Blur", document_type)
-	if (document_type == "MANIFIESTO") 
-		handleBlurForManifiesto (textareaId, document_type, textAreasDict, textarea) 
+function handleBlur (textareaId, docType, textAreasDict, textarea) {
+	console.log ("+++ Handling Blur", docType)
+	if (docType == "MANIFIESTO") 
+		handleBlurForManifiesto (textareaId, docType, textAreasDict, textarea) 
 	else
-		if (document_type == "CARTAPORTE") {
+		if (docType == "CARTAPORTE") {
 			//-- Copy "ciudad-pais. fecha" to other inputs (BYZA)
 			if (textareaId == "txt06") {
 				textAreasDict ["txt07"].value = textAreasDict ["txt06"].value
@@ -79,13 +52,12 @@ function handleBlur (textareaId, document_type, textAreasDict, textarea) {
 }
 
 
-function handleBlurForManifiesto (textareaId, document_type, textAreasDict, textarea) {
+function handleBlurForManifiesto (textareaId, docType, textAreasDict, textarea) {
 	console.log ("+++ Blur in manifiesto")
 	if (textareaId == "txt28") {
 		console.log ("+++ Blur in txt28")
 
 		const csrftoken = getCookie('csrftoken');
-		console.log ("CSRF TOKEN BlurManifiesto: ", csrftoken)
 		$.ajax({
 			type : 'POST',
 			url  : 'actualizar-cartaporte/',
@@ -132,19 +104,19 @@ function checkFormatNumber (number) {
 }
 
 // Set restrictions and styles for each input textarea
-function setParametersToInputs (textAreas, inputParameters, document_type) {
+function setParametersToInputs (textAreas, inputParameters, docType) {
 	textAreas.forEach (function (textArea) {
-		const input = inputsParameters [textArea.id];
-		textArea.value = input ["value"]
-		textArea.style.fontSize  = input["fontSize"];
-		textArea.style.textAlign = input ["align"];
-		textArea.style.position = "absolute";
+		const input               = inputsParameters [textArea.id];
+		textArea.value            = input ["value"]
+		textArea.style.fontSize   = input ["fontSize"];
+		textArea.style.textAlign  = input ["align"];
+		textArea.style.position   = "absolute";
 
-		textArea.style.left   = input ["x"]  + "px";
-		textArea.style.top    = input ["y"]  + "px";
-		textArea.style.width  = input ["width"]  + "px";
-		textArea.style.height = input ["height"] + "px";
-		st = textArea.style
+		textArea.style.left       = input ["x"]  + "px";
+		textArea.style.top        = input ["y"]  + "px";
+		textArea.style.width      = input ["width"]  + "px";
+		textArea.style.height     = input ["height"] + "px";
+		textArea.style.whiteSpace = 'nowrap'; // Prevents text from wrapping
 
 		// Handle input event for autocomplete
 		textArea.addEventListener ('input', handleInput);
@@ -154,7 +126,7 @@ function setParametersToInputs (textAreas, inputParameters, document_type) {
 
 		// Handle blur (onExit) event for auto filling
 		textArea.addEventListener ("blur", function (event) {
-			handleBlur (event.target.id, document_type, textAreasDict, this);
+			handleBlur (event.target.id, docType, textAreasDict, this);
 		});
 	});
 }
