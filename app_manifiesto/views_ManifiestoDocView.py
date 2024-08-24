@@ -2,14 +2,14 @@ from django.urls import resolve   # To get calling URLs
 
 # Own imports
 from ecuapassdocs.info.resourceloader import ResourceLoader 
-from appdocs.views_EcuapassDocView import EcuapassDocView
+from app_docs.views_EcuapassDocView import EcuapassDocView
 
 #--------------------------------------------------------------------
 #-- Vista para manejar las solicitudes de manifiesto
 #--------------------------------------------------------------------
 class ManifiestoDocView (EcuapassDocView):
 	docType    = "MANIFIESTO"
-	background_image = "appdocs/images/image-manifiesto-vacio-NTA-BYZA.png"
+	background_image = "app_docs/images/image-manifiesto-vacio-NTA-BYZA.png"
 	parameters_file  = "manifiesto_input_parameters.json"
 
 	def __init__(self, *args, **kwargs):

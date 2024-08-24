@@ -2,14 +2,14 @@ import re
 
 # Own imports
 from ecuapassdocs.info.resourceloader import ResourceLoader 
-from appdocs.views_EcuapassDocView import EcuapassDocView
+from app_docs.views_EcuapassDocView import EcuapassDocView
 
 #--------------------------------------------------------------------
 #-- Vista para manejar las solicitudes de declaracion
 #--------------------------------------------------------------------
 class DeclaracionDocView (EcuapassDocView):
 	docType    = "DECLARACION"
-	background_image = "appdocs/images/image-declaracion-vacia-NTA.png"
+	background_image = "app_docs/images/image-declaracion-vacia-NTA.png"
 	parameters_file  = "declaracion_input_parameters.json"
 
 	def __init__(self, *args, **kwargs):

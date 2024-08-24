@@ -9,8 +9,8 @@ from ecuapassdocs.info.ecuapass_utils import Utils
 from ecuapassdocs.info.ecuapass_data import EcuData
 from ecuapassdocs.info.ecuapass_info_cartaporte_BYZA import CartaporteByza
 
-from appdocs.models_Entidades import Empresa
-from appdocs.models_EcuapassDoc import EcuapassDoc
+from app_docs.models_Entidades import Cliente
+from app_docs.models_EcuapassDoc import EcuapassDoc
 
 #--------------------------------------------------------------------
 # Model CartaporteForm
@@ -67,7 +67,7 @@ class CartaporteDoc (models.Model):
 
 #	def get_absolute_url(self):
 #		"""Returns the url to access a particular language instance."""
-#		#return reverse('empresa-detail', args=[str(self.id)])
+#		#return reverse('cliente-detail', args=[str(self.id)])
 
 	def __str__ (self):
 		return f"{self.numero}, {self.txt02}, {self.txt03}"
@@ -92,9 +92,9 @@ class Cartaporte (EcuapassDoc):
 
 	documento     = models.OneToOneField (CartaporteDoc,
 									   on_delete=models.CASCADE, null=True)
-	remitente     = models.ForeignKey (Empresa, related_name="Empresa_cartaporte_set_remitente",
+	remitente     = models.ForeignKey (Cliente, related_name="Cliente_cartaporte_set_remitente",
 	                                   on_delete=models.SET_NULL, null=True)
-	destinatario  = models.ForeignKey (Empresa, related_name="Empresa_cartaporte_set_destinatario",
+	destinatario  = models.ForeignKey (Cliente, related_name="Cliente_cartaporte_set_destinatario",
 	                                   on_delete=models.SET_NULL, null=True)
 	def __str__ (self):
 		return f"{self.numero}, {self.remitente}"
@@ -149,17 +149,17 @@ class Cartaporte (EcuapassDoc):
 			   any ("||LOW" in value for value in info.values()):
 				return None
 			else:
-				empresa, created = Empresa.objects.get_or_create (numeroId=info['numeroId'])
+				cliente, created = Cliente.objects.get_or_create (numeroId=info['numeroId'])
 
-				empresa.nombre    = info ["nombre"]
-				empresa.direccion = info ["direccion"]
-				empresa.ciudad    = info ["ciudad"]
-				empresa.pais      = info ["pais"]
-				empresa.tipoId    = info ["tipoId"]
-				empresa.numeroId  = info ["numeroId"]
+				cliente.nombre    = info ["nombre"]
+				cliente.direccion = info ["direccion"]
+				cliente.ciudad    = info ["ciudad"]
+				cliente.pais      = info ["pais"]
+				cliente.tipoId    = info ["tipoId"]
+				cliente.numeroId  = info ["numeroId"]
 
-				empresa.save ()
-				return empresa
+				cliente.save ()
+				return cliente
 		except:
 			Utils.printException (f"Obteniedo datos del remitente en la info: ", str (info))
 			return None

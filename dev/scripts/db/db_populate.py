@@ -39,7 +39,7 @@ vehiculos_data = [
     (1003, 'PNC12C', "RENAULT", "ECUADOR", "1040", "1995")
 ]
 
-empresas_data = [
+clientes_data = [
     (1001, '1020', "CHEVROLET S.A", "AV. COLON", "CALI", "COLOMBIA", "NIT"),
     (1002, '1030', "MAZDA S.A.", "AV. RIO", "IBARRA",  "ECUADOR", "RUC"),
     (1003, '1040', "RENAULT S.A.", "AV. CIRC", "QUITO", "ECUADOR", "RUC")
@@ -65,6 +65,6 @@ def populate_database (data, table):
 		print (">>> Registro existente:", table, data)
 
 if __name__ == '__main__':
-    populate_database (vehiculos_data, "appdocs_vehiculo")
-    populate_database (empresas_data, "appdocs_empresa")
-    populate_database (conductores_data, "appdocs_conductor")
+    populate_database (vehiculos_data, "vehiculo")
+    populate_database (clientes_data, "cliente")
+    populate_database (conductores_data, "conductor")

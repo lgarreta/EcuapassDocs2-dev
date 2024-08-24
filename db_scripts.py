@@ -68,7 +68,7 @@ def createPublicSchemaGrantUser ():
 # Remove old migrations and make new migrations
 #----------------------------------------------------------
 def resetMigrations ():
-	appsList = ["app_usuarios", "appdocs", "appdocs_main", 
+	appsList = ["app_usuarios", "app_docs", "appdocs_main", 
 			    "app_cartaporte", "app_manifiesto", "app_declaracion"]
 
 	for app in appsList:

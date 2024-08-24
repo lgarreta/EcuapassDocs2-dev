@@ -3,17 +3,20 @@ from django.urls import path
 
 from app_manifiesto.views_ManifiestoDocView import *
 from app_manifiesto import views_mci
-from appdocs.views_Events import *
-from appdocs import views_Filters 
+from app_docs.views_Events import *
+from app_docs import views_Filters 
+
+from .listing_mci import ManifiestosListadoView
 
 urlpatterns = [
 	#-- URLs manifiesto -----------------------------------------------
     path("", ManifiestoDocView.as_view(), name="manifiesto"),
     path("nuevo/", ManifiestoDocView.as_view(), name="manifiesto-nuevo"),
-    path('listado/', views_Filters.manifiestosFilterView, name='manifiesto-listado'),
+    #path('listado/', views_Filters.manifiestosFilterView, name='manifiesto-listado'),
+    path('listado/', ManifiestosListadoView.as_view(), name='manifiesto-listado'),
 
 	# Show autocomplete options
-    path('<pk>/opciones-empresa', EmpresaOptionsView.as_view(), name='opciones-empresa'),
+    path('<pk>/opciones-cliente', ClienteOptionsView.as_view(), name='opciones-cliente'),
 	path('<pk>/opciones-lugar', CiudadPaisOptionsView.as_view(), name='opciones-lugar'),
 	path('<pk>/opciones-vehiculo', VehiculoOptionsView.as_view(), name='opciones-vehiculo'),
 	path('<pk>/opciones-conductor', ConductorOptionsView.as_view(), name='opciones-conductor'),

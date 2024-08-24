@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 	"app_manifiesto",
 	"app_cartaporte",
 	"appreportes",
-	"appdocs.apps.AppdocsConfig",
+	"app_docs.apps.App_docsConfig",
 	"app_usuarios.apps.UsuariosConfig",
 	'django_tables2',
 	"crispy_forms",

@@ -4,14 +4,18 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
+from django import forms
+from django.utils import timezone
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Submit, Row, Column
+
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.http import Http404
 
 from app_cartaporte.models_cpi import Cartaporte, CartaporteDoc
-from appdocs.views import EcuapassDocDetailView
-from .tables import CartaportesTable
+from app_docs.views import EcuapassDocDetailView
 
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------
@@ -62,11 +66,4 @@ class CartaporteDelete (login_required_class (DeleteView)):
 		# Delete the object using the default behavior
 		return super ().delete (request, *args, **kwargs)
 
-#----------------------------------------------------------
-#
-#----------------------------------------------------------
-def cartaportes_listar_tabla (request):
-	print ("--- cartaporte_listar_tabla ---")
-	cartaportes = Cartaporte.objects.all()
-	table = CartaportesTable (cartaportes)
-	return render (request, 'app_cartaporte/cartaportes_listar_tabla.html', {'table': table})	
+

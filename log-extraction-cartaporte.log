@@ -1,9 +1,9 @@
 
 >>>>>> Carta de Porte Internacional por Carretera <<<
-SERVER: Ciudad desconocida en texto: 'AAAA' de '02_Remitente'
+SERVER: Ciudad desconocida en texto: 'CHE' de '02_Remitente'
 SERVER: Ciudad desconocida en texto: '' de '03_Destinatario'
 SERVER: Ciudad desconocida en texto: '' de '04_Consignatario'
-SERVER: Ciudad desconocida en texto: '' de '05_Notificado'
+SERVER: Ciudad desconocida en texto: 'CHE' de '05_Notificado'
 SERVER: No existe fecha en texto ''
 SERVER: Ciudad desconocida en texto: '' de '06_Recepcion'
 SERVER: No existe fecha en texto ''
@@ -21,6 +21,4 @@ SERVER: Traceback (most recent call last):
 ValueError: time data '||LOW' does not match format '%d-%m-%Y'
 
 SERVER: Problemas extrayendo embalaje desde texto: ''
-SERVER: No existe fecha en texto ''
-SERVER: Ciudad desconocida en texto: '' de '19_Emision'
-+++ DEBUG: getCodigoPais: docNumber: CO00005
++++ DEBUG: getCodigoPais: docNumber: CO00001

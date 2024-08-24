@@ -2,14 +2,14 @@ import re
 
 # Own imports
 from ecuapassdocs.info.resourceloader import ResourceLoader 
-from appdocs.views_EcuapassDocView import EcuapassDocView
+from app_docs.views_EcuapassDocView import EcuapassDocView
 
 #--------------------------------------------------------------------
 #-- Vista para manejar las solicitudes de cartaporte
 #--------------------------------------------------------------------
 class CartaporteDocView (EcuapassDocView):
 	docType    = "CARTAPORTE"
-	background_image = "appdocs/images/image-cartaporte-vacia-SILOG-BYZA.png"
+	background_image = "app_docs/images/image-cartaporte-vacia-SILOG-BYZA.png"
 	parameters_file  = "cartaporte_input_parameters.json"
 
 	def __init__(self, *args, **kwargs):

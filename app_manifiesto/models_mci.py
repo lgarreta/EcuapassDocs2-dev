@@ -7,10 +7,10 @@ from django.urls import reverse  # To generate URLS by reversing URL patterns
 from ecuapassdocs.info.ecuapass_utils import Utils
 from ecuapassdocs.info.ecuapass_info_manifiesto_BYZA import ManifiestoByza
 
-from appdocs.models_EcuapassDoc import EcuapassDoc
+from app_docs.models_EcuapassDoc import EcuapassDoc
 from app_cartaporte.models_cpi import Cartaporte
 
-from appdocs.models_Entidades import Vehiculo
+from app_docs.models_Entidades import Vehiculo
 
 #--------------------------------------------------------------------
 # Model ManifiestoDoc
