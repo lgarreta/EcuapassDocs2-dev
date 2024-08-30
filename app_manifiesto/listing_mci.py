@@ -20,36 +20,15 @@ from django.utils.html import format_html
 from django_tables2.utils import A
 
 # For models
+from app_docs.listing_doc import DocumentosListadoView
 from .models_mci import Manifiesto
 
 #----------------------------------------------------------
 #-- View
 #----------------------------------------------------------
-class ManifiestosListadoView (View):
-	def get (self, request):
-		pais		= request.session.get ("pais")
-		documentos  = Manifiesto.objects.filter (pais=pais)
-		form		= ManifiestosListadoForm (request.GET)
-		table		= None
-
-		if form.is_valid():
-			numero		  = form.cleaned_data.get('numero')
-			fecha_emision = form.cleaned_data.get('fecha_emision')
-			
-			if numero:
-				documentos = documentos.filter (numero__icontains=numero)
-			if fecha_emision:
-				documentos = documentos.filter (fecha_emision=fecha_emision)
-			else:
-				current_datetime = timezone.now()
-				documentos = documentos.filter (fecha_emision__lte=current_datetime).order_by ('-fecha_emision')
-
-			table = ManifiestosTable (documentos)
-		else:
-			return ("Forma inválida")
-
-		return render(request, 'documento_listado.html',
-				   {'docsTipo': "Manifiestos", 'docsLista': documentos, 'docsForma': form, 'docsTabla': table})
+class ManifiestosListadoView (DocumentosListadoView):
+    def __init__ (self):
+        super().__init__ ("Manifiestos", Manifiesto, ManifiestosListadoForm, ManifiestosListadoTable)
 
 #----------------------------------------------------------
 #-- Forma
@@ -76,11 +55,11 @@ class ManifiestosListadoForm (forms.Form):
 #----------------------------------------------------------
 # Table
 #----------------------------------------------------------
-class ManifiestosTable (tables.Table):
+class ManifiestosListadoTable (tables.Table):
 	class Meta:
 		model = Manifiesto
 		template_name = "django_tables2/bootstrap4.html"
-		fields = ("numero", "fecha_emision", "remitente", "destinatario")
+		fields = ("numero", "fecha_emision")
 
 	#-- Create a link on doc number
 	def render_numero (self, value, record):

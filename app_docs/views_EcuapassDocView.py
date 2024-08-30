@@ -23,8 +23,8 @@ from ecuapassdocs.info.ecuapass_data import EcuData
 from ecuapassdocs.info.resourceloader import ResourceLoader 
 
 from .pdfcreator import CreadorPDF 
-from .models import Cartaporte, Manifiesto, Declaracion
-from .models import CartaporteDoc, ManifiestoDoc, DeclaracionDoc
+from .models_docs import Cartaporte, Manifiesto, Declaracion
+from .models_docs import CartaporteDoc, ManifiestoDoc, DeclaracionDoc
 
 from app_usuarios.models import UsuarioEcuapass
 

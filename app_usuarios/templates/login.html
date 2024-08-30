@@ -1,4 +1,4 @@
-{% extends 'base_usuarios.html' %}
+{% extends "base_page.html" %}
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -10,14 +10,13 @@
         {% csrf_token %}
         <!-- Display the authentication form -->
         {{ form|crispy }}
-
         <!-- Display the country selection form -->
-	{{ country_form|crispy }}	
-
+		{{ country_form|crispy }}	
         <button id="submit" class="btn btn-primary" type="submit">Ingreso</button>
     </form>
 </div>
 <script>
+	// Script showing the user's "pais" 
 	$('#id_username').on('blur', function() {
 		var username = $(this).val();
 		$.ajax({
@@ -36,5 +35,5 @@
 		
 </script>
 
-{% endblock content %}
+{% endblock %}
     

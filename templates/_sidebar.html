@@ -10,51 +10,54 @@
 				<li><a href="{% url 'login'%}?next={{request.path}}">Iniciar sesión</a></li>
 			</ul>
 		{% else %}
-			<li class="nav-item">
-				<a class="nav-link" href="#" data-toggle="collapse" data-target="#usuario" aria-expanded="true">Usuario:</a>
-				<div id="usuario" class="collapse show">
-					<ul class="nav-item">
-						<li>Usuario: {{ user.username }}</li>
-						<li>Pais: {{ user.pais }}<br></li>
-							<form method="post" action="{% url 'logout' %}">
-								{% csrf_token %}
-								<button type="submit">Cerrar sesión</button>
-							</form>
-				</div>
-			</li>
+			<a class="nav-link" href="#" data-toggle="collapse" data-target="#usuario" aria-expanded="true">Usuario:</a>
+			<div id="usuario" class="collapse show">
+				<ul class="nav-item">
+					<li>Usuario: {{ user.username }}</li>
+					<li>Pais: {{ user.pais }}<br></li>
+						<form method="post" action="{% url 'logout' %}">
+							{% csrf_token %}
+							<button type="submit">Cerrar sesión</button>
+						</form>
+			</div>
 
-			<li class="nav-item">
-				<a class="nav-link" href="#" data-toggle="collapse" data-target="#creacion" aria-expanded="true">Crear:</a>
-				<div id="creacion" class="collapse show">
-					<ul class="nav-item">
-						<li><a href="{% url 'cartaporte' %}{{ 'nuevo' }}"  target="content-frame">Carta de Porte</a></li>
-						<li><a href="{% url 'manifiesto' %}{{ 'nuevo' }}"  >Manifiesto</a></li>
-						<li><a href="{% url 'declaracion' %}{{ 'nuevo' }}" >Declaración</a></li>
-					</ul>
-				</div>
-			</li>
+			<a class="nav-link" href="#" data-toggle="collapse" data-target="#creacion" aria-expanded="true">Crear:</a>
+			<div id="creacion" class="collapse show">
+				<ul class="nav-item">
+					<li><a href="{% url 'cartaporte' %}{{ 'nuevo' }}"  target="content-frame">Carta de Porte</a></li>
+					<li><a href="{% url 'manifiesto' %}{{ 'nuevo' }}"  >Manifiesto</a></li>
+					<li><a href="{% url 'declaracion' %}{{ 'nuevo' }}" >Declaración</a></li>
+				</ul>
+			</div>
 
-			<li class="nav-item">
-				<a class="nav-link" href="#" data-toggle="collapse" data-target="#listar" aria-expanded="false">Listar:</a>
-				<div id="listar" class="collapse show">
+			<a class="nav-link" href="#" data-toggle="collapse" data-target="#listar" aria-expanded="false">Listar:</a>
+			<div id="listar" class="collapse show">
+				<ul class="nav-item ">
+					<li><a href="{% url 'cartaporte-listado' %}">Cartas de Porte</a></li>
+					<li><a href="{% url 'manifiesto-listado' %}">Manifiestos</a></li>
+					<li><a href="{% url 'declaracion-listado' %}">Declaraciones</a></li>
+				</ul>
+			</div>
+
+			<a class="nav-link" href="#" data-toggle="collapse" data-target="#entidades" aria-expanded="false">Entidades:</a>
+			<div id="entidades" class="collapse show">
+				<ul class="nav-item ">
+					<li><a href="{% url 'clientes' %}">Clientes</a></li>
+					<li><a href="{% url 'vehiculos' %}">Vehiculos</a></li>
+					<li><a href="{% url 'conductors' %}">Conductores</a></li>
+				</ul>
+			</div>
+
+			{% if user.es_director or user.is_staff %}
+				<a class="nav-link" href="#" data-toggle="collapse" data-target="#administracion" aria-expanded="false">Administracion:</a>
+				<div id="administracion" class="collapse show">
 					<ul class="nav-item ">
-						<li><a href="{% url 'cartaporte-listado' %}">Cartas de Porte</a></li>
-						<li><a href="{% url 'manifiesto-listado' %}">Manifiestos</a></li>
-						<li><a href="{% url 'declaracion-listado' %}">Declaraciones</a></li>
+						<li><a href="{% url 'usuarios' %}">Usuarios y Entidades</a></li>
+						<li><a href="{% url 'reportes' %}">Reportes y Respaldos</a></li>
 					</ul>
 				</div>
-			</li>
+			{% endif %}  
 
-			<li class="nav-item">
-				<a class="nav-link" href="#" data-toggle="collapse" data-target="#entidades" aria-expanded="false">Entidades:</a>
-				<div id="listar" class="collapse">
-					<ul class="nav-item ">
-						<li><a href="{% url 'clientes' %}">Clientes</a></li>
-						<li><a href="{% url 'vehiculos' %}">Vehiculos</a></li>
-						<li><a href="{% url 'conductors' %}">Conductores</a></li>
-					</ul>
-				</div>
-			</li>
 		{% endif %}
 	</ul>
 {% endblock %}

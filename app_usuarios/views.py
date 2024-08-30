@@ -31,12 +31,14 @@ class CustomLoginView (LoginView):
 		return context
 
 	def post (self, request, *args, **kwargs):
+		print (f"+++ DEBUG: CustomLoginView POST '{request}'")
 		auth_form    = self.authentication_form (data=request.POST)
 		country_form = self.country_form_class (data=request.POST)
 
 		if auth_form.is_valid() and country_form.is_valid():
 			# Process login and country selection
-			self.request.session ['pais'] = country_form.cleaned_data['pais']
+			self.request.session ['pais']    = country_form.cleaned_data ['pais']
+			self.request.session ['usuario'] = auth_form.cleaned_data ['username']
 			return self.form_valid (auth_form)
 		else:
 			return self.form_invalid (auth_form)

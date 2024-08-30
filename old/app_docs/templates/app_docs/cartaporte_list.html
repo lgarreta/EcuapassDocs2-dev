@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Lista de Cartaportes</h1>
+
+    {% if cartaporte_list %}
+    <ul>
+
+      {% for cartaporte in cartaporte_list %}
+      <li>
+        <a href="{{ cartaporte.get_absolute_url }}>{{ cartaporte.numero }}" target="_blank"></a> ({{cartaporte.fecha_emision}})
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>No hay cartaportes registrados</p>
+    {% endif %}
+{% endblock %}

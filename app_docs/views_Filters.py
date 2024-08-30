@@ -5,7 +5,7 @@ from django.utils import timezone
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column
 
-from .models import Cartaporte, Manifiesto, Declaracion
+from .models_docs import Cartaporte, Manifiesto, Declaracion
 from app_docs.models_Entidades import Cliente
 #from .forms import CartaportesFilterForm, ManifiestosFilterForm
 

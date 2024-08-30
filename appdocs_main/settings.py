@@ -21,6 +21,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-*e!pw-wwqm=az^
 
 DEBUG = True
 
+# To allow framing from the same origin (SAMEORIGIN):
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 ALLOWED_HOSTS = [
     'ecuapassdocs-test.up.railway.app', 
     'ecuapassdocs-mirror.up.railway.app', 
@@ -150,7 +153,7 @@ LOGOUT_URL = 'logout'  # Replace with your logout URL name
 
 LOGIN_REDIRECT_URL = 'index'  # Replace with your desired redirect URL
 
-LOGOUT_REDIRECT_URL = 'index'  # Replace with your desired redirect URL
+LOGOUT_REDIRECT_URL = '/'  # Replace with your desired redirect URL
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

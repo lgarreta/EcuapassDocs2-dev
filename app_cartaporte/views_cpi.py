@@ -15,7 +15,7 @@ from django.shortcuts import redirect, render
 from django.http import Http404
 
 from app_cartaporte.models_cpi import Cartaporte, CartaporteDoc
-from app_docs.views import EcuapassDocDetailView
+from app_docs.views_docs import EcuapassDocDetailView
 
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------

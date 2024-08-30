@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Lista de Manifiestos</h1>
+
+    {% if manifiesto_list %}
+    <ul>
+
+      {% for manifiesto in manifiesto_list %}
+      <li>
+        <a href="{{ manifiesto.get_absolute_url }}" target="_blank">{{ manifiesto.numero }}</a> ({{manifiesto.fecha_emision}})
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>No hay manifiestos registrados</p>
+    {% endif %}
+{% endblock %}

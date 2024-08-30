@@ -20,39 +20,15 @@ from django.utils.html import format_html
 from django_tables2.utils import A
 
 # For models
+from app_docs.listing_doc import DocumentosListadoView
 from .models_cpi import Cartaporte
 
 #----------------------------------------------------------
 #-- View
 #----------------------------------------------------------
-class CartaportesListadoView (View):
-	def get (self, request):
-		pais		= request.session.get ("pais")
-		usuario		= request.session.get ("usuario")
-		print ("+++ DEBUG: pais CPI:", pais)
-		print ("+++ DEBUG: user CPI:", usuario)
-		documentos  = Cartaporte.objects.filter (pais=pais)
-		form		= CartaportesListadoForm (request.GET)
-		table		= None
-
-		if form.is_valid():
-			numero		  = form.cleaned_data.get('numero')
-			fecha_emision = form.cleaned_data.get('fecha_emision')
-			
-			if numero:
-				documentos = documentos.filter (numero__icontains=numero)
-			if fecha_emision:
-				documentos = documentos.filter (fecha_emision=fecha_emision)
-			else:
-				current_datetime = timezone.now()
-				documentos = documentos.filter (fecha_emision__lte=current_datetime).order_by ('-fecha_emision')
-
-			table = CartaportesTable (documentos)
-		else:
-			return ("Forma inválida")
-
-		return render(request, 'documento_listado.html',
-				   {'docsTipo': "Cartaportes", 'docsLista': documentos, 'docsForma': form, 'docsTabla': table})
+class CartaportesListadoView (DocumentosListadoView):
+    def __init__ (self):
+        super().__init__ ("Cartaportes", Cartaporte, CartaportesListadoForm, CartaportesListadoTable)
 
 #----------------------------------------------------------
 #-- Forma
@@ -79,7 +55,7 @@ class CartaportesListadoForm (forms.Form):
 #----------------------------------------------------------
 # Table
 #----------------------------------------------------------
-class CartaportesTable (tables.Table):
+class CartaportesListadoTable (tables.Table):
 	class Meta:
 		model = Cartaporte
 		template_name = "django_tables2/bootstrap4.html"
@@ -88,7 +64,7 @@ class CartaportesTable (tables.Table):
 	#-- Create a link on doc number
 	def render_numero (self, value, record):
 		# Generate a URL for each record
-		return format_html('<a href="{}">{}</a>', reverse('cartaporte-editar', args=[record.pk]), value)
+		return format_html('<a href="{}" target="_blank">{}</a>', reverse('cartaporte-editar', args=[record.pk]), value)
 
 	#-- Change format to agree with form date format
 	def render_fecha_emision(self, value):

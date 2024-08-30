@@ -20,37 +20,42 @@ from django.utils.html import format_html
 from django_tables2.utils import A
 
 # For models
+from app_docs.listing_doc import DocumentosListadoView
 from .models_dti import Declaracion
 
 #----------------------------------------------------------
 #-- View
 #----------------------------------------------------------
-class DeclaracionesListadoView (View):
-	def get (self, request):
-		pais		= request.session.get ("pais")
-		documentos  = Declaracion.objects.filter (pais=pais)
-		form		= DeclaracionesListadoForm (request.GET)
-		table		= None
+class DeclaracionesListadoView (DocumentosListadoView):
+    def __init__ (self):
+        super().__init__ ("Declaraciones", Declaracion, DeclaracionesListadoForm, DeclaracionesListadoTable)
 
-		if form.is_valid():
-			numero		  = form.cleaned_data.get('numero')
-			fecha_emision = form.cleaned_data.get('fecha_emision')
-			
-			if numero:
-				documentos = documentos.filter (numero__icontains=numero)
-			if fecha_emision:
-				documentos = documentos.filter (fecha_emision=fecha_emision)
-			else:
-				current_datetime = timezone.now()
-				documentos = documentos.filter (fecha_emision__lte=current_datetime).order_by ('-fecha_emision')
-
-			table = DeclaracionesTable (documentos)
-		else:
-			return ("Forma inválida")
-
-		return render(request, 'documento_listado.html',
-				   {'docsTipo': "Declaraciones", 'docsLista': documentos, 'docsForma': form, 'docsTabla': table})
-
+#class DeclaracionesListadoView (View):
+#	def get (self, request):
+#		pais		= request.session.get ("pais")
+#		documentos  = Declaracion.objects.filter (pais=pais)
+#		form		= DeclaracionesListadoForm (request.GET)
+#		table		= None
+#
+#		if form.is_valid():
+#			numero		  = form.cleaned_data.get('numero')
+#			fecha_emision = form.cleaned_data.get('fecha_emision')
+#			
+#			if numero:
+#				documentos = documentos.filter (numero__icontains=numero)
+#			if fecha_emision:
+#				documentos = documentos.filter (fecha_emision=fecha_emision)
+#			else:
+#				current_datetime = timezone.now()
+#				documentos = documentos.filter (fecha_emision__lte=current_datetime).order_by ('-fecha_emision')
+#
+#			table = DeclaracionesTable (documentos)
+#		else:
+#			return ("Forma inválida")
+#
+#		return render(request, 'documento_listado.html',
+#				   {'docsTipo': "Declaraciones", 'docsLista': documentos, 'docsForma': form, 'docsTabla': table})
+#
 #----------------------------------------------------------
 #-- Forma
 #----------------------------------------------------------
@@ -76,7 +81,7 @@ class DeclaracionesListadoForm (forms.Form):
 #----------------------------------------------------------
 # Table
 #----------------------------------------------------------
-class DeclaracionesTable (tables.Table):
+class DeclaracionesListadoTable (tables.Table):
 	class Meta:
 		model = Declaracion
 		template_name = "django_tables2/bootstrap4.html"

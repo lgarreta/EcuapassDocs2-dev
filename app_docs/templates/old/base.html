@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Layout with Sidebar</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            background-color: #343a40;
+        }
+        .sidebar a {
+            color: white;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .sidebar a:hover {
+            text-decoration: none;
+            background-color: #495057;
+            padding-left: 10px;
+        }
+        .content {
+            margin-left: 260px; /* width of the sidebar */
+            padding: 20px;
+        }
+        iframe {
+            width: 100%;
+            height: calc(100vh - 40px); /* height minus padding */
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2 class="text-white">Ecuapass-Docs</h2>
+	<a href="{% url 'cartaporte' %}{{ 'nuevo' }}" target="content-frame">Nueva Carta de Porte</a>
+        <!-- Add more links as needed -->
+    </div>
+
+    <div class="content">
+	    <iframe name="content-frame" src="{% url 'cartaporte' %}{{ 'nuevo' }}"></iframe>
+    </div>
+</body>
+</html>
+

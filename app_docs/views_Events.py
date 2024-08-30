@@ -10,7 +10,7 @@ from django.http import JsonResponse
 
 from ecuapassdocs.info.resourceloader import ResourceLoader 
 from ecuapassdocs.info.ecuapass_utils import Utils
-from .models import Cartaporte, Vehiculo, Conductor, Cliente
+from .models_docs import Cartaporte, Vehiculo, Conductor, Cliente
 
 #--------------------------------------------------------------------
 # Show all 'cartaportes' from current date (selected in manifiesto)

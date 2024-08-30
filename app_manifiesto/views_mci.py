@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from django.urls import reverse_lazy
 
 from app_manifiesto.models_mci import Manifiesto
-from app_docs.views import EcuapassDocDetailView
+from app_docs.views_docs import EcuapassDocDetailView
 
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------

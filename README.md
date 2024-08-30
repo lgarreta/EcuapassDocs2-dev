@@ -4,6 +4,7 @@
 - Custom user management
 
 ## LOG
+Aug/30: r0.820 : Working bootstrap sidebar. Renamed files. User login/logout. Admin.
 Aug/30: Added nice sidebar with content. No file renames yet.
 Aug/24: Renamed Empresa to Cliente. Created listing_xxx for list docs. Renamed appdoc tod app_doc.
 Aug/23: r0.51 : Working EC, CO, PE for CPI, MCI, DTI. Added user, pais. Font courier mono.

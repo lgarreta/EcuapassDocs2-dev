@@ -6,7 +6,7 @@ from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
 
 from app_declaracion.models_dti import Declaracion
-from app_docs.views import EcuapassDocDetailView
+from app_docs.views_docs import EcuapassDocDetailView
 
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sidebar with Sections and Subitems</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+	body {
+		display: flex;
+		height: 100vh;
+		margin: 0;
+		font-family: Arial, sans-serif;
+	}
+	.sidebar {
+		width: 210px;
+		background-color: #00001e;
+		color: yellow;
+		padding: 5px;
+		height: 100vh;
+		overflow-y: auto;
+	}
+	.sidebar .section-title {
+            font-weight: bold; /* Make section titles bold */
+            padding-left: 10px;
+     }
+	.sidebar .nav-link {
+		color: #ffaa00;
+		padding-left: 10px;
+		font-weight: bold;
+		font-size:16px;
+	}
+	.sidebar .nav-link:hover {
+		background-color: #495057;
+	}
+	.sidebar .nav-item .nav-link {
+		padding-left: 00px;
+		color: cyan;
+		font-weight: bold;
+	}
+	.sidebar .nav-item .nav-item .nav-link {
+		padding-left: 30px; /* Indentation for subitems */
+		color: yellow;
+	}
+	.content {
+		flex-grow: 1;
+		padding: 00px;
+	}
+	iframe {
+		width: 100%;
+		height: calc(100vh - 00px);
+		border: none;
+	}
+	</style>
+</head>
+<body>
+	<div class="sidebar">
+	<h3>EcuapassDocs</h3>
+	<ul class="nav flex-column">
+		<li class="nav-item">
+			<a class="nav-link" href="#" data-toggle="collapse" data-target="#info" aria-expanded="true">Info:</a>
+			<div id="Info" class="collapse show">
+				<ul class="nav-item">
+					{% if user.is_authenticated %}
+						<li><a href="{% url 'index' %}" >Inicio</a></li>										 
+						<li>Usuario: {{ user.username }}</li>
+						<li>Pais: {{ user.pais }}</li>
+						<li>
+							<form method="post" action="{% url 'logout' %}">
+								{% csrf_token %}
+								<button type="submit">Cerrar sesión</button>
+							</form>
+						</li>
+					{% else %}
+						<li><a href="{% url 'index' %}">Inicio</a></li>										 
+						<li><a href="{% url 'login'%}?next={{request.path}}">Iniciar sesión</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</li>
+
+		<li class="nav-item">
+			<a class="nav-link" href="#" data-toggle="collapse" data-target="#creacion" aria-expanded="true">Crear:</a>
+			<div id="creacion" class="collapse show">
+				<ul class="nav-item">
+					<li><a href="{% url 'cartaporte' %}{{ 'nuevo' }}"  >Carta de Porte</a></li>
+					<li><a href="{% url 'manifiesto' %}{{ 'nuevo' }}"  >Manifiesto</a></li>
+					<li><a href="{% url 'declaracion' %}{{ 'nuevo' }}" >Declaración</a></li>
+				</ul>
+			</div>
+		</li>
+
+		<li class="nav-item">
+			<a class="nav-link" href="#" data-toggle="collapse" data-target="#listar" aria-expanded="false">Listar:</a>
+			<div id="listar" class="collapse show">
+				<ul class="nav-item ">
+					<li><a href="{% url 'cartaporte-listado' %}" target="content-frame" >Cartas de Porte</a></li>
+					<li><a href="{% url 'manifiesto-listado' %}"  >Manifiestos</a></li>
+					<li><a href="{% url 'declaracion-listado' %}" >Declaraciones</a></li>
+				</ul>
+			</div>
+		</li>
+
+		<li class="nav-item">
+			<a class="nav-link" href="#" data-toggle="collapse" data-target="#entidades" aria-expanded="false">Entidades:</a>
+			<div id="listar" class="collapse">
+				<ul class="nav-item ">
+					<li><a href="{% url 'clientes' %}">Clientes</a></li>
+					<li><a href="{% url 'vehiculos' %}">Vehiculos</a></li>
+					<li><a href="{% url 'conductors' %}">Conductores</a></li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+	</div>
+
+	<div class="content">
+		<iframe name="content-frame" src="{% url URL_PAGE  %}"></iframe>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

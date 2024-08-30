@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Lista de vehículos</h1>
+
+    {% if vehiculo_list %}
+    <ul>
+
+      {% for vehiculo in vehiculo_list %}
+      <li>
+        <a href="{{ vehiculo.get_absolute_url }}">{{ vehiculo.placa }}</a> ({{vehiculo.marca}})
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>No hay vehículos registradas</p>
+    {% endif %}
+{% endblock %}
