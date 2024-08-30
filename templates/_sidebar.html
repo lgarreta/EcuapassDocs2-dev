@@ -1,0 +1,60 @@
+
+{% block sidebar %}
+	<!-- Sidebar content goes here -->
+	<h3>EcuapassDocs</h3>
+	<ul class="list-unstyled">
+		<li><a href="{% url 'index' %}">Inicio</a></li>
+
+		{% if not user.is_authenticated %}
+			<ul class="sidebar-nav">
+				<li><a href="{% url 'login'%}?next={{request.path}}">Iniciar sesión</a></li>
+			</ul>
+		{% else %}
+			<li class="nav-item">
+				<a class="nav-link" href="#" data-toggle="collapse" data-target="#usuario" aria-expanded="true">Usuario:</a>
+				<div id="usuario" class="collapse show">
+					<ul class="nav-item">
+						<li>Usuario: {{ user.username }}</li>
+						<li>Pais: {{ user.pais }}<br></li>
+							<form method="post" action="{% url 'logout' %}">
+								{% csrf_token %}
+								<button type="submit">Cerrar sesión</button>
+							</form>
+				</div>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" href="#" data-toggle="collapse" data-target="#creacion" aria-expanded="true">Crear:</a>
+				<div id="creacion" class="collapse show">
+					<ul class="nav-item">
+						<li><a href="{% url 'cartaporte' %}{{ 'nuevo' }}"  target="content-frame">Carta de Porte</a></li>
+						<li><a href="{% url 'manifiesto' %}{{ 'nuevo' }}"  >Manifiesto</a></li>
+						<li><a href="{% url 'declaracion' %}{{ 'nuevo' }}" >Declaración</a></li>
+					</ul>
+				</div>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" href="#" data-toggle="collapse" data-target="#listar" aria-expanded="false">Listar:</a>
+				<div id="listar" class="collapse show">
+					<ul class="nav-item ">
+						<li><a href="{% url 'cartaporte-listado' %}">Cartas de Porte</a></li>
+						<li><a href="{% url 'manifiesto-listado' %}">Manifiestos</a></li>
+						<li><a href="{% url 'declaracion-listado' %}">Declaraciones</a></li>
+					</ul>
+				</div>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" href="#" data-toggle="collapse" data-target="#entidades" aria-expanded="false">Entidades:</a>
+				<div id="listar" class="collapse">
+					<ul class="nav-item ">
+						<li><a href="{% url 'clientes' %}">Clientes</a></li>
+						<li><a href="{% url 'vehiculos' %}">Vehiculos</a></li>
+						<li><a href="{% url 'conductors' %}">Conductores</a></li>
+					</ul>
+				</div>
+			</li>
+		{% endif %}
+	</ul>
+{% endblock %}
