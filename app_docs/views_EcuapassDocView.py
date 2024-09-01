@@ -72,9 +72,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		print ("+++ USER :", self.usuario)
 
 		self.inputValues = self.getInputValuesFromForm (request)		  # Values without CPI number
-
 		commandButton    = request.POST.get('boton_seleccionado', '').lower()
-		print ("+++ DEBUG: commandButton:", commandButton)
 		docId            = self.inputValues ["id"]
 
 		# Handle commandButton actions from doc menu
@@ -265,7 +263,6 @@ class EcuapassDocView (LoginRequiredMixin, View):
 				pdfContent = pdf_file.read()
 
 			# Prepare and return HTTP response for PDF
-			#pdfResponse = HttpResponse (content_type='application/pdf')
 			pdfResponse = HttpResponse (content_type='application/pdf')
 			pdfResponse ['Content-Disposition'] = f'inline; filename="{outPdfPath}"'
 			pdfResponse.write (pdfContent)

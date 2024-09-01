@@ -58,7 +58,7 @@ class UsuarioEcuapass (AbstractUser):
 		return self.pais
 
 	#-------------------------------------------------------------------
-	# Methods for special column "Acciones" in user model
+	# Methods for special column "Acciones" when listing users
 	#-------------------------------------------------------------------
 	def get_link_actualizar(self):
 		return reverse('actualizar', args=[self.pk])

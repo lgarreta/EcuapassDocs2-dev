@@ -99,6 +99,9 @@ class Cartaporte (EcuapassDoc):
 	def __str__ (self):
 		return f"{self.numero}, {self.remitente}"
 
+	def getDocType (self):
+		return "CARTAPORTE"
+
 	def get_absolute_url(self):
 		"""Returns the url to access a particular language instance."""
 		return reverse('cartaporte-detail', args=[str(self.id)])

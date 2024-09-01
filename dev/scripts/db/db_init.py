@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Scrips for handling re-create DB, USER, SCHEMA, and MIGRATIONS
+Scrips for init DB, drop, create, set. 
 """
 import os
 import subprocess as sb
@@ -19,13 +19,13 @@ PGHOST     = os.environ.get ("PGHOST")
 PGPORT     = os.environ.get ("PGPORT")
 
 def main ():
-	dropUserAndDatabase ()
-	createUserAndDatabase ()
+	#dropUserAndDatabase ()
+	#createUserAndDatabase ()
+	#createPublicSchemaGrantUser ()
 	resetMigrations ()
 	runMigrationsAndCreateSuperuser ()
 
 	#---
-	#createPublicSchemaGrantUser ()
 	#checkUserPrivileges ()
 	#viewSchemasAndOwnership ()
 	#checkForOwnedObjects ()
@@ -37,7 +37,7 @@ def main ():
 def dropUserAndDatabase ():
 	if input (f"Remove USER: {PGUSER} and DATABASE: {PGDATABASE} : (YES/NO) ") == "YES":
 		exe (f"drop database {PGDATABASE};")
-		#exe (f"ALTER SCHEMA public OWNER TO postgres;")
+		exe (f"ALTER SCHEMA public OWNER TO postgres;")
 		exe (f"DROP OWNED BY {PGUSER};")
 		exe (f"drop user $PGUSER;")
 
@@ -53,9 +53,6 @@ def createUserAndDatabase ():
 	sql = f"ALTER SCHEMA public OWNER TO {PGUSER};"; exe (sql, DB=PGDATABASE)
 
 #----------------------------------------------------------
-#----------------------------------------------------------
-
-#----------------------------------------------------------
 #-- Create public schema and grants to user
 #----------------------------------------------------------
 def createPublicSchemaGrantUser ():
@@ -68,8 +65,8 @@ def createPublicSchemaGrantUser ():
 # Remove old migrations and make new migrations
 #----------------------------------------------------------
 def resetMigrations ():
-	appsList = ["app_usuarios", "app_docs", "app_main", 
-			    "app_cartaporte", "app_manifiesto", "app_declaracion"]
+	appsList = ["app_usuarios", "appdocs", "appdocs_main", 
+			    "app_cartaportes", "app_manifiestos", "app_declaraciones"]
 
 	for app in appsList:
 		cmm = f"rm {APPPATH}/{app}/migrations/00*.py"
@@ -89,7 +86,7 @@ def runMigrationsAndCreateSuperuser ():
 	print (cmm) ; sb.run (cmm, shell=True, env=os.environ)
 
 	#cmm = f"python3 {APPPATH}/manage.py createsuperuser --noinput --username {DJUSER} --email {DJEMAIL} --password {DJPASSWORD}"
-	cmm = f"python3 {APPPATH}/manage.py createsuperuser --username {DJUSER} --email {DJEMAIL}"
+	cmm = f"python3 {APPPATH}/manage.py createsuperuser --noinput --username {DJUSER} --email {DJEMAIL}"
 	print (cmm) ; sb.run (cmm, shell=True, env=os.environ)
 
 #----------------------------------------------------------

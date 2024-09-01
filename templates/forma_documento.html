@@ -122,6 +122,11 @@
 		  overflow: hidden ; /* Disable scrolling */
 		  white-space: pre-line; /* Wrap and preserve line breaks */
 		}
+		textarea:focus {
+			border: 2px solid red; /* Change border thickness and color */
+			outline: none; /* Remove default outline if you are setting a custom border */
+		}
+
 
 		/*****************************************************************************/
 		/*****************************************************************************/
@@ -132,18 +137,23 @@
 	</style>
 </head>
 <script>
-     function setActionUrl(base_url) {
-        //var inputValue = document.getElementById('inputField').value;
-		let docId = document.getElementById ("id").value
-		docUrl = docType.toLowerCase(); 
-		url = "/" + docUrl  + base_url + docId;
-		if (base_url.includes ("editar"))
-			url = "/"+docUrl+"/"
-		if (base_url.includes ("clonar"))
-			url = docUrl
-		document.getElementById('forma_pdf').action = url
+     function setActionUrl (base_url) {
+		let docId  = document.getElementById ("id").value
+		let docUrl = docType.toLowerCase(); 
+		let url    = "/" + docUrl  + base_url + docId;
+		let form   = document.getElementById('forma_pdf')
+		if (base_url.includes ("editar")) {
+			url    = "/"+docUrl+"/"
+            form.target =""
+		}
+		if (base_url.includes ("clonar")){
+			url = "/" + docUrl  + "/clonar/" + docId;
+		}
+		 if (base_url.includes ("pdf")) {
+             form.target ="_blank"
+		}
+		form.action = url
 	}
-
 </script>
 
 <body>

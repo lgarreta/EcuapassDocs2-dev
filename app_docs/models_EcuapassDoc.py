@@ -1,6 +1,7 @@
 from datetime import date
 
 from django.db import models
+from django.urls import reverse
 
 from app_usuarios.models import UsuarioEcuapass
 from ecuapassdocs.info.ecuapass_utils import Utils 
@@ -16,6 +17,10 @@ class EcuapassDoc (models.Model):
 
 	class Meta:
 		abstract = True
+
+	#-- Returns document type as class model name ("cartaporte", "manifiesto", "declaracion")
+	def getDocType(self):
+		return self.__class__.__name__.upper ()
 
 	#-- Save by incrementing the last doc number in the DB
 	def save (self, *args, **kwargs):
@@ -50,6 +55,25 @@ class EcuapassDoc (models.Model):
 	def getUserByUsername (self, username):
 		user = UsuarioEcuapass.objects.get (username=username)
 		return user
+
+	#-------------------------------------------------------------------
+	# Methods for special column "Acciones" when listing documents
+	#-------------------------------------------------------------------
+	def get_link_actualizar(self):
+		docName = self.getDocType ().lower()
+		url     = f"{docName}-editar"
+		return reverse (url, args=[self.pk])
+
+	def get_link_actualizar_display(self):
+		return 'Actualizar'
+
+	def get_link_eliminar(self):
+		docName = self.getDocType ().lower()
+		url     = f"{docName}-delete"
+		return reverse (url, args=[self.pk])
+
+	def get_link_eliminar_display(self):
+		return 'Eliminar'
 
 #--------------------------------------------------------------------
 # Model Cartaporte Form

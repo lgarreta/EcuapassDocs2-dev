@@ -21,21 +21,27 @@
 						</form>
 			</div>
 
-			<a class="nav-link" href="#" data-toggle="collapse" data-target="#creacion" aria-expanded="true">Crear:</a>
-			<div id="creacion" class="collapse show">
+			<a class="nav-link" href="#" data-toggle="collapse" data-target="#cartaporte" aria-expanded="true">Cartas de Porte:</a>
+			<div id="cartaporte" class="collapse show">
 				<ul class="nav-item">
-					<li><a href="{% url 'cartaporte' %}{{ 'nuevo' }}"  target="content-frame">Carta de Porte</a></li>
-					<li><a href="{% url 'manifiesto' %}{{ 'nuevo' }}"  >Manifiesto</a></li>
-					<li><a href="{% url 'declaracion' %}{{ 'nuevo' }}" >Declaración</a></li>
+					<li><a href="{% url 'cartaporte' %}{{ 'nuevo' }}"  target="content-frame">Crear</a></li>
+					<li><a href="{% url 'cartaporte-listado' %}">Listar</a></li>
 				</ul>
 			</div>
 
-			<a class="nav-link" href="#" data-toggle="collapse" data-target="#listar" aria-expanded="false">Listar:</a>
-			<div id="listar" class="collapse show">
-				<ul class="nav-item ">
-					<li><a href="{% url 'cartaporte-listado' %}">Cartas de Porte</a></li>
-					<li><a href="{% url 'manifiesto-listado' %}">Manifiestos</a></li>
-					<li><a href="{% url 'declaracion-listado' %}">Declaraciones</a></li>
+			<a class="nav-link" href="#" data-toggle="collapse" data-target="#manifiesto" aria-expanded="true">Manifiestos:</a>
+			<div id="manifiesto" class="collapse show">
+				<ul class="nav-item">
+					<li><a href="{% url 'manifiesto' %}{{ 'nuevo' }}"  target="content-frame">Crear</a></li>
+					<li><a href="{% url 'manifiesto-listado' %}">Listar</a></li>
+				</ul>
+			</div>
+
+			<a class="nav-link" href="#" data-toggle="collapse" data-target="#declaracion" aria-expanded="true">Declaraciones:</a>
+			<div id="declaracion" class="collapse show">
+				<ul class="nav-item">
+					<li><a href="{% url 'declaracion' %}{{ 'nuevo' }}"  target="content-frame">Crear</a></li>
+					<li><a href="{% url 'declaracion-listado' %}">Listar</a></li>
 				</ul>
 			</div>
 
@@ -59,5 +65,6 @@
 			{% endif %}  
 
 		{% endif %}
+
 	</ul>
 {% endblock %}

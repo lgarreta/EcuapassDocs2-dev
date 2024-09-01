@@ -4,12 +4,7 @@ SERVER: Ciudad desconocida en texto: '' de '02_Remitente'
 SERVER: Ciudad desconocida en texto: '' de '03_Destinatario'
 SERVER: Ciudad desconocida en texto: '' de '04_Consignatario'
 SERVER: Ciudad desconocida en texto: '' de '05_Notificado'
-SERVER: No existe fecha en texto ''
-SERVER: Ciudad desconocida en texto: '' de '06_Recepcion'
-SERVER: No existe fecha en texto ''
-SERVER: Ciudad desconocida en texto: '' de '07_Embarque'
-SERVER: No existe fecha en texto ''
-SERVER: Ciudad desconocida en texto: '' de '08_Entrega'
+SERVER: No existe fecha en texto 'BABAHOYO-ECUADOR'
 SERVER: Problemas extrayendo embalaje desde texto: ''
 SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
 SERVER: Traceback (most recent call last):
@@ -26,16 +21,4 @@ SERVER: Traceback (most recent call last):
   File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs2-dev/ecuapassdocs/info/ecuapass_extractor.py", line 317, in getCiudad
     ciudad   = results [-1] if results [-1] else None
 IndexError: list index out of range
-
-SERVER: No existe fecha en texto ''
-SERVER: Ciudad desconocida en texto: '' de '19_Emision'
-SERVER: EXCEPCION:  Obteniendo información de Fecha de entrega
-SERVER: Traceback (most recent call last):
-  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs2-dev/ecuapassdocs/info/ecuapass_info_cartaporte.py", line 236, in getFechaEntrega
-    fechaEmbarque = datetime.strptime (fechaEmbarque, "%d-%m-%Y") # Fecha igual a la de Embarque
-  File "/usr/lib/python3.10/_strptime.py", line 568, in _strptime_datetime
-    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
-  File "/usr/lib/python3.10/_strptime.py", line 349, in _strptime
-    raise ValueError("time data %r does not match format %r" %
-ValueError: time data '||LOW' does not match format '%d-%m-%Y'
 

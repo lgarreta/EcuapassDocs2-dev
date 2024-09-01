@@ -1,10 +1,11 @@
-{% extends "base_generic.html" %}
+{% extends "base_main.html" %}
 
 {% block content %}
 
-<h1>Declaracion borrada</h1>
 
-<p>¿Seguro quieres borrar esta cartaporte: {{ declaracion.numero }}, tipo: {{ declaracion.tipo }}?</p>
+<h1>¿ Eliminar Declaración 
+	<a href="{% url 'declaracion' %}editar/{{ declaracion.id }}" target="_blank">{{ declaracion.numero }}</a> ?
+</h1>
 
 <form action="" method="POST">
   {% csrf_token %}

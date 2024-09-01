@@ -20,7 +20,7 @@ from django.utils.html import format_html
 from django_tables2.utils import A
 
 # For models
-from app_docs.listing_doc import DocumentosListadoView
+from app_docs.listing_doc import DocumentosListadoView, DocTable
 from .models_mci import Manifiesto
 
 #----------------------------------------------------------
@@ -55,21 +55,11 @@ class ManifiestosListadoForm (forms.Form):
 #----------------------------------------------------------
 # Table
 #----------------------------------------------------------
-class ManifiestosListadoTable (tables.Table):
+class ManifiestosListadoTable (DocTable):
 	class Meta:
-		model = Manifiesto
-		template_name = "django_tables2/bootstrap4.html"
-		fields = ("numero", "fecha_emision")
-
-	#-- Create a link on doc number
-	def render_numero (self, value, record):
-		# Generate a URL for each record
-		return format_html('<a href="{}">{}</a>', reverse('manifiesto-editar', args=[record.pk]), value)
-
-	#-- Change format to agree with form date format
-	def render_fecha_emision(self, value):
-		# Ensure value is a datetime object before formatting
-		if isinstance(value, (datetime, (date, datetime))):
-			return value.strftime('%m/%d/%Y')  # Format to 'dd/mm/yyyy'
-		return ''
+		model         = Manifiesto
+		urlActualizar = "manifiesto-editar"
+		fields        = ("numero", "fecha_emision", "acciones")
+		template_name = DocTable.template
+		attrs         = {'class': 'table table-striped table-bordered'}		
 

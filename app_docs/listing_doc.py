@@ -19,6 +19,9 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django_tables2.utils import A
 
+# For test
+from app_cartaporte.models_cpi import Cartaporte
+
 #----------------------------------------------------------
 #-- View
 #----------------------------------------------------------
@@ -34,8 +37,6 @@ class DocumentosListadoView (View):
 	def get (self, request):
 		pais	 = request.session.get ("pais")
 		usuario  = request.session.get ("usuario")
-		print ("+++ DEBUG: pais CPI:", pais)
-		print ("+++ DEBUG: user CPI:", usuario)
 		documentos  = self.DOCMODEL.objects.filter (pais=pais)
 		form		= self.DOCFORM (request.GET)
 
@@ -59,45 +60,37 @@ class DocumentosListadoView (View):
 				   {'docsTipo': self.docsTipo, 'docsLista': documentos, 'docsForma': form, 'docsTabla': table})
 
 ##----------------------------------------------------------
-##-- Forma
+## Base table for Ecuapass docs tables used in listing
 ##----------------------------------------------------------
-#class CartaportesListadoForm (forms.Form):
-#	numero		   = forms.CharField(required=False)
-#	fecha_emision  = forms.DateField(required=False,
-#								  widget=forms.DateInput (attrs={'type':'date'}))
-#	#remitente		= forms.ModelChoiceField (queryset=Cliente.objects.all(), required=False)
-#
-#	def __init__(self, *args, **kwargs):
-#		super (CartaportesListadoForm, self).__init__(*args, **kwargs)
-#		self.helper = FormHelper()
-#		self.helper.form_method = 'GET'
-#		self.helper.layout = Layout(
-#			Row (
-#				Column ('numero', css_class='col'),
-#				Column ('fecha_emision', css_class='col'),
-#				css_class='row'
-#			),
-#			Submit ('submit', 'Filtrar', css_class='btn btn-primary')
-#		)
-#
-##----------------------------------------------------------
-## Table
-##----------------------------------------------------------
-#class CartaportesTable (tables.Table):
-#	class Meta:
-#		model = Cartaporte
-#		template_name = "django_tables2/bootstrap4.html"
-#		fields = ("numero", "fecha_emision", "remitente", "destinatario")
-#
-#	#-- Create a link on doc number
-#	def render_numero (self, value, record):
-#		# Generate a URL for each record
-#		return format_html('<a href="{}">{}</a>', reverse('cartaporte-editar', args=[record.pk]), value)
-#
-#	#-- Change format to agree with form date format
-#	def render_fecha_emision(self, value):
-#		# Ensure value is a datetime object before formatting
-#		if isinstance(value, (datetime, (date, datetime))):
-#			return value.strftime('%m/%d/%Y')  # Format to 'dd/mm/yyyy'
-#		return ''
-#
+class DocTable (tables.Table):
+	template = "django_tables2/bootstrap4.html"
+
+	class Meta:
+		abstract = True
+
+	#-- Define links for document table columns: numero, acciones (actualizar, eliminar)
+	def __init__ (self, *args, **kwargs):
+		super().__init__ (*args, **kwargs)
+		urlActualizar                  = getattr (self.Meta, 'urlActualizar', 'default-url')
+		self.base_columns ['numero']   = tables.LinkColumn (urlActualizar, args=[A('pk')])
+		# Column for apply actions in the current item document
+		self.base_columns ['acciones'] = tables.TemplateColumn(
+			template_code='''
+			(<a href="{{ record.get_link_actualizar }}">{{ record.get_link_actualizar_display }}</a>),
+			(<a href="{{ record.get_link_eliminar }}">{{ record.get_link_eliminar_display }}</a>)
+			''',
+			verbose_name='Acciones'
+		)
+
+	#-- Create a link on doc number
+	def render_numero (self, value, record):
+		# Generate a URL for each record
+		return format_html('<a href="{}" target="_blank" >{}</a>', reverse('cartaporte-editar', args=[record.pk]), value)
+
+	#-- Change format to agree with form date format
+	def render_fecha_emision(self, value):
+		# Ensure value is a datetime object before formatting
+		if isinstance(value, (datetime, (date, datetime))):
+			return value.strftime('%m/%d/%Y')  # Format to 'dd/mm/yyyy'
+		return ''
+
