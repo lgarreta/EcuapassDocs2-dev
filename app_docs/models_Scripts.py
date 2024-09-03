@@ -67,3 +67,14 @@ def saveClienteInfoToDB (info):
 	except:
 		Utils.printException (f"Guardando cliente to DB")
 	return cliente
+
+
+#-- Return recent cartaportes (within the past week)
+def getRecentDocuments (DOCMODEL):
+	diasRecientes = EcuData.configuracion ["dias_cartaportes_recientes"]
+	oneWeekAgo = timezone.now () - timedelta (days=diasRecientes)
+	recentDocuments = DOCMODEL.objects.filter (fecha_emision__gte=oneWeekAgo)
+	for doc in recentDocuments:
+		print (doc.numero, doc.fecha_emision)
+	return recentDocuments
+

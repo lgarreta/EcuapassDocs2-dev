@@ -2,7 +2,7 @@ from django.urls import path
 
 from app_declaracion.views_DeclaracionDocView import *
 from app_declaracion import views_dti
-from app_docs.views_Events import *
+from app_docs.views_Options import *
 from app_docs import views_Filters 
 
 from .listing_dti import DeclaracionesListadoView

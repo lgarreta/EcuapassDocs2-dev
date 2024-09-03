@@ -11,7 +11,9 @@ from django.http import JsonResponse
 from ecuapassdocs.info.resourceloader import ResourceLoader 
 from ecuapassdocs.info.ecuapass_utils import Utils
 
+import app_docs.models_Scripts as Scripts
 from app_cartaporte.models_cpi import Cartaporte
+from app_manifiesto.models_mci import Manifiesto
 
 from .models_Entidades import Vehiculo, Conductor, Cliente
 
@@ -79,6 +81,86 @@ class VehiculoOptionsView (View):
 		return JsonResponse (itemOptions, safe=False)
 
 #--------------------------------------------------------------------
+# Show placa-pais options from Vehiculo model
+#--------------------------------------------------------------------
+class ManifiestoOptionsView (View):
+	@method_decorator(csrf_protect)
+	def post (self, request, *args, **kwargs):
+		itemOptions = []
+		try:
+			# Get cartaporte docs from query
+			query = request.POST.get ('query', '')
+
+			manifiestos  = Scripts.getRecentDocuments (ManifiestoDoc)
+			if not manifiestos.exists():
+				manifiestos = Manifiesto.objects.filter (numero__startswith=query, fecha_emision=current_date)
+
+			docsManifiestos = [model.documento.__dict__ for model in manifiestos]
+
+			for i, doc in enumerate (docsManifiestos):
+				itemLine = f"{i}. {doc['numero']}"
+				itemText = "%s||%s||%s||%s||%s||%s||%s||%s||%s||%s||%s||%s||%s" % ( 
+							doc ['numero'],  # 
+							doc ["txt26"],   # Contenedores 
+							doc ["txt27"],   # Precintos
+							doc ["txt28"],   # Cartaporte
+							doc ["txt29"],   # Descripcion
+							doc ["txt30"],   # Cantidad
+							doc ["txt31"],   # Embalaje
+							doc ["txt32_1"], # Peso bruto
+							doc ["txt32_3"], # Peso neto
+							doc ["txt33_1"], # Otras medidas
+							doc ["txt34"],   # Incoterms
+							doc ["txt37"],   # PaisAduana-cruce
+							doc ["txt40"],   # FechaEmision
+
+				newOption = {"itemLine" : itemLine, "itemText" : itemText}
+				itemOptions.append (newOption)
+		except:
+			Utils.printException (">>> Excepcion obteniendo opciones de cartaportes")
+			
+		return JsonResponse (itemOptions, safe=False)
+
+
+
+
+
+class ManifiestoOptionsView (View):
+	@method_decorator(csrf_protect)
+	def post (self, request, *args, **kwargs):
+		query   = request.POST.get('query', '')
+		options = ManifiestoDoc.objects.filter (numero__istartswith=query).values ('numero')
+
+		itemOptions = []
+		for i, option in enumerate (options):
+			itemLine = f"{i}. {option['numero']}"
+			itemText = f"{option['numero']}"
+			newOption = {"itemLine" : itemLine, "itemText" : itemText}
+			itemOptions.append (newOption)
+		
+		return JsonResponse (itemOptions, safe=False)
+
+#--------------------------------------------------------------------
+# Show Manifiesto number from Manifiesto model
+#--------------------------------------------------------------------
+class PlacaOptionsView (View):
+	@method_decorator(csrf_protect)
+	def post (self, request, *args, **kwargs):
+		query   = request.POST.get('query', '')
+		options = Vehiculo.objects.filter (placa__istartswith=query).values ('placa','pais')
+
+		itemOptions = []
+		for i, option in enumerate (options):
+			itemLine = f"{i}. {option['placa']}-{option['pais']}"
+			itemText = f"{option['placa']}-{option['pais']}"
+			newOption = {"itemLine" : itemLine, "itemText" : itemText}
+			itemOptions.append (newOption)
+		
+		return JsonResponse (itemOptions, safe=False)
+
+
+
+#--------------------------------------------------------------------
 # Show options when user types in "input_placaPais"
 #--------------------------------------------------------------------
 class ConductorOptionsView (View):
@@ -142,7 +224,7 @@ class CiudadPaisFechaOptionsView (CiudadPaisOptionsView):
 		return (formatted_time)
 
 #--------------------------------------------------------------------
-#--ClienteOptionsView
+#-- ClienteOptionsView
 #--------------------------------------------------------------------
 class ClienteOptionsView (View):
 	#@method_decorator(csrf_protect)

@@ -66,7 +66,6 @@ function getTextAreasByClassName (className) {
 function setAutocompleteForDocument (documentType) {
 		// Clientes
 		let clienteInputs = getTextAreasByClassName ("input_cliente")
-		console.log ("clienteInput:", clienteInputs)
 		clienteInputs.forEach (inputName => {
 			createAutocomplete(new AutoComplete (inputName, 'opciones-cliente')) 
 		});
@@ -89,18 +88,30 @@ function setAutocompleteForDocument (documentType) {
 			createAutocomplete(new AutoCompleteCartaporte (inputName, 'opciones-cartaporte', documentType)) 
 		});
 
-
-		// Vehiculo
-		let vehiculoInputs = getTextAreasByClassName ("input_placaPais")
+		// Vehiculo (Used in Manifiesto)
+		let vehiculoInputs = getTextAreasByClassName ("input_vehiculo")
 		vehiculoInputs.forEach (inputName => {
-			createAutocomplete(new AutoCompletePlacaPais (inputName, 'opciones-vehiculo')) 
+			createAutocomplete(new AutoCompleteVehiculo (inputName, 'opciones-vehiculo')) 
 		});
 
-		// Conductor
+		// Conductor Info (Used in Manifiesto)
 		let conductorInputs = getTextAreasByClassName ("input_conductor")
 		conductorInputs.forEach (inputName => {
 			createAutocomplete(new AutoCompleteConductor (inputName, 'opciones-conductor')) 
 		});
+
+		// Placa-Pais (Used in Declaracion)
+		let placaPaisInputs = getTextAreasByClassName ("input_placaPais")
+		placaPaisInputs.forEach (inputName => {
+			createAutocomplete(new AutoComplete (inputName, 'opciones-placa')) 
+		});
+
+		// Numero Manifiesto (Used in Declaracion)
+		let manifiestoInputs = getTextAreasByClassName ("input_manifiesto")
+		manifiestoInputs.forEach (inputName => {
+			createAutocomplete(new AutoComplete (inputName, 'opciones-manifiesto')) 
+		});
+
 }
 
 //----------------------------------------------------------------------
@@ -163,13 +174,13 @@ class AutoCompleteCartaporte extends AutoComplete {
 }
 
 //-- AutoComplete for Vehiculo inputs
-class AutoCompletePlacaPais extends AutoComplete {
+class AutoCompleteVehiculo extends AutoComplete {
 	// When an item is selected, populate the textarea 
 	onItemSelected (ui) {
-		let index = ui.item.value.split (".")[0]
-		let text = this.fullData [index]["itemText"]
+		let index  = ui.item.value.split (".")[0]
+		let text   = this.fullData [index]["itemText"]
 		let values = text.split ("||");
-		let input = this.inputSelector
+		let input  = this.inputSelector
 		if (input.id === "txt06") {
 			document.getElementById("txt04").value = values [0]
 			document.getElementById("txt05").value = values [1]

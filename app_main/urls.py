@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from app_docs import views_docs
-from app_docs.views_Events import *
+from app_docs.views_Options import *
 
 admin.site.site_header = "Creación/Almacenamiento de Documentos del ECUAPASS"
 admin.site.site_title  = "Creación/Almacenamiento de Documentos del ECUAPASS"
@@ -29,5 +29,8 @@ urlpatterns = [
 	path('opciones-vehiculo', VehiculoOptionsView.as_view(), name='opciones-vehiculo'),
 	path('opciones-conductor', ConductorOptionsView.as_view(), name='opciones-conductor'),
 	path('opciones-cartaporte', CartaporteOptionsView.as_view(), name='opciones-cartaporte'),
+
+	path('opciones-placa', PlacaOptionsView.as_view(), name='opciones-placa'),
+	path('opciones-manifiesto', ManifiestoOptionsView.as_view(), name='opciones-manifiesto'),
 ]
 

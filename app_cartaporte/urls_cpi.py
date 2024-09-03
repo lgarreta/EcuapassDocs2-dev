@@ -3,7 +3,7 @@ from django.urls import path
 
 from app_cartaporte.views_CartaporteDocView import *
 from app_cartaporte import views_cpi
-from app_docs.views_Events import *
+from app_docs.views_Options import *
 from app_docs import views_Filters 
 
 from .listing_cpi import CartaportesListadoView
