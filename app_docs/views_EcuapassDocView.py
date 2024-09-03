@@ -22,11 +22,14 @@ from ecuapassdocs.info.ecuapass_utils import Utils
 from ecuapassdocs.info.ecuapass_data import EcuData 
 from ecuapassdocs.info.resourceloader import ResourceLoader 
 
-from .pdfcreator import CreadorPDF 
-from .models_docs import Cartaporte, Manifiesto, Declaracion
-from .models_docs import CartaporteDoc, ManifiestoDoc, DeclaracionDoc
+from app_cartaporte.models_cpi import Cartaporte, CartaporteDoc
+from app_manifiesto.models_mci import Manifiesto, ManifiestoDoc
+from app_declaracion.models_dti import Declaracion, DeclaracionDoc
 
 from app_usuarios.models import UsuarioEcuapass
+
+from .pdfcreator import CreadorPDF 
+
 
 #--------------------------------------------------------------------
 #-- Vista para manejar las solicitudes de manifiesto
@@ -434,7 +437,6 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		return docId, docNumber
 
 	#-- Save new document
-
 	def saveNewDocToDB (self, inputValues):
 		print (">>> Guardando documento nuevo en la BD...")
 		FormModel, DocModel = self.getFormAndDocClass (self.docType)

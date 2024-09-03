@@ -13,11 +13,12 @@ urlpatterns = [
     path("nuevo/", DeclaracionDocView.as_view(), name="declaracion-nuevo"),
     path('listado/', DeclaracionesListadoView.as_view(), name='declaracion-listado'),
 
-	# Show autocomplete options
-	path('<pk>/opciones-lugar/', CiudadPaisOptionsView.as_view(), name='opciones-lugar'),
-	path('<pk>/opciones-vehiculo/', VehiculoOptionsView.as_view(), name='opciones-vehiculo'),
-	path('<pk>/opciones-conductor/', ConductorOptionsView.as_view(), name='opciones-conductor'),
-	path('<pk>/opciones-cartaporte/', CartaporteOptionsView.as_view(), name='opciones-cartaporte'),
+#	# Show autocomplete options
+#    path('<pk>/opciones-cliente', ClienteOptionsView.as_view(), name='opciones-cliente'),
+#	path('<pk>/opciones-lugar/', CiudadPaisOptionsView.as_view(), name='opciones-lugar'),
+#	path('<pk>/opciones-vehiculo/', VehiculoOptionsView.as_view(), name='opciones-vehiculo'),
+#	path('<pk>/opciones-conductor/', ConductorOptionsView.as_view(), name='opciones-conductor'),
+#	path('<pk>/opciones-cartaporte/', CartaporteOptionsView.as_view(), name='opciones-cartaporte'),
 
 	# Document options using <pk>
     path('detalle/<pk>', views_dti.DeclaracionDetailView.as_view(), name='declaracion-detail'),

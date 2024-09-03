@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from app_docs import views_docs
+from app_docs.views_Events import *
 
 admin.site.site_header = "Creación/Almacenamiento de Documentos del ECUAPASS"
 admin.site.site_title  = "Creación/Almacenamiento de Documentos del ECUAPASS"
@@ -16,15 +17,17 @@ urlpatterns = [
     path("declaracion/", include("app_declaracion.urls_dti")),
     path("reportes/", include("appreportes.urls")),
 
-    #path('', views_docs.principal, name='principal'),
-    #path ('index', views_docs.index, name='index'),
-    #path ('reload_sidebar', views_docs.reload_sidebar, name='reload_sidebar'),
-
-
     path('', views_docs.index, name='index'),
     #path('profile/', views_main.profile, name='profile'),
     #path('login/', views_main.login_view,  name='login'),
     #path('logout/', views_main.logout_view, name='logout'),
     #path('admin_panel/', views_main.admin_panel, name='admin_panel'), 	
+
+	# Show autocomplete options
+    path('opciones-cliente', ClienteOptionsView.as_view(), name='opciones-cliente'),
+	path('opciones-lugar', CiudadPaisOptionsView.as_view(), name='opciones-lugar'),
+	path('opciones-vehiculo', VehiculoOptionsView.as_view(), name='opciones-vehiculo'),
+	path('opciones-conductor', ConductorOptionsView.as_view(), name='opciones-conductor'),
+	path('opciones-cartaporte', CartaporteOptionsView.as_view(), name='opciones-cartaporte'),
 ]
 

@@ -1,3 +1,7 @@
+"""
+Base model for doc models: Cartaporte, Manifiesto, Declaracion
+"""
+
 from datetime import date
 
 from django.db import models
@@ -5,13 +9,15 @@ from django.urls import reverse
 
 from app_usuarios.models import UsuarioEcuapass
 from ecuapassdocs.info.ecuapass_utils import Utils 
+from ecuapassdocs.info.ecuapass_info_cartaporte_BYZA import CartaporteByza
+from .models_Entidades import Cliente
 
 #--------------------------------------------------------------------
-# Model Cartaporte Document
+# Base model for doc models: Cartaporte, Manifiesto, Declaracion
 #--------------------------------------------------------------------
 class EcuapassDoc (models.Model):
 	numero        = models.CharField (max_length=20)
-	fecha_emision = models.DateField (default=date.today)
+	fecha_emision = models.DateField (default=date.today, null=False)
 	pais          = models.CharField (max_length=30)
 	usuario       = models.ForeignKey (UsuarioEcuapass, on_delete=models.SET_NULL, null=True)
 
@@ -45,7 +51,7 @@ class EcuapassDoc (models.Model):
 		return f"{self.numero}, {self.fecha_emision}"
 
 	#-- Delete related objects
-	def delete(self, *args, **kwargs):
+	def delete (self, *args, **kwargs):
 		print ("-- EcuapassDoc delete")
 		DocumentClass = type (self.documento)
 		DocumentClass.objects.filter (numero=self.numero).delete()
@@ -74,6 +80,66 @@ class EcuapassDoc (models.Model):
 
 	def get_link_eliminar_display(self):
 		return 'Eliminar'
+
+#	#-------------------------------------------------------------------
+#	# Get cartaporte from doc fields and save to DB
+#	#-------------------------------------------------------------------
+#	def getCartaporteInstance (self, docKey, docFields):
+#		cartaporte = None
+#		try:
+#			cartaporteNumber    = EcuInfo.getNumeroCartaporte (docFields)
+#			cartaporte, created = Cartaporte.objects.get (numero=cartaporteNumber)
+#			return cartaporte
+#		except Cartaporte.DoesNotExists:
+#			Utils.printException (f"No existe cartaporte nro: '{cartaporteNumber}'!")
+#		except Cartaporte.MultipleObjectsReturned:
+#			Utils.printException (f"Múltiples instancias de cartaporte nro: '{cartaporteNumber}'!")
+#		return cartaporte
+#	#-------------------------------------------------------------------
+#	#-- Get/Save cliente info. Only works for BYZA
+#	#-- field keys correspond to: remitente, destinatario,... (Cartaporte)
+#	#-------------------------------------------------------------------
+#	def getSaveClienteInfo (self, docKey, docFields):
+#		clienteInfo  = self.getClienteInfo (docKey, docFields)
+#		if clienteInfo:
+#			cliente = self.saveClienteInfoToDB (clienteInfo)
+#			return cliente
+#		else:
+#			return None
+#
+#	def getClienteInfo (self, docKey, docFields):
+#		info = None
+#		try:
+#			jsonFieldsPath, runningDir = Utils.createTemporalJson (docFields)
+#			cartaporteInfo    = CartaporteByza (jsonFieldsPath, runningDir)
+#			info              = cartaporteInfo.getSubjectInfo (docKey)
+#			print ("-- Subject info:", info)
+#
+#			if any (value is None for value in info.values()) or \
+#			   any ("||LOW" in value for value in info.values()):
+#				return None
+#		except:
+#			Utils.printException (f"Obteniedo info de cliente tipo: '{docKey}'")
+#
+#		return info
+#
+#	#-- Save instance of Cliente with info: id, nombre, direccion, ciudad, pais, tipoId, numeroId
+#	def saveClienteInfoToDB (self, info):
+#		cliente = None
+#		try:
+#			cliente, created = Cliente.objects.get_or_create (numeroId=info['numeroId'])
+#
+#			cliente.nombre    = info ["nombre"]
+#			cliente.direccion = info ["direccion"]
+#			cliente.ciudad    = info ["ciudad"]
+#			cliente.pais      = info ["pais"]
+#			cliente.tipoId    = info ["tipoId"]
+#			cliente.numeroId  = info ["numeroId"]
+#
+#			cliente.save ()
+#		except:
+#			Utils.printException (f"Guardando cliente to DB")
+#		return cliente
 
 #--------------------------------------------------------------------
 # Model Cartaporte Form

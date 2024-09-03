@@ -7,10 +7,11 @@ from django.utils import timezone # For getting recent cartaportes
 
 from ecuapassdocs.info.ecuapass_utils import Utils
 from ecuapassdocs.info.ecuapass_data import EcuData
+from ecuapassdocs.info.ecuapass_info import EcuInfo
 from ecuapassdocs.info.ecuapass_info_cartaporte_BYZA import CartaporteByza
 
-from app_docs.models_Entidades import Cliente
 from app_docs.models_EcuapassDoc import EcuapassDoc
+from app_docs.models_Entidades import Cliente
 
 #--------------------------------------------------------------------
 # Model CartaporteForm
@@ -92,9 +93,9 @@ class Cartaporte (EcuapassDoc):
 
 	documento     = models.OneToOneField (CartaporteDoc,
 									   on_delete=models.CASCADE, null=True)
-	remitente     = models.ForeignKey (Cliente, related_name="Cliente_cartaporte_set_remitente",
+	remitente     = models.ForeignKey (Cliente, related_name="cartaportes_remitente",
 	                                   on_delete=models.SET_NULL, null=True)
-	destinatario  = models.ForeignKey (Cliente, related_name="Cliente_cartaporte_set_destinatario",
+	destinatario  = models.ForeignKey (Cliente, related_name="cartaportes_destinatario",
 	                                   on_delete=models.SET_NULL, null=True)
 	def __str__ (self):
 		return f"{self.numero}, {self.remitente}"
@@ -107,16 +108,16 @@ class Cartaporte (EcuapassDoc):
 		return reverse('cartaporte-detail', args=[str(self.id)])
 
 	def setValues (self, cartaporteForm, docFields, pais, username):
-		# General values
+		# Base values
 		self.numero    = cartaporteForm.numero
 		self.documento = cartaporteForm
 		self.pais      = pais
 		self.usuario   = self.getUserByUsername (username)
 
 		# Document values
-		self.remitente     = self.getSubjectInstance ("02_Remitente", docFields)
-		self.destinatario  = self.getSubjectInstance ("03_Destinatario", docFields)
-		self.fecha_emision = self.getFechaEmision (docFields)
+		self.remitente     = self.getSaveClienteInfo ("02_Remitente", docFields)
+		self.destinatario  = self.getSaveClienteInfo ("03_Destinatario", docFields)
+		self.fecha_emision = EcuInfo.getFechaEmision (docFields, "CARTAPORTE")
 		# Get 'fecha recepcion'
 		#self.fecha_emision = self.getFechaRecepcion ("31_FechaRecepcion", docFields)
 
@@ -130,42 +131,43 @@ class Cartaporte (EcuapassDoc):
 #		fechaRecepcion    = ecuapassFields ["31_FechaRecepcion"]
 #		return datetime.datetime.strptime (fechaRecepcion, "%d-%m-%Y")
 
-	#-- Get fecha emision
-	def getFechaEmision (self, docFields):
-		fecha = Utils.getEcuapassFieldInfo (CartaporteByza, "61_FechaEmision", docFields)
-		print ("+++ DEBUG: fecha:", fecha)
-		fecha = fecha if fecha else datetime.today()
-		fecha_emision = Utils.formatDateStringToPGDate (fecha)
-		print ("+++ DEBUG: fecha_emision:", fecha_emision)
-		return fecha_emision
+#----------------- MOVED TO SUPER ------------------
+#	#-- Get fecha emision
+#	def getFechaEmision (self, docFields):
+#		fecha = Utils.getEcuapassFieldInfo (CartaporteByza, "61_FechaEmision", docFields)
+#		print ("+++ DEBUG: fecha:", fecha)
+#		fecha = fecha if fecha else datetime.today()
+#		fecha_emision = Utils.formatDateStringToPGDate (fecha)
+#		print ("+++ DEBUG: fecha_emision:", fecha_emision)
+#		return fecha_emision
 
 	#-- Get/Save subject info. Only works for BYZA
-	def getSubjectInstance (self, subjectType, docFields):
-		info = None
-		try:
-			jsonFieldsPath, runningDir = self.createTemporalJson (docFields)
-			cartaporteInfo    = CartaporteByza (jsonFieldsPath, runningDir)
-			info              = cartaporteInfo.getSubjectInfo (subjectType)
-			print ("-- Subject info:", info)
-
-			if any (value is None for value in info.values()) or \
-			   any ("||LOW" in value for value in info.values()):
-				return None
-			else:
-				cliente, created = Cliente.objects.get_or_create (numeroId=info['numeroId'])
-
-				cliente.nombre    = info ["nombre"]
-				cliente.direccion = info ["direccion"]
-				cliente.ciudad    = info ["ciudad"]
-				cliente.pais      = info ["pais"]
-				cliente.tipoId    = info ["tipoId"]
-				cliente.numeroId  = info ["numeroId"]
-
-				cliente.save ()
-				return cliente
-		except:
-			Utils.printException (f"Obteniedo datos del remitente en la info: ", str (info))
-			return None
+#	def getSubjectInstance (self, subjectType, docFields):
+#		info = None
+#		try:
+#			jsonFieldsPath, runningDir = self.createTemporalJson (docFields)
+#			cartaporteInfo    = CartaporteByza (jsonFieldsPath, runningDir)
+#			info              = cartaporteInfo.getSubjectInfo (subjectType)
+#			print ("-- Subject info:", info)
+#
+#			if any (value is None for value in info.values()) or \
+#			   any ("||LOW" in value for value in info.values()):
+#				return None
+#			else:
+#				cliente, created = Cliente.objects.get_or_create (numeroId=info['numeroId'])
+#
+#				cliente.nombre    = info ["nombre"]
+#				cliente.direccion = info ["direccion"]
+#				cliente.ciudad    = info ["ciudad"]
+#				cliente.pais      = info ["pais"]
+#				cliente.tipoId    = info ["tipoId"]
+#				cliente.numeroId  = info ["numeroId"]
+#
+#				cliente.save ()
+#				return cliente
+#		except:
+#			Utils.printException (f"Obteniedo datos del remitente en la info: ", str (info))
+#			return None
 
 	def createTemporalJson (self, docFields):
 		tmpPath        = tempfile.gettempdir ()

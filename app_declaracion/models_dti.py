@@ -5,13 +5,16 @@ from django.db import models
 from django.urls import reverse  # To generate URLS by reversing URL patterns
 
 from ecuapassdocs.info.ecuapass_utils import Utils
+from ecuapassdocs.info.ecuapass_info import EcuInfo
 from ecuapassdocs.info.ecuapass_info_manifiesto_BYZA import ManifiestoByza
 
 from app_docs.models_EcuapassDoc import EcuapassDoc
+import app_docs.models_Scripts as Scripts
+from app_docs.models_Entidades import Cliente, Conductor, Vehiculo
+
 from app_cartaporte.models_cpi import Cartaporte
 
 from app_usuarios.models import UsuarioEcuapass
-from app_docs.models_Entidades import Cliente, Conductor, Vehiculo
 
 #--------------------------------------------------------------------
 # Model DeclaracionDoc
@@ -21,7 +24,6 @@ class DeclaracionDoc (models.Model):
 		db_table = "declaraciondoc"
 
 	numero = models.CharField (max_length=20)
-
 	txt0a = models.CharField (max_length=20, null=True)
 	txt00 = models.CharField (max_length=20, null=True)
 	txt01 = models.CharField (max_length=200, null=True)
@@ -66,9 +68,16 @@ class Declaracion (EcuapassDoc):
 	class Meta:
 		db_table = "declaracion"
 
-	documento     = models.OneToOneField (DeclaracionDoc, on_delete=models.SET_NULL, null=True)
+	documento    = models.OneToOneField (DeclaracionDoc,
+									   on_delete=models.CASCADE, null=True)
+	declarante   = models.ForeignKey (Cliente, related_name="declaraciones_declarante",
+	                                   on_delete=models.SET_NULL, null=True)
+	remitente    = models.ForeignKey (Cliente, related_name="declaraciones_remitente",
+	                                   on_delete=models.SET_NULL, null=True)
+	destinatario = models.ForeignKey (Cliente, related_name="declaraciones_destinatario",
+	                                   on_delete=models.SET_NULL, null=True)
 
-	cartaporte    = models.ForeignKey (Cartaporte, on_delete=models.SET_NULL, null=True)
+	cartaporte   = models.ForeignKey (Cartaporte, on_delete=models.SET_NULL, null=True)
 
 	def get_absolute_url(self):
 		"""Returns the url to access a particular language instance."""
@@ -77,32 +86,41 @@ class Declaracion (EcuapassDoc):
 	def __str__ (self):
 		return f"{self.numero}, {self.cartaporte}"
 
-	def setValues (self, declaracionDoc, docFields, procedimiento, username):
+	def setValues (self, declaracionForm, docFields, pais, username):
+		print (f"+++ DEBUG: setValues:declaracionForm '{declaracionForm}'")
 		# Base values
-		self.numero        = declaracionDoc.numero
-		self.documento     = declaracionDoc
-		self.procedimiento = procedimiento
+		self.numero        = declaracionForm.numero
+		self.documento     = declaracionForm
+		self.pais          = pais
 		self.usuario       = self.getUserByUsername (username)
 
 		# Document values
-		jsonFieldsPath, runningDir = self.createTemporalJson (docFields)
-		declaracionInfo            = Declaracion (jsonFieldsPath, runningDir)
+		self.declarante    = Scripts.getSaveClienteInfo ("02_Declarante", docFields)
+		self.remitente     = Scripts.getSaveClienteInfo ("03_Remitente", docFields)
+		self.destinatario  = Scripts.getSaveClienteInfo ("04_Destinatario", docFields)
+		self.fecha_emision = EcuInfo.getFechaEmision (docFields, "DECLARACION")
 
-		self.cartaporte = self.getCartaporte (declaracionInfo)
+		self.cartaporte    = Scripts.getCartaporteInstance ("15_Cartaporte", docFields, "DECLARACION")
+
+#		docFieldsPath, runningDir = self.createTemporalJson (docFields)
+#		declaracionInfo           = Declaracion (docFieldsPath, runningDir)
+#
+#		self.cartaporte = self.getCartaporte (declaracionInfo)
 		
-	def getCartaporte (self, declaracionInfo):
-		numero = None
-		try:
-			numero = declaracionInfo.getNroDocumento ()
-			record = Cartaporte.objects.get (numero=desired_value)
-			return record
-		except: 
-			print (f"Exepcion: Cartaporte número '{numero}' no encontrado.")
-		return None
-
-	def createTemporalJson (self, fieldValues):
-		tmpPath        = tempfile.gettempdir ()
-		jsonFieldsPath = os.path.join (tmpPath, f"MANIFIESTO-{self.numero}.json")
-		json.dump (fieldValues, open (jsonFieldsPath, "w"))
-		return (jsonFieldsPath, tmpPath)
-
+#------------- MOVED TO SUPER -------------------------
+#	def getCartaporte (self, declaracionInfo):
+#		numero = None
+#		try:
+#			numero = declaracionInfo.getNroDocumento ()
+#			record = Cartaporte.objects.get (numero=desired_value)
+#			return record
+#		except: 
+#			print (f"Exepcion: Cartaporte número '{numero}' no encontrado.")
+#		return None
+#
+#	def createTemporalJson (self, fieldValues):
+#		tmpPath        = tempfile.gettempdir ()
+#		jsonFieldsPath = os.path.join (tmpPath, f"MANIFIESTO-{self.numero}.json")
+#		json.dump (fieldValues, open (jsonFieldsPath, "w"))
+#		return (jsonFieldsPath, tmpPath)
+#

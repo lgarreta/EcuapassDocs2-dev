@@ -4,6 +4,7 @@
 - Custom user management
 
 ## LOG
+Sep/03: r0.831 : Working Declaracion. One url file for options. New models_Scripts.
 Sep/01: r0.830 : Working base class table for listing. Menu by doc instead by action.
 Aug/30: r0.820 : Working bootstrap sidebar. Renamed files. User login/logout. Admin.
 Aug/30: Added nice sidebar with content. No file renames yet.

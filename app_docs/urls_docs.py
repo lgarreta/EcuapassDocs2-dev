@@ -33,6 +33,9 @@ urlpatterns = [
     path('conductor/<pk>/update/', views_docs.ConductorUpdate.as_view(), name='conductor-update'),
     path('conductor/<pk>/delete/', views_docs.ConductorDelete.as_view(), name='conductor-delete'),
 
+	#-- URLs options -----------------------------------------------------
+    #path('opciones-cliente/', ClienteOptionsView.as_view(), name='opciones-cliente'),
+
 	#-- Other URLs  --------------------------------------------------
     path('info/', InfoView.as_view(), name='info_view'),
 ]

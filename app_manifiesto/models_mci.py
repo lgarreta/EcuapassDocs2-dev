@@ -9,7 +9,6 @@ from ecuapassdocs.info.ecuapass_info_manifiesto_BYZA import ManifiestoByza
 
 from app_docs.models_EcuapassDoc import EcuapassDoc
 from app_cartaporte.models_cpi import Cartaporte
-
 from app_docs.models_Entidades import Vehiculo
 
 #--------------------------------------------------------------------
@@ -104,7 +103,7 @@ class Manifiesto (EcuapassDoc):
 
 		# Document values
 		jsonFieldsPath, runningDir = self.createTemporalJson (docFields)
-		manifiestoInfo             = ManifiestoByza (jsonFieldsPath, runningDir)
+		manifiestoInfo     = ManifiestoByza (jsonFieldsPath, runningDir)
 
 		self.vehiculo      = self.getVehiculo (manifiestoInfo, "vehiculo")
 		self.remolque      = self.getVehiculo (manifiestoInfo, "remolque")

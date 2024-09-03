@@ -71,8 +71,8 @@ class DocTable (tables.Table):
 	#-- Define links for document table columns: numero, acciones (actualizar, eliminar)
 	def __init__ (self, *args, **kwargs):
 		super().__init__ (*args, **kwargs)
-		urlActualizar                  = getattr (self.Meta, 'urlActualizar', 'default-url')
-		self.base_columns ['numero']   = tables.LinkColumn (urlActualizar, args=[A('pk')])
+		self.urlActualizar                  = getattr (self.Meta, 'urlActualizar', 'default-url')
+		self.base_columns ['numero']   = tables.LinkColumn (self.urlActualizar, args=[A('pk')])
 		# Column for apply actions in the current item document
 		self.base_columns ['acciones'] = tables.TemplateColumn(
 			template_code='''
@@ -85,7 +85,8 @@ class DocTable (tables.Table):
 	#-- Create a link on doc number
 	def render_numero (self, value, record):
 		# Generate a URL for each record
-		return format_html('<a href="{}" target="_blank" >{}</a>', reverse('cartaporte-editar', args=[record.pk]), value)
+		return format_html('<a href="{}" target="_blank" >{}</a>', 
+					 reverse(self.urlActualizar, args=[record.pk]), value)
 
 	#-- Change format to agree with form date format
 	def render_fecha_emision(self, value):

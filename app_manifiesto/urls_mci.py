@@ -15,12 +15,12 @@ urlpatterns = [
     #path('listado/', views_Filters.manifiestosFilterView, name='manifiesto-listado'),
     path('listado/', ManifiestosListadoView.as_view(), name='manifiesto-listado'),
 
-	# Show autocomplete options
-    path('<pk>/opciones-cliente', ClienteOptionsView.as_view(), name='opciones-cliente'),
-	path('<pk>/opciones-lugar', CiudadPaisOptionsView.as_view(), name='opciones-lugar'),
-	path('<pk>/opciones-vehiculo', VehiculoOptionsView.as_view(), name='opciones-vehiculo'),
-	path('<pk>/opciones-conductor', ConductorOptionsView.as_view(), name='opciones-conductor'),
-	path('<pk>/opciones-cartaporte', CartaporteOptionsView.as_view(), name='opciones-cartaporte'),
+#	# Show autocomplete options
+#    path('<pk>/opciones-cliente', ClienteOptionsView.as_view(), name='opciones-cliente'),
+#	path('<pk>/opciones-lugar', CiudadPaisOptionsView.as_view(), name='opciones-lugar'),
+#	path('<pk>/opciones-vehiculo', VehiculoOptionsView.as_view(), name='opciones-vehiculo'),
+#	path('<pk>/opciones-conductor', ConductorOptionsView.as_view(), name='opciones-conductor'),
+#	path('<pk>/opciones-cartaporte', CartaporteOptionsView.as_view(), name='opciones-cartaporte'),
 
 	# Document options using <pk>
     path('detalle/<pk>', views_mci.ManifiestoDetailView.as_view(), name='manifiesto-detail'),

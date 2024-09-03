@@ -10,7 +10,11 @@ from django.http import JsonResponse
 
 from ecuapassdocs.info.resourceloader import ResourceLoader 
 from ecuapassdocs.info.ecuapass_utils import Utils
-from .models_docs import Cartaporte, Vehiculo, Conductor, Cliente
+
+from app_cartaporte.models_cpi import Cartaporte
+
+from .models_Entidades import Vehiculo, Conductor, Cliente
+
 
 #--------------------------------------------------------------------
 # Show all 'cartaportes' from current date (selected in manifiesto)
@@ -34,7 +38,7 @@ class CartaporteOptionsView (View):
 
 			for i, doc in enumerate (docsCartaportes):
 				itemLine = f"{i}. {doc['numero']}"
-				itemText = "%s||%s||%s||%s||%s||%s||%s||%s||%s||%s||%s" % ( 
+				itemText = "%s||%s||%s||%s||%s||%s||%s||%s||%s||%s||%s||%s" % ( 
 							doc ['numero'],  # Cartaporte
 							doc ["txt12"],   # Descripcion 
 							doc ["txt10"],   # Cantidad
@@ -45,7 +49,8 @@ class CartaporteOptionsView (View):
 							re.sub (r'[\r\n]+\s*', '. ', doc ["txt16"]), # INCONTERMS
 							doc ["txt13_2"], # Peso bruto total
 							doc ["txt13_1"], # Peso neto total
-							doc ["txt15"])   # Otras unidades total
+							doc ["txt15"],  # Otras unidades total
+							doc ["txt19"])   # Fecha emision
 
 				newOption = {"itemLine" : itemLine, "itemText" : itemText}
 				itemOptions.append (newOption)

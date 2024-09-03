@@ -21,7 +21,8 @@ function createAutocomplete (entity) {
 	const csrftoken = getCookie('csrftoken');
 
 	let inputSelector = entity.inputSelector
-	let sourceUrl     = entity.sourceUrl
+	let sourceUrl     = "/" + entity.sourceUrl
+	console.log (">>> sourceUrl: ", sourceUrl)
 	
 	$(inputSelector).autocomplete({
 		// List of autocomplete options
@@ -85,14 +86,14 @@ function setAutocompleteForDocument (documentType) {
 		// Cartaportes
 		let cartaporteInputs = getTextAreasByClassName ("input_cartaporte")
 		cartaporteInputs.forEach (inputName => {
-			createAutocomplete(new AutoCompleteCartaporte (inputName, 'opciones-cartaporte/', documentType)) 
+			createAutocomplete(new AutoCompleteCartaporte (inputName, 'opciones-cartaporte', documentType)) 
 		});
 
 
 		// Vehiculo
 		let vehiculoInputs = getTextAreasByClassName ("input_placaPais")
 		vehiculoInputs.forEach (inputName => {
-			createAutocomplete(new AutoCompletePlacaPais (inputName, 'opciones-vehiculo/')) 
+			createAutocomplete(new AutoCompletePlacaPais (inputName, 'opciones-vehiculo')) 
 		});
 
 		// Conductor
@@ -147,7 +148,7 @@ class AutoCompleteCartaporte extends AutoComplete {
 		
 		let docInputsIds = null;
 		if (this.documentType === "MANIFIESTO")
-			docInputsIds = ["28","29","30","31","32_1","32_3","33_1","34","32_2","32_4","33_2"];
+			docInputsIds = ["28","29","30","31","32_1","32_3","33_1","34","32_2","32_4","33_2", "40"];
 		else if (this.documentType === "DECLARACION")
 			docInputsIds = ["15","16","17","18","19_1","19_3","20_1","21","19_2","19_4","20_2"];
 		else { 

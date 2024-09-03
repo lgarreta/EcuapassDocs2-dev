@@ -1,3 +1,36 @@
+/* Handle char inpus in textareas:
+	Convert to uppercase
+	Control maxlines
+*/
+function handleInput (event) {
+	textArea = event.target;
+	convertToUpperCase (textArea);
+	controlMaxlines (textArea);
+}
+
+// Save the current cursor position
+function convertToUpperCase (textArea) {
+	var start = textArea.selectionStart;
+	var end = textArea.selectionEnd;
+	// Convert the text to uppercase and set it back to the textArea
+	textArea.value = textArea.value.toUpperCase();
+	// Restore the cursor position
+	textArea.setSelectionRange(start, end);
+}
+
+// Control maximum number of lines
+function controlMaxlines (textarea) {
+	MAXLINES = inputsParameters [textArea.id]["maxLines"];
+	lines = textArea.value.split('\n'); 
+	if (lines.length > MAXLINES) 
+		textArea.value = lines.slice (0, MAXLINES).join('\n');
+}
+
+
+// ------------------------------------------------------------------
+// ----- Other fuctions --------------------------------------------- 
+// ------------------------------------------------------------------
+	//
 // Scripts to handle input manually: MAXCHARS, NEWLINES, WRAPWORD
 function getWrappedText (textarea) {
 	//var textarea = document.getElementById('myTextarea');

@@ -1,62 +1,59 @@
 // Convert to uppercase
-function handleInput (event) {
-		textArea = event.target;
-		convertToUpperCase (textArea);
-}
-
-// Save the current cursor position
-function convertToUpperCase (textArea) {
-	var start = textArea.selectionStart;
-	var end = textArea.selectionEnd;
-	// Convert the text to uppercase and set it back to the textArea
-	textArea.value = textArea.value.toUpperCase();
-	// Restore the cursor position
-		textArea.setSelectionRange(start, end);
-}
+//function handleInput (event) {
+//		textArea = event.target;
+//		convertToUpperCase (textArea);
+//}
+//
+//// Save the current cursor position
+//function convertToUpperCase (textArea) {
+//	var start = textArea.selectionStart;
+//	var end = textArea.selectionEnd;
+//	// Convert the text to uppercase and set it back to the textArea
+//	textArea.value = textArea.value.toUpperCase();
+//	// Restore the cursor position
+//	textArea.setSelectionRange(start, end);
+//}
 
 // Handle the event went user leaves out textareas
 function handleBlur (textareaId, docType, textAreasDict, textarea) {
-	console.log ("+++ Handling Blur", docType)
-	if (docType == "MANIFIESTO") 
+	if (docType == "CARTAPORTE")
+		handleBlurForCartaporte (textareaId, docType, textAreasDict, textarea) 
+	else if (docType == "MANIFIESTO")
 		handleBlurForManifiesto (textareaId, docType, textAreasDict, textarea) 
-	else
-		if (docType == "CARTAPORTE") {
-			//-- Copy "ciudad-pais. fecha" to other inputs (BYZA)
-			if (textareaId == "txt06") {
-				textAreasDict ["txt07"].value = textAreasDict ["txt06"].value
-				textAreasDict ["txt19"].value = textAreasDict ["txt06"].value
-			}
-			//-- Calculate totals when change gastos table values
-			remitenteInputs = {"txt17_11":"txt17_21","txt17_12":"txt17_22","txt17_13":"txt17_23"}
-			if (Object.keys (remitenteInputs).includes (textareaId)) {
-				if (textarea.value != "") {
-					textarea.value = checkFormatNumber (textarea.value)
-		 			textAreasDict [remitenteInputs [textareaId]].value = "USD"
-				}
-
-				setTotal (Object.keys (remitenteInputs), "txt17_14", textAreasDict);
-				textAreasDict ["txt17_24"].value = "USD"
-			}
-
-			destinatarioInputs = {"txt17_31":"txt17_41","txt17_32":"txt17_42","txt17_33":"txt17_43"}
-			if (Object.keys (destinatarioInputs).includes (textareaId)) {
-				if (textarea.value != "") {
-					textarea.value = checkFormatNumber (textarea.value)
-					textAreasDict [destinatarioInputs [textareaId]].value = "USD"
-				}
-
-				setTotal (Object.keys (destinatarioInputs), "txt17_34", textAreasDict);
-				textAreasDict ["txt17_44"].value = "USD"
-			}
+}
+function handleBlurCartaporte (textareaId, docType, textAreasDict, textarea) {
+	//-- Copy "ciudad-pais. fecha" to other inputs (BYZA)
+	if (textareaId == "txt06") {
+		textAreasDict ["txt07"].value = textAreasDict ["txt06"].value
+		textAreasDict ["txt19"].value = textAreasDict ["txt06"].value
+	}
+	//-- Calculate totals when change gastos table values
+	remitenteInputs = {"txt17_11":"txt17_21","txt17_12":"txt17_22","txt17_13":"txt17_23"}
+	if (Object.keys (remitenteInputs).includes (textareaId)) {
+		if (textarea.value != "") {
+			textarea.value = checkFormatNumber (textarea.value)
+			textAreasDict [remitenteInputs [textareaId]].value = "USD"
 		}
+
+		setTotal (Object.keys (remitenteInputs), "txt17_14", textAreasDict);
+		textAreasDict ["txt17_24"].value = "USD"
+	}
+
+	destinatarioInputs = {"txt17_31":"txt17_41","txt17_32":"txt17_42","txt17_33":"txt17_43"}
+	if (Object.keys (destinatarioInputs).includes (textareaId)) {
+		if (textarea.value != "") {
+			textarea.value = checkFormatNumber (textarea.value)
+			textAreasDict [destinatarioInputs [textareaId]].value = "USD"
+		}
+
+		setTotal (Object.keys (destinatarioInputs), "txt17_34", textAreasDict);
+		textAreasDict ["txt17_44"].value = "USD"
+	}
 }
 
 
 function handleBlurForManifiesto (textareaId, docType, textAreasDict, textarea) {
-	console.log ("+++ Blur in manifiesto")
 	if (textareaId == "txt28") {
-		console.log ("+++ Blur in txt28")
-
 		const csrftoken = getCookie('csrftoken');
 		$.ajax({
 			type : 'POST',
@@ -99,7 +96,6 @@ function setTotal (textArray, txtTotal, textAreasDict) {
 // Check and format numbers to two end decimals
 function checkFormatNumber (number) {
 	formatedNumber = parseFloat (number).toFixed (2)
-	console.log ("Formated number:", )
 	return formatedNumber
 }
 
