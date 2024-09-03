@@ -18,9 +18,10 @@
 function handleBlur (textareaId, docType, textAreasDict, textarea) {
 	if (docType == "CARTAPORTE")
 		handleBlurForCartaporte (textareaId, docType, textAreasDict, textarea) 
-	else if (docType == "MANIFIESTO")
-		handleBlurForManifiesto (textareaId, docType, textAreasDict, textarea) 
+	//else if (docType == "MANIFIESTO")
+	//	handleBlurForManifiesto (textareaId, docType, textAreasDict, textarea) 
 }
+
 function handleBlurCartaporte (textareaId, docType, textAreasDict, textarea) {
 	//-- Copy "ciudad-pais. fecha" to other inputs (BYZA)
 	if (textareaId == "txt06") {
@@ -126,5 +127,4 @@ function setParametersToInputs (textAreas, inputParameters, docType) {
 		});
 	});
 }
-
 

@@ -4,6 +4,7 @@
 - Custom user management
 
 ## LOG
+Sep/03: r0.833 : Working Declaracion: Save/Autocomplete.
 Sep/03: r0.832 : Fixing Declaracion options for manifiesto
 Sep/03: r0.831 : Working Declaracion. One url file for options. New models_Scripts.
 Sep/01: r0.830 : Working base class table for listing. Menu by doc instead by action.

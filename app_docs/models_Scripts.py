@@ -1,9 +1,13 @@
 """
 Scripts for read/write models into DB
 """
+from datetime import timedelta
+from django.utils import timezone # For getting recent cartaportes
+
 from ecuapassdocs.info.ecuapass_utils import Utils
 from ecuapassdocs.info.ecuapass_info import EcuInfo
-from app_cartaporte.models_cpi import Cartaporte
+from ecuapassdocs.info.ecuapass_data import EcuData
+import app_cartaporte.models_cpi as cpiModels
 from ecuapassdocs.info.ecuapass_info_cartaporte_BYZA import CartaporteByza
 from app_docs.models_Entidades import Cliente
 
@@ -14,18 +18,20 @@ def getCartaporteInstance (docKey, docFields, docType):
 	cartaporte = None
 	try:
 		cartaporteNumber    = EcuInfo.getNumeroCartaporte (docFields, docType)
-		cartaporte, created = Cartaporte.objects.get (numero=cartaporteNumber)
+		print (f"+++ DEBUG: getCartaporteInstance:cartaporteNumber '{cartaporteNumber}'")
+		
+		cartaporte = cpiModels.Cartaporte.objects.get (numero=cartaporteNumber)
 		return cartaporte
-	except Cartaporte.DoesNotExist:
+	except cpiModels.Cartaporte.DoesNotExist:
 		Utils.printException (f"No existe cartaporte nro: '{cartaporteNumber}'!")
-	except Cartaporte.MultipleObjectsReturned:
+	except cpiModels.Cartaporte.MultipleObjectsReturned:
 		Utils.printException (f"Múltiples instancias de cartaporte nro: '{cartaporteNumber}'!")
 	return cartaporte
 #-------------------------------------------------------------------
 #-- Get/Save cliente info. Only works for BYZA
 #-- field keys correspond to: remitente, destinatario,... (Cartaporte)
 #-------------------------------------------------------------------
-def getSaveClienteInfo (docKey, docFields):
+def getSaveClienteInstance (docKey, docFields):
 	clienteInfo  = getClienteInfo (docKey, docFields)
 	if clienteInfo:
 		cliente = saveClienteInfoToDB (clienteInfo)

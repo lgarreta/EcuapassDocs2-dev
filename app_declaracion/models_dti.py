@@ -95,11 +95,12 @@ class Declaracion (EcuapassDoc):
 		self.usuario       = self.getUserByUsername (username)
 
 		# Document values
-		self.declarante    = Scripts.getSaveClienteInfo ("02_Declarante", docFields)
-		self.remitente     = Scripts.getSaveClienteInfo ("03_Remitente", docFields)
-		self.destinatario  = Scripts.getSaveClienteInfo ("04_Destinatario", docFields)
+		self.declarante    = Scripts.getSaveClienteInstance ("02_Declarante", docFields)
+		self.remitente     = Scripts.getSaveClienteInstance ("03_Remitente", docFields)
+		self.destinatario  = Scripts.getSaveClienteInstance ("04_Destinatario", docFields)
 		self.fecha_emision = EcuInfo.getFechaEmision (docFields, "DECLARACION")
 
+		print (f"+++ DEBUG: Declaracion:setValues:docFields '{docFields}'")
 		self.cartaporte    = Scripts.getCartaporteInstance ("15_Cartaporte", docFields, "DECLARACION")
 
 #		docFieldsPath, runningDir = self.createTemporalJson (docFields)

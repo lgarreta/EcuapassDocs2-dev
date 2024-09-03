@@ -13,7 +13,7 @@ from ecuapassdocs.info.ecuapass_utils import Utils
 
 import app_docs.models_Scripts as Scripts
 from app_cartaporte.models_cpi import Cartaporte
-from app_manifiesto.models_mci import Manifiesto
+from app_manifiesto.models_mci import Manifiesto, ManifiestoDoc
 
 from .models_Entidades import Vehiculo, Conductor, Cliente
 
@@ -86,12 +86,13 @@ class VehiculoOptionsView (View):
 class ManifiestoOptionsView (View):
 	@method_decorator(csrf_protect)
 	def post (self, request, *args, **kwargs):
+		print (f"+++ DEBUG: ManifiestoOptionsView:POST '{request}'")
 		itemOptions = []
 		try:
 			# Get cartaporte docs from query
 			query = request.POST.get ('query', '')
 
-			manifiestos  = Scripts.getRecentDocuments (ManifiestoDoc)
+			manifiestos  = Scripts.getRecentDocuments (Manifiesto)
 			if not manifiestos.exists():
 				manifiestos = Manifiesto.objects.filter (numero__startswith=query, fecha_emision=current_date)
 
@@ -112,32 +113,14 @@ class ManifiestoOptionsView (View):
 							doc ["txt33_1"], # Otras medidas
 							doc ["txt34"],   # Incoterms
 							doc ["txt37"],   # PaisAduana-cruce
-							doc ["txt40"],   # FechaEmision
+							doc ["txt40"])   # FechaEmision
 
+				print (f"+++ DEBUG: itemText '{itemText}'")
 				newOption = {"itemLine" : itemLine, "itemText" : itemText}
 				itemOptions.append (newOption)
 		except:
-			Utils.printException (">>> Excepcion obteniendo opciones de cartaportes")
+			Utils.printException (">>> Excepcion obteniendo opciones de manifiestos")
 			
-		return JsonResponse (itemOptions, safe=False)
-
-
-
-
-
-class ManifiestoOptionsView (View):
-	@method_decorator(csrf_protect)
-	def post (self, request, *args, **kwargs):
-		query   = request.POST.get('query', '')
-		options = ManifiestoDoc.objects.filter (numero__istartswith=query).values ('numero')
-
-		itemOptions = []
-		for i, option in enumerate (options):
-			itemLine = f"{i}. {option['numero']}"
-			itemText = f"{option['numero']}"
-			newOption = {"itemLine" : itemLine, "itemText" : itemText}
-			itemOptions.append (newOption)
-		
 		return JsonResponse (itemOptions, safe=False)
 
 #--------------------------------------------------------------------

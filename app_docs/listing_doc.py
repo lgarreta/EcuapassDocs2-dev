@@ -35,6 +35,7 @@ class DocumentosListadoView (View):
 		self.DOCTABLE  = DOCTABLE
 
 	def get (self, request):
+		print (f"+++ DEBUG: Listado '{request}'")
 		pais	 = request.session.get ("pais")
 		usuario  = request.session.get ("usuario")
 		documentos  = self.DOCMODEL.objects.filter (pais=pais)

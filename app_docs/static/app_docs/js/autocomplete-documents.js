@@ -109,7 +109,7 @@ function setAutocompleteForDocument (documentType) {
 		// Numero Manifiesto (Used in Declaracion)
 		let manifiestoInputs = getTextAreasByClassName ("input_manifiesto")
 		manifiestoInputs.forEach (inputName => {
-			createAutocomplete(new AutoComplete (inputName, 'opciones-manifiesto')) 
+			createAutocomplete(new AutoCompleteManifiesto (inputName, 'opciones-manifiesto')) 
 		});
 
 }
@@ -165,6 +165,25 @@ class AutoCompleteCartaporte extends AutoComplete {
 		else { 
 			return null
 		}
+
+		for (let i=0; i < docInputsIds.length; i++) {
+			let txtId = "txt" + docInputsIds [i]
+			document.getElementById (txtId).value = values [i]
+		}
+	}
+}
+
+//-------------------------------------------------------------------
+//-- Autocomplete for "manifiesto" 
+//-------------------------------------------------------------------
+class AutoCompleteManifiesto extends AutoComplete {
+	// When a cartaporte number is selected, populate related inputs
+	onItemSelected (ui) {
+		let index = ui.item.value.split (".")[0]
+		let text = this.fullData [index]["itemText"]
+		let values = text.split ("||");
+		
+		let docInputsIds = ["12","13","14","15","16","17","18","19_1","19_3","20_1","21","22","23"]
 
 		for (let i=0; i < docInputsIds.length; i++) {
 			let txtId = "txt" + docInputsIds [i]

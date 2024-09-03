@@ -1,9 +1,7 @@
 import os, tempfile, json
-from datetime import datetime, timedelta
 
 from django.db import models
 from django.urls import reverse   # To generate URLS by reversing URL patterns
-from django.utils import timezone # For getting recent cartaportes
 
 from ecuapassdocs.info.ecuapass_utils import Utils
 from ecuapassdocs.info.ecuapass_data import EcuData
@@ -12,6 +10,7 @@ from ecuapassdocs.info.ecuapass_info_cartaporte_BYZA import CartaporteByza
 
 from app_docs.models_EcuapassDoc import EcuapassDoc
 from app_docs.models_Entidades import Cliente
+import app_docs.models_Scripts as Scripts
 
 #--------------------------------------------------------------------
 # Model CartaporteForm
@@ -115,8 +114,8 @@ class Cartaporte (EcuapassDoc):
 		self.usuario   = self.getUserByUsername (username)
 
 		# Document values
-		self.remitente     = self.getSaveClienteInfo ("02_Remitente", docFields)
-		self.destinatario  = self.getSaveClienteInfo ("03_Destinatario", docFields)
+		self.remitente     = Scripts.getSaveClienteInstance ("02_Remitente", docFields)
+		self.destinatario  = Scripts.getSaveClienteInstance ("03_Destinatario", docFields)
 		self.fecha_emision = EcuInfo.getFechaEmision (docFields, "CARTAPORTE")
 		# Get 'fecha recepcion'
 		#self.fecha_emision = self.getFechaRecepcion ("31_FechaRecepcion", docFields)
@@ -168,21 +167,4 @@ class Cartaporte (EcuapassDoc):
 #		except:
 #			Utils.printException (f"Obteniedo datos del remitente en la info: ", str (info))
 #			return None
-
-	def createTemporalJson (self, docFields):
-		tmpPath        = tempfile.gettempdir ()
-		jsonFieldsPath = os.path.join (tmpPath, f"CARTAPORTE-{self.numero}.json")
-		json.dump (docFields, open (jsonFieldsPath, "w"))
-		return (jsonFieldsPath, tmpPath)
-
-	#-- Return recent cartaportes (within the past week)
-	def getRecentCartaportes ():
-		diasRecientes = EcuData.configuracion ["dias_cartaportes_recientes"]
-		oneWeekAgo = timezone.now () - timedelta (days=diasRecientes)
-		recentCartaportes = Cartaporte.objects.filter (fecha_emision__gte=oneWeekAgo)
-		for cartaporte in recentCartaportes:
-			print (cartaporte.numero, cartaporte.fecha_emision)
-		return recentCartaportes
-
-
 
