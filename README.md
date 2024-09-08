@@ -4,6 +4,7 @@
 - Custom user management
 
 ## LOG
+Sep/07: r0.834 : Replaces country form with CustomAuthForm. Changing external .css .js to local
 Sep/03: r0.833 : Working Declaracion: Save/Autocomplete.
 Sep/03: r0.832 : Fixing Declaracion options for manifiesto
 Sep/03: r0.831 : Working Declaracion. One url file for options. New models_Scripts.

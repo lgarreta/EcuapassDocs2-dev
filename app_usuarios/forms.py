@@ -18,22 +18,17 @@ from .models import UsuarioEcuapass
 from django.contrib.auth.forms import AuthenticationForm
 
 class CustomAuthenticationForm(AuthenticationForm):
-    username = forms.CharField(
-        widget=forms.TextInput(attrs={'autofocus': True, 'autocomplete': 'off'})
-    )
-    password = forms.CharField(
-        label=("Password"),
-        strip=False,
-        widget=forms.PasswordInput(attrs={'autocomplete': 'off'}),
-    )
-
-
-#----------------------------------------------------------
-#-- Custom authentication form added "pais"
-#----------------------------------------------------------
-class CountrySelectionForm (forms.Form):
 	COUNTRY_CHOICES = [('ECUADOR','ECUADOR'),('COLOMBIA','COLOMBIA'),('PERU','PERU'),('TODOS','TODOS')]
 	pais = forms.ChoiceField (choices=COUNTRY_CHOICES, required=True)
+
+	username = forms.CharField(
+		widget=forms.TextInput(attrs={'autofocus': True, 'autocomplete': 'off'})
+	)
+	password = forms.CharField(
+		label=("Password"),
+		strip=False,
+		widget=forms.PasswordInput(attrs={'autocomplete': 'off'}),
+	)
 
 #----------------------------------------------------------
 #----------------------------------------------------------
@@ -69,7 +64,7 @@ class RegistrationForm (UserCreationForm):
 		self.fields ["username"].label = "Usuario"
 		self.fields ["email"].label    = "Correo"
 		self.fields ["nombre"].label   = "Nombre completo (Nombre + Apellido)"
-		self.fields ["pais"].label     = "Pais"
+		self.fields ["pais"].label	   = "Pais"
 		self.fields ["perfil"].label   = "Tipo de usuario"
 
 

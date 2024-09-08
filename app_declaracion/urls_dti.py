@@ -21,7 +21,7 @@ urlpatterns = [
 #	path('<pk>/opciones-cartaporte/', CartaporteOptionsView.as_view(), name='opciones-cartaporte'),
 
 	# Document options using <pk>
-    path('detalle/<pk>', views_dti.DeclaracionDetailView.as_view(), name='declaracion-detail'),
+    path('detalle/<pk>', views_dti.DeclaracionDetailView.as_view(), name='declaracion-detalle'),
 	path('editar/<int:pk>', DeclaracionDocView.as_view(), name='declaracion-editar'),
 	path('pdf_original/<int:pk>', DeclaracionDocView.as_view(), name='declaracion-pdf_original'),
 	path('pdf_copia/<int:pk>', DeclaracionDocView.as_view(), name='declaracion-pdf_copia'),

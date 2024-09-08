@@ -104,7 +104,7 @@ class Cartaporte (EcuapassDoc):
 
 	def get_absolute_url(self):
 		"""Returns the url to access a particular language instance."""
-		return reverse('cartaporte-detail', args=[str(self.id)])
+		return reverse('cartaporte-detalle', args=[str(self.id)])
 
 	def setValues (self, cartaporteForm, docFields, pais, username):
 		# Base values

@@ -39,6 +39,8 @@ class Conductor (models.Model):
 	nacionalidad     = models.CharField (max_length=50)
 	licencia         = models.CharField (max_length=50)
 	fecha_nacimiento = models.CharField (max_length=50)
+	auxiliar         = models.OneToOneField ("self", null=True, blank=True,
+										  on_delete=models.CASCADE, related_name='conductor_principal')
 
 	def get_absolute_url(self):
 		"""Returns the url to access a particular genre instance."""
@@ -59,6 +61,7 @@ class Vehiculo (models.Model):
 	pais        = models.CharField (max_length=20)
 	chasis      = models.CharField (max_length=50)
 	anho        = models.CharField (max_length=20)
+	conductor   = models.OneToOneField (Conductor, null=True, blank=True, on_delete=models.CASCADE)
 
 	def get_absolute_url(self):
 		"""Returns the url to access a particular language instance."""

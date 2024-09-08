@@ -26,6 +26,7 @@ urlpatterns = [
 	# Show autocomplete options
     path('opciones-cliente', ClienteOptionsView.as_view(), name='opciones-cliente'),
 	path('opciones-lugar', CiudadPaisOptionsView.as_view(), name='opciones-lugar'),
+	path('opciones-lugar-fecha', CiudadPaisFechaOptionsView.as_view(), name='opciones-lugar-fecha'),
 	path('opciones-vehiculo', VehiculoOptionsView.as_view(), name='opciones-vehiculo'),
 	path('opciones-conductor', ConductorOptionsView.as_view(), name='opciones-conductor'),
 	path('opciones-cartaporte', CartaporteOptionsView.as_view(), name='opciones-cartaporte'),

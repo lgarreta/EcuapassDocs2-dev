@@ -15,13 +15,10 @@ urlpatterns = [
     #path('listado/', views_Filters.cartaportesFilterView, name='cartaporte-listado'),
     path('listado/', CartaportesListadoView.as_view(), name='cartaporte-listado'),
 
-#	# Show autocomplete options
-#    path('<pk>/opciones-cliente', ClienteOptionsView.as_view(), name='opciones-cliente'),
-#    path('<pk>/opciones-lugar-fecha', CiudadPaisFechaOptionsView.as_view(), name='opciones-lugar-fecha'),
-#    path('<pk>/opciones-lugar', CiudadPaisOptionsView.as_view(), name='opciones-lugar'),
+	# Autocomplete options in app_urls
 
 	# Document options using <pk>
-    path('detalle/<pk>', views_cpi.CartaporteDetailView.as_view(), name='cartaporte-detail'),
+    path('detalle/<pk>', views_cpi.CartaporteDetailView.as_view(), name='cartaporte-detalle'),
 	path('editar/<int:pk>', CartaporteDocView.as_view(), name='cartaporte-editar'),
 	path('pdf_original/<int:pk>', CartaporteDocView.as_view(), name='cartaporte-pdf_original'),
 	path('pdf_copia/<int:pk>', CartaporteDocView.as_view(), name='cartaporte-pdf_copia'),

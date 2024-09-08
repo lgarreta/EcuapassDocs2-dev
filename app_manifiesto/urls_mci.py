@@ -23,7 +23,7 @@ urlpatterns = [
 #	path('<pk>/opciones-cartaporte', CartaporteOptionsView.as_view(), name='opciones-cartaporte'),
 
 	# Document options using <pk>
-    path('detalle/<pk>', views_mci.ManifiestoDetailView.as_view(), name='manifiesto-detail'),
+    path('detalle/<pk>', views_mci.ManifiestoDetailView.as_view(), name='manifiesto-detalle'),
 	path('editar/<int:pk>', ManifiestoDocView.as_view(), name='manifiesto-editar'),
 	path('pdf_original/<int:pk>', ManifiestoDocView.as_view(), name='manifiesto-pdf_original'),
 	path('pdf_copia/<int:pk>', ManifiestoDocView.as_view(), name='manifiesto-pdf_copia'),

@@ -70,8 +70,8 @@ class Declaracion (EcuapassDoc):
 
 	documento    = models.OneToOneField (DeclaracionDoc,
 									   on_delete=models.CASCADE, null=True)
-	declarante   = models.ForeignKey (Cliente, related_name="declaraciones_declarante",
-	                                   on_delete=models.SET_NULL, null=True)
+	#declarante   = models.ForeignKey (Cliente, related_name="declaraciones_declarante",
+	#                                   on_delete=models.SET_NULL, null=True)
 	remitente    = models.ForeignKey (Cliente, related_name="declaraciones_remitente",
 	                                   on_delete=models.SET_NULL, null=True)
 	destinatario = models.ForeignKey (Cliente, related_name="declaraciones_destinatario",

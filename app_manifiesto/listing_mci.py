@@ -20,7 +20,7 @@ from django.utils.html import format_html
 from django_tables2.utils import A
 
 # For models
-from app_docs.listing_doc import DocumentosListadoView, DocTable
+from app_docs.listing_doc import DocumentosListadoView, DocTable, DocumentosListadoForm
 from .models_mci import Manifiesto
 
 #----------------------------------------------------------
@@ -28,29 +28,7 @@ from .models_mci import Manifiesto
 #----------------------------------------------------------
 class ManifiestosListadoView (DocumentosListadoView):
     def __init__ (self):
-        super().__init__ ("Manifiestos", Manifiesto, ManifiestosListadoForm, ManifiestosListadoTable)
-
-#----------------------------------------------------------
-#-- Forma
-#----------------------------------------------------------
-class ManifiestosListadoForm (forms.Form):
-	numero		   = forms.CharField(required=False)
-	fecha_emision  = forms.DateField(required=False,
-								  widget=forms.DateInput (attrs={'type':'date'}))
-	#remitente		= forms.ModelChoiceField (queryset=Cliente.objects.all(), required=False)
-
-	def __init__(self, *args, **kwargs):
-		super (ManifiestosListadoForm, self).__init__(*args, **kwargs)
-		self.helper = FormHelper()
-		self.helper.form_method = 'GET'
-		self.helper.layout = Layout(
-			Row (
-				Column ('numero', css_class='col'),
-				Column ('fecha_emision', css_class='col'),
-				css_class='row'
-			),
-			Submit ('submit', 'Filtrar', css_class='btn btn-primary')
-		)
+        super().__init__ ("Manifiestos", Manifiesto, DocumentosListadoForm, ManifiestosListadoTable)
 
 #----------------------------------------------------------
 # Table
@@ -58,7 +36,7 @@ class ManifiestosListadoForm (forms.Form):
 class ManifiestosListadoTable (DocTable):
 	class Meta:
 		model         = Manifiesto
-		urlActualizar = "manifiesto-editar"
+		urlDoc        = "manifiesto"
 		fields        = ("numero", "fecha_emision", "acciones")
 		template_name = DocTable.template
 		attrs         = {'class': 'table table-striped table-bordered'}		

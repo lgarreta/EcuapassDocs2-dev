@@ -92,7 +92,7 @@ class Manifiesto (EcuapassDoc):
 
 	def get_absolute_url(self):
 		"""Returns the url to access a particular language instance."""
-		return reverse('manifiesto-detail', args=[str(self.id)])
+		return reverse('manifiesto-detalle', args=[str(self.id)])
 
 	def setValues (self, manifiestoDoc, docFields, procedimiento, username):
 		# Base values
@@ -105,14 +105,14 @@ class Manifiesto (EcuapassDoc):
 		jsonFieldsPath, runningDir = self.createTemporalJson (docFields)
 		manifiestoInfo     = ManifiestoByza (jsonFieldsPath, runningDir)
 
-		self.vehiculo      = self.getVehiculo (manifiestoInfo, "vehiculo")
-		self.remolque      = self.getVehiculo (manifiestoInfo, "remolque")
-		self.cartaporte    = self.getCartaporte (manifiestoInfo)
+		self.vehiculo      = self.getVehiculoInstance (manifiestoInfo, "vehiculo")
+		self.remolque      = self.getVehiculoInstance (manifiestoInfo, "remolque")
+		self.cartaporte    = self.getCartaporteInstance (manifiestoInfo)
 		#print ("+++ ManifiestoInfo:", manifiestoInfo.fields)
 		print ("+++ Cartaporte:", self.cartaporte)
 		
 	#-- Get cartaporte from manifiesto info
-	def getCartaporte (self, manifiestoInfo):
+	def getCartaporteInstance (self, manifiestoInfo):
 		numeroCartaporte = None
 		try:
 			numeroCartaporte = manifiestoInfo.getNumeroCartaporte ()
@@ -120,9 +120,10 @@ class Manifiesto (EcuapassDoc):
 			return record
 		except: 
 			Utils.printx (f"ALERTA: Cartaporte número '{numeroCartaporte}' no encontrado.")
+			Utils.printException ()
 		return None
 
-	def getVehiculo (self, manifiestoInfo, vehicleType):
+	def getVehiculoInstance (self, manifiestoInfo, vehicleType):
 		try:
 			info = manifiestoInfo.getVehiculoRemolqueInfo (vehicleType)
 

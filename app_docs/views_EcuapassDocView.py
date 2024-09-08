@@ -53,8 +53,8 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	# Envía los parámetros o restricciones para cada campo en la forma de HTML
 	#-------------------------------------------------------------------
 	def get (self, request, *args, **kwargs):
-		self.initDocumentValues (request)
 		print ("\n\n+++ GET : EcuapassDocView +++")
+		self.initDocumentValues (request)
 		print ("+++ URL :", request.path_info)
 		command = resolve(request.path_info).url_name
 		print ("+++ URL name:", command)
@@ -302,9 +302,10 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	#-- Overloaded in sublclasses
 	#-------------------------------------------------------------------
 	def initDocumentValues (self, request):
-		print ("+++ DEBUG: initDocumentValues")
 		self.pais    = request.session.get ("pais")
 		self.usuario = request.user
+		print (f"+++ DEBUG: initDocumentValues:pais '{self.pais}'")
+		print (f"+++ DEBUG: initDocumentValues:usuario '{self.usuario}'")
 		codigoPais   = Utils.getCodigoPaisFromPais (self.pais)
 		self.inputParams ["txt0a"]["value"] = codigoPais
 

@@ -7,45 +7,49 @@ from django.contrib.auth import login
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
+from django.contrib.auth.views import PasswordChangeView
+
 from .models import UsuarioEcuapass
 from .tables import UserTable
+from .forms  import CustomAuthenticationForm
 
 #----------------------------------------------------------
 # Custom login view added "pais"
 #----------------------------------------------------------
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import CountrySelectionForm
+#from .forms import CountrySelectionForm
 
 #----------------------------------------------------------
 # Handling login
 #----------------------------------------------------------
 class CustomLoginView (LoginView):
 	template_name = 'login.html'  # Update with your login template path
-	authentication_form = AuthenticationForm
-	country_form_class = CountrySelectionForm
+	authentication_form = CustomAuthenticationForm
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data (**kwargs)
-		context ['country_form'] = self.country_form_class()
 		return context
 
 	def post (self, request, *args, **kwargs):
-		print (f"+++ DEBUG: CustomLoginView POST '{request}'")
+		print (f"\n\n\n+++ DEBUG: CustomLoginView POST '{request}'")
 		auth_form    = self.authentication_form (data=request.POST)
-		country_form = self.country_form_class (data=request.POST)
 
-		if auth_form.is_valid() and country_form.is_valid():
+		if auth_form.is_valid(): 
 			# Process login and country selection
-			self.request.session ['pais']    = country_form.cleaned_data ['pais']
-			self.request.session ['usuario'] = auth_form.cleaned_data ['username']
+			request.session ['usuario'] = auth_form.cleaned_data ['username']
+			request.session ['pais'] = auth_form.cleaned_data ['pais']
+			request.session.save ()
+			usuario = request.session ['usuario'] 
+			pais    = request.session ['pais'] 
+			print (f"+++ DEBUG: CustomLoginView self.request.session '{usuario}'")
+			print (f"+++ DEBUG: CustomLoginView self.request.session '{pais}'")
 			return self.form_valid (auth_form)
 		else:
 			return self.form_invalid (auth_form)
 
 	def form_invalid(self, form):
 		context = self.get_context_data (form=form)
-		context['country_form'] = self.country_form_class(self.request.POST)
 		return self.render_to_response(context)
 	
 #----------------------------------------------------------
@@ -57,7 +61,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 def get_country_for_username (request):
-	username = request.GET.get ('username', None)
+	username = request.POST.get ('username', None)
 	data = {'pais': ''}
 	print ("+++ DEBUG: get_country_for_username : username :", username)
 	if username:
@@ -68,6 +72,8 @@ def get_country_for_username (request):
 		except User.DoesNotExist:
 			data['pais'] = ''
 
+	request.session ['pais']  = data ['pais']
+	request.session.save ()
 	return JsonResponse(data)
 
 #----------------------------------------------------------
@@ -139,4 +145,12 @@ def registration (request):
 	else:
 		form = RegistrationForm()
 	return render(request, 'registration.html', {'form': form})
+
+#----------------------------------------------------------
+# Password change view
+#----------------------------------------------------------
+class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView):
+	template_name = 'password_change_form.html'
+	success_url   = reverse_lazy('login')
+	success_message = "Cambio exitoso. Por favor ingrese con su nueva clave"
 

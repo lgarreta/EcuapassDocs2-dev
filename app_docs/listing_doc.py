@@ -1,4 +1,7 @@
+"""
+Base classes (View, Table) for listing ECUAPASS documents (Cartaporte, Manifiesto, Declaracion)
 
+"""
 
 # For views
 from django.views import View
@@ -19,9 +22,6 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django_tables2.utils import A
 
-# For test
-from app_cartaporte.models_cpi import Cartaporte
-
 #----------------------------------------------------------
 #-- View
 #----------------------------------------------------------
@@ -35,7 +35,6 @@ class DocumentosListadoView (View):
 		self.DOCTABLE  = DOCTABLE
 
 	def get (self, request):
-		print (f"+++ DEBUG: Listado '{request}'")
 		pais	 = request.session.get ("pais")
 		usuario  = request.session.get ("usuario")
 		documentos  = self.DOCMODEL.objects.filter (pais=pais)
@@ -60,6 +59,29 @@ class DocumentosListadoView (View):
 		return render(request, 'documento_listado.html',
 				   {'docsTipo': self.docsTipo, 'docsLista': documentos, 'docsForma': form, 'docsTabla': table})
 
+
+#----------------------------------------------------------
+#-- Forma
+#----------------------------------------------------------
+class DocumentosListadoForm (forms.Form):
+	numero		   = forms.CharField(required=False)
+	fecha_emision  = forms.DateField(required=False,
+								  widget=forms.DateInput (attrs={'type':'date'}))
+
+	def __init__(self, *args, **kwargs):
+		super (DocumentosListadoForm, self).__init__(*args, **kwargs)
+		self.helper = FormHelper()
+		self.helper.form_method = 'GET'
+		self.helper.layout = Layout(
+			Row (
+				Column ('numero', css_class='col'),
+				Column ('fecha_emision', css_class='col'),
+				css_class='row'
+			),
+			Submit ('submit', 'Filtrar', css_class='btn btn-primary')
+		)
+
+
 ##----------------------------------------------------------
 ## Base table for Ecuapass docs tables used in listing
 ##----------------------------------------------------------
@@ -71,23 +93,25 @@ class DocTable (tables.Table):
 
 	#-- Define links for document table columns: numero, acciones (actualizar, eliminar)
 	def __init__ (self, *args, **kwargs):
-		super().__init__ (*args, **kwargs)
-		self.urlActualizar                  = getattr (self.Meta, 'urlActualizar', 'default-url')
-		self.base_columns ['numero']   = tables.LinkColumn (self.urlActualizar, args=[A('pk')])
+		self.urlDoc                   = getattr (self.Meta, 'urlDoc', 'default-url')
+		self.urlActualizar            = f"{self.urlDoc}-editar"
+		self.urlDetalle               = f"{self.urlDoc}-detalle"
+		self.base_columns ['numero']  = tables.LinkColumn (self.urlActualizar, args=[A('pk')])
 		# Column for apply actions in the current item document
 		self.base_columns ['acciones'] = tables.TemplateColumn(
 			template_code='''
-			(<a href="{{ record.get_link_actualizar }}">{{ record.get_link_actualizar_display }}</a>),
-			(<a href="{{ record.get_link_eliminar }}">{{ record.get_link_eliminar_display }}</a>)
+			<a href="{{ record.get_link_actualizar }}">{{ record.get_link_actualizar_display }}</a>,
+			<a href="{{ record.get_link_eliminar }}">{{ record.get_link_eliminar_display }}</a>
 			''',
 			verbose_name='Acciones'
 		)
+		super().__init__ (*args, **kwargs)
 
 	#-- Create a link on doc number
 	def render_numero (self, value, record):
 		# Generate a URL for each record
 		return format_html('<a href="{}" target="_blank" >{}</a>', 
-					 reverse(self.urlActualizar, args=[record.pk]), value)
+					 reverse(self.urlDetalle, args=[record.pk]), value)
 
 	#-- Change format to agree with form date format
 	def render_fecha_emision(self, value):

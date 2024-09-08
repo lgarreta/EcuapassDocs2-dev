@@ -19,7 +19,7 @@ from app_declaracion.models_dti import Declaracion, DeclaracionDoc
 from .models_Entidades import Cliente, Conductor, Vehiculo
 
 def index (request):
-	print ("+++ DEBUG: index")
+	print ("\n\n\n+++  DEBUG: GET index")
 	"""
 	Función vista para la página inicio del sitio.
 	"""

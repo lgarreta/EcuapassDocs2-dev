@@ -1,0 +1,1 @@
+/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs2-dev/app_docs/views_EcuapassDocView.py

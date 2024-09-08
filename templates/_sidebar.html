@@ -2,6 +2,7 @@
 {% block sidebar %}
 	<!-- Sidebar content goes here -->
 	<h3>EcuapassDocs</h3>
+	Usuario: {{ user.username }} ({{ user.pais }})<br>
 	<ul class="list-unstyled">
 		<li><a href="{% url 'index' %}">Inicio</a></li>
 
@@ -10,17 +11,6 @@
 				<li><a href="{% url 'login'%}?next={{request.path}}">Iniciar sesión</a></li>
 			</ul>
 		{% else %}
-			<a class="nav-link" href="#" data-toggle="collapse" data-target="#usuario" aria-expanded="true">Usuario:</a>
-			<div id="usuario" class="collapse show">
-				<ul class="nav-item">
-					<li>Usuario: {{ user.username }}</li>
-					<li>Pais: {{ user.pais }}<br></li>
-						<form method="post" action="{% url 'logout' %}">
-							{% csrf_token %}
-							<button type="submit">Cerrar sesión</button>
-						</form>
-			</div>
-
 			<a class="nav-link" href="#" data-toggle="collapse" data-target="#cartaporte" aria-expanded="true">Cartas de Porte:</a>
 			<div id="cartaporte" class="collapse show">
 				<ul class="nav-item">
@@ -45,8 +35,23 @@
 				</ul>
 			</div>
 
+			<a class="nav-link" href="#" data-toggle="collapse" data-target="#usuario" aria-expanded="true">Usuario:</a>
+			<div id="usuario" class="collapse">
+				<ul class="nav-item">
+					<li>Usuario: {{ user.username }}</li>
+					<li>Pais: {{ user.pais }}<br></li>
+					<li><a href="{% url 'password' %}">Cambiar contraseña</a></li>
+
+						<form method="post" action="{% url 'logout' %}">
+							{% csrf_token %}
+							<button type="submit">Cerrar sesión</button>
+						</form>
+			</div>
+
+
+
 			<a class="nav-link" href="#" data-toggle="collapse" data-target="#entidades" aria-expanded="false">Entidades:</a>
-			<div id="entidades" class="collapse show">
+			<div id="entidades" class="collapse">
 				<ul class="nav-item ">
 					<li><a href="{% url 'clientes' %}">Clientes</a></li>
 					<li><a href="{% url 'vehiculos' %}">Vehiculos</a></li>
