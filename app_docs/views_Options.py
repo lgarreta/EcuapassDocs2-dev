@@ -156,7 +156,7 @@ class ConductorOptionsView (View):
 		for i, option in enumerate (options):
 			itemLine = f"{i}. {option['nombre']}"
 			itemText = "%s||%s||%s||%s||%s" % (option["nombre"], option["documento"], 
-			           option["nacionalidad"], option ["licencia"], option ["fecha_nacimiento"])
+			           option["pais"], option ["licencia"], option ["fecha_nacimiento"])
 			newOption = {"itemLine" : itemLine, "itemText" : itemText}
 			itemOptions.append (newOption)
 		

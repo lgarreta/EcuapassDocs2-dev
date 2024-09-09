@@ -125,7 +125,7 @@ class ConductorCreate(login_required_class(CreateView)):
 
 class ConductorUpdate(login_required_class(UpdateView)):
 	model = Conductor
-	fields = ['nombre','nacionalidad','licencia','fecha_nacimiento']
+	fields = ['nombre','pais','licencia','fecha_nacimiento']
 
 class ConductorDelete(login_required_class(DeleteView)):
 	model = Conductor

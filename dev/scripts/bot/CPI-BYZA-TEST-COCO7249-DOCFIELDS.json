@@ -1,0 +1,166 @@
+{
+    "00_Pais": {
+        "value": "CO",
+        "content": "CO"
+    },
+    "00b_Numero": {
+        "value": "COCO7249",
+        "content": "COCO7249"
+    },
+    "01_Transportista": {
+        "value": "",
+        "content": ""
+    },
+    "02_Remitente": {
+        "value": "ARCILLAS Y MINERALES ORCA S.A.S.\nCALLE 45 NO. 4-79\nGACHANTIVA - COLOMBIA NIT: 900319488-6",
+        "content": "ARCILLAS Y MINERALES ORCA S.A.S.\nCALLE 45 NO. 4-79\nGACHANTIVA - COLOMBIA NIT: 900319488-6"
+    },
+    "03_Destinatario": {
+        "value": "CESAR ALFONSO CHICAIZA CASA\nCL E4E NO. S40-75\nQUITO-ECUADOR RUC: 1708240468001",
+        "content": "CESAR ALFONSO CHICAIZA CASA\nCL E4E NO. S40-75\nQUITO-ECUADOR RUC: 1708240468001"
+    },
+    "04_Consignatario": {
+        "value": "CESAR ALFONSO CHICAIZA CASA\nCL E4E NO. S40-75\nQUITO-ECUADOR RUC: 1708240468001",
+        "content": "CESAR ALFONSO CHICAIZA CASA\nCL E4E NO. S40-75\nQUITO-ECUADOR RUC: 1708240468001"
+    },
+    "05_Notificado": {
+        "value": "CESAR ALFONSO CHICAIZA CASA\nCL E4E NO. S40-75\nQUITO-ECUADOR RUC: 1708240468001",
+        "content": "CESAR ALFONSO CHICAIZA CASA\nCL E4E NO. S40-75\nQUITO-ECUADOR RUC: 1708240468001"
+    },
+    "06_Recepcion": {
+        "value": "GACHANTIVA - COLOMBIA, JULIO 04 DE 2024",
+        "content": "GACHANTIVA - COLOMBIA, JULIO 04 DE 2024"
+    },
+    "07_Embarque": {
+        "value": "GACHANTIVA - COLOMBIA, JULIO 04 DE 2024",
+        "content": "GACHANTIVA - COLOMBIA, JULIO 04 DE 2024"
+    },
+    "08_Entrega": {
+        "value": "TULCAN - ECUADOR",
+        "content": "TULCAN - ECUADOR"
+    },
+    "09_Condiciones": {
+        "value": "DIRECTO, SIN CAMBIO DE CAMION / POR COBRAR",
+        "content": "DIRECTO, SIN CAMBIO DE CAMION / POR COBRAR"
+    },
+    "10_CantidadClase_Bultos": {
+        "value": "30000 KG A GRANEL",
+        "content": "30000 KG A GRANEL"
+    },
+    "11_MarcasNumeros_Bultos": {
+        "value": "S/M",
+        "content": "S/M"
+    },
+    "12_Descripcion_Bultos": {
+        "value": "ARCILLA CERAMICA.\n\n\nCEC202420340361-0001",
+        "content": "ARCILLA CERAMICA.\n\n\nCEC202420340361-0001"
+    },
+    "13a_Peso_Neto": {
+        "value": "30000.00",
+        "content": "30000.00"
+    },
+    "13b_Peso_Bruto": {
+        "value": "30000.00",
+        "content": "30000.00"
+    },
+    "14_Volumen": {
+        "value": "",
+        "content": ""
+    },
+    "15_Otras_Unidades": {
+        "value": "",
+        "content": ""
+    },
+    "16_Incoterms": {
+        "value": "EXW: GACHANTIVA - COLOMBIA\nUSD: 1050.00",
+        "content": "EXW: GACHANTIVA - COLOMBIA\nUSD: 1050.00"
+    },
+    "17_Gastos:ValorFlete,MontoRemitente": {
+        "value": "",
+        "content": ""
+    },
+    "17_Gastos:Seguro,MontoRemitente": {
+        "value": "",
+        "content": ""
+    },
+    "17_Gastos:OtrosGastos,MontoRemitente": {
+        "value": "",
+        "content": ""
+    },
+    "17_Gastos:Total,MontoRemitente": {
+        "value": "",
+        "content": ""
+    },
+    "17_Gastos:ValorFlete,MonedaRemitente": {
+        "value": "",
+        "content": ""
+    },
+    "17_Gastos:Seguro,MonedaRemitente": {
+        "value": "",
+        "content": ""
+    },
+    "17_Gastos:OtrosGastos,MonedaRemitente": {
+        "value": "",
+        "content": ""
+    },
+    "17_Gastos:Total,MonedaRemitente": {
+        "value": "",
+        "content": ""
+    },
+    "17_Gastos:ValorFlete,MontoDestinatario": {
+        "value": "2147.00",
+        "content": "2147.00"
+    },
+    "17_Gastos:Seguro,MontoDestinatario": {
+        "value": "",
+        "content": ""
+    },
+    "17_Gastos:OtrosGastos,MontoDestinatario": {
+        "value": "100.00",
+        "content": "100.00"
+    },
+    "17_Gastos:Total,MontoDestinatario": {
+        "value": "2247.00",
+        "content": "2247.00"
+    },
+    "17_Gastos:ValorFlete,MonedaDestinatario": {
+        "value": "USD",
+        "content": "USD"
+    },
+    "17_Gastos:Seguro,MonedaDestinatario": {
+        "value": "",
+        "content": ""
+    },
+    "17_Gastos:OtrosGastos,MonedaDestinatario": {
+        "value": "USD",
+        "content": "USD"
+    },
+    "17_Gastos:Total,MonedaDestinatario": {
+        "value": "USD",
+        "content": "USD"
+    },
+    "18_Documentos": {
+        "value": "FACTURA ELECTRONICA DE VENTA NO. ORCA 28",
+        "content": "FACTURA ELECTRONICA DE VENTA NO. ORCA 28"
+    },
+    "19_Emision": {
+        "value": "GACHANTIVA - COLOMBIA, JULIO 04 DE 2024",
+        "content": "GACHANTIVA - COLOMBIA, JULIO 04 DE 2024"
+    },
+    "21_Instrucciones": {
+        "value": "INGRESA A BODEGAS TRANSCOMERINTER CIA. LTDA. CODIGO: 8903\nTULCAN - ECUADOR",
+        "content": "INGRESA A BODEGAS TRANSCOMERINTER CIA. LTDA. CODIGO: 8903\nTULCAN - ECUADOR"
+    },
+    "22_Observaciones": {
+        "value": "FLETE GACHANTIVA - IPIALES: 1997.00 USD\nFLETE IPIALES - TULCAN: 150.00 USD\nOTROS GASTOS: 100.00 USD",
+        "content": "FLETE GACHANTIVA - IPIALES: 1997.00 USD\nFLETE IPIALES - TULCAN: 150.00 USD\nOTROS GASTOS: 100.00 USD"
+    },
+    "24_OriginalCopia": {
+        "value": "",
+        "content": ""
+    },
+    "00a_Tipo": {
+        "value": "Carta de Porte Internacional por Carretera (CPIC)",
+        "content": "Carta de Porte Internacional por Carretera (CPIC)"
+    }
+}

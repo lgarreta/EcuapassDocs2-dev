@@ -1,0 +1,202 @@
+{
+    "00_Pais": {
+        "value": "EC",
+        "content": "EC"
+    },
+    "00b_Numero": {
+        "value": "ECEC563",
+        "content": "ECEC563"
+    },
+    "01_Transportista": {
+        "value": "",
+        "content": ""
+    },
+    "02_Permiso_Originario": {
+        "value": "",
+        "content": ""
+    },
+    "03_Permiso_Servicios": {
+        "value": "",
+        "content": ""
+    },
+    "04_Camion_Marca": {
+        "value": "FREIGHTLINER",
+        "content": "FREIGHTLINER"
+    },
+    "05_Camion_AnoFabricacion": {
+        "value": "2008",
+        "content": "2008"
+    },
+    "06_Camion_PlacaPais": {
+        "value": "PUK0806 ECUADOR",
+        "content": "PUK0806 ECUADOR"
+    },
+    "07_Camion_Chasis": {
+        "value": "3AKJALCG18DZ68664",
+        "content": "3AKJALCG18DZ68664"
+    },
+    "08_Certificado_Habilitacion": {
+        "value": "CH-EC-1358-22 CR-EC-7573-21",
+        "content": "CH-EC-1358-22 CR-EC-7573-21"
+    },
+    "09_Remolque_Marca": {
+        "value": "DITE",
+        "content": "DITE"
+    },
+    "10_Remolque_AnoFabricacion": {
+        "value": "2010",
+        "content": "2010"
+    },
+    "11_Remolque_PlacaPais": {
+        "value": "CR1134 ECUADOR",
+        "content": "CR1134 ECUADOR"
+    },
+    "12_Remolque_Otro": {
+        "value": "N/A",
+        "content": "N/A"
+    },
+    "13_Conductor_Nombre": {
+        "value": "DARWIN EDUARDO YANDUN 14-08-1979",
+        "content": "DARWIN EDUARDO YANDUN 14-08-1979"
+    },
+    "14_Conductor_Id": {
+        "value": "0401245451",
+        "content": "0401245451"
+    },
+    "15_Conductor_Nacionalidad": {
+        "value": "ECUADOR",
+        "content": "ECUADOR"
+    },
+    "16_Conductor_Licencia": {
+        "value": "0401245451",
+        "content": "0401245451"
+    },
+    "17_Conductor_Libreta": {
+        "value": "N/A",
+        "content": "N/A"
+    },
+    "18_Auxiliar_Nombre": {
+        "value": "NO TIENE",
+        "content": "NO TIENE"
+    },
+    "19_Auxiliar_Id": {
+        "value": "X X X",
+        "content": "X X X"
+    },
+    "20_Auxiliar_Nacionalidad": {
+        "value": "X X X",
+        "content": "X X X"
+    },
+    "21_Auxiliar_Licencia": {
+        "value": "X X X",
+        "content": "X X X"
+    },
+    "22_Auxiliar_Libreta": {
+        "value": "X X X",
+        "content": "X X X"
+    },
+    "23_Carga_CiudadPais": {
+        "value": "GUAYAQUIL - ECUADOR",
+        "content": "GUAYAQUIL - ECUADOR"
+    },
+    "24_Descarga_CiudadPais": {
+        "value": "IPIALES - COLOMBIA",
+        "content": "IPIALES - COLOMBIA"
+    },
+    "25a_Carga_TipoPeligrosa": {
+        "value": "",
+        "content": ""
+    },
+    "25b_Carga_TipoSustancias": {
+        "value": "",
+        "content": ""
+    },
+    "25c_Carga_TipoPerecible": {
+        "value": "",
+        "content": ""
+    },
+    "25d_Carga_TipoOtra": {
+        "value": "",
+        "content": ""
+    },
+    "25e_Carga_TipoDescripcion": {
+        "value": "",
+        "content": ""
+    },
+    "26_Carga_Contenedores": {
+        "value": "NYKU405610-0 DE 40 PIES CON APERTURA",
+        "content": "NYKU405610-0 DE 40 PIES CON APERTURA"
+    },
+    "27_Carga_Precintos": {
+        "value": "",
+        "content": ""
+    },
+    "28_Mercancia_Cartaporte": {
+        "value": "EC353",
+        "content": "EC353"
+    },
+    "29_Mercancia_Descripcion": {
+        "value": "BUCKET 85OZ KFC CJ (4BOLX50UND),\nBUCKET MEDIANO CJ (300UN).\n\nMRN: CEC202420340357-0001\nDAE: 073-2024-40-01444623",
+        "content": "BUCKET 85OZ KFC CJ (4BOLX50UND),\nBUCKET MEDIANO CJ (300UN).\n\nMRN: CEC202420340357-0001\nDAE: 073-2024-40-01444623"
+    },
+    "30_Mercancia_Bultos": {
+        "value": "505 CAJAS",
+        "content": "505 CAJAS"
+    },
+    "31_Mercancia_Embalaje": {
+        "value": "N/A",
+        "content": "N/A"
+    },
+    "32a_Peso_Bruto": {
+        "value": "5743.30",
+        "content": "5743.30"
+    },
+    "32a_Peso_BrutoTotal": {
+        "value": "5743.30",
+        "content": "5743.30"
+    },
+    "32b_Peso_Neto": {
+        "value": "5238.30",
+        "content": "5238.30"
+    },
+    "32b_Peso_NetoTotal": {
+        "value": "5238.30",
+        "content": "5238.30"
+    },
+    "33_Otra_Medida": {
+        "value": "",
+        "content": ""
+    },
+    "33_Otra_MedidaTotal": {
+        "value": "",
+        "content": ""
+    },
+    "34_Precio_Incoterm_Moneda": {
+        "value": "CPT: IPIALES - COLOMBIA USD: 14995.50",
+        "content": "CPT: IPIALES - COLOMBIA USD: 14995.50"
+    },
+    "35_Observaciones": {
+        "value": "",
+        "content": ""
+    },
+    "37_Aduana_Cruce": {
+        "value": "ECUADOR - TULCAN",
+        "content": "ECUADOR - TULCAN"
+    },
+    "38_Aduana_Destino": {
+        "value": "COLOMBIA - IPIALES",
+        "content": "COLOMBIA - IPIALES"
+    },
+    "40_Fecha_Emision": {
+        "value": "GUAYAQUIL - ECUADOR, JULIO 02 DE 2024",
+        "content": "GUAYAQUIL - ECUADOR, JULIO 02 DE 2024"
+    },
+    "41_OriginalCopia": {
+        "value": "",
+        "content": ""
+    },
+    "00a_Tipo": {
+        "value": "Manifiesto de Carga Internacional (MCI)",
+        "content": "Manifiesto de Carga Internacional (MCI)"
+    }
+}

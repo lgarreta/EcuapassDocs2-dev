@@ -22,7 +22,7 @@ function handleBlur (textareaId, docType, textAreasDict, textarea) {
 	//	handleBlurForManifiesto (textareaId, docType, textAreasDict, textarea) 
 }
 
-function handleBlurCartaporte (textareaId, docType, textAreasDict, textarea) {
+function handleBlurForCartaporte (textareaId, docType, textAreasDict, textarea) {
 	//-- Copy "ciudad-pais. fecha" to other inputs (BYZA)
 	if (textareaId == "txt06") {
 		textAreasDict ["txt07"].value = textAreasDict ["txt06"].value

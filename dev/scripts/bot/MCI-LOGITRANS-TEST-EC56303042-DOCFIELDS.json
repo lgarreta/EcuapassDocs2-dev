@@ -1,0 +1,202 @@
+{
+    "00_Pais": {
+        "value": "EC",
+        "content": "EC"
+    },
+    "00a_Tipo": {
+        "content": "Manifiesto de Carga Internacional (MCI)",
+        "value": "Manifiesto de Carga Internacional (MCI)"
+    },
+    "00b_Numero": {
+        "content": "EC56303042",
+        "value": "EC56303042"
+    },
+    "01_Transportista": {
+        "content": "",
+        "value": ""
+    },
+    "02_Permiso_Originario": {
+        "content": "",
+        "value": ""
+    },
+    "03_Permiso_Servicios": {
+        "content": "",
+        "value": ""
+    },
+    "04_Camion_Marca": {
+        "content": "HINO",
+        "value": "HINO"
+    },
+    "05_Camion_AnoFabricacion": {
+        "content": "2021",
+        "value": "2021"
+    },
+    "06_Camion_PlacaPais": {
+        "content": "PAB7789 ECUADOR",
+        "value": "PAB7789 ECUADOR"
+    },
+    "07_Camion_Chasis": {
+        "content": "9F3FM2PR7MXX10423",
+        "value": "9F3FM2PR7MXX10423"
+    },
+    "08_Certificado_Habilitacion": {
+        "content": "CHEC-098222",
+        "value": "CHEC-098222"
+    },
+    "09_Remolque_Marca": {
+        "content": "X",
+        "value": "X"
+    },
+    "10_Remolque_AnoFabricacion": {
+        "content": "X",
+        "value": "X"
+    },
+    "11_Remolque_PlacaPais": {
+        "content": "X",
+        "value": "X"
+    },
+    "12_Remolque_Otro": {
+        "content": "X",
+        "value": "X"
+    },
+    "13_Conductor_Nombre": {
+        "content": "TORRES MOROCHO JORGE EUDORO   17/11/1960",
+        "value": "TORRES MOROCHO JORGE EUDORO   17/11/1960"
+    },
+    "14_Conductor_Id": {
+        "content": "0200649820",
+        "value": "0200649820"
+    },
+    "15_Conductor_Nacionalidad": {
+        "content": "ECUATORIANA",
+        "value": "ECUATORIANA"
+    },
+    "16_Conductor_Licencia": {
+        "content": "0200649820",
+        "value": "0200649820"
+    },
+    "17_Conductor_Libreta": {
+        "content": "N/A",
+        "value": "N/A"
+    },
+    "18_Auxiliar_Nombre": {
+        "content": "NO TIENE",
+        "value": "NO TIENE"
+    },
+    "19_Auxiliar_Id": {
+        "content": "X X X",
+        "value": "X X X"
+    },
+    "20_Auxiliar_Nacionalidad": {
+        "content": "X X X",
+        "value": "X X X"
+    },
+    "21_Auxiliar_Licencia": {
+        "content": "X X X",
+        "value": "X X X"
+    },
+    "22_Auxiliar_Libreta": {
+        "content": "X X X",
+        "value": "X X X"
+    },
+    "23_Carga_CiudadPais": {
+        "content": "QUITO-ECUADOR",
+        "value": "QUITO-ECUADOR"
+    },
+    "24_Descarga_CiudadPais": {
+        "content": "IPIALES-COLOMBIA",
+        "value": "IPIALES-COLOMBIA"
+    },
+    "25a_Carga_TipoPeligrosa": {
+        "content": "",
+        "value": ""
+    },
+    "25b_Carga_TipoSustancias": {
+        "content": "",
+        "value": ""
+    },
+    "25c_Carga_TipoPerecible": {
+        "content": "",
+        "value": ""
+    },
+    "25d_Carga_TipoOtra": {
+        "content": "X",
+        "value": "X"
+    },
+    "25e_Carga_TipoDescripcion": {
+        "content": "CARGA GENERAL",
+        "value": "CARGA GENERAL"
+    },
+    "26_Carga_Contenedores": {
+        "content": "X",
+        "value": "X"
+    },
+    "27_Carga_Precintos": {
+        "content": "X",
+        "value": "X"
+    },
+    "28_Mercancia_Cartaporte": {
+        "content": "EC56031181",
+        "value": "EC56031181"
+    },
+    "29_Mercancia_Descripcion": {
+        "content": "UNIDADES DE SACO MULTICOLOR 80X120\nUNIDADES DE SACO MALLA ROJO 60X85 \nUNIDADES DE SACO BLANCO 55X80 \nUNIDADES DE SACO BLANCO 60X90\nUNIDADES DE SACO NEGRO/VERDE 40X76\nUNIDADES DE SACO BICOLOR 50X60\nUNIDADES DE SACO MALLA BEIGE 60X85\nUNIDADES DE SACO MALLA MORADO 55X92\nVARIAS REFERENCIAS\n\n\n\n",
+        "value": "UNIDADES DE SACO MULTICOLOR 80X120\nUNIDADES DE SACO MALLA ROJO 60X85 \nUNIDADES DE SACO BLANCO 55X80 \nUNIDADES DE SACO BLANCO 60X90\nUNIDADES DE SACO NEGRO/VERDE 40X76\nUNIDADES DE SACO BICOLOR 50X60\nUNIDADES DE SACO MALLA BEIGE 60X85\nUNIDADES DE SACO MALLA MORADO 55X92\nVARIAS REFERENCIAS\n\n\n\n"
+    },
+    "30_Mercancia_Bultos": {
+        "content": "426",
+        "value": "426"
+    },
+    "31_Mercancia_Embalaje": {
+        "content": "BULTOS",
+        "value": "BULTOS"
+    },
+    "32a_Peso_Bruto": {
+        "content": "9855.20",
+        "value": "9855.20"
+    },
+    "32a_Peso_BrutoTotal": {
+        "content": "9855.20",
+        "value": "9855.20"
+    },
+    "32b_Peso_Neto": {
+        "content": "9748.70",
+        "value": "9748.70"
+    },
+    "32b_Peso_NetoTotal": {
+        "content": "9748.70",
+        "value": "9748.70"
+    },
+    "33_Otra_Medida": {
+        "content": "",
+        "value": ""
+    },
+    "33_Otra_MedidaTotal": {
+        "content": "0",
+        "value": "0"
+    },
+    "34_Precio_Incoterm_Moneda": {
+        "content": "CPT- IPIALES 22413.26 $USD",
+        "value": "CPT- IPIALES 22413.26 $USD"
+    },
+    "35_Observaciones": {
+        "content": "",
+        "value": ""
+    },
+    "37_Aduana_Cruce": {
+        "content": "TULCAN-ECUADOR",
+        "value": "TULCAN-ECUADOR"
+    },
+    "38_Aduana_Destino": {
+        "content": "IPIALES-COLOMBIA",
+        "value": "IPIALES-COLOMBIA"
+    },
+    "40_Fecha_Emision": {
+        "content": "QUITO,ECUADOR, 05 DE JUNIO DEL 2024",
+        "value": "QUITO,ECUADOR, 05 DE JUNIO DEL 2024"
+    },
+    "41_OriginalCopia": {
+        "content": "",
+        "value": ""
+    }
+}

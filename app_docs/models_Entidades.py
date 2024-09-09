@@ -30,13 +30,14 @@ class Cliente (models.Model):
 # Model Conductor
 #--------------------------------------------------------------------
 class Conductor (models.Model):
+	paises = [("COLOMBIA","COLOMBIA"),("ECUADOR", "ECUADOR"),("PERU","PERU"),("OTRO","OTRO")]
 	class Meta:
 		db_table = "conductor"
 		verbose_name_plural = "Conductores"
 
 	documento        = models.CharField (max_length=20)
 	nombre           = models.CharField (max_length=50)
-	nacionalidad     = models.CharField (max_length=50)
+	pais             = models.CharField (max_length=50, choices=paises, default="COLOMBIA")
 	licencia         = models.CharField (max_length=50)
 	fecha_nacimiento = models.CharField (max_length=50)
 	auxiliar         = models.OneToOneField ("self", null=True, blank=True,

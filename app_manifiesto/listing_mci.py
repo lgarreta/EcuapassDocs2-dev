@@ -34,10 +34,13 @@ class ManifiestosListadoView (DocumentosListadoView):
 # Table
 #----------------------------------------------------------
 class ManifiestosListadoTable (DocTable):
+	#placa = tables.Column (accessor="documento.txt06", verbose_name="Placa") # To show related info
 	class Meta:
 		model         = Manifiesto
 		urlDoc        = "manifiesto"
-		fields        = ("numero", "fecha_emision", "acciones")
+		fields        = ("numero", "fecha_emision", "vehiculo", "acciones")
 		template_name = DocTable.template
 		attrs         = {'class': 'table table-striped table-bordered'}		
+
+
 

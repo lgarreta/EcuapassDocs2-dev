@@ -81,12 +81,12 @@ class DocumentosListadoForm (forms.Form):
 			Submit ('submit', 'Filtrar', css_class='btn btn-primary')
 		)
 
-
 ##----------------------------------------------------------
-## Base table for Ecuapass docs tables used in listing
+## Base table used for listing Ecuapass docs 
 ##----------------------------------------------------------
 class DocTable (tables.Table):
 	template = "django_tables2/bootstrap4.html"
+	fecha_emision = tables.Column (verbose_name="Fecha") # To show related info
 
 	class Meta:
 		abstract = True
@@ -96,6 +96,7 @@ class DocTable (tables.Table):
 		self.urlDoc                   = getattr (self.Meta, 'urlDoc', 'default-url')
 		self.urlActualizar            = f"{self.urlDoc}-editar"
 		self.urlDetalle               = f"{self.urlDoc}-detalle"
+
 		self.base_columns ['numero']  = tables.LinkColumn (self.urlActualizar, args=[A('pk')])
 		# Column for apply actions in the current item document
 		self.base_columns ['acciones'] = tables.TemplateColumn(

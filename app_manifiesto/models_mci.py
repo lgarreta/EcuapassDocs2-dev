@@ -9,7 +9,7 @@ from ecuapassdocs.info.ecuapass_info_manifiesto_BYZA import ManifiestoByza
 
 from app_docs.models_EcuapassDoc import EcuapassDoc
 from app_cartaporte.models_cpi import Cartaporte
-from app_docs.models_Entidades import Vehiculo
+from app_docs.models_Entidades import Vehiculo, Conductor
 
 #--------------------------------------------------------------------
 # Model ManifiestoDoc
@@ -88,6 +88,7 @@ class Manifiesto (EcuapassDoc):
 	documento     = models.OneToOneField (ManifiestoDoc, on_delete=models.CASCADE, null=True)
 
 	vehiculo      = models.ForeignKey (Vehiculo, on_delete=models.SET_NULL, related_name='vehiculo', null=True)
+	conductor     = models.ForeignKey (Conductor, on_delete=models.SET_NULL, related_name='conductor', null=True)
 	cartaporte    = models.ForeignKey (Cartaporte, on_delete=models.SET_NULL, null=True)
 
 	def get_absolute_url(self):
@@ -105,11 +106,18 @@ class Manifiesto (EcuapassDoc):
 		jsonFieldsPath, runningDir = self.createTemporalJson (docFields)
 		manifiestoInfo     = ManifiestoByza (jsonFieldsPath, runningDir)
 
-		self.vehiculo      = self.getVehiculoInstance (manifiestoInfo, "vehiculo")
-		self.remolque      = self.getVehiculoInstance (manifiestoInfo, "remolque")
+		self.vehiculo      = self.getVehiculoInstance (manifiestoInfo, "VEHICULO")
+		self.remolque      = self.getVehiculoInstance (manifiestoInfo, "REMOLQUE")
+		self.conductor     = self.getConductorInstance (manifiestoInfo, "VEHICULO")
 		self.cartaporte    = self.getCartaporteInstance (manifiestoInfo)
-		#print ("+++ ManifiestoInfo:", manifiestoInfo.fields)
-		print ("+++ Cartaporte:", self.cartaporte)
+
+		self.updateRelations ()
+
+	#-- Update relations between fields: vehiculo has one conductor
+	def updateRelations (self):
+		if self.vehiculo and self.conductor:
+			self.vehiculo.conductor = self.conductor
+			self.vehiculo.save ()
 		
 	#-- Get cartaporte from manifiesto info
 	def getCartaporteInstance (self, manifiestoInfo):
@@ -120,25 +128,44 @@ class Manifiesto (EcuapassDoc):
 			return record
 		except: 
 			Utils.printx (f"ALERTA: Cartaporte número '{numeroCartaporte}' no encontrado.")
-			Utils.printException ()
+			#Utils.printException ()
 		return None
 
+	#-- Get a 'conductor' instance from extracted info
+	def getConductorInstance (self, manifiestoInfo, vehicleType):
+		try:
+			info = manifiestoInfo.getConductorInfo ()
+			print (f"+++ DEBUG: info conductor '{info}'")
+			if any (Utils.isEmptyFormField (text) for text in info.values()):
+				return None
+			else:
+				conductor, created  = Conductor.objects.get_or_create (documento=info['id'])
+				conductor.nombre    = info ["nombre"]
+				conductor.documento = info ["id"]
+				conductor.pais      = info ["pais"]
+				conductor.licencia  = info ["licencia"]
+				conductor.fecha_nacimiento     = info ["fechaNacimiento"]
+				conductor.save ()
+				return conductor
+		except:
+			Utils.printException (f"Obteniedo información del vehiculo.")
+			return None
+
+	#-- Get a 'vehiculo' instance from extracted info
 	def getVehiculoInstance (self, manifiestoInfo, vehicleType):
+		print ("+++ Tipo vehiculo:", vehicleType)
 		try:
 			info = manifiestoInfo.getVehiculoRemolqueInfo (vehicleType)
-
 			if any (value is None for value in info.values()):
 				return None
 			else:
 				vehiculo, created = Vehiculo.objects.get_or_create (placa=info['placa'])
-
 				vehiculo.marca       = info ["marca"]
 				vehiculo.placa       = info ["placa"]
 				vehiculo.pais        = info ["pais"]
 				vehiculo.chasis      = info ["chasis"]
 				vehiculo.anho        = info ["anho"]
 				vehiculo.certificado = info ["certificado"]
-
 				vehiculo.save ()
 				return vehiculo
 		except:

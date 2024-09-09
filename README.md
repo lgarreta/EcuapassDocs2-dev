@@ -4,6 +4,7 @@
 - Custom user management
 
 ## LOG
+Sep/09: r0.835 : Web scripts moved.Added updateRelations. Bot scripts for autofilling.
 Sep/07: r0.834 : Replaces country form with CustomAuthForm. Changing external .css .js to local
 Sep/03: r0.833 : Working Declaracion: Save/Autocomplete.
 Sep/03: r0.832 : Fixing Declaracion options for manifiesto

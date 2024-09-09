@@ -20,7 +20,7 @@ class ClienteAdmin(admin.ModelAdmin):
 admin.site.register(Cliente, ClienteAdmin)
 
 class ConductorAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'documento', 'nacionalidad', 'licencia')
+    list_display = ('nombre', 'documento', 'pais', 'licencia')
 
 # Register the admin class with the associated model
 admin.site.register(Conductor, ConductorAdmin)
