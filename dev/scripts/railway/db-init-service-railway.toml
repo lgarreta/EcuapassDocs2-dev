@@ -1,0 +1,7 @@
+[services]
+postgres = {
+    image = "postgres:latest"
+    env = [
+        "POSTGRES_PASSWORD=admindb"
+    ]
+}

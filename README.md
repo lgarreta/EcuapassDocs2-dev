@@ -4,7 +4,10 @@
 - Custom user management
 
 ## LOG
-Sep/09: r0.835 : Web scripts moved.Added updateRelations. Bot scripts for autofilling.
+Sep/11: r0.840 : Working on Railway: 'Procfile' for statics. Ecuapasdocs as library (r0.85).
+Sep/10: r0.838 : Removed lib ecuapassdocs. Added links to it.
+Sep/10: r0.837 : Removed Procfile
+Sep/10: r0.836 : Using PG Vars in settings
 Sep/07: r0.834 : Replaces country form with CustomAuthForm. Changing external .css .js to local
 Sep/03: r0.833 : Working Declaracion: Save/Autocomplete.
 Sep/03: r0.832 : Fixing Declaracion options for manifiesto

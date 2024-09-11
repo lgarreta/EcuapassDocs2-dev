@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from decouple import config
-import os
+import os, sys
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 #SECRET_KEY = config('SECRET_KEY')
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-*e!pw-wwqm=az^o+oy0a$2u$rhkf(05i&!c3ic8@49dsh9&hmi')
@@ -118,9 +118,9 @@ DATABASES = {
 #	 'default': {
 #		 'ENGINE'  : 'django.db.backends.postgresql_psycopg2',
 #		 'NAME'    : 'ecuapassdocsdb',
-#		 'USER'    : 'byza',
-#		 'PASSWORD': 'byza2024',
-#		 'HOST'    : 'localhost',
+#		 'USER'    : 'admindb',
+#		 'PASSWORD': 'admindb',
+#		 'HOST'    : 'postgres.railway.internal',
 #		 'PORT'    : '5432',
 #	 }
 #}
@@ -161,8 +161,10 @@ LOGOUT_REDIRECT_URL = '/'  # Replace with your desired redirect URL
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-STATIC_URL	= "staticfiles/"
+# Handle static files using 'whitenoise' package
+STATIC_URL	= "/static/"
 STATIC_ROOT = os.path.join (BASE_DIR, 'staticfiles')
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Static file serving.
 # https://whitenoise.readthedocs.io/en/stable/django.html#add-compression-and-caching-support
