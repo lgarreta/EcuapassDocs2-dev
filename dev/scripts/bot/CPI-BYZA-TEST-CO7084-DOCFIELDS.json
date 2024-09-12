@@ -1,0 +1,166 @@
+{
+    "00_Pais": {
+        "content": "CO",
+        "value": "CO"
+    },
+    "00a_Tipo": {
+        "content": "Carta de Porte Internacional por Carretera (CPIC)",
+        "value": "Carta de Porte Internacional por Carretera (CPIC)"
+    },
+    "00b_Numero": {
+        "content": "CO7084",
+        "value": "CO7084"
+    },
+    "01_Transportista": {
+        "content": "",
+        "value": ""
+    },
+    "02_Remitente": {
+        "content": "TRIENERGY SAS.\nKMT 7 VIA A GIRON ZONA INDUSTRIAL\nGIRON - BUCARAMANGA - COLOMBIA NIT:  890210534-1",
+        "value": "TRIENERGY SAS.\nKMT 7 VIA A GIRON ZONA INDUSTRIAL\nGIRON - BUCARAMANGA - COLOMBIA NIT:  890210534-1"
+    },
+    "03_Destinatario": {
+        "content": "ECU-ITALCOL S.A\nCL 117 S/N AV 113 Y AV 114 130203 PB DIAGONAL A SERMET\nMANABI, MANTA - ECUADOR RUC: 1391858930001",
+        "value": "ECU-ITALCOL S.A\nCL 117 S/N AV 113 Y AV 114 130203 PB DIAGONAL A SERMET\nMANABI, MANTA - ECUADOR RUC: 1391858930001"
+    },
+    "04_Consignatario": {
+        "content": "ECU-ITALCOL S.A\nCL 117 S/N AV 113 Y AV 114 130203 PB DIAGONAL A SERMET\nMANABI, MANTA - ECUADOR RUC: 1391858930001",
+        "value": "ECU-ITALCOL S.A\nCL 117 S/N AV 113 Y AV 114 130203 PB DIAGONAL A SERMET\nMANABI, MANTA - ECUADOR RUC: 1391858930001"
+    },
+    "05_Notificado": {
+        "content": "ECU-ITALCOL S.A\nCL 117 S/N AV 113 Y AV 114 130203 PB DIAGONAL A SERMET\nMANABI, MANTA - ECUADOR RUC: 1391858930001",
+        "value": "ECU-ITALCOL S.A\nCL 117 S/N AV 113 Y AV 114 130203 PB DIAGONAL A SERMET\nMANABI, MANTA - ECUADOR RUC: 1391858930001"
+    },
+    "06_Recepcion": {
+        "content": "ZONA FRANCA SANTANDER - COLOMBIA, MAYO 07 DE 2024",
+        "value": "ZONA FRANCA SANTANDER - COLOMBIA, MAYO 07 DE 2024"
+    },
+    "07_Embarque": {
+        "content": "ZONA FRANCA SANTANDER - COLOMBIA, MAYO 07 DE 2024",
+        "value": "ZONA FRANCA SANTANDER - COLOMBIA, MAYO 07 DE 2024"
+    },
+    "08_Entrega": {
+        "content": "TULCAN - ECUADOR",
+        "value": "TULCAN - ECUADOR"
+    },
+    "09_Condiciones": {
+        "content": "DIRECTO, SIN CAMBIO DE CAMION / POR COBRAR",
+        "value": "DIRECTO, SIN CAMBIO DE CAMION / POR COBRAR"
+    },
+    "10_CantidadClase_Bultos": {
+        "content": "1 BULTO",
+        "value": "1 BULTO"
+    },
+    "11_MarcasNumeros_Bultos": {
+        "content": "CUMMINS",
+        "value": "CUMMINS"
+    },
+    "12_Descripcion_Bultos": {
+        "content": "GRUPO GENERADOR DIESEL CUMMINS POWER GENERATION MODELO C1000 D6B Open KWe/KVA 1276 S/N D23I961425 ESN: 25483337.\n\n\nMRN: CEC202420340204-0001",
+        "value": "GRUPO GENERADOR DIESEL CUMMINS POWER GENERATION MODELO C1000 D6B Open KWe/KVA 1276 S/N D23I961425 ESN: 25483337.\n\n\nMRN: CEC202420340204-0001"
+    },
+    "13a_Peso_Neto": {
+        "content": "8975.00",
+        "value": "8975.00"
+    },
+    "13b_Peso_Bruto": {
+        "content": "8975.00",
+        "value": "8975.00"
+    },
+    "14_Volumen": {
+        "content": "",
+        "value": ""
+    },
+    "15_Otras_Unidades": {
+        "content": "",
+        "value": ""
+    },
+    "16_Incoterms": {
+        "content": "FCA: BUCARAMANGA - COLOMBIA \nUSD: 118315.00",
+        "value": "FCA: BUCARAMANGA - COLOMBIA \nUSD: 118315.00"
+    },
+    "17_Gastos:OtrosGastos,MonedaDestinatario": {
+        "content": "USD",
+        "value": "USD"
+    },
+    "17_Gastos:OtrosGastos,MonedaRemitente": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:OtrosGastos,MontoDestinatario": {
+        "content": "100.00",
+        "value": "100.00"
+    },
+    "17_Gastos:OtrosGastos,MontoRemitente": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:Seguro,MonedaDestinatario": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:Seguro,MonedaRemitente": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:Seguro,MontoDestinatario": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:Seguro,MontoRemitente": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:Total,MonedaDestinatario": {
+        "content": "USD",
+        "value": "USD"
+    },
+    "17_Gastos:Total,MonedaRemitente": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:Total,MontoDestinatario": {
+        "content": "1692.91",
+        "value": "1692.91"
+    },
+    "17_Gastos:Total,MontoRemitente": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:ValorFlete,MonedaDestinatario": {
+        "content": "USD",
+        "value": "USD"
+    },
+    "17_Gastos:ValorFlete,MonedaRemitente": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:ValorFlete,MontoDestinatario": {
+        "content": "1592.91",
+        "value": "1592.91"
+    },
+    "17_Gastos:ValorFlete,MontoRemitente": {
+        "content": "",
+        "value": ""
+    },
+    "18_Documentos": {
+        "content": "FACTURA ELECTRONICA DE VENTA NO. FET137484\n",
+        "value": "FACTURA ELECTRONICA DE VENTA NO. FET137484\n"
+    },
+    "19_Emision": {
+        "content": "ZONA FRANCA SANTANDER - COLOMBIA, MAYO 07 DE 2024",
+        "value": "ZONA FRANCA SANTANDER - COLOMBIA, MAYO 07 DE 2024"
+    },
+    "21_Instrucciones": {
+        "content": "MERCANCIA INGRESA EN MODALIDAD DE DTAI A BODEGAS TRANSCOMERINTER CIA LTDA. COD. 8903\nTULCAN - ECUADOR",
+        "value": "MERCANCIA INGRESA EN MODALIDAD DE DTAI A BODEGAS TRANSCOMERINTER CIA LTDA. COD. 8903\nTULCAN - ECUADOR"
+    },
+    "22_Observaciones": {
+        "content": "",
+        "value": ""
+    },
+    "24_OriginalCopia": {
+        "content": "",
+        "value": ""
+    }
+}

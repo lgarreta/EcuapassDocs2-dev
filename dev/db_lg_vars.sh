@@ -1,0 +1,1 @@
+../dev/scripts/db/db_lg_vars.sh

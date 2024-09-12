@@ -12,6 +12,21 @@ from ecuapassdocs.info.ecuapass_info_cartaporte_BYZA import CartaporteByza
 from app_docs.models_Entidades import Cliente
 
 #-------------------------------------------------------------------
+# Search a pattern in all fields of a model
+#-------------------------------------------------------------------
+from django.db.models import Q
+
+def searchModelAllFields (searchPattern, DOCMODEL):
+    queries = Q()
+    for field in DOCMODEL._meta.fields:
+        field_name = field.name
+        queries |= Q(**{f"{field_name}__icontains": searchPattern})
+    
+    results = DOCMODEL.objects.filter (queries)
+    return results
+
+
+#-------------------------------------------------------------------
 # Get cartaporte from doc fields and save to DB
 #-------------------------------------------------------------------
 def getCartaporteInstance (docKey, docFields, docType):

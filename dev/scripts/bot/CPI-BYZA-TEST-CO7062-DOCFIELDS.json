@@ -1,0 +1,166 @@
+{
+    "00_Pais": {
+        "content": "CO",
+        "value": "CO"
+    },
+    "00a_Tipo": {
+        "content": "Carta de Porte Internacional por Carretera (CPIC)",
+        "value": "Carta de Porte Internacional por Carretera (CPIC)"
+    },
+    "00b_Numero": {
+        "content": "CO7062",
+        "value": "CO7062"
+    },
+    "01_Transportista": {
+        "content": "",
+        "value": ""
+    },
+    "02_Remitente": {
+        "content": "INGENIO PICHICHI S.A. POR CUENTA DE B&M SUGAR PRODUCTS GLOBAL LLC\nOFICINA CALI: CI 36 NORTE NO. 6A-65 \nCALI - COLOMBIA NIT: 8913005137",
+        "value": "INGENIO PICHICHI S.A. POR CUENTA DE B&M SUGAR PRODUCTS GLOBAL LLC\nOFICINA CALI: CI 36 NORTE NO. 6A-65 \nCALI - COLOMBIA NIT: 8913005137"
+    },
+    "03_Destinatario": {
+        "content": "DISTAREIN CIA LTDA\nCALLE AV CORAL NUMERO S/N INTERSECCION BOLIVIA\nTULCAN - ECUADOR RUC: 0491518456001\n",
+        "value": "DISTAREIN CIA LTDA\nCALLE AV CORAL NUMERO S/N INTERSECCION BOLIVIA\nTULCAN - ECUADOR RUC: 0491518456001\n"
+    },
+    "04_Consignatario": {
+        "content": "DISTAREIN CIA LTDA\nCALLE AV CORAL NUMERO S/N INTERSECCION BOLIVIA\nTULCAN - ECUADOR RUC: 0491518456001",
+        "value": "DISTAREIN CIA LTDA\nCALLE AV CORAL NUMERO S/N INTERSECCION BOLIVIA\nTULCAN - ECUADOR RUC: 0491518456001"
+    },
+    "05_Notificado": {
+        "content": "DISTAREIN CIA LTDA\nCALLE AV CORAL NUMERO S/N INTERSECCION BOLIVIA\nTULCAN - ECUADOR RUC: 0491518456001",
+        "value": "DISTAREIN CIA LTDA\nCALLE AV CORAL NUMERO S/N INTERSECCION BOLIVIA\nTULCAN - ECUADOR RUC: 0491518456001"
+    },
+    "06_Recepcion": {
+        "content": "GUACARI, CALI - COLOMBIA, ABRIL 22 DE 2024",
+        "value": "GUACARI, CALI - COLOMBIA, ABRIL 22 DE 2024"
+    },
+    "07_Embarque": {
+        "content": "GUACARI, CALI - COLOMBIA, ABRIL 22 DE 2024",
+        "value": "GUACARI, CALI - COLOMBIA, ABRIL 22 DE 2024"
+    },
+    "08_Entrega": {
+        "content": "TULCAN - ECUADOR",
+        "value": "TULCAN - ECUADOR"
+    },
+    "09_Condiciones": {
+        "content": "DISTAREIN CIA LTDA\nCALLE AV CORAL NUMERO S/N INTERSECCION BOLIVIA\nTULCAN - ECUADOR RUC: 0491518456001",
+        "value": "DISTAREIN CIA LTDA\nCALLE AV CORAL NUMERO S/N INTERSECCION BOLIVIA\nTULCAN - ECUADOR RUC: 0491518456001"
+    },
+    "10_CantidadClase_Bultos": {
+        "content": "1200 SACOS",
+        "value": "1200 SACOS"
+    },
+    "11_MarcasNumeros_Bultos": {
+        "content": "PICHICHI ",
+        "value": "PICHICHI "
+    },
+    "12_Descripcion_Bultos": {
+        "content": "AZUCAR BLANCO ESPECIAL TIPO C\n\n\n\nCEC202420340181-0001",
+        "value": "AZUCAR BLANCO ESPECIAL TIPO C\n\n\n\nCEC202420340181-0001"
+    },
+    "13a_Peso_Neto": {
+        "content": "60000.00",
+        "value": "60000.00"
+    },
+    "13b_Peso_Bruto": {
+        "content": "60270.00",
+        "value": "60270.00"
+    },
+    "14_Volumen": {
+        "content": "",
+        "value": ""
+    },
+    "15_Otras_Unidades": {
+        "content": "",
+        "value": ""
+    },
+    "16_Incoterms": {
+        "content": "EXW: GUACARI, CALI - COLOMBIA\nUSD: 40500.00",
+        "value": "EXW: GUACARI, CALI - COLOMBIA\nUSD: 40500.00"
+    },
+    "17_Gastos:OtrosGastos,MonedaDestinatario": {
+        "content": "USD",
+        "value": "USD"
+    },
+    "17_Gastos:OtrosGastos,MonedaRemitente": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:OtrosGastos,MontoDestinatario": {
+        "content": "120.00",
+        "value": "120.00"
+    },
+    "17_Gastos:OtrosGastos,MontoRemitente": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:Seguro,MonedaDestinatario": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:Seguro,MonedaRemitente": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:Seguro,MontoDestinatario": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:Seguro,MontoRemitente": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:Total,MonedaDestinatario": {
+        "content": "USD",
+        "value": "USD"
+    },
+    "17_Gastos:Total,MonedaRemitente": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:Total,MontoDestinatario": {
+        "content": "2807.39",
+        "value": "2807.39"
+    },
+    "17_Gastos:Total,MontoRemitente": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:ValorFlete,MonedaDestinatario": {
+        "content": "USD",
+        "value": "USD"
+    },
+    "17_Gastos:ValorFlete,MonedaRemitente": {
+        "content": "",
+        "value": ""
+    },
+    "17_Gastos:ValorFlete,MontoDestinatario": {
+        "content": "2687.39",
+        "value": "2687.39"
+    },
+    "17_Gastos:ValorFlete,MontoRemitente": {
+        "content": "",
+        "value": ""
+    },
+    "18_Documentos": {
+        "content": "FACTURA ELECTRONICA DE VENTA NO. FE10173\nFACTURA DE VENTA NO. 300-4367",
+        "value": "FACTURA ELECTRONICA DE VENTA NO. FE10173\nFACTURA DE VENTA NO. 300-4367"
+    },
+    "19_Emision": {
+        "content": "GUACARI, CALI - COLOMBIA, ABRIL 22 DE 2024",
+        "value": "GUACARI, CALI - COLOMBIA, ABRIL 22 DE 2024"
+    },
+    "21_Instrucciones": {
+        "content": "MERCANCIA INGRESA A BODEGAS MIDECAR\nCODIGO: 6090\nTULCAN - ECUADOR",
+        "value": "MERCANCIA INGRESA A BODEGAS MIDECAR\nCODIGO: 6090\nTULCAN - ECUADOR"
+    },
+    "22_Observaciones": {
+        "content": "INGENIO PICHICHI S.A. VENDE A B&M SUGAR PRODUCTS CON FACTURA NO. FE10173 POR EL VALOR DE 38386.20 USD, Y B&M SUGAR PRODUCTS GLOBAL LLC VENDE A DISTAREIN CIA LTDA CON FACTURA NO. 300-4367 POR EL VALOR DE 40500.00 USD",
+        "value": "INGENIO PICHICHI S.A. VENDE A B&M SUGAR PRODUCTS CON FACTURA NO. FE10173 POR EL VALOR DE 38386.20 USD, Y B&M SUGAR PRODUCTS GLOBAL LLC VENDE A DISTAREIN CIA LTDA CON FACTURA NO. 300-4367 POR EL VALOR DE 40500.00 USD"
+    },
+    "24_OriginalCopia": {
+        "content": "",
+        "value": ""
+    }
+}

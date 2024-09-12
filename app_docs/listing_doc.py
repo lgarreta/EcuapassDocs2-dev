@@ -11,7 +11,7 @@ from django.shortcuts import render
 from django import forms
 from django.utils import timezone
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, Row, Column
+from crispy_forms.layout import Layout, Submit, Row, Column, Field
 
 # For tables
 from datetime import datetime
@@ -21,6 +21,8 @@ import django_tables2 as tables
 from django.urls import reverse
 from django.utils.html import format_html
 from django_tables2.utils import A
+
+from .models_EcuapassDoc import EcuapassDoc
 
 #----------------------------------------------------------
 #-- View
@@ -34,51 +36,78 @@ class DocumentosListadoView (View):
 		self.DOCFORM   = DOCFORM 
 		self.DOCTABLE  = DOCTABLE
 
+
+	# General and date search
 	def get (self, request):
-		pais	 = request.session.get ("pais")
-		usuario  = request.session.get ("usuario")
-		documentos  = self.DOCMODEL.objects.filter (pais=pais)
-		form		= self.DOCFORM (request.GET)
+		form      = self.DOCFORM (request.GET)
 
 		if form.is_valid():
-			numero		  = form.cleaned_data.get('numero')
-			fecha_emision = form.cleaned_data.get('fecha_emision')
-			
-			if numero:
-				documentos = documentos.filter (numero__icontains=numero)
-			if fecha_emision:
-				documentos = documentos.filter (fecha_emision=fecha_emision)
+			searchPattern = form.cleaned_data.get('buscar')
+			if searchPattern:
+				object    = self.DOCMODEL()
+				instances = object.searchModelAllFields (searchPattern)
 			else:
-				current_datetime = timezone.now()
-				documentos = documentos.filter (fecha_emision__lte=current_datetime).order_by ('-fecha_emision')
+				instances = self.DOCMODEL.objects.all ()
 
-			table = self.DOCTABLE (documentos)
+			table = self.DOCTABLE (instances)
 		else:
 			return ("Forma inválida")
 
-		return render(request, 'documento_listado.html',
-				   {'docsTipo': self.docsTipo, 'docsLista': documentos, 'docsForma': form, 'docsTabla': table})
+		args =	{'itemsTipo':self.docsTipo, 'itemsLista': instances, 
+				 'itemsForma': form, 'itemsTable': table}
+		return render(request, 'app_docs/listing_entities.html', args)
+
+
+#	def get_search_numero_fecha (self, request):
+#		pais	 = request.session.get ("pais")
+#		usuario  = request.session.get ("usuario")
+#		documentos  = self.DOCMODEL.objects.filter (pais=pais)
+#		form		= self.DOCFORM (request.GET)
+#
+#		if form.is_valid():
+#			numero		  = form.cleaned_data.get('numero')
+#			fecha_emision = form.cleaned_data.get('fecha_emision')
+#			
+#			if numero:
+#				documentos = documentos.filter (numero__icontains=numero)
+#			if fecha_emision:
+#				documentos = documentos.filter (fecha_emision=fecha_emision)
+#			else:
+#				current_datetime = timezone.now()
+#				documentos = documentos.filter (fecha_emision__lte=current_datetime).order_by ('-fecha_emision')
+#
+#			table = self.DOCTABLE (documentos)
+#		else:
+#			return ("Forma inválida")
+#
+#		return render(request, 'documento_listado.html',
+#				   {'docsTipo': self.docsTipo, 'docsLista': documentos, 'docsForma': form, 'docsTabla': table})
 
 
 #----------------------------------------------------------
 #-- Forma
 #----------------------------------------------------------
 class DocumentosListadoForm (forms.Form):
-	numero		   = forms.CharField(required=False)
-	fecha_emision  = forms.DateField(required=False,
+	#numero		   = forms.CharField(required=False)
+	buscar = forms.CharField(required=False,label="")
+	fecha_emision  = forms.DateField(required=False, label=False,
 								  widget=forms.DateInput (attrs={'type':'date'}))
 
 	def __init__(self, *args, **kwargs):
-		super (DocumentosListadoForm, self).__init__(*args, **kwargs)
+		super ().__init__(*args, **kwargs)
 		self.helper = FormHelper()
 		self.helper.form_method = 'GET'
 		self.helper.layout = Layout(
 			Row (
-				Column ('numero', css_class='col'),
-				Column ('fecha_emision', css_class='col'),
-				css_class='row'
-			),
-			Submit ('submit', 'Filtrar', css_class='btn btn-primary')
+				Column(Field('buscar', placeholder="Digite texto a buscar...", label=False), css_class='search_field'),
+				Column (Field ('fecha_emision', placeholder="Seleccione fecha a buscar...", label=False), css_class='search_field'),
+				Column (Submit ('submit', 'Buscar'), css_class='search_button'),
+				css_class='form-row'
+				#Column ('numero', css_class='col'),
+				#Column ('fecha_emision', css_class='col'),
+				#css_class='row'
+			)
+			#Submit ('submit', 'Filtrar', css_class='btn btn-primary')
 		)
 
 ##----------------------------------------------------------

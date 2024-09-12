@@ -15,10 +15,10 @@ def main ():
 	docFields = json.load (open (docFile))
 
 	activateEcuapassDocsWindows ()
-	createNuevoManifiesto ()
-	docFields = prepareDocManifiesto (docFields)
+	createNuevaCartaporte ()
+	docFields = prepareDocCartaporte (docFields)
+	#docFields = prepareDocManifiesto (docFields)
 	#createNuevaCartaporte ()
-	#docFields = prepareDocCartaporte (docFields)
 	typeDoc (docFields)
 
 def typeDoc (docFields):
@@ -72,7 +72,7 @@ def createNuevoManifiesto ():
 
 def createNuevaCartaporte ():
 	py.hotkey ("ctrl", "l")
-	py.press ("Tab"); py.press ("Tab"); py.press ("Tab")
+	skipN (6)
 	py.press ("Enter")
 	#py.press ("Backspace")
 	#py.write ("127.0.0.1:8000")

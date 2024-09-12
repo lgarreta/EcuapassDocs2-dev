@@ -6,7 +6,7 @@ import os
 import subprocess as sb
 
 
-APPPATH    = "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs"
+APPPATH    = "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev"
 DJUSER     = "admin"
 DJPASSWORD = "admin"
 DJEMAIL    = f"{DJUSER}@gmail.com"

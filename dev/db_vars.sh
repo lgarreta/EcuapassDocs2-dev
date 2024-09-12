@@ -1,1 +1,0 @@
-/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs2-dev/dev/scripts/db/db_vars.sh

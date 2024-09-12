@@ -10,6 +10,9 @@ from django.urls import reverse
 from app_usuarios.models import UsuarioEcuapass
 from ecuapassdocs.info.ecuapass_utils import Utils 
 from ecuapassdocs.info.ecuapass_info_cartaporte_BYZA import CartaporteByza
+
+from django.db.models import Q
+
 from .models_Entidades import Cliente
 
 #--------------------------------------------------------------------
@@ -80,6 +83,20 @@ class EcuapassDoc (models.Model):
 
 	def get_link_eliminar_display(self):
 		return 'Eliminar'
+
+	#-------------------------------------------------------------------
+	#-------------------------------------------------------------------
+	#-- Search a pattern in all 'FORMMODEL' fields of a model
+	#-- Overwritten in some child classes
+	def searchModelAllFields (self, searchPattern):
+		queries = Q()
+		FORMMODEL = self._meta.get_field('documento').related_model
+		for field in FORMMODEL._meta.fields:
+			field_name = field.name
+			queries |= Q(**{f"{field_name}__icontains": searchPattern})
+		
+		results = FORMMODEL.objects.filter (queries)
+		return results
 
 #	#-------------------------------------------------------------------
 #	# Get cartaporte from doc fields and save to DB
@@ -158,4 +175,19 @@ class EcuapassForm (models.Model):
 		numero = 2000000+ self.numero 
 		numero = f"CI{numero}"
 		return (self.numero)
+	#-------------------------------------------------------------------
+	#-- Search a pattern in all fields of a model
+	#-------------------------------------------------------------------
+	def searchModelAllFields (self, searchPattern):
+		queries = Q()
+		FORMMODEL = self.__class__
+		print (f"+++ DEBUG: FORMMODEL '{FORMMODEL}'")
+		for field in FORMMODEL._meta.fields:
+			field_name = field.name
+			print (f"+++ DEBUG: field_name '{field_name}'")
+			queries |= Q(**{f"{field_name}__icontains": searchPattern})
 		
+		results = DOCMODEL.objects.filter (queries)
+		return results
+
+
