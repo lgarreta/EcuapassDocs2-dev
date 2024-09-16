@@ -38,7 +38,7 @@ class ManifiestosListadoTable (DocTable):
 	class Meta:
 		model         = Manifiesto
 		urlDoc        = "manifiesto"
-		fields        = ("numero", "fecha_emision", "vehiculo", "acciones")
+		fields        = ("numero", "fecha_emision", "vehiculo", "referencia", "acciones")
 		template_name = DocTable.template
 		attrs         = {'class': 'table table-striped table-bordered'}		
 

@@ -16,7 +16,7 @@ class DeclaracionesListadoTable (DocTable):
 	class Meta:
 		model         = Declaracion
 		urlDoc        = "declaracion"
-		fields        = ("numero", "fecha_emision", "acciones")
+		fields        = ("numero", "fecha_emision", "referencia", "acciones")
 		template_name = DocTable.template
 		attrs         = {'class': 'table table-striped table-bordered'}		
 

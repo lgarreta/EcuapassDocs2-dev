@@ -1,0 +1,1 @@
+/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassBot/EcuapassBot4-dev/ecuserver/ecuapass_settings.py

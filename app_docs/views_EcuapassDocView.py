@@ -46,7 +46,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		self.background_image = background_image
 		self.parameters_file  = parameters_file
 		self.inputParams      = ResourceLoader.loadJson ("docs", self.parameters_file)
-		self.inputValues      = Utils.getInputValuesFromInputParams (self.inputParams)
+		self.inputValues      = Utils.getFormFieldsFromInputParams (self.inputParams)
 
 	#-------------------------------------------------------------------
 	# Usado para llenar una forma (manifiesto) vacia
@@ -54,7 +54,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	#-------------------------------------------------------------------
 	def get (self, request, *args, **kwargs):
 		print ("\n\n+++ GET : EcuapassDocView +++")
-		self.initDocumentValues (request)
+		self.initDocumentConstants (request)
 		print ("+++ URL :", request.path_info)
 		command = resolve(request.path_info).url_name
 		print ("+++ URL name:", command)
@@ -68,11 +68,9 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	#-------------------------------------------------------------------
 	@method_decorator(csrf_protect)
 	def post (self, request, *args, **kwargs):
-		self.initDocumentValues (request)
 		print ("\n\n+++ POST : EcuapassDocView +++")
+		self.initDocumentConstants (request)
 		print ("+++ URL :", request.path_info)
-		print ("+++ PAIS :", self.pais)
-		print ("+++ USER :", self.usuario)
 
 		self.inputValues = self.getInputValuesFromForm (request)		  # Values without CPI number
 		commandButton    = request.POST.get('boton_seleccionado', '').lower()
@@ -103,7 +101,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		# Check if new or existing document
 		if pk and "clon" not in command:
 			self.inputParams = self.copySavedValuesToInputs (pk)
-			self.inputValues = Utils.getInputValuesFromInputParams (self.inputParams)
+			self.inputValues = Utils.getFormFieldsFromInputParams (self.inputParams)
 	
 		if "editar" in command or "nuevo" in command:
 			return self.onEditCommand (command, request, *args, **kwargs)
@@ -123,17 +121,15 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	# Edit existing, new, or clon doc
 	#-------------------------------------------------------------------
 	def onEditCommand  (self, command, request, *args, **kwargs):
-		print ("+++ onEditCommand:", command)
 		documentParams = self.getDocumentParams (request, *args, **kwargs)
 		pk = documentParams ["pk"]
 
 		# Check if new or existing document
 		if pk:
 			self.inputParams = self.copySavedValuesToInputs (pk)
-			self.inputValues = Utils.getInputValuesFromInputParams (self.inputParams)
-
-		self.initDocumentValues (request)
-
+		else:
+			self.inputParams ["txt0a"]["value"] = Utils.getCodigoPaisFromPais (self.pais)
+			
 		# Send input fields parameters (bounds, maxLines, maxChars, ...)
 		docUrl = self.docType.lower()
 		contextDic = {
@@ -162,10 +158,8 @@ class EcuapassDocView (LoginRequiredMixin, View):
 			self.inputParams = Utils.setInputValuesToInputParams (self.inputValues, self.inputParams)
 		else:
 			self.inputParams = self.copySavedValuesToInputs (pk)
-			self.inputValues = Utils.getInputValuesFromInputParams (self.inputParams)
+			self.inputValues = Utils.getFormFieldsFromInputParams (self.inputParams)
 
-		##self.setInitialValuesToInputs (documentParams)
-		#self.initDocumentValues (request)
 		docId, docNumber, formModel, docModel = self.saveNewDocToDB (self.inputValues)
 
 		url = f"/{docType.lower()}/editar/{docId}"
@@ -183,7 +177,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 			messages.add_message (request, messages.ERROR, "Límite alcanzado para crear nuevos documentos.")
 			return render (request, 'messages.html')
 		else:
-			docId, docNumber = self.saveDocumentToDB (self.inputValues, documentParams)
+			docId, docNumber = self.saveDocumentToDB (self.inputValues)
 			return docId
 
 	#-------------------------------------------------------------------
@@ -192,7 +186,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		print ("+++ onPdfCommand...")
 		documentParams    = self.getDocumentParams (request, *args, **kwargs)
 		
-		self.saveDocumentToDB (self.inputValues, documentParams)
+		self.saveDocumentToDB (self.inputValues)
 
 		# Create a single PDF or PDF with child documents (Cartaporte + Manifiestos)
 		if "paquete" in pdfType:
@@ -299,24 +293,13 @@ class EcuapassDocView (LoginRequiredMixin, View):
 			
 	#-------------------------------------------------------------------
 	#-- Set constant values for the BYZA cliente
-	#-- Overloaded in sublclasses
+	#-- Overloaded in sublclasses (Manifiesto)
 	#-------------------------------------------------------------------
-	def initDocumentValues (self, request):
+	def initDocumentConstants (self, request):
 		self.pais    = request.session.get ("pais")
 		self.usuario = request.user
-		print (f"+++ DEBUG: initDocumentValues:pais '{self.pais}'")
-		print (f"+++ DEBUG: initDocumentValues:usuario '{self.usuario}'")
-		codigoPais   = Utils.getCodigoPaisFromPais (self.pais)
-		self.inputParams ["txt0a"]["value"] = codigoPais
-
-
-#	def setInitialValuesToInputs (self, documentParams):
-#		global LAST_SAVED_VALUES
-#		LAST_SAVED_VALUES = None
-#		# Importacion/Exportacion code for BYZA
-#		pais       = documentParams ["pais"]
-#		codigoPais = Utils.getCodigoPaisFromPais (pais)
-#		self.inputParams ["txt0a"]["value"] = codigoPais
+		print (f"+++ initDocumentConstants:pais '{self.pais}'")
+		print (f"+++ initDocumentConstants:usuario '{self.usuario}'")
 
 	#-------------------------------------------------------------------
 	#++ INCOMPLETE: pais?
@@ -351,6 +334,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	#-- Set saved or default values to inputs
 	#-------------------------------------------------------------------
 	def copySavedValuesToInputs (self, recordId):
+		print (f"+++ DEBUG: recordId '{ recordId}'")
 		instanceDoc = None
 		if (self.docType.upper() == "CARTAPORTE"):
 			instanceDoc = CartaporteDoc.objects.get (id=recordId)
@@ -380,7 +364,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 			savedtInputValues  = sessionInfo.get ("savedInputValues")
 			sessionInfo.set ("savedInputValues", currentInputValues)
 			print (sessionInfo)
-			self.saveDocumentToDB (currentInputValues, documentParams)
+			self.saveDocumentToDB (currentInputValues)
 			self.inputValues = currentInputValues
 
 			print ("+++ updateDoc:", sessionInfo)
@@ -417,7 +401,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 
 	#-------------------------------------------------------------------
 	#-------------------------------------------------------------------
-	def saveDocumentToDB (self, inputValues, documentParams):
+	def saveDocumentToDB (self, inputValues):
 		# Create formModel and save it to get id
 		docNumber	= inputValues ["numero"]
 		print ("+++ DEBUG: docNumber:", docNumber)
@@ -466,38 +450,11 @@ class EcuapassDocView (LoginRequiredMixin, View):
 
 		return docModel.id, docModel.numero, formModel, docModel
 
-#	def old_saveNewDocToDB (self, inputValues, username):
-#		print (">>> Guardando documento nuevo en la BD...")
-#		FormModel, DocModel = self.getFormAndDocClass (self.docType)
-#		paisCode  = inputValues ["txt0a"]		
-#
-#		formModel = FormModel ()
-#		formModel.save ()
-#		formModel.numero = self.createDocNumber (formModel.id, paisCode)
-#
-#		# Set document values from form values
-#		for key, value in inputValues.items():
-#			if key not in ["id", "numero"]:
-#				setattr (formModel, key, value)
-#
-#		# Replace old by new number
-#		formModel.txt00 = formModel.numero
-#
-#		# Save corresponding doc model 
-#		docId, docNumber = formModel.id, formModel.numero
-#		docModel = DocModel (id=docId, numero=docNumber, documento=formModel)
-#		docModel.save ()
-#
-#		# Update user quota
-#		self.actualizarNroDocumentosCreados (username, self.docType)
-#
-#		return docId, docNumber, formModel, docModel
-
 	#-- Save existing document
 	def saveExistingDocToDB (self, inputValues):
 		print (">>> Guardando documento existente en la BD...")
 		FormModel, DocModel = self.getFormAndDocClass (self.docType)
-		docId	    = inputValues ["id"]
+		docId	  = inputValues ["id"]
 		docNumber = inputValues ["numero"]
 		docModel  = get_object_or_404 (FormModel, id=docId)
 
@@ -518,6 +475,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		initRange = EcuData.configuracion ["numero_documento_inicio"]
 		docNumber = f"{paisCode}{initRange + id}"
 		return docNumber
+
 	#-------------------------------------------------------------------
 	# Return form document class and register class from document type
 	#-------------------------------------------------------------------

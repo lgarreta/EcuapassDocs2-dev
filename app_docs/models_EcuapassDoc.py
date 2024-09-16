@@ -19,13 +19,31 @@ from .models_Entidades import Cliente
 # Base model for doc models: Cartaporte, Manifiesto, Declaracion
 #--------------------------------------------------------------------
 class EcuapassDoc (models.Model):
-	numero        = models.CharField (max_length=20)
-	fecha_emision = models.DateField (default=date.today, null=False)
-	pais          = models.CharField (max_length=30)
-	usuario       = models.ForeignKey (UsuarioEcuapass, on_delete=models.SET_NULL, null=True)
+	numero         = models.CharField (max_length=20)
+	fecha_emision  = models.DateField (default=date.today, null=False)
+	pais           = models.CharField (max_length=30)
+	usuario        = models.ForeignKey (UsuarioEcuapass, on_delete=models.SET_NULL, null=True)
+	referencia     = models.CharField (max_length=30, null=True, blank=True)
+	fecha_creacion = models.DateTimeField (auto_now_add=True, null=False)
 
 	class Meta:
 		abstract = True
+
+	#----------------------------------------------------------------
+	# Set base values to document
+	# Overwritten in child classes
+	#----------------------------------------------------------------
+	def setValues (self, formInstance, docFields, pais, username):
+		# Base values
+		self.numero     = formInstance.numero
+		self.documento  = formInstance
+		self.pais       = pais
+		self.usuario    = self.getUserByUsername (username)
+
+		try:
+			self.referencia = docFields ["referencia"]
+		except:
+			self.referencia = None
 
 	#-- Returns document type as class model name ("cartaporte", "manifiesto", "declaracion")
 	def getDocType(self):

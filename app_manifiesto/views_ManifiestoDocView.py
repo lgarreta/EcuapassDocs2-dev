@@ -17,8 +17,8 @@ class ManifiestoDocView (EcuapassDocView):
 		                  self.parameters_file, *args, **kwargs)
 
 	#-- Set constant values for the BYZA company
-	def initDocumentValues (self, request):
-		super ().initDocumentValues (request)
+	def initDocumentConstants (self, request):
+		super ().initDocumentConstants (request)
 
 		# Permisos values for BYZA 
 		self.inputParams ["txt02"]["value"] = "PO-CO-0033-22"

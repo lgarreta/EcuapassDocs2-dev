@@ -4,6 +4,7 @@
 - Custom user management
 
 ## LOG
+Sep/16: r0.843 : Adjusted for 'bot_migration' (CPIs). migrationFields, 'referencia' field, setValues.
 Sep/11: r0.841 : New general search and listing for docs and entities.
 Sep/11: r0.840 : Working on Railway: 'Procfile' for statics. Ecuapasdocs as library (r0.85).
 Sep/10: r0.838 : Removed lib ecuapassdocs. Added links to it.

@@ -16,7 +16,7 @@ class CartaportesListadoTable (DocTable):
 	class Meta:
 		model         = Cartaporte
 		urlDoc        = "cartaporte"
-		fields        = ("numero", "fecha_emision", "remitente", "acciones")
+		fields        = ("numero", "fecha_emision", "remitente", "referencia", "acciones")
 		template_name = DocTable.template
 		attrs         = {'class': 'table table-striped table-bordered'}		
 
