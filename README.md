@@ -4,6 +4,7 @@
 - Custom user management
 
 ## LOG
+Sep/18: r0.844 : Migration data: BYZA, LOGITRANS. Title for doc tabs.
 Sep/16: r0.843 : Adjusted for 'bot_migration' (CPIs). migrationFields, 'referencia' field, setValues.
 Sep/11: r0.841 : New general search and listing for docs and entities.
 Sep/11: r0.840 : Working on Railway: 'Procfile' for statics. Ecuapasdocs as library (r0.85).

@@ -3,6 +3,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>
+        {% block title %} {{ docTitle }}{% endblock %}
+	</title>
+
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,9 +24,6 @@
 	<script src="{% static 'app_docs/js/autocomplete-documents.js' %}"></script>
 	<script src="{% static 'app_docs/js/enable_disable_doc_buttons.js' %}"></script>
 
-	<title>
-		{% block title %}Documento{% endblock %}
-	</title>
 
 	<style>
 		#container {

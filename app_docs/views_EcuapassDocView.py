@@ -132,7 +132,10 @@ class EcuapassDocView (LoginRequiredMixin, View):
 			
 		# Send input fields parameters (bounds, maxLines, maxChars, ...)
 		docUrl = self.docType.lower()
+		docNumber = self.inputParams ["numero"]["value"]
+		docTitle  = Utils.getDocPrefix (self.docType) + " : " + docNumber
 		contextDic = {
+			"docTitle"         : docTitle,
 			"docType"          : self.docType, 
 			"pais"             : documentParams ["pais"],
 			"input_parameters" : self.inputParams, 
