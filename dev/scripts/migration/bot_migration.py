@@ -42,14 +42,14 @@ def main ():
 	args = sys.argv
 	inputDir = args [1]
 	try:
-		#saveDocs (inputDir)
-		downloadDocs (inputDir)
+		saveDocs (inputDir)
+		#downloadDocs (inputDir)
 	except:
 		Utils.printException ()
 
 def saveDocs (inputDir):
 		webdriver = BotMigration.getWaitWebdriver (DEBUG=True)
-		bot = BotMigration ("LOGITRANS", "COLOMBIA", DOCTYPE, 0, 0, webdriver)
+		bot = BotMigration ("LOGITRANS", "COLOMBIA", "CARTAPORTE", 0, 0, webdriver)
 		bot.saveDocFilesToDB (inputDir)
 
 def downloadDocs (inputDir):
@@ -67,9 +67,9 @@ def downloadDocs (inputDir):
 #		bot = BotMigration ("LOGITRANS", "COLOMBIA", DOCTYPE, INI, END, webdriver)
 
 		#------------------------ BYZA DECLARACIONES --------------------#
-		INI = docs ["BYZA"]["CPI-CO-2023"]["ini"]["id"]
-		END = docs ["BYZA"]["CPI-CO-2023"]["end"]["id"]
-		bot = BotMigration ("BYZA", "COLOMBIA", "CARTAPORTE", INI, END, webdriver)
+		INI = docs ["BYZA"]["MCI-CO-2023"]["ini"]["id"]
+		END = docs ["BYZA"]["MCI-CO-2023"]["end"]["id"]
+		bot = BotMigration ("BYZA", "COLOMBIA", "MANIFIESTO", INI, END, webdriver)
 		#----------------------------------------------------------------#
 		bot.enterCodebin ()
 		bot.loginCodebin (bot.pais)
@@ -361,21 +361,33 @@ class BotMigration:
 	#-------------------------------------------------------------------
 	#-------------------------------------------------------------------
 	def saveDocFilesToDB (self, inputDir):
-		migrationFilesList = [f"{inputDir}/{x}" for x in os.listdir (inputDir) if ".json" in x]
+		migrationFilesList = [f"{inputDir}/{x}" for x in self.getSortedFiles (inputDir)]
 		for migrationFilename in migrationFilesList:
 			formFields = Utils.getFormFieldsFromMigrationFieldsFile (migrationFilename)
 			usuario    = UsuarioEcuapass.objects.get (username=self.user)
 			self.saveNewDocToDB (formFields, self.docType, self.pais, usuario)
 
+	def getSortedFiles (self, inputDir):
+		filesAll = [x for x in os.listdir (inputDir) if ".json" in x]
+		dicFiles = {}
+		for file in filesAll:
+			docNumber = file.split("-")[2][2:]
+			dicFiles [docNumber] = file
+
+		sortedFiles = [x[1] for x in sorted (dicFiles.items())]
+		return sortedFiles
+
 	#-------------------------------------------------------------------
 	# Save form fields from Ecuapass document to DB
 	#-------------------------------------------------------------------
 	def saveNewDocToDB (self, formFields, docType, pais, usuario):
-		print (">>> Guardando documento nuevo en la BD...")
 		FormModel, DocModel = self.getFormAndDocModels (docType)
 
 		# First: save DocModel to get the id
 		docNumber = formFields ["numero"]
+		print ("\n\n------------------------------------------")
+		print (f"+++ Guardando documento '{docNumber}' nuevo en la BD...")
+		print ("------------------------------------------")
 		docModel  = DocModel (numero=docNumber, pais=pais, usuario=usuario)
 		docModel.save ()
 		docNumber = docModel.numero
@@ -383,6 +395,7 @@ class BotMigration:
 		# Second: set and save values to each field of FormModel
 		formModel = FormModel (id=docModel.id, numero=docModel.numero)
 		formFields ["txt00"] = formModel.numero
+		print (f"+++ DEBUG: formFields '{formFields}'")
 		for key, value in formFields.items():
 			#if key not in ["id", "numero", "referencia", "fecha_creacion"]:
 			if "txt" in key: 
@@ -392,7 +405,7 @@ class BotMigration:
 		# Update DocModel with FormModel's values
 		docFields	= Utils.getAzureValuesFromInputsValues (docType, formFields)
 		docFields ["referencia"] = formFields ["referencia"]
-		print (f"+++ DEBUG: docFields '{docFields}'")
+		#print (f"+++ DEBUG: docFields '{docFields}'")
 		docModel.setValues (formModel, docFields, pais,  usuario)
 		docModel.save ()
 

@@ -36,7 +36,6 @@ class DocumentosListadoView (View):
 		self.DOCFORM   = DOCFORM 
 		self.DOCTABLE  = DOCTABLE
 
-
 	# General and date search
 	def get (self, request):
 		form      = self.DOCFORM (request.GET)
@@ -47,7 +46,10 @@ class DocumentosListadoView (View):
 				object    = self.DOCMODEL()
 				instances = object.searchModelAllFields (searchPattern)
 			else:
-				instances = self.DOCMODEL.objects.all ()
+				firstField = self.DOCMODEL._meta.fields [1].name
+				print (f"+++ DEBUG: firstField '{firstField}'")
+				instances = self.DOCMODEL.objects.order_by (f"-{firstField}")
+				#instances = self.DOCMODEL.objects.all ()
 
 			table = self.DOCTABLE (instances)
 		else:
@@ -56,33 +58,6 @@ class DocumentosListadoView (View):
 		args =	{'itemsTipo':self.docsTipo, 'itemsLista': instances, 
 				 'itemsForma': form, 'itemsTable': table}
 		return render(request, 'app_docs/listing_entities.html', args)
-
-
-#	def get_search_numero_fecha (self, request):
-#		pais	 = request.session.get ("pais")
-#		usuario  = request.session.get ("usuario")
-#		documentos  = self.DOCMODEL.objects.filter (pais=pais)
-#		form		= self.DOCFORM (request.GET)
-#
-#		if form.is_valid():
-#			numero		  = form.cleaned_data.get('numero')
-#			fecha_emision = form.cleaned_data.get('fecha_emision')
-#			
-#			if numero:
-#				documentos = documentos.filter (numero__icontains=numero)
-#			if fecha_emision:
-#				documentos = documentos.filter (fecha_emision=fecha_emision)
-#			else:
-#				current_datetime = timezone.now()
-#				documentos = documentos.filter (fecha_emision__lte=current_datetime).order_by ('-fecha_emision')
-#
-#			table = self.DOCTABLE (documentos)
-#		else:
-#			return ("Forma inválida")
-#
-#		return render(request, 'documento_listado.html',
-#				   {'docsTipo': self.docsTipo, 'docsLista': documentos, 'docsForma': form, 'docsTabla': table})
-
 
 #----------------------------------------------------------
 #-- Forma
@@ -130,8 +105,8 @@ class DocTable (tables.Table):
 		# Column for apply actions in the current item document
 		self.base_columns ['acciones'] = tables.TemplateColumn(
 			template_code='''
-			<a href="{{ record.get_link_actualizar }}">{{ record.get_link_actualizar_display }}</a>,
-			<a href="{{ record.get_link_eliminar }}">{{ record.get_link_eliminar_display }}</a>
+			<a href="{{ record.get_link_actualizar }}" target='_blank'>Editar</a>,
+			<a href="{{ record.get_link_eliminar }}" target='_blank'>Eliminar</a>
 			''',
 			verbose_name='Acciones'
 		)

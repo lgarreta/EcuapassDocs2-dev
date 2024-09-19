@@ -38,7 +38,8 @@ class EntidadesListadoView (View):
 			if searchPattern:
 				instances = self.DOCMODEL.searchModelAllFields (searchPattern)
 			else:
-				instances = self.DOCMODEL.objects.all ()
+				firstField = self.DOCMODEL._meta.fields [0].name
+				instances = self.DOCMODEL.objects.order_by (firstField)
 
 			table = self.DOCTABLE (instances)
 		else:

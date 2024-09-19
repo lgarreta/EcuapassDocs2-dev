@@ -58,6 +58,7 @@ class EcuapassDoc (models.Model):
 	#-- Generate doc number from last doc number saved in DB
 	def generateDocNumber (self):
 		lastDoc = self._meta.model.objects.filter (pais=self.pais).order_by ("-id").first ()
+		print (f"+++ DEBUG: generateDocNumber:lastDoc '{lastDoc}'")
 		if lastDoc:
 			lastNumber = Utils.getNumberFromDocNumber (lastDoc.numero)
 			newNumber  = str (lastNumber + 1).zfill (5)
@@ -91,16 +92,10 @@ class EcuapassDoc (models.Model):
 		url     = f"{docName}-editar"
 		return reverse (url, args=[self.pk])
 
-	def get_link_actualizar_display(self):
-		return 'Actualizar'
-
 	def get_link_eliminar(self):
 		docName = self.getDocType ().lower()
 		url     = f"{docName}-delete"
 		return reverse (url, args=[self.pk])
-
-	def get_link_eliminar_display(self):
-		return 'Eliminar'
 
 	#-------------------------------------------------------------------
 	#-------------------------------------------------------------------

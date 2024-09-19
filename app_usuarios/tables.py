@@ -12,8 +12,8 @@ class UserTable(tables.Table):
 	# Columna adicional de "acciones" que se presenta al listar los usuarios
 	columnaAcciones = tables.TemplateColumn(
 		template_code='''
-		(<a href="{{ record.get_link_actualizar }}">{{ record.get_link_actualizar_display }}</a>),
-		(<a href="{{ record.get_link_eliminar }}">{{ record.get_link_eliminar_display }}</a>)
+		<a href="{{ record.get_link_actualizar }}">Editar</a>,
+		<a href="{{ record.get_link_eliminar }}">Eliminar</a>
 		''',
 		verbose_name='Acciones'
 	)

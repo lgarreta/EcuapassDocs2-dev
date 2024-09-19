@@ -4,6 +4,14 @@ Codebin docs ranges for download
 
 docs = {
 	"BYZA" : {
+		"CPI-CO-2022":{
+			"ini":{"id":5336,"nro":"CO6913", "fecha":"2023-01-02"},
+			"end":{"id":6336,"nro":"CO7367", "fecha":"2023-12-27"}
+		},
+		"MCI-CO-2023":{
+			"ini":{"id":10000,"nro":"CO11174", "fecha":"2023-01-02"},
+			"end":{"id":10085,"nro":"COXXXX", "fecha":"2023-12-27"}
+		},
 		"CPI-CO-2023":{
 			"ini":{"id":6336,"nro":"CO6913", "fecha":"2023-01-02"},
 			"end":{"id":7068,"nro":"CO7367", "fecha":"2023-12-27"}

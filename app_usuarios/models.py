@@ -63,14 +63,8 @@ class UsuarioEcuapass (AbstractUser):
 	def get_link_actualizar(self):
 		return reverse('actualizar', args=[self.pk])
 
-	def get_link_actualizar_display(self):
-		return 'Actualizar'
-
 	def get_link_eliminar(self):
 		return reverse('eliminar', args=[self.pk])
-
-	def get_link_eliminar_display(self):
-		return 'Eliminar'
 
 	#-------------------------------------------------------------------
 
