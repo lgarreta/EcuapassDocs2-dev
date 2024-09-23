@@ -91,7 +91,8 @@ class Cartaporte (EcuapassDoc):
 		db_table = "cartaporte"
 
 	documento     = models.OneToOneField (CartaporteDoc,
-									   on_delete=models.CASCADE, null=True)
+									   on_delete=models.CASCADE, null=True,
+									   related_name="docs")
 	remitente     = models.ForeignKey (Cliente, related_name="cartaportes_remitente",
 	                                   on_delete=models.SET_NULL, null=True)
 	destinatario  = models.ForeignKey (Cliente, related_name="cartaportes_destinatario",

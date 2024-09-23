@@ -97,19 +97,27 @@ class EcuapassDoc (models.Model):
 		url     = f"{docName}-delete"
 		return reverse (url, args=[self.pk])
 
-	#-------------------------------------------------------------------
+	def get_link_detalle(self):
+		docName = self.getDocType ().lower()
+		url     = f"{docName}-detalle"
+		return reverse (url, args=[self.pk])
+
+
 	#-------------------------------------------------------------------
 	#-- Search a pattern in all 'FORMMODEL' fields of a model
 	#-- Overwritten in some child classes
+	#-------------------------------------------------------------------
 	def searchModelAllFields (self, searchPattern):
 		queries = Q()
-		FORMMODEL = self._meta.get_field('documento').related_model
+		FORMMODEL = self._meta.get_field ('documento').related_model
 		for field in FORMMODEL._meta.fields:
 			field_name = field.name
 			queries |= Q(**{f"{field_name}__icontains": searchPattern})
 		
-		results = FORMMODEL.objects.filter (queries)
-		return results
+		formInstances = FORMMODEL.objects.filter (queries)
+		DOCMODEL      = self.__class__
+		docInstances  = DOCMODEL.objects.filter (documento__in=formInstances)
+		return docInstances
 
 #	#-------------------------------------------------------------------
 #	# Get cartaporte from doc fields and save to DB
@@ -174,33 +182,33 @@ class EcuapassDoc (models.Model):
 #--------------------------------------------------------------------
 # Model Cartaporte Form
 #--------------------------------------------------------------------
-class EcuapassForm (models.Model):
-	numero = models.CharField (max_length=20)
-
-#	def get_absolute_url(self):
-#		"""Returns the url to access a particular language instance."""
-#		#return reverse('cliente-detail', args=[str(self.id)])
-
-	def __str__ (self):
-		return f"{self.numero}, {self.txt02}, {self.txt03}"
-	
-	def getNumberFromId (self):
-		numero = 2000000+ self.numero 
-		numero = f"CI{numero}"
-		return (self.numero)
-	#-------------------------------------------------------------------
-	#-- Search a pattern in all fields of a model
-	#-------------------------------------------------------------------
-	def searchModelAllFields (self, searchPattern):
-		queries = Q()
-		FORMMODEL = self.__class__
-		print (f"+++ DEBUG: FORMMODEL '{FORMMODEL}'")
-		for field in FORMMODEL._meta.fields:
-			field_name = field.name
-			print (f"+++ DEBUG: field_name '{field_name}'")
-			queries |= Q(**{f"{field_name}__icontains": searchPattern})
-		
-		results = DOCMODEL.objects.filter (queries)
-		return results
-
+#class EcuapassForm (models.Model):
+#	numero = models.CharField (max_length=20)
+#
+##	def get_absolute_url(self):
+##		"""Returns the url to access a particular language instance."""
+##		#return reverse('cliente-detail', args=[str(self.id)])
+#
+#	def __str__ (self):
+#		return f"{self.numero}, {self.txt02}, {self.txt03}"
+#	
+#	def getNumberFromId (self):
+#		numero = 2000000+ self.numero 
+#		numero = f"CI{numero}"
+#		return (self.numero)
+#	#-------------------------------------------------------------------
+#	#-- Search a pattern in all fields of a model
+#	#-------------------------------------------------------------------
+#	def searchModelAllFields (self, searchPattern):
+#		queries = Q()
+#		FORMMODEL = self.__class__
+#		print (f"+++ DEBUG: FORMMODEL '{FORMMODEL}'")
+#		for field in FORMMODEL._meta.fields:
+#			field_name = field.name
+#			print (f"+++ DEBUG: field_name '{field_name}'")
+#			queries |= Q(**{f"{field_name}__icontains": searchPattern})
+#		
+#		results = DOCMODEL.objects.filter (queries)
+#		return results
+#
 

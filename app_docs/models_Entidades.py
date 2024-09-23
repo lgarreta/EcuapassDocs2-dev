@@ -59,7 +59,7 @@ class Cliente (DocEntity):
 		return reverse('cliente-detail', args=[str(self.id)])
 
 	#-- Search a pattern in all fields of the model
-	def searchModelAllFields (searchPattern):
+	def searchModelAllFields (self, searchPattern):
 		return DocEntity.searchModelAllFields (searchPattern, Cliente)
 
 	def __str__ (self):
@@ -87,7 +87,7 @@ class Conductor (DocEntity):
 		return reverse('conductor-detail', args=[str(self.id)])
 
 	#-- Search a pattern in all fields of the model
-	def searchModelAllFields (searchPattern):
+	def searchModelAllFields (self, searchPattern):
 		results = Conductor.objects.filter(
 			Q (documento__icontains=searchPattern) | 
 			Q (nombre__icontains=searchPattern) | 
@@ -109,14 +109,14 @@ class Vehiculo (DocEntity):
 	pais        = models.CharField (max_length=20)
 	chasis      = models.CharField (max_length=50)
 	anho        = models.CharField (max_length=20)
-	conductor   = models.OneToOneField (Conductor, null=True, blank=True, on_delete=models.CASCADE)
+	conductor   = models.ForeignKey (Conductor, null=True, blank=True, on_delete=models.CASCADE)
 
 	def get_absolute_url(self):
 		"""Returns the url to access a particular language instance."""
 		return reverse('vehiculo-detail', args=[str(self.id)])
 
 	#-- Search a pattern in all fields of the model
-	def searchModelAllFields (searchPattern):
+	def searchModelAllFields (self, searchPattern):
 		results = Vehiculo.objects.filter(
 			Q (placa__icontains=searchPattern) | 
 			Q (marca__icontains=searchPattern) | 

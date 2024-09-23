@@ -17,42 +17,16 @@ import django_tables2 as tables
 from django_tables2.utils import A
 
 # For models
-from app_docs.forms_docs import buscarForma
+from app_docs.forms_docs import BuscarForma
+from app_docs.listing_doc import DocumentosListadoView, BaseListadoTable
+
+import django_tables2 as tables
 from .models_Entidades import Vehiculo, Conductor, Cliente
-
-#----------------------------------------------------------
-#-- View
-#----------------------------------------------------------
-class EntidadesListadoView (View):
-	def __init__ (self, entityType, DOCMODEL, DOCTABLE):
-		self.entityType = entityType
-		self.DOCMODEL   = DOCMODEL
-		self.DOCTABLE   = DOCTABLE
-		self.DOCFORM    = buscarForma
-
-	def get (self, request):
-		form      = self.DOCFORM (request.GET)
-
-		if form.is_valid():
-			searchPattern = form.cleaned_data.get('buscar')
-			if searchPattern:
-				instances = self.DOCMODEL.searchModelAllFields (searchPattern)
-			else:
-				firstField = self.DOCMODEL._meta.fields [0].name
-				instances = self.DOCMODEL.objects.order_by (firstField)
-
-			table = self.DOCTABLE (instances)
-		else:
-			return ("Forma inválida")
-
-		args =	{'itemsTipo':self.entityType, 'itemsLista': instances, 
-				 'itemsForma': form, 'itemsTable': table}
-		return render(request, 'app_docs/listing_entities.html', args)
 
 ##----------------------------------------------------------
 ## Base table used for listing Ecuapass docs 
 ##----------------------------------------------------------
-class DocTable (tables.Table):
+class EntitiesListadoTable (BaseListadoTable):
 	class Meta:
 		abstract      = True
 		template_name = "django_tables2/bootstrap4.html"
@@ -76,33 +50,33 @@ class DocTable (tables.Table):
 #----------------------------------------------------------
 #-- Vehiculos listing
 #----------------------------------------------------------
-class VehiculosListadoView (EntidadesListadoView):
+class VehiculosListadoView (DocumentosListadoView):
 	def __init__(self):
-		super().__init__ ("vehiculos", Vehiculo, VehiculosListadoTable)
+		super().__init__ ("vehiculos", Vehiculo, BuscarForma, VehiculosListadoTable)
 
-class VehiculosListadoTable (DocTable):
-	class Meta  (DocTable.Meta):
+class VehiculosListadoTable (EntitiesListadoTable):
+	class Meta  (EntitiesListadoTable.Meta):
 		model         = Vehiculo
-		fields        = ("placa", "pais", "conductor", "acciones")
+		fields        = ("row_number", "placa", "pais", "conductor", "acciones")
 
 	def __init__ (self, *args, **kwargs):
 		super().__init__ ("vehiculo", *args, **kwargs)
 		self.urlEditarConductor = "conductor-editar"
 		self.base_columns ['placa']      = tables.LinkColumn (self.urlEditar, args=[A('pk')])
-		self.base_columns ['conductor']  = tables.LinkColumn (self.urlEditarConductor, args=[A('pk')])
+		self.base_columns ['conductor']  = tables.LinkColumn (self.urlEditarConductor, args=[A('conductor__id')])
 		super().__init__ ("vehiculo", *args, **kwargs) # To redraw the table
 
 #----------------------------------------------------------
 #-- Conductores listing
 #----------------------------------------------------------
-class ConductoresListadoView (EntidadesListadoView):
+class ConductoresListadoView (DocumentosListadoView):
 	def __init__(self):
-		super().__init__ ("conductores", Conductor, ConductoresListadoTable)
+		super().__init__ ("conductores", Conductor, BuscarForma, ConductoresListadoTable)
 
-class ConductoresListadoTable (DocTable):
-	class Meta (DocTable.Meta):
+class ConductoresListadoTable (EntitiesListadoTable):
+	class Meta (EntitiesListadoTable.Meta):
 		model         = Conductor
-		fields        = ("documento", "nombre", "pais", "acciones")
+		fields        = ("row_number", "documento", "nombre", "pais", "acciones")
 
 	def __init__ (self, *args, **kwargs):
 		super().__init__ ("conductor", *args, **kwargs)
@@ -113,14 +87,14 @@ class ConductoresListadoTable (DocTable):
 #----------------------------------------------------------
 #-- Clientes listing
 #----------------------------------------------------------
-class ClientesListadoView (EntidadesListadoView):
+class ClientesListadoView (DocumentosListadoView):
 	def __init__(self):
-		super().__init__ ("clientes", Cliente, ClientesListadoTable)
+		super().__init__ ("clientes", Cliente, BuscarForma, ClientesListadoTable)
 
-class ClientesListadoTable (DocTable):
-	class Meta (DocTable.Meta):
+class ClientesListadoTable (EntitiesListadoTable):
+	class Meta (EntitiesListadoTable.Meta):
 		model         = Cliente
-		fields        = ("numeroId","nombre","ciudad","pais","direccion","acciones")
+		fields        = ("row_number", "numeroId","nombre","ciudad","direccion","acciones")
 
 	def __init__ (self, *args, **kwargs):
 		super().__init__ ("cliente", *args, **kwargs)
@@ -128,3 +102,8 @@ class ClientesListadoTable (DocTable):
 		self.base_columns ['numeroId']  = tables.LinkColumn (self.urlEditar, args=[A('pk')])
 		super().__init__ ("cliente", *args, **kwargs) # To redraw the table
 
+	#-- Shows CIUDAD (PAIS)
+	def render_ciudad (self, value, record):
+		paisCode = record.pais [:2].upper()
+		return value + f" ({paisCode})"
+					 

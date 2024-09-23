@@ -71,9 +71,12 @@ class ClienteCreate(login_required_class(CreateView)):
 	model = Cliente
 	fields = '__all__'
 
+
 class ClienteUpdate(login_required_class(UpdateView)):
-	model = Cliente
-	fields = ['tipoId','nombre','direccion','ciudad', 'pais']
+	model         = Cliente
+	#template_name = "app_docs/cliente_form.html"
+	fields = ['tipoId', 'numeroId', 'nombre','direccion','ciudad', 'pais']
+
 
 class ClienteDelete(login_required_class(DeleteView)):
 	model = Cliente
@@ -125,6 +128,7 @@ class ConductorCreate(login_required_class(CreateView)):
 
 class ConductorUpdate(login_required_class(UpdateView)):
 	model = Conductor
+	#template_name = "app_docs/conductor_form.html"
 	fields = ['nombre','pais','licencia','fecha_nacimiento']
 
 class ConductorDelete(login_required_class(DeleteView)):
@@ -156,10 +160,21 @@ class InfoView(View):
 # Check if document exists. Base class for sublclases
 #--------------------------------------------------------------------
 class EcuapassDocDetailView (generic.DetailView):
+	# GET request from listing 
 	def get (self, request, *args, **kwargs):
 		try:
 			self.object = self.get_object()
 			context = self.get_context_data(object=self.object)
+			return self.render_to_response(context)
+		except: 
+			messages.add_message (request, messages.ERROR, "El documento no existe!")
+			return render (request, 'messages.html')
+
+	# POST request from form document
+	def post (self, request, *args, **kwargs):
+		try:
+			self.object = self.get_object ()
+			context = self.get_context_data (object=self.object)
 			return self.render_to_response(context)
 		except: 
 			messages.add_message (request, messages.ERROR, "El documento no existe!")

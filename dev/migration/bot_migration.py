@@ -38,18 +38,26 @@ from ecuapassdocs.info.resourceloader import ResourceLoader
 from bot_migration_docs import docs
 
 
+#----------------------------------------------------------
+# main
+#----------------------------------------------------------
 def main ():
 	args = sys.argv
-	inputDir = args [1]
+	option   = args [1]
+	inputDir = args [2]
 	try:
-		saveDocs (inputDir)
-		#downloadDocs (inputDir)
+		if option == "--save":
+			saveDocs (inputDir)
+		elif option == "--download":
+			downloadDocs (inputDir)
+		else:
+			print ("Opción desconocida")
 	except:
 		Utils.printException ()
 
 def saveDocs (inputDir):
 		webdriver = BotMigration.getWaitWebdriver (DEBUG=True)
-		bot = BotMigration ("LOGITRANS", "COLOMBIA", "CARTAPORTE", 0, 0, webdriver)
+		bot = BotMigration ("LOGITRANS", "COLOMBIA", "DECLARACION", 0, 0, webdriver)
 		bot.saveDocFilesToDB (inputDir)
 
 def downloadDocs (inputDir):
@@ -67,8 +75,8 @@ def downloadDocs (inputDir):
 #		bot = BotMigration ("LOGITRANS", "COLOMBIA", DOCTYPE, INI, END, webdriver)
 
 		#------------------------ BYZA DECLARACIONES --------------------#
-		INI = docs ["BYZA"]["MCI-CO-2023"]["ini"]["id"]
-		END = docs ["BYZA"]["MCI-CO-2023"]["end"]["id"]
+		INI = docs ["BYZA"]["MCI-CO-2021"]["ini"]["id"]
+		END = docs ["BYZA"]["MCI-CO-2021"]["end"]["id"]
 		bot = BotMigration ("BYZA", "COLOMBIA", "MANIFIESTO", INI, END, webdriver)
 		#----------------------------------------------------------------#
 		bot.enterCodebin ()
@@ -79,7 +87,6 @@ def downloadDocs (inputDir):
 #--------------------------------------------------------------------
 # Class with properties and functios for migration: dowload/save docs
 #--------------------------------------------------------------------
-
 class BotMigration:
 	def __init__ (self, empresa, pais, docType, initialId, finalId, webdriver):
 			self.empresa	= empresa
@@ -112,7 +119,8 @@ class BotMigration:
 		failingDocs = []
 		successDocs = []
 		blankDocs   = []
-		for docId in range (self.finalId, self.initialId-1, -1):
+		# Download from latest id to old id (reverse order)
+		for docId in range (self.initialId, self.finalId - 1,  -1):
 		#for docId in range (self.initialId, self.finalId+1):
 			try:
 				docLink = urlLink % docId
@@ -359,6 +367,7 @@ class BotMigration:
 		return settings
 
 	#-------------------------------------------------------------------
+	# Save docs files (JSON) in input dir to DB
 	#-------------------------------------------------------------------
 	def saveDocFilesToDB (self, inputDir):
 		migrationFilesList = [f"{inputDir}/{x}" for x in self.getSortedFiles (inputDir)]
@@ -367,6 +376,7 @@ class BotMigration:
 			usuario    = UsuarioEcuapass.objects.get (username=self.user)
 			self.saveNewDocToDB (formFields, self.docType, self.pais, usuario)
 
+	#-- Get doc files from dir sorted by number : CO#####, EC#####, PE#####
 	def getSortedFiles (self, inputDir):
 		filesAll = [x for x in os.listdir (inputDir) if ".json" in x]
 		dicFiles = {}

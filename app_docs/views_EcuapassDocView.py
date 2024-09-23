@@ -105,7 +105,6 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	
 		if "editar" in command or "nuevo" in command:
 			return self.onEditCommand (command, request, *args, **kwargs)
-
 		elif "clonar" in command:
 			return self.onClonCommand (command, request, *args, **kwargs)
 		elif "pdf" in command:

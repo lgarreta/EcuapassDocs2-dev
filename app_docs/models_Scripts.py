@@ -25,7 +25,6 @@ def searchModelAllFields (searchPattern, DOCMODEL):
     results = DOCMODEL.objects.filter (queries)
     return results
 
-
 #-------------------------------------------------------------------
 # Get cartaporte from doc fields and save to DB
 #-------------------------------------------------------------------
@@ -70,7 +69,6 @@ def getClienteInfo (docKey, docFields):
 
 	return info
 
-
 #-- Save instance of Cliente with info: id, nombre, direccion, ciudad, pais, tipoId, numeroId
 def saveClienteInfoToDB (info):
 	cliente = None
@@ -89,8 +87,53 @@ def saveClienteInfoToDB (info):
 		Utils.printException (f"Guardando cliente to DB")
 	return cliente
 
-
+##----------------------------------------------------------
+## ------------------ Functions in models_mci -------------
+##----------------------------------------------------------
+##----------------------------------------------------------
+## Get / Save Vehiculo info from docFields (formFields)
+##----------------------------------------------------------
+#def getSaveVehiculoInstance (docKey, docFields):
+#	vehiculoInfo  = getVehiculoInfo (docKey, docFields)
+#	if vehiculoInfo:
+#		vehiculo = saveVehiculoInfo (vehiculoInfo)
+#		return vehiculo
+#	else:
+#		return None
+#
+##-- Get a 'vehiculo' instance from extracted info
+#def getVehiculoInfo (self, manifiestoInfo, vehicleType):
+#	vehinfo = None
+#	print ("+++ Tipo vehiculo:", vehicleType)
+#	try:
+#		jsonFieldsPath, runningDir = Utils.createTemporalJson (docFields)
+#		manifiestoInfo  = ManifiestoInfo (jsonFieldsPath, runningDir)
+#		vehinfo         = manifiestoInfo.extractVehiculoInfo (vehicleType)
+#		if any (value is None for value in vehinfo.values()):
+#			return None
+#	except:
+#		Utils.printException (f"Obteniedo info de cliente tipo: '{docKey}'")
+#	return vehinfo
+#
+##-- Save instance of Vehiculo 
+#def saveVehiculoInfo (vehinfo):
+#	vehiculo = None
+#	try:
+#		vehiculo, created    = Vehiculo.objects.get_or_create (placa=vehinfo['placa'])
+#		vehiculo.marca       = vehinfo ["marca"]
+#		vehiculo.placa       = vehinfo ["placa"]
+#		vehiculo.pais        = vehinfo ["pais"]
+#		vehiculo.chasis      = vehinfo ["chasis"]
+#		vehiculo.anho        = vehinfo ["anho"]
+#		vehiculo.certificado = vehinfo ["certificado"]
+#		vehiculo.save ()
+#	except:
+#		Utils.printException (f"Obteniedo información del vehiculo.")
+#	return vehiculo
+#
+#----------------------------------------------------------
 #-- Return recent cartaportes (within the past week)
+#----------------------------------------------------------
 def getRecentDocuments (DOCMODEL):
 	diasRecientes = EcuData.configuracion ["dias_cartaportes_recientes"]
 	oneWeekAgo = timezone.now () - timedelta (days=diasRecientes)

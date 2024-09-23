@@ -1,10 +1,10 @@
 import os, tempfile, json
-from datetime import date
 
 from django.db import models
 from django.urls import reverse  # To generate URLS by reversing URL patterns
 
 from ecuapassdocs.info.ecuapass_utils import Utils
+from ecuapassdocs.info.ecuapass_info import EcuInfo
 from ecuapassdocs.info.ecuapass_info_manifiesto_BYZA import ManifiestoByza
 
 from app_docs.models_EcuapassDoc import EcuapassDoc
@@ -95,26 +95,24 @@ class Manifiesto (EcuapassDoc):
 		"""Returns the url to access a particular language instance."""
 		return reverse('manifiesto-detalle', args=[str(self.id)])
 
-	def setValues (self, manifiestoDoc, docFields, procedimiento, username):
+	def setValues (self, manifiestoForm, docFields, pais, username):
 		# Base values
-		self.numero        = manifiestoDoc.numero
-		self.documento     = manifiestoDoc
-		self.procedimiento = procedimiento
-		self.usuario       = self.getUserByUsername (username)
+		super().setValues (manifiestoForm, docFields, pais, username)
 
 		# Document values
 		jsonFieldsPath, runningDir = self.createTemporalJson (docFields)
 		manifiestoInfo     = ManifiestoByza (jsonFieldsPath, runningDir)
 
-		self.vehiculo      = self.getVehiculoInstance (manifiestoInfo, "VEHICULO")
-		self.remolque      = self.getVehiculoInstance (manifiestoInfo, "REMOLQUE")
-		self.conductor     = self.getConductorInstance (manifiestoInfo, "VEHICULO")
+		self.vehiculo      = self.getSaveVehiculoInstance (manifiestoInfo, "VEHICULO")
+		self.remolque      = self.getSaveVehiculoInstance (manifiestoInfo, "REMOLQUE")
+		self.conductor     = self.getSaveConductorInstance (manifiestoInfo, "VEHICULO")
 		self.cartaporte    = self.getCartaporteInstance (manifiestoInfo)
+		self.fecha_emision = EcuInfo.getFechaEmision (docFields, "MANIFIESTO")
 
-		self.updateRelations ()
+		self.updateFieldRelations ()
 
 	#-- Update relations between fields: vehiculo has one conductor
-	def updateRelations (self):
+	def updateFieldRelations (self):
 		if self.vehiculo and self.conductor:
 			self.vehiculo.conductor = self.conductor
 			self.vehiculo.save ()
@@ -132,7 +130,7 @@ class Manifiesto (EcuapassDoc):
 		return None
 
 	#-- Get a 'conductor' instance from extracted info
-	def getConductorInstance (self, manifiestoInfo, vehicleType):
+	def getSaveConductorInstance (self, manifiestoInfo, vehicleType):
 		try:
 			info = manifiestoInfo.getConductorInfo ()
 			print (f"+++ DEBUG: info conductor '{info}'")
@@ -152,20 +150,20 @@ class Manifiesto (EcuapassDoc):
 			return None
 
 	#-- Get a 'vehiculo' instance from extracted info
-	def getVehiculoInstance (self, manifiestoInfo, vehicleType):
+	def getSaveVehiculoInstance (self, manifiestoInfo, vehicleType):
 		print ("+++ Tipo vehiculo:", vehicleType)
 		try:
-			info = manifiestoInfo.getVehiculoRemolqueInfo (vehicleType)
+			info = manifiestoInfo.extractVehiculoInfo (vehicleType)
 			if any (value is None for value in info.values()):
 				return None
 			else:
-				vehiculo, created = Vehiculo.objects.get_or_create (placa=info['placa'])
-				vehiculo.marca       = info ["marca"]
-				vehiculo.placa       = info ["placa"]
-				vehiculo.pais        = info ["pais"]
-				vehiculo.chasis      = info ["chasis"]
-				vehiculo.anho        = info ["anho"]
-				vehiculo.certificado = info ["certificado"]
+				vehiculo, createdFlag = Vehiculo.objects.get_or_create (placa=info['placa'])
+				vehiculo.marca        = info ["marca"]
+				vehiculo.placa        = info ["placa"]
+				vehiculo.pais         = info ["pais"]
+				vehiculo.chasis       = info ["chasis"]
+				vehiculo.anho         = info ["anho"]
+				vehiculo.certificado  = info ["certificado"]
 				vehiculo.save ()
 				return vehiculo
 		except:

@@ -150,10 +150,13 @@
 		}
 		if (base_url.includes ("clonar")){
 			url = "/" + docUrl  + "/clonar/" + docId;
-		}
-		 if (base_url.includes ("pdf")) {
+		}else if (base_url.includes ("pdf")) {
              form.target ="_blank"
-		}
+		} else if (base_url.includes ("detalle")) {
+			url = "/" + docUrl  + "/detalle/" + docId;
+        }
+        console.log (">>> url: ", url)
+
 		form.action = url
 	}
 </script>
@@ -175,6 +178,8 @@
 									id="boton_pdf_paquete" name="action" value="paquete" disabled>PDF Paquete</button>
 					<button class="submit" type="submit" onclick="setActionUrl('/clonar/')" 
 									id="boton_clonar" name="action" value="clonar" disabled>Clonar</button>
+					<button class="submit" type="submit" onclick="setActionUrl('/detalle/')" 
+									id="boton_detalle" name="action" value="detalle" disabled>Detalle</button>
 				</div>
 				<!--------------------------------------------------------------->
 				<!------------- Input fields added dynamically ------------------>

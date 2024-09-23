@@ -8,7 +8,7 @@
   <p><strong>Licencia:</strong> {{ conductor.licencia }}</p>
   <p><strong>Fecha Nacimiento:</strong> {{ conductor.fecha_nacimiento }}</p>
 
-  <button><a href="{% url 'conductor-update' conductor.id %}">Editar</a></button>
-  <button><a href="{% url 'conductor-delete' conductor.id %}">Eliminar</a></button>
+  <button><a href="{% url 'conductor-editar' conductor.id %}">Editar</a></button>
+  <button><a href="{% url 'conductor-eliminar' conductor.id %}">Eliminar</a></button>
 
 {% endblock %}

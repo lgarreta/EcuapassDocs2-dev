@@ -23,8 +23,6 @@ urlpatterns = [
     path('clientes/', ClientesListadoView.as_view(), name='clientes'),
     path('cliente/<pk>', views_docs.ClienteDetailView.as_view(), name='cliente-detail'),
     path('cliente/create/', views_docs.ClienteCreate.as_view(), name='cliente-create'),
-    #path('cliente/<pk>/update/', views_docs.ClienteUpdate.as_view(), name='cliente-update'),
-    #path('cliente/<pk>/delete/', views_docs.ClienteDelete.as_view(), name='cliente-delete'),
     path('cliente/editar/<pk>', views_docs.ClienteUpdate.as_view(), name='cliente-editar'),
     path('cliente/eliminar/<pk>', views_docs.ClienteDelete.as_view(), name='cliente-eliminar'),
 

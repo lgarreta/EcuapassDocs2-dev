@@ -38,18 +38,22 @@ class DocumentosListadoView (View):
 
 	# General and date search
 	def get (self, request):
-		form      = self.DOCFORM (request.GET)
+		# Firs, get all instances
+		firstField = self.DOCMODEL._meta.fields [1].name
+		instances  = self.DOCMODEL.objects.order_by (f"-{firstField}")
 
+		form       = self.DOCFORM (request.GET)
 		if form.is_valid():
-			searchPattern = form.cleaned_data.get('buscar')
+			searchPattern      = form.cleaned_data.get ('buscar')
+			searchFechaEmision = form.cleaned_data.get ('fecha_emision')
+			print (f"+++ DEBUG: searchPattern '{ searchPattern}'")
 			if searchPattern:
 				object    = self.DOCMODEL()
 				instances = object.searchModelAllFields (searchPattern)
-			else:
-				firstField = self.DOCMODEL._meta.fields [1].name
-				print (f"+++ DEBUG: firstField '{firstField}'")
-				instances = self.DOCMODEL.objects.order_by (f"-{firstField}")
-				#instances = self.DOCMODEL.objects.all ()
+
+			if searchFechaEmision:
+				object    = self.DOCMODEL()
+				instances = instances.filter (fecha_emision=searchFechaEmision)  # Assuming 'created_at' is the date field
 
 			table = self.DOCTABLE (instances)
 		else:
@@ -62,8 +66,7 @@ class DocumentosListadoView (View):
 #----------------------------------------------------------
 #-- Forma
 #----------------------------------------------------------
-class DocumentosListadoForm (forms.Form):
-	#numero		   = forms.CharField(required=False)
+class BuscarDocForm (forms.Form):
 	buscar = forms.CharField(required=False,label="")
 	fecha_emision  = forms.DateField(required=False, label=False,
 								  widget=forms.DateInput (attrs={'type':'date'}))
@@ -78,17 +81,35 @@ class DocumentosListadoForm (forms.Form):
 				Column (Field ('fecha_emision', placeholder="Seleccione fecha a buscar...", label=False), css_class='search_field'),
 				Column (Submit ('submit', 'Buscar'), css_class='search_button'),
 				css_class='form-row'
-				#Column ('numero', css_class='col'),
-				#Column ('fecha_emision', css_class='col'),
-				#css_class='row'
 			)
 			#Submit ('submit', 'Filtrar', css_class='btn btn-primary')
 		)
 
-##----------------------------------------------------------
-## Base table used for listing Ecuapass docs 
-##----------------------------------------------------------
-class DocTable (tables.Table):
+#----------------------------------------------------------
+# Base table used for listing docs and entities
+# 
+#----------------------------------------------------------
+class BaseListadoTable (tables.Table):
+	row_number = tables.Column (empty_values=(), verbose_name="No.")  # Add a custom column for enumeration
+	class Meta:
+		abstract = True
+
+	def __init__ (self, *args, **kwargs):
+		super ().__init__ (*args, **kwargs)
+		self.counter = 0  # Initialize a counter to keep track of rows
+
+	#-- This method returns the row number for each row in the table.
+	def render_row_number(self):
+		self.counter += 1
+		return self.counter
+
+#----------------------------------------------------------
+# Base table used for listing the three doc types: CPI, MCI, DTI
+#----------------------------------------------------------
+class DocumentosListadoTable (BaseListadoTable):
+#class DocumentosListadoTable (tables.Table):
+	#row_number = tables.Column (empty_values=(), verbose_name="No.")  # Add a custom column for enumeration
+
 	template = "django_tables2/bootstrap4.html"
 	fecha_emision = tables.Column (verbose_name="Fecha") # To show related info
 
@@ -99,7 +120,6 @@ class DocTable (tables.Table):
 	def __init__ (self, *args, **kwargs):
 		self.urlDoc               = getattr (self.Meta, 'urlDoc', 'default-url')
 		self.urlEditar            = f"{self.urlDoc}-editar"
-		self.urlDetalle           = f"{self.urlDoc}-detalle"
 
 		self.base_columns ['numero']  = tables.LinkColumn (self.urlEditar, args=[A('pk')])
 		# Column for apply actions in the current item document
@@ -107,14 +127,15 @@ class DocTable (tables.Table):
 			template_code='''
 			<a href="{{ record.get_link_actualizar }}" target='_blank'>Editar</a>,
 			<a href="{{ record.get_link_eliminar }}" target='_blank'>Eliminar</a>
+			<a href="{{ record.get_link_detalle }}" target='_blank'>Detalle</a>
 			''',
 			verbose_name='Acciones'
 		)
 		super().__init__ (*args, **kwargs)
+		#self.counter = 0  # Initialize a counter to keep track of rows
 
-	#-- Create a link on doc number
+	#-- Generate a URL for each record
 	def render_numero (self, value, record):
-		# Generate a URL for each record
 		return format_html('<a href="{}" target="_blank" >{}</a>', 
 					 reverse(self.urlEditar, args=[record.pk]), value)
 
@@ -124,4 +145,5 @@ class DocTable (tables.Table):
 		if isinstance(value, (datetime, (date, datetime))):
 			return value.strftime('%m/%d/%Y')  # Format to 'dd/mm/yyyy'
 		return ''
+
 
