@@ -48,7 +48,8 @@
 		}
 
 		#background {
-			background-image: url('{% static  background_image	%}');
+            background-image: url('{% static background_image %}?v={{ timestamp }}');
+
 			#background-size: 1699px 2200px; /* Tamaño fijo de la imagen de fondo */
 			#background-size: cover; /* Adjust as needed */
 			background-repeat: no-repeat;

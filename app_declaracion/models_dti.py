@@ -87,12 +87,8 @@ class Declaracion (EcuapassDoc):
 		return f"{self.numero}, {self.cartaporte}"
 
 	def setValues (self, declaracionForm, docFields, pais, username):
-		print (f"+++ DEBUG: setValues:declaracionForm '{declaracionForm}'")
 		# Base values
-		self.numero        = declaracionForm.numero
-		self.documento     = declaracionForm
-		self.pais          = pais
-		self.usuario       = self.getUserByUsername (username)
+		super().setValues (declaracionForm, docFields, pais, username)
 
 		# Document values
 		self.declarante    = Scripts.getSaveClienteInstance ("02_Declarante", docFields)
@@ -100,28 +96,5 @@ class Declaracion (EcuapassDoc):
 		self.destinatario  = Scripts.getSaveClienteInstance ("04_Destinatario", docFields)
 		self.fecha_emision = EcuInfo.getFechaEmision (docFields, "DECLARACION")
 
-		print (f"+++ DEBUG: Declaracion:setValues:docFields '{docFields}'")
 		self.cartaporte    = Scripts.getCartaporteInstance ("15_Cartaporte", docFields, "DECLARACION")
 
-#		docFieldsPath, runningDir = self.createTemporalJson (docFields)
-#		declaracionInfo           = Declaracion (docFieldsPath, runningDir)
-#
-#		self.cartaporte = self.getCartaporte (declaracionInfo)
-		
-#------------- MOVED TO SUPER -------------------------
-#	def getCartaporte (self, declaracionInfo):
-#		numero = None
-#		try:
-#			numero = declaracionInfo.getNroDocumento ()
-#			record = Cartaporte.objects.get (numero=desired_value)
-#			return record
-#		except: 
-#			print (f"Exepcion: Cartaporte número '{numero}' no encontrado.")
-#		return None
-#
-#	def createTemporalJson (self, fieldValues):
-#		tmpPath        = tempfile.gettempdir ()
-#		jsonFieldsPath = os.path.join (tmpPath, f"MANIFIESTO-{self.numero}.json")
-#		json.dump (fieldValues, open (jsonFieldsPath, "w"))
-#		return (jsonFieldsPath, tmpPath)
-#

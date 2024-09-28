@@ -1,7 +1,11 @@
 # For models
 from app_docs.forms_docs import BuscarDocForm
 from app_docs.listing_doc import DocumentosListadoView, DocumentosListadoTable
+
+import django_tables2 as tables
+
 from .models_cpi import Cartaporte
+
 
 #----------------------------------------------------------
 #-- View
@@ -21,3 +25,7 @@ class CartaportesListadoTable (DocumentosListadoTable):
 		template_name = DocumentosListadoTable.template
 		attrs         = {'class': 'table table-striped table-bordered'}		
 
+	remitente = tables.Column(
+		verbose_name="Remitente",
+		attrs={"td": {"class": "text-truncate", "style": "max-width: 500px;"}}
+	)

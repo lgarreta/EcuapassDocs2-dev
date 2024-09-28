@@ -25,16 +25,16 @@ DEBUG = True
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = [
-    'ecuapassdocs-test.up.railway.app', 
-    'ecuapassdocs-mirror.up.railway.app', 
-    'ecuapassdocs-production.up.railway.app', 
-    'ecuapassdocs.up.railway.app', 
+	'byza.ecuapassdocs.app',
+	'logitrans.ecuapassdocs.app',
+	'byza-ecuapassdocs.up.railway.app',
+	'logitrans-ecuapassdocs.up.railway.app',
 	'127.0.0.1']
 CSRF_TRUSTED_ORIGINS = [
-    'https://ecuapassdocs-test.up.railway.app',
-    'https://ecuapassdocs-mirror.up.railway.app',
-    'https://ecuapassdocs-production.up.railway.app',
-    'https://ecuapassdocs.up.railway.app']
+	'https://byza.ecuapassdocs.app',
+	'https://logitrans.ecuapassdocs.app',
+	'https://byza-ecuapassdocs.up.railway.app',
+	'https://logitrans-ecuapassdocs.up.railway.app']
 
 
 # Application definition

@@ -18,7 +18,7 @@ from .models import UsuarioEcuapass
 from django.contrib.auth.forms import AuthenticationForm
 
 class CustomAuthenticationForm(AuthenticationForm):
-	COUNTRY_CHOICES = [('ECUADOR','ECUADOR'),('COLOMBIA','COLOMBIA'),('PERU','PERU'),('TODOS','TODOS')]
+	COUNTRY_CHOICES = [('', 'Seleccion el país'), ('ECUADOR','ECUADOR'),('COLOMBIA','COLOMBIA'),('PERU','PERU'),('TODOS','TODOS')]
 	pais = forms.ChoiceField (choices=COUNTRY_CHOICES, required=True)
 
 	username = forms.CharField(

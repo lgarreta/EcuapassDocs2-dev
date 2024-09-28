@@ -31,8 +31,13 @@ class CartaporteOptionsView (View):
 			# Get cartaporte docs from query
 			query = request.POST.get ('query', '')
 
-			cartaportes  = Cartaporte.getRecentCartaportes ()
+			cartaportes  = Scripts.getRecentDocuments (Cartaporte)
+			print (f"+++ DEBUG: cartaportes '{cartaportes}'")
+			for cpi in cartaportes:
+				print (f"+++ DEBUG: CPI '{cpi.documento}'")
+
 			if not cartaportes.exists():
+				print (f"+++ DEBUG: not cartaportes '{cartaportes}'")
 				cartaportes = Cartaporte.objects.filter (numero__startswith=query,
 				 									 fecha_emision=current_date)
 
@@ -82,6 +87,7 @@ class VehiculoOptionsView (View):
 
 #--------------------------------------------------------------------
 # Show placa-pais options from Vehiculo model
+# Used in declaracion form
 #--------------------------------------------------------------------
 class ManifiestoOptionsView (View):
 	@method_decorator(csrf_protect)

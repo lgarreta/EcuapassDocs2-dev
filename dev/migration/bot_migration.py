@@ -14,7 +14,6 @@ from selenium.webdriver.support.ui import Select
 
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.chrome import ChromeDriverManager
-from fake_useragent import UserAgent
 
 #----------------------------------------------------------
 import django
@@ -33,10 +32,9 @@ from app_declaracion.models_dti import Declaracion, DeclaracionDoc
 from app_usuarios.models import UsuarioEcuapass
 
 from ecuapassdocs.info.ecuapass_utils import Utils
-from ecuapassdocs.info.resourceloader import ResourceLoader 
+from ecuapassdocs.info.resourceloader import ResourceLoader
 #----------------------------------------------------------
 from bot_migration_docs import docs
-
 
 #----------------------------------------------------------
 # main
@@ -57,28 +55,20 @@ def main ():
 
 def saveDocs (inputDir):
 		webdriver = BotMigration.getWaitWebdriver (DEBUG=True)
-		bot = BotMigration ("LOGITRANS", "COLOMBIA", "DECLARACION", 0, 0, webdriver)
+		#bot = BotMigration ("LOGITRANS", "COLOMBIA", "DECLARACION", 0, 0, webdriver)
+		bot = BotMigration ("BYZA", "COLOMBIA", "DECLARACION", 0, 0, webdriver)
 		bot.saveDocFilesToDB (inputDir)
 
 def downloadDocs (inputDir):
 		webdriver = BotMigration.getWaitWebdriver (DEBUG=False)
-		#bot = BotMigration ("BYZA", "COLOMBIA", "CARTAPORTE", 7485, 7490, webdriver)
-		#-------------------- LOGITRANS MANIFIESTOS -------------------#
-		#INI = docs ["LOGITRANS"]["MCI-CO-2024-01"]["ini"]["id"]
-		#END = docs ["LOGITRANS"]["MCI-CO-2024-01"]["end"]["id"]
-		#bot = BotMigration ("LOGITRANS", "COLOMBIA", "MANIFIESTO", 3432, END, webdriver)
-
-		#-------------------- LOGITRANS DECLARACIONES -------------------#
-#		DOCTYPE, DOCPREFIX = "DECLARACION", "DTI"
-#		INI = docs ["LOGITRANS"][f"{DOCPREFIX}-CO-2024"]["ini"]["id"]
-#		END = docs ["LOGITRANS"][f"{DOCPREFIX}-CO-2024"]["end"]["id"]
-#		bot = BotMigration ("LOGITRANS", "COLOMBIA", DOCTYPE, INI, END, webdriver)
-
-		#------------------------ BYZA DECLARACIONES --------------------#
-		INI = docs ["BYZA"]["MCI-CO-2021"]["ini"]["id"]
-		END = docs ["BYZA"]["MCI-CO-2021"]["end"]["id"]
-		bot = BotMigration ("BYZA", "COLOMBIA", "MANIFIESTO", INI, END, webdriver)
-		#----------------------------------------------------------------#
+		#------------------------ SETTINGS --------------------#
+		empresa, doctype, prefix, year, pais, code = "LOGITRANS", "CARTAPORTE", "CPI", "2023", "COLOMBIA", "CO"
+		#empresa, doctype, prefix, year, pais, code = "BYZA", "CARTAPORTE", "CPI", "2019", "COLOMBIA", "CO"
+		#empresa, doctype, prefix, year, pais, code = "BYZA", "MANIFIESTO", "MCI", "2019", "COLOMBIA", "CO"
+		INI = docs [f"{empresa}"][f"{year}-{code}-{prefix}"]["ini"]["id"]
+		END = docs [f"{empresa}"][f"{year}-{code}-{prefix}"]["end"]["id"]
+		bot = BotMigration (f"{empresa}", f"{pais}", f"{doctype}", INI, END, webdriver)
+		#------------------------------------------------------#
 		bot.enterCodebin ()
 		bot.loginCodebin (bot.pais)
 		bot.downloadDocuments (inputDir)
@@ -113,58 +103,60 @@ class BotMigration:
 	# Get a list of cartaportes from range of ids
 	#-------------------------------------------------------------------
 	def downloadDocuments (self, outDir):
-		os.system (f"mkdir {outDir}")
-		urlLink = self.settings ["link"]
+		try:
+			os.system (f"mkdir {outDir}")
+			urlLink = self.settings ["link"]
 
-		failingDocs = []
-		successDocs = []
-		blankDocs   = []
-		# Download from latest id to old id (reverse order)
-		for docId in range (self.initialId, self.finalId - 1,  -1):
-		#for docId in range (self.initialId, self.finalId+1):
-			try:
-				docLink = urlLink % docId
-				print (f"+++ docId: '{docId}'. docLink: '{docLink}'")
-				self.webdriver.get (docLink)
-				docForm = self.webdriver.find_element (By.TAG_NAME, "form")
-				params, docNumber = self.extractMigrationFieldsFromCodebinForm (docForm)
+			failingDocs = []
+			successDocs = []
+			blankDocs   = []
+			# Download from latest id to old id (reverse order)
+			for docId in range (self.initialId, self.finalId - 1,  -1):
+			#for docId in range (self.initialId, self.finalId+1):
+				try:
+					docLink = urlLink % docId
+					print (f"+++ docId: '{docId}'. docLink: '{docLink}'")
+					self.webdriver.get (docLink)
+					docForm = self.webdriver.find_element (By.TAG_NAME, "form")
+					params, docNumber = self.extractMigrationFieldsFromCodebinForm (docForm)
 
-				migrationFilename = f"{outDir}/{self.docPrefix}-{self.empresa}-{docNumber}-MIGRATIONFIELDS.json"
-				print (f"+++ migrationFilename:  '{migrationFilename}'")
-				json.dump (params, open (migrationFilename, "w"), indent=4, default=str)
-				successDocs.append (f"{docId}\t{docNumber}")
+					migrationFilename = f"{outDir}/{self.docPrefix}-{self.empresa}-{docNumber}-MIGRATIONFIELDS.json"
+					print (f"+++ migrationFilename:  '{migrationFilename}'")
+					json.dump (params, open (migrationFilename, "w"), indent=4, default=str)
+					successDocs.append (f"{docId}\t{docNumber}")
 
-				# Check blank docs
-				print (f"+++ docNumber:  '{docNumber}'")
-				if docNumber == None or docNumber == "":
-					print (f"+++ BLANK ({len(blankDocs)}) : {docId}")
-					blankDocs.append (docId)
-					if len (blankDocs) > 5:
-						break
+					# Check blank docs
+					print (f"+++ docNumber:  '{docNumber}'")
+					if docNumber == None or docNumber == "":
+						print (f"+++ BLANK ({len(blankDocs)}) : {docId}")
+						blankDocs.append (docId)
+						if len (blankDocs) > 5:
+							break
 
-				# Wait for the download to complete
-				time.sleep (random.uniform(2, 4))  # Random delay to simulate human behavior
+					# Wait for the download to complete
+					time.sleep (random.uniform(2, 4))  # Random delay to simulate human behavior
 
-			except:
-				Utils.printException ()
-				failingDocs.append (str(docId))
-			# Introduce random delay between requests
-			#time.sleep (random.uniform(2, 5))
+				except:
+					Utils.printException ()
+					failingDocs.append (str(docId))
+				# Introduce random delay between requests
+				#time.sleep (random.uniform(2, 5))
 
-		failingDocsFilename = f"{outDir}/{self.docType}-FAILINGDOCS-{self.initialId}-{self.finalId}.txt"
-		print (f"+++ DEBUG: failingDocsFilename '{failingDocsFilename}'")
-		with open (failingDocsFilename, "w") as fp:
-			for string in failingDocs:
-				fp.write (string + "\n")
+			failingDocsFilename = f"{outDir}/{self.docType}-FAILINGDOCS-{self.initialId}-{self.finalId}.txt"
+			print (f"+++ DEBUG: failingDocsFilename '{failingDocsFilename}'")
+			with open (failingDocsFilename, "w") as fp:
+				for string in failingDocs:
+					fp.write (string + "\n")
 
-		successDocsFilename = f"{outDir}/{self.docType}-SUCCESSDOCS-{self.initialId}-{self.finalId}.txt"
-		print (f"+++ DEBUG: successDocsFilename '{successDocsFilename}'")
-		with open (successDocsFilename, "w") as fp:
-			for string in successDocs:
-				fp.write (string + "\n")
+			successDocsFilename = f"{outDir}/{self.docType}-SUCCESSDOCS-{self.initialId}-{self.finalId}.txt"
+			print (f"+++ DEBUG: successDocsFilename '{successDocsFilename}'")
+			with open (successDocsFilename, "w") as fp:
+				for string in successDocs:
+					fp.write (string + "\n")
 
 
-
+		except:
+			Utils.printException ()
 
 	#-------------------------------------------------------------------
 	# Codebin enter session: open URL and click into "Continuar" button
@@ -269,10 +261,6 @@ class BotMigration:
 			Utils.printx ("...Loading webdriver...")
 			options = Options()
 
-			# To avoid black listed for bot downloading
-			ua = UserAgent()
-			user_agent = ua.random  # Generate a random user-agent
-
 			#-- For chrome
 			#options.add_argument(f"user-agent={user_agent}")
 			#service = Service (ChromeDriverManager().install())
@@ -280,7 +268,6 @@ class BotMigration:
 			#BotMigration.webdriver = webdriver.Chrome ()
 			
 			#-- For firefox
-			#options.set_preference("general.useragent.override", user_agent)
 			#options.add_argument("--headless")
 			#GECKOPATH = "/home/lg/.local/bin/geckodriver"
 			#GECKOPATH = "./geckodriver"
@@ -405,15 +392,17 @@ class BotMigration:
 		# Second: set and save values to each field of FormModel
 		formModel = FormModel (id=docModel.id, numero=docModel.numero)
 		formFields ["txt00"] = formModel.numero
-		print (f"+++ DEBUG: formFields '{formFields}'")
+		#print (f"+++ formFields: ", formFields)
 		for key, value in formFields.items():
 			#if key not in ["id", "numero", "referencia", "fecha_creacion"]:
 			if "txt" in key: 
+				print (f"+++ key:value '{key}':'{value}'")
 				setattr (formModel, key, value)
 		formModel.save ()
 
 		# Update DocModel with FormModel's values
 		docFields	= Utils.getAzureValuesFromInputsValues (docType, formFields)
+		#print (f"+++ docFields: ", docFields)
 		docFields ["referencia"] = formFields ["referencia"]
 		#print (f"+++ DEBUG: docFields '{docFields}'")
 		docModel.setValues (formModel, docFields, pais,  usuario)
@@ -439,5 +428,29 @@ class BotMigration:
 		return FormModel, DocModel
 
 #-------------------------------------------------------------------
+# Utils for migration
+#-------------------------------------------------------------------
+#-- Postgress env vars
+def checkDBVars ():
+	PGUSER     = os.environ.get ("PGUSER")
+	PGPASSWORD = os.environ.get ("PGPASSWORD")
+	PGDATABASE = os.environ.get ("PGDATABASE")
+	PGHOST     = os.environ.get ("PGHOST")
+	PGPORT     = os.environ.get ("PGPORT")
+
+	print ("Postgres DB vars:")
+	print ("\t",PGUSER)
+	print ("\t",PGPASSWORD)
+	print ("\t",PGDATABASE)
+	print ("\t",PGHOST)
+	print ("\t",PGPORT)
+	print ("")
+
+	if input ("Desea continuar (yes/no): ")!="yes":
+		return True
+	return False
+
+#-------------------------------------------------------------------
+#--main
 #-------------------------------------------------------------------
 main ()

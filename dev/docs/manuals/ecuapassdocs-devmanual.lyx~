@@ -98,6 +98,72 @@ EcuapassDocs Developer Manual
 \end_layout
 
 \begin_layout Section
+Accounts
+\end_layout
+
+\begin_layout Subsection
+Railway Cloud
+\end_layout
+
+\begin_layout Itemize
+Free plan ($5)
+\end_layout
+
+\begin_layout Itemize
+Host 
+\begin_inset Quotes sld
+\end_inset
+
+EcuapassDocs
+\begin_inset Quotes srd
+\end_inset
+
+ web application.
+\end_layout
+
+\begin_layout Itemize
+Two projects (27-Sept-2024):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ecuapassdocs-byza with byza-Postgress
+\end_layout
+
+\begin_layout Itemize
+ecuapassdocs-logitrans with byza Logitrans
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Mail account: lgarreta@gmail.com
+\end_layout
+
+\begin_layout Subsection
+Porkbun (https://porkbun.com/)
+\end_layout
+
+\begin_layout Itemize
+Paid domain : 
+\begin_inset Quotes sld
+\end_inset
+
+*.ecuapassdocs.app
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Auto renewal ($14.95) next year (27-Sep-2025)
+\end_layout
+
+\begin_layout Itemize
+Main account: lgarreta@yahoo.com
+\end_layout
+
+\begin_layout Section
 Listing
 \end_layout
 
@@ -158,7 +224,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset listings
@@ -403,8 +469,28 @@ Created for migration between Codebin and Ecudocs.
  Each field contains:
 \end_layout
 
-\begin_layout Itemize
-key: A key corresponding to Ecudocs form keys (e.g.
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+key
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A key corresponding to Ecudocs form keys (e.g.
  
 \begin_inset Quotes sld
 \end_inset
@@ -464,12 +550,32 @@ txt24
 )
 \end_layout
 
-\begin_layout Itemize
-dicFields:
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dicFields
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 \begin_inset Quotes sld
 \end_inset
 
@@ -477,10 +583,35 @@ ecudocsField
 \begin_inset Quotes srd
 \end_inset
 
- : key name corresponding to Ecudoc fields
+
 \end_layout
 
-\begin_layout Itemize
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+key name corresponding to Ecudoc fields
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 \begin_inset Quotes sld
 \end_inset
 
@@ -488,10 +619,35 @@ codebinField
 \begin_inset Quotes srd
 \end_inset
 
- : key name corresponding to Codebin fields
+
 \end_layout
 
-\begin_layout Itemize
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+key name corresponding to Codebin fields
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 \begin_inset Quotes sld
 \end_inset
 
@@ -499,10 +655,28 @@ value
 \begin_inset Quotes srd
 \end_inset
 
-: value for the key and the keys into the dicFields
+
 \end_layout
 
-\end_deeper
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+value for the key and the keys into the dicFields
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Form Fields
 \end_layout

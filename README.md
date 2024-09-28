@@ -4,6 +4,7 @@
 - Custom user management
 
 ## LOG
+Sep/28: r0.847 : Working in cloud 'ecuapassdocs.app'. Update db process. Pagination.
 Sep/23: r0.846 : Data loading (logitrans CPI/MCI/DTI). BYZA data upto 2021. Added detail to form.
 Sep/19: r0.845 : Saved sorted CPI files to app.
 Sep/18: r0.844 : Migration data: BYZA, LOGITRANS. Title for doc tabs.

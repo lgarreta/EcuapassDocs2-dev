@@ -98,6 +98,96 @@ EcuapassDocs Developer Manual
 \end_layout
 
 \begin_layout Section
+Accounts
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Subsection
+Railway Cloud
+\end_layout
+
+\begin_layout Itemize
+Free plan ($5)
+\end_layout
+
+\begin_layout Itemize
+Host 
+\begin_inset Quotes sld
+\end_inset
+
+EcuapassDocs
+\begin_inset Quotes srd
+\end_inset
+
+ web application.
+\end_layout
+
+\begin_layout Itemize
+Two projects (27-Sept-2024):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ecuapassdocs-byza with byza-Postgress
+\end_layout
+
+\begin_layout Itemize
+ecuapassdocs-logitrans with byza Logitrans
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Mail account: lgarreta@gmail.com
+\end_layout
+
+\begin_layout Subsection
+Porkbun (https://porkbun.com/)
+\end_layout
+
+\begin_layout Itemize
+Paid domain : 
+\begin_inset Quotes sld
+\end_inset
+
+*.ecuapassdocs.app
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Auto renewal ($14.95) next year (27-Sep-2025)
+\end_layout
+
+\begin_layout Itemize
+Main account: lgarreta@yahoo.com
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Listing
 \end_layout
 
@@ -158,7 +248,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset listings

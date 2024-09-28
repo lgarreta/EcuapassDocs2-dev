@@ -137,7 +137,7 @@ def registration (request):
 				user.save()
 				
 				messages.success(request, f'Su cuenta ha sido creada {username} ! Proceda a ingresar')
-				return redirect('login')  # Redirect to the login page
+				return redirect('listar')  # Redirect to the login page
 			else:
 				# Handle password mismatch error here
 				form.add_error('password2', 'Claves ingresadas no coinciden')

@@ -35,7 +35,7 @@ class CartaporteDoc (models.Model):
 	#-- Bultos
 	txt10 = models.CharField (max_length=200, null=True)   # Cantidad/Clase 
 	txt11 = models.CharField (max_length=200, null=True)   # Marcas/Numeros
-	txt12 = models.CharField (max_length=1200, null=True)  # Descripcion
+	txt12 = models.CharField (max_length=1400, null=True)  # Descripcion
 	txt13_1 = models.CharField (max_length=200, null=True) # Peso Neto
 	txt13_2 = models.CharField (max_length=200, null=True) # Peso Bruto
 	txt14 = models.CharField (max_length=200, null=True)   # Volumen

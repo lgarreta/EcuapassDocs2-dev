@@ -18,6 +18,8 @@ from datetime import datetime
 from datetime import date
 
 import django_tables2 as tables
+from django_tables2 import RequestConfig
+
 from django.urls import reverse
 from django.utils.html import format_html
 from django_tables2.utils import A
@@ -43,21 +45,22 @@ class DocumentosListadoView (View):
 		instances  = self.DOCMODEL.objects.order_by (f"-{firstField}")
 
 		form       = self.DOCFORM (request.GET)
-		if form.is_valid():
-			searchPattern      = form.cleaned_data.get ('buscar')
-			searchFechaEmision = form.cleaned_data.get ('fecha_emision')
-			print (f"+++ DEBUG: searchPattern '{ searchPattern}'")
-			if searchPattern:
-				object    = self.DOCMODEL()
-				instances = object.searchModelAllFields (searchPattern)
-
-			if searchFechaEmision:
-				object    = self.DOCMODEL()
-				instances = instances.filter (fecha_emision=searchFechaEmision)  # Assuming 'created_at' is the date field
-
-			table = self.DOCTABLE (instances)
-		else:
+		if not form.is_valid():
 			return ("Forma inválida")
+
+		searchPattern      = form.cleaned_data.get ('buscar')
+		searchFechaEmision = form.cleaned_data.get ('fecha_emision')
+
+		if searchPattern:
+			object    = self.DOCMODEL()
+			instances = object.searchModelAllFields (searchPattern)
+
+		if searchFechaEmision:
+			object    = self.DOCMODEL()
+			instances = instances.filter (fecha_emision=searchFechaEmision)  # Assuming 'created_at' is the date field
+
+		table = self.DOCTABLE (instances)
+		RequestConfig (request, paginate={'per_page': 15}).configure (table) # Pagination
 
 		args =	{'itemsTipo':self.docsTipo, 'itemsLista': instances, 
 				 'itemsForma': form, 'itemsTable': table}
@@ -111,7 +114,7 @@ class DocumentosListadoTable (BaseListadoTable):
 	#row_number = tables.Column (empty_values=(), verbose_name="No.")  # Add a custom column for enumeration
 
 	template = "django_tables2/bootstrap4.html"
-	fecha_emision = tables.Column (verbose_name="Fecha") # To show related info
+	fecha_emision = tables.Column (verbose_name="F. Emisión") # To show related info
 
 	class Meta:
 		abstract = True

@@ -2,6 +2,7 @@
 import json, os, re, sys
 from os.path import join
 
+from django.utils.timezone import now
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import View
@@ -133,13 +134,15 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		docUrl = self.docType.lower()
 		docNumber = self.inputParams ["numero"]["value"]
 		docTitle  = Utils.getDocPrefix (self.docType) + " : " + docNumber
+		print (f"+++ DEBUG:  '{self.background_image}'")
 		contextDic = {
 			"docTitle"         : docTitle,
 			"docType"          : self.docType, 
 			"pais"             : documentParams ["pais"],
 			"input_parameters" : self.inputParams, 
 			"background_image" : self.background_image,
-			"document_url"	   : docUrl
+			"document_url"	   : docUrl,
+			"timestamp"        : now().timestamp ()
 		}
 		return render (request, self.template_name, contextDic)
 
@@ -336,7 +339,6 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	#-- Set saved or default values to inputs
 	#-------------------------------------------------------------------
 	def copySavedValuesToInputs (self, recordId):
-		print (f"+++ DEBUG: recordId '{ recordId}'")
 		instanceDoc = None
 		if (self.docType.upper() == "CARTAPORTE"):
 			instanceDoc = CartaporteDoc.objects.get (id=recordId)
@@ -350,8 +352,11 @@ class EcuapassDocView (LoginRequiredMixin, View):
 
 		# Iterating over fields
 		for field in instanceDoc._meta.fields:	# Not include "numero" and "id"
-			value = getattr (instanceDoc, field.name)
-			self.inputParams [field.name]["value"] = value if value else ""
+			text = getattr (instanceDoc, field.name)
+			maxChars = self.inputParams [field.name]["maxChars"]
+			#print (f"+++ maxChars: {maxChars}. Field: {field.name}. Field value {self.inputParams [field.name]['value']}")
+			newText = Utils.breakLongLinesFromText (text, maxChars)
+			self.inputParams [field.name]["value"] = newText if newText else ""
 
 		return self.inputParams
 
@@ -361,7 +366,6 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	#-- Save document if form's values have changed
 	def updateDocumentToDB (self, sessionInfo, documentParams):
 		if self.hasChangedDocumentValues (sessionInfo):
-			print ("+++ DEBUG: updateDocumentToDB:hasChangedDocumentValues")
 			currentInputValues = sessionInfo.get ("currentInputValues")
 			savedtInputValues  = sessionInfo.get ("savedInputValues")
 			sessionInfo.set ("savedInputValues", currentInputValues)
@@ -369,7 +373,6 @@ class EcuapassDocView (LoginRequiredMixin, View):
 			self.saveDocumentToDB (currentInputValues)
 			self.inputValues = currentInputValues
 
-			print ("+++ updateDoc:", sessionInfo)
 			return True
 		else:
 			return False
@@ -418,6 +421,8 @@ class EcuapassDocView (LoginRequiredMixin, View):
 
 		# Save docModel
 		docFields	= Utils.getAzureValuesFromInputsValues (self.docType, inputValues)
+		print (f"+++ DEBUG: inputValues:\n '{inputValues}'")
+		print (f"+++ DEBUG: docFields:\n '{docFields}'")
 		docModel.setValues (formModel, docFields, self.pais,  self.usuario)
 		docModel.save ()
 

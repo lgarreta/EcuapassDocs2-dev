@@ -1,1 +1,0 @@
-../dev/scripts/railway/db_railway_vars.sh

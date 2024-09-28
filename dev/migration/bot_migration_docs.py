@@ -4,6 +4,22 @@ Codebin docs ranges for download
 
 docs = {
 	"BYZA" : {
+		"2019-CO-MCI":{
+			"ini":{"id":5470,"nro":"COXXXX", "fecha":"XXXX-XX-XX"},
+			"end":{"id":3470,"nro":"COXXXX", "fecha":"XXXX-XX-XX"}
+		},
+		"2019-CO-CPI":{
+			"ini":{"id":2700,"nro":"COXXXX", "fecha":"XXXX-XX-XX"},
+			"end":{"id":1700,"nro":"COXXXX", "fecha":"XXXX-XX-XX"}
+		},
+		"MCI-CO-2020":{
+			"ini":{"id":6501,"nro":"COXXXX", "fecha":"XXXX-XX-XX"},
+			"end":{"id":6470,"nro":"COXXXX", "fecha":"XXXX-XX-XX"}
+		},
+		"CPI-CO-2020":{
+			"ini":{"id":3799,"nro":"COXXXX", "fecha":"XXXX-XX-XX"},
+			"end":{"id":3751,"nro":"COXXXX", "fecha":"XXXX-XX-XX"}
+		},
 		"MCI-CO-2021":{
 			"ini":{"id":7200,"nro":"COXXXX", "fecha":"XXXX-XX-XX"},
 			"end":{"id":7100,"nro":"COXXXX", "fecha":"XXXX-XX-XX"}
@@ -51,7 +67,19 @@ docs = {
 	 },
 
 	"LOGITRANS" : { 
-		"DTI-CO-2024":{
+		"2023-CO-CPI":{
+			"ini":{"id":1952,"nro":"COXXXX", "fecha":"XXXX-XX-XX"},
+			"end":{"id":1,"nro":"COXXXX", "fecha":"XXXX-XX-XX"}
+		},
+		"2024-EC-MCI":{
+			"ini":{"id":2800,"nro":"COXXXX", "fecha":"XXXX-XX-XX"},
+			"end":{"id":2750,"nro":"COXXXX", "fecha":"XXXX-XX-XX"}
+		},
+		"2024-EC-CPI":{
+			"ini":{"id":1228,"nro":"COXXXX", "fecha":"XXXX-XX-XX"},
+			"end":{"id":800,"nro":"COXXXX", "fecha":"XXXX-XX-XX"}
+		},
+		"2024-MCI-EC":{
 			"ini":{"id":1805,"nro":"56002827","fecha":"2024-01-03"},
 			"end":{"id":2045,"nro":"56003067","fecha":"2024-09-16"}
 		},

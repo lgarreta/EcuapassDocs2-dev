@@ -3,13 +3,14 @@ asttokens==2.4.1
 attrs==23.2.0
 certifi==2024.2.2
 chardet==5.2.0
+charset-normalizer==3.3.2
 crispy-bootstrap4==2023.1
 decorator==5.1.1
 dj-database-url==2.1.0
 Django==5.0.1
 django-crispy-forms==2.1
 django-tables2==2.7.0
-ecuapassdocs==0.850
+ecuapassdocs==0.852
 exceptiongroup==1.2.1
 executing==2.0.1
 gunicorn==21.2.0
@@ -31,7 +32,9 @@ Pygments==2.18.0
 PyPDF2==3.0.1
 PySocks==1.7.1
 python-decouple==3.8
+python-dotenv==1.0.1
 reportlab==4.0.8
+requests==2.32.3
 selenium==4.20.0
 six==1.16.0
 sniffio==1.3.1
@@ -44,5 +47,6 @@ trio-websocket==0.11.1
 typing_extensions==4.9.0
 urllib3==2.2.1
 wcwidth==0.2.13
+webdriver-manager==4.0.2
 whitenoise==6.6.0
 wsproto==1.2.0
