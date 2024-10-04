@@ -20,7 +20,7 @@ from .models_Entidades import Cliente
 #--------------------------------------------------------------------
 class EcuapassDoc (models.Model):
 	numero         = models.CharField (max_length=20)
-	fecha_emision  = models.DateField (default=date.today, null=False)
+	fecha_emision  = models.DateField (null=True)
 	pais           = models.CharField (max_length=30)
 	usuario        = models.ForeignKey (UsuarioEcuapass, on_delete=models.SET_NULL, null=True)
 	referencia     = models.CharField (max_length=30, null=True, blank=True)

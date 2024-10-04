@@ -32,17 +32,13 @@ urlpatterns = [
     path('vehiculo/create/', views_docs.VehiculoCreate.as_view(), name='vehiculo-create'),
 
     path('vehiculo/editar/<pk>', views_docs.VehiculoUpdate.as_view(), name='vehiculo-editar'),
-    path('vehiculo/eliminar/<pk>', views_docs.VehiculoUpdate.as_view(), name='vehiculo-eliminar'),
-    #path('vehiculo/<pk>/delete/', views_docs.VehiculoDelete.as_view(), name='vehiculo-delete'),
+    path('vehiculo/eliminar/<pk>', views_docs.VehiculoDelete.as_view(), name='vehiculo-eliminar'),
 
-    #path('conductors/', views_docs.ConductorListView.as_view(), name='conductors'),
     path('conductores/', ConductoresListadoView.as_view(), name='conductores'),
     path('conductor/<pk>', views_docs.ConductorDetailView.as_view(), name='conductor-detail'),
     path('conductor/create/', views_docs.ConductorCreate.as_view(), name='conductor-create'),
-    #path('conductor/<pk>/update/', views_docs.ConductorUpdate.as_view(), name='conductor-update'),
     path('conductor/editar/<pk>', views_docs.ConductorUpdate.as_view(), name='conductor-editar'),
     path('conductor/eliminar/<pk>', views_docs.ConductorDelete.as_view(), name='conductor-eliminar'),
-    #path('conductor/<pk>/delete/', views_docs.ConductorDelete.as_view(), name='conductor-delete'),
 
 	#-- URLs options -----------------------------------------------------
     #path('opciones-cliente/', ClienteOptionsView.as_view(), name='opciones-cliente'),

@@ -135,10 +135,30 @@ def saveClienteInfoToDB (info):
 #-- Return recent cartaportes (within the past week)
 #----------------------------------------------------------
 def getRecentDocuments (DOCMODEL):
-	diasRecientes = EcuData.configuracion ["dias_cartaportes_recientes"]
+	diasRecientes = EcuData.configuracion ["dias_cartaportes_recientes"] + 15
 	oneWeekAgo = timezone.now () - timedelta (days=diasRecientes)
 	recentDocuments = DOCMODEL.objects.filter (fecha_emision__gte=oneWeekAgo)
 	for doc in recentDocuments:
 		print (doc.numero, doc.fecha_emision)
 	return recentDocuments
+
+
+#-- Compare whether two instances have the same values for all fields,
+def areEqualsInstances (instance1, instance2):
+	if instance1 is None and instance2 is None:
+		return True  # Equals
+	elif instance1 is None or instance2 is None:
+		return False # Different
+
+	if instance1._meta.model != instance2._meta.model:
+		return False  # They are not even the same model
+
+	# Compare field values
+	for field in instance1._meta.fields:
+		value1 = getattr(instance1, field.name)
+		value2 = getattr(instance2, field.name)
+		if value1 != value2:
+			return False  # Return False if any field value is different
+
+	return True  # All fields match
 

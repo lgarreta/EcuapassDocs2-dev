@@ -409,7 +409,6 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	def saveDocumentToDB (self, inputValues):
 		# Create formModel and save it to get id
 		docNumber	= inputValues ["numero"]
-		print ("+++ DEBUG: docNumber:", docNumber)
 
 		if docNumber == "":
 			docId, docNumber, formModel, docModel = self.saveNewDocToDB (inputValues)
@@ -421,8 +420,6 @@ class EcuapassDocView (LoginRequiredMixin, View):
 
 		# Save docModel
 		docFields	= Utils.getAzureValuesFromInputsValues (self.docType, inputValues)
-		print (f"+++ DEBUG: inputValues:\n '{inputValues}'")
-		print (f"+++ DEBUG: docFields:\n '{docFields}'")
 		docModel.setValues (formModel, docFields, self.pais,  self.usuario)
 		docModel.save ()
 

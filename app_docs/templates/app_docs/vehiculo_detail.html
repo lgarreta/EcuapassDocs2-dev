@@ -8,6 +8,6 @@
   <p><strong>Chasís:</strong> {{ vehiculo.chasis }}</p> 
   <p><strong>Año fabricación:</strong> {{ vehiculo.anho }}</p>
 
-  <button><a href="{% url 'vehiculo-update' vehiculo.id %}">Editar</a></button>
-  <button><a href="{% url 'vehiculo-delete' vehiculo.id %}">Eliminar</a></button>
+  <button><a href="{% url 'vehiculo-editar' vehiculo.id %}">Editar</a></button>
+  <button><a href="{% url 'vehiculo-eliminar' vehiculo.id %}">Eliminar</a></button>
 {% endblock %}

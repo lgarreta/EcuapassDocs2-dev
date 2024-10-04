@@ -116,7 +116,9 @@ function setParametersToInputs (textAreas, inputParameters, docType) {
 		textArea.style.whiteSpace = 'nowrap'; // Prevents text from wrapping
 
 		// Handle input event for autocomplete
-		textArea.addEventListener ('input', handleInput);
+        maxChars = parseInt (input ["maxChars"])
+        maxLines = parseInt (input ["maxLines"])
+        handleInput (textArea)
 		const textAreasDict = Object.fromEntries(
   			textAreas.map (textarea => [textarea.id, textarea])
 		);

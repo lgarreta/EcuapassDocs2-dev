@@ -56,7 +56,7 @@ def main ():
 def saveDocs (inputDir):
 		webdriver = BotMigration.getWaitWebdriver (DEBUG=True)
 		#bot = BotMigration ("LOGITRANS", "COLOMBIA", "DECLARACION", 0, 0, webdriver)
-		bot = BotMigration ("BYZA", "COLOMBIA", "DECLARACION", 0, 0, webdriver)
+		bot = BotMigration ("BYZA", "COLOMBIA", "MANIFIESTO", 0, 0, webdriver)
 		bot.saveDocFilesToDB (inputDir)
 
 def downloadDocs (inputDir):
@@ -107,12 +107,9 @@ class BotMigration:
 			os.system (f"mkdir {outDir}")
 			urlLink = self.settings ["link"]
 
-			failingDocs = []
-			successDocs = []
-			blankDocs   = []
+			failingDocs, successDocs, blankDocs  = [], [], []
 			# Download from latest id to old id (reverse order)
 			for docId in range (self.initialId, self.finalId - 1,  -1):
-			#for docId in range (self.initialId, self.finalId+1):
 				try:
 					docLink = urlLink % docId
 					print (f"+++ docId: '{docId}'. docLink: '{docLink}'")
@@ -135,7 +132,6 @@ class BotMigration:
 
 					# Wait for the download to complete
 					time.sleep (random.uniform(2, 4))  # Random delay to simulate human behavior
-
 				except:
 					Utils.printException ()
 					failingDocs.append (str(docId))
@@ -143,18 +139,14 @@ class BotMigration:
 				#time.sleep (random.uniform(2, 5))
 
 			failingDocsFilename = f"{outDir}/{self.docType}-FAILINGDOCS-{self.initialId}-{self.finalId}.txt"
-			print (f"+++ DEBUG: failingDocsFilename '{failingDocsFilename}'")
 			with open (failingDocsFilename, "w") as fp:
 				for string in failingDocs:
 					fp.write (string + "\n")
 
 			successDocsFilename = f"{outDir}/{self.docType}-SUCCESSDOCS-{self.initialId}-{self.finalId}.txt"
-			print (f"+++ DEBUG: successDocsFilename '{successDocsFilename}'")
 			with open (successDocsFilename, "w") as fp:
 				for string in successDocs:
 					fp.write (string + "\n")
-
-
 		except:
 			Utils.printException ()
 
@@ -190,15 +182,6 @@ class BotMigration:
 				#print (f"...Elemento '{codebinField}'	no existe")
 				pass
 
-#		pais, codigo = "NONE", "NO" 
-#		textsWithCountry = [params[x]["value"] for x in ["txt02"]]
-#		if any (["COLOMBIA" in x.upper() for x in textsWithCountry]):
-#			pais, codigo = "COLOMBIA", "CO"
-#		elif any (["ECUADOR" in x.upper() for x in textsWithCountry]):
-#			pais, codigo = "ECUADOR", "EC"
-#		elif any (["PERU" in x.upper() for x in textsWithCountry]):
-#			pais, codigo = "PERU", "PE"
-			
 		codigo = self.codigoPais
 		params ["txt0a"]["value"] = codigo     # e.g. CO, EC, PE
 

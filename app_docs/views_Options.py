@@ -37,7 +37,7 @@ class CartaporteOptionsView (View):
 				print (f"+++ DEBUG: CPI '{cpi.documento}'")
 
 			if not cartaportes.exists():
-				print (f"+++ DEBUG: not cartaportes '{cartaportes}'")
+				print (f"+++ DEBUG: no cartaportes '{cartaportes}'")
 				cartaportes = Cartaporte.objects.filter (numero__startswith=query,
 				 									 fecha_emision=current_date)
 

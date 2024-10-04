@@ -113,6 +113,19 @@ class VehiculoDelete(login_required_class(DeleteView)):
 	model = Vehiculo
 	success_url = reverse_lazy('vehiculos')
 
+	#-- Overrided for deleting "remolque"
+	def delete(self, request, *args, **kwargs):
+		self.object = self.get_object()
+		# Check if the truck has a trailer and delete it
+		if self.object.remolque:
+			self.object.remolque.delete()
+		# Proceed with deleting the main truck
+		return super().delete(request, *args, **kwargs)
+
+	#-- Overrided for calling custom delete
+	def post(self, request, *args, **kwargs):
+		return self.delete (request, *args, **kwargs)
+
 #--------------------------------------------------------------------
 #-- Conductor
 ##--------------------------------------------------------------------
@@ -133,7 +146,7 @@ class ConductorUpdate(login_required_class(UpdateView)):
 
 class ConductorDelete(login_required_class(DeleteView)):
 	model = Conductor
-	success_url = reverse_lazy('conductors')
+	success_url = reverse_lazy('conductores')
 
 #--------------------------------------------------------------------
 #-- Manifiesto

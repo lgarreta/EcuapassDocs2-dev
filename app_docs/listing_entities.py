@@ -57,7 +57,7 @@ class VehiculosListadoView (DocumentosListadoView):
 class VehiculosListadoTable (EntitiesListadoTable):
 	class Meta  (EntitiesListadoTable.Meta):
 		model         = Vehiculo
-		fields        = ("row_number", "placa", "pais", "conductor", "acciones")
+		fields        = ("row_number", "tipo", "placa", "pais", "conductor", "acciones")
 
 	def __init__ (self, *args, **kwargs):
 		super().__init__ ("vehiculo", *args, **kwargs)

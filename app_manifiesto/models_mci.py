@@ -10,6 +10,7 @@ from ecuapassdocs.info.ecuapass_info_manifiesto_BYZA import ManifiestoByza
 from app_docs.models_EcuapassDoc import EcuapassDoc
 from app_cartaporte.models_cpi import Cartaporte
 from app_docs.models_Entidades import Vehiculo, Conductor
+import app_docs.models_Scripts as Scripts
 
 #--------------------------------------------------------------------
 # Model ManifiestoDoc
@@ -91,7 +92,7 @@ class Manifiesto (EcuapassDoc):
 	conductor     = models.ForeignKey (Conductor, on_delete=models.SET_NULL, related_name='conductor', null=True)
 	cartaporte    = models.ForeignKey (Cartaporte, on_delete=models.SET_NULL, null=True)
 
-	def get_absolute_url(self):
+	def get_absolute_url (self):
 		"""Returns the url to access a particular language instance."""
 		return reverse('manifiesto-detalle', args=[str(self.id)])
 
@@ -103,20 +104,57 @@ class Manifiesto (EcuapassDoc):
 		jsonFieldsPath, runningDir = self.createTemporalJson (docFields)
 		manifiestoInfo     = ManifiestoByza (jsonFieldsPath, runningDir)
 
-		self.vehiculo      = self.getSaveVehiculoInstance (manifiestoInfo, "VEHICULO")
-		self.remolque      = self.getSaveVehiculoInstance (manifiestoInfo, "REMOLQUE")
-		self.conductor     = self.getSaveConductorInstance (manifiestoInfo, "VEHICULO")
-		self.cartaporte    = self.getCartaporteInstance (manifiestoInfo)
+		self.getSaveVehiculoConductorInstance (manifiestoInfo)
 		self.fecha_emision = EcuInfo.getFechaEmision (docFields, "MANIFIESTO")
 
-		self.updateFieldRelations ()
+		#self.updateFieldRelations ()
 
-	#-- Update relations between fields: vehiculo has one conductor
-	def updateFieldRelations (self):
-		if self.vehiculo and self.conductor:
-			self.vehiculo.conductor = self.conductor
-			self.vehiculo.save ()
-		
+	#-- Get and save info vehiculo/remolque/conductor/auxiliar
+	def getSaveVehiculoConductorInstance (self, manifiestoInfo):
+		# Vehiculo
+		veinfo = manifiestoInfo.extractVehiculoInfo ()
+		vehiculo, changeFlag = self.getSaveUpdateInstance ("vehiculo", veinfo)
+
+		# Remolque
+		reinfo = manifiestoInfo.extractVehiculoInfo (type="REMOLQUE")
+		remolque, changeFlag = self.getSaveUpdateInstance ("vehiculo", reinfo)
+		if not Scripts.areEqualsInstances (vehiculo.remolque, remolque):
+			vehiculo.remolque = remolque
+			vehiculo.save ()
+
+		# Conductor
+		coinfo = manifiestoInfo.extractConductorInfo ()
+		conductor, changeFlag = self.getSaveUpdateInstance ("conductor", coinfo)
+		if not Scripts.areEqualsInstances (vehiculo.conductor, conductor):
+			vehiculo.conductor = conductor
+			vehiculo.save ()
+
+		self.vehiculo = vehiculo
+		self.save ()
+
+	#-- Get or create, and save instance and flags if it was created or it has changed
+	def getSaveUpdateInstance (self, instanceName, info):
+		instance,  changeFlag = None, False
+		try:
+			if instanceName == "vehiculo":
+				instance, createFlag = Vehiculo.objects.get_or_create (placa=info['placa'])
+			elif instanceName == "conductor":
+				instance, createFlag = Conductor.objects.get_or_create (documento=info['documento'])
+			else:
+				raise Exception (f"Tipo entidad '{instanceName}' no existe")
+
+			for key in info.keys ():
+				if getattr (instance, key) != info [key]:
+					setattr (instance, key, info [key])
+					changeFlag = True
+
+			if createFlag or changeFlag:
+				instance.save ()
+		except:
+			Utils.printException (f"Error con nombre de instancia '{instanceName}'")
+		return instance, changeFlag
+
+
 	#-- Get cartaporte from manifiesto info
 	def getCartaporteInstance (self, manifiestoInfo):
 		numeroCartaporte = None
@@ -132,17 +170,18 @@ class Manifiesto (EcuapassDoc):
 	#-- Get a 'conductor' instance from extracted info
 	def getSaveConductorInstance (self, manifiestoInfo, vehicleType):
 		try:
-			info = manifiestoInfo.getConductorInfo ()
+			info = manifiestoInfo.extractConductorInfo ()
 			print (f"+++ DEBUG: info conductor '{info}'")
 			if any (Utils.isEmptyFormField (text) for text in info.values()):
 				return None
 			else:
 				conductor, created  = Conductor.objects.get_or_create (documento=info['id'])
-				conductor.nombre    = info ["nombre"]
-				conductor.documento = info ["id"]
-				conductor.pais      = info ["pais"]
-				conductor.licencia  = info ["licencia"]
-				conductor.fecha_nacimiento     = info ["fechaNacimiento"]
+				conductor.pais            = info ["pais"]
+				conductor.tipoId          = info ["tipoId"]
+				conductor.id              = info ["id"]
+				conductor.sexo            = info ["sexo"]
+				conductor.fecha_nacimiento = info ["fecha_nacimiento"]
+				conductor.licencia        = info ["licencia"]
 				conductor.save ()
 				return conductor
 		except:
@@ -175,4 +214,5 @@ class Manifiesto (EcuapassDoc):
 		jsonFieldsPath = os.path.join (tmpPath, f"MANIFIESTO-{self.numero}.json")
 		json.dump (docFields, open (jsonFieldsPath, "w"))
 		return (jsonFieldsPath, tmpPath)
+
 

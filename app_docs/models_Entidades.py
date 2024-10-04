@@ -73,14 +73,18 @@ class Conductor (DocEntity):
 		db_table = "conductor"
 		verbose_name_plural = "Conductores"
 
-	paises = [("COLOMBIA","COLOMBIA"),("ECUADOR", "ECUADOR"),("PERU","PERU"),("OTRO","OTRO")]
+	paises  = [("COLOMBIA","COLOMBIA"),("ECUADOR", "ECUADOR"),("PERU","PERU"),("OTRO","OTRO")]
+	tiposId = ["RUC", "CEDULA DE IDENTIDAD", "CATASTRO", "PASAPORTE", "OTROS"]
+
 	documento        = models.CharField (max_length=20)
 	nombre           = models.CharField (max_length=50)
 	pais             = models.CharField (max_length=50, choices=paises, default="COLOMBIA")
 	licencia         = models.CharField (max_length=50)
-	fecha_nacimiento = models.CharField (max_length=50)
-	auxiliar         = models.OneToOneField ("self", null=True, blank=True,
-						  on_delete=models.CASCADE, related_name='conductor_principal')
+	tipoDoc          = models.CharField (max_length=50, default="CEDULA DE IDENTIDAD")
+	fecha_nacimiento  = models.CharField (max_length=50)
+	sexo             = models.CharField (max_length=20, null=True, blank=True)
+	auxiliar         = models.OneToOneField ('self', null=True, blank=True, 
+										  on_delete=models.SET_NULL, related_name='conductor_principal')
 
 	#-- Returns the url to access a particular genre instance.
 	def get_absolute_url(self):
@@ -105,11 +109,16 @@ class Vehiculo (DocEntity):
 		db_table = "vehiculo"
 
 	placa       = models.CharField (max_length=50)
-	marca       = models.CharField (max_length=100)
-	pais        = models.CharField (max_length=20)
-	chasis      = models.CharField (max_length=50)
-	anho        = models.CharField (max_length=20)
-	conductor   = models.ForeignKey (Conductor, null=True, blank=True, on_delete=models.CASCADE)
+	marca       = models.CharField (max_length=100, null=True, blank=True) 
+	pais        = models.CharField (max_length=20, null=True, blank=True)
+	chasis      = models.CharField (max_length=50, null=True, blank=True)
+	anho        = models.CharField (max_length=20, null=True, blank=True)
+	certificado = models.CharField (max_length=20, null=True, blank=True)
+	tipo        = models.CharField (max_length=20, null=True, blank=True)
+	conductor   = models.OneToOneField ('Conductor', null=True, blank=True,
+										 on_delete=models.SET_NULL, related_name='vehiculo_principal')
+	remolque    = models.OneToOneField ('self', null=True, blank=True, 
+										  on_delete=models.SET_NULL, related_name='vehiculo_principal')
 
 	def get_absolute_url(self):
 		"""Returns the url to access a particular language instance."""

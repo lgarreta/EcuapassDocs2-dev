@@ -121,9 +121,15 @@
 			padding: 0px;
 			box-sizing: border-box; /* Ensure padding and border are included in the width */
 
-		  resize: none; /* "none" disables resizing */
-		  overflow: hidden ; /* Disable scrolling */
-		  white-space: pre-line; /* Wrap and preserve line breaks */
+	        resize: none; /* "none" disables resizing */
+	        overflow: hidden ; /* Disable scrolling */
+	        /*
+               white-space: pre-line; /* Wrap and preserve line breaks */
+            */
+
+            white-space: pre-wrap;  /* Preserve white spaces */
+            overflow-wrap: break-word;  /* Handle word wrap */
+            word-wrap: break-word;  /* Older version for word wrap */
 		}
 		textarea:focus {
 			border: 2px solid red; /* Change border thickness and color */
@@ -163,6 +169,8 @@
 </script>
 
 <body>
+
+
 	<div id="background"></div>
 		<form action="{% url document_url  %}" method="post" id="forma_pdf">
 			{% csrf_token %}
