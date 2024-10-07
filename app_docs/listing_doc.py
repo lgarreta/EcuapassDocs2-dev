@@ -1,6 +1,5 @@
 """
 Base classes (View, Table) for listing ECUAPASS documents (Cartaporte, Manifiesto, Declaracion)
-
 """
 
 # For views
@@ -41,8 +40,9 @@ class DocumentosListadoView (View):
 	# General and date search
 	def get (self, request):
 		# Firs, get all instances
-		firstField = self.DOCMODEL._meta.fields [1].name
-		instances  = self.DOCMODEL.objects.order_by (f"-{firstField}")
+		#numero       = self.DOCMODEL._meta.fields [1].name
+		#fecha_emision = self.DOCMODEL._meta.fields [2].name
+		instances  = self.DOCMODEL.objects.order_by ("-fecha_emision", "-numero")
 
 		form       = self.DOCFORM (request.GET)
 		if not form.is_valid():
@@ -122,13 +122,13 @@ class DocumentosListadoTable (BaseListadoTable):
 	#-- Define links for document table columns: numero, acciones (actualizar, eliminar)
 	def __init__ (self, *args, **kwargs):
 		self.urlDoc               = getattr (self.Meta, 'urlDoc', 'default-url')
-		self.urlEditar            = f"{self.urlDoc}-editar"
+		self.urlEditar            = f"{self.urlDoc}-editardoc"
 
 		self.base_columns ['numero']  = tables.LinkColumn (self.urlEditar, args=[A('pk')])
 		# Column for apply actions in the current item document
 		self.base_columns ['acciones'] = tables.TemplateColumn(
 			template_code='''
-			<a href="{{ record.get_link_actualizar }}" target='_blank'>Editar</a>,
+			<a href="{{ record.get_link_editar }}" target='_blank'>Editar</a>,
 			<a href="{{ record.get_link_eliminar }}" target='_blank'>Eliminar</a>
 			<a href="{{ record.get_link_detalle }}" target='_blank'>Detalle</a>
 			''',

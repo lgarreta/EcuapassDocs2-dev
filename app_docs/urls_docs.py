@@ -12,7 +12,6 @@ from .views_Options import *
 from . import views_docs
 from .views_docs import InfoView
 
-
 urlpatterns = [
     #path('', views_docs.index, name='index'),
     #path ('', views_docs.principal, name='principal'),

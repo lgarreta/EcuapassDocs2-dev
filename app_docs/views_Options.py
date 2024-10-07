@@ -192,7 +192,8 @@ class CiudadPaisOptionsView (View):
 		return ""
 
 	def getCiudadesPaisesFromQuery (self, query):
-		ciudadesPaises = ResourceLoader.loadText ("data_cartaportes", "ciudades-paises-colombia-ecuador.txt")
+		#ciudadesPaises = ResourceLoader.loadText ("data_cartaportes", "ciudades-paises-colombia-ecuador.txt")
+		ciudadesPaises = ResourceLoader.loadText ("data_common", "ciudades_paises_principales.txt")
 		ciudadesPaises = [x.upper().strip() for x in ciudadesPaises if x.upper().startswith (query)]
 		return ciudadesPaises
 

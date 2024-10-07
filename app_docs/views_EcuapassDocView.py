@@ -33,6 +33,19 @@ from .pdfcreator import CreadorPDF
 
 
 #--------------------------------------------------------------------
+#-- Handle URL request for new doc template with iframes
+#-- Basically, render the document template to be put in the iframe
+#--------------------------------------------------------------------
+def docView(request, *args, **kwargs):
+	docType = request.path.strip('/').split('/')[0]
+	if "pk" in kwargs:
+		context = {"requestType":f"{docType}-editar", "pk":kwargs ["pk"]}
+	else:
+		context = {f"requestType":f"{docType}-nuevo"}
+
+	return render(request, 'documento_main.html', context)
+
+#--------------------------------------------------------------------
 #-- Vista para manejar las solicitudes de manifiesto
 #--------------------------------------------------------------------
 LAST_SAVED_VALUES = None
@@ -41,9 +54,10 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	def __init__(self, docType, background_image, parameters_file, *args, **kwargs):
 		super().__init__ (*args, **kwargs)
 		self.cliente          = "BYZA"
-		self.pais	            = None				 
-		self.docType	        = docType
-		self.template_name    = "forma_documento.html"
+		self.pais	          = None				 
+		self.docType	      = docType
+		self.template_name    = "documento_forma.html"
+		#self.template_name    = "documento_forma_iframe.html"
 		self.background_image = background_image
 		self.parameters_file  = parameters_file
 		self.inputParams      = ResourceLoader.loadJson ("docs", self.parameters_file)
@@ -277,8 +291,6 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	#-------------------------------------------------------------------
 	# Check if document has changed
 	#-------------------------------------------------------------------
-
-
 	def hasChangedDocument (self, inputValues):
 		global LAST_SAVED_VALUES
 		if LAST_SAVED_VALUES == None:

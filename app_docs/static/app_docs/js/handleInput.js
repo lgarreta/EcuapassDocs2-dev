@@ -9,9 +9,7 @@ function handleInput (textArea) {
 }
 
 function controlMaxLines (textArea, maxLines) {
-	console.log (">>> maxLines:", maxLines)
 	return function (event) {
-		console.log  (">>> event.key:", event.key)
 		if (event.key === 'Enter') {
 			const numLines = textArea.value.split('\n').length;
 			if (numLines >= maxLines) {
@@ -23,7 +21,6 @@ function controlMaxLines (textArea, maxLines) {
 }
 
 function controlMaxChars (textArea, maxChars) {
-	console.log (">>> maxChars:", maxChars)
     return function (event) {
         const lines = textArea.value.split('\n');
     	convertToUpperCase (textArea);

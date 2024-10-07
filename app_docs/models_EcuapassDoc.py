@@ -87,9 +87,9 @@ class EcuapassDoc (models.Model):
 	#-------------------------------------------------------------------
 	# Methods for special column "Acciones" when listing documents
 	#-------------------------------------------------------------------
-	def get_link_actualizar(self):
+	def get_link_editar(self):
 		docName = self.getDocType ().lower()
-		url     = f"{docName}-editar"
+		url     = f"{docName}-editardoc"
 		return reverse (url, args=[self.pk])
 
 	def get_link_eliminar(self):

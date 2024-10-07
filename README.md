@@ -4,6 +4,7 @@
 - Custom user management
 
 ## LOG
+Oct/07: r0.849 : Doc view with left sidebar using iframes. Removed default "fecha emision".
 Oct/05: r0.848 : Added manifiesto association: vehiculo-remolque-conductor. Modified tables: manifiesto, vehiculo.
 Sep/28: r0.847 : Working in cloud 'ecuapassdocs.app'. Update db process. Pagination.
 Sep/23: r0.846 : Data loading (logitrans CPI/MCI/DTI). BYZA data upto 2021. Added detail to form.
