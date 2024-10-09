@@ -14,14 +14,50 @@ from crispy_forms.layout import Layout, Submit, Row, Column, Field
 
 # For tables
 import django_tables2 as tables
+from django_tables2 import RequestConfig
 from django_tables2.utils import A
 
 # For models
 from app_docs.forms_docs import BuscarForma
-from app_docs.listing_doc import DocumentosListadoView, BaseListadoTable
+from app_docs.listing_doc import BaseListadoTable
 
 import django_tables2 as tables
 from .models_Entidades import Vehiculo, Conductor, Cliente
+
+#----------------------------------------------------------
+#-- View
+#----------------------------------------------------------
+class EntidadesListadoView (View):
+	def __init__ (self, docsTipo, DOCMODEL, DOCFORM, DOCTABLE):
+		self.pais	   = None
+		self.usuario   = None
+		self.docsTipo  = docsTipo
+		self.DOCMODEL  = DOCMODEL
+		self.DOCFORM   = DOCFORM 
+		self.DOCTABLE  = DOCTABLE
+
+	# General and date search
+	def get (self, request):
+		# Firs, get all instances
+		firstField = self.DOCMODEL._meta.fields [1].name
+		instances  = self.DOCMODEL.objects.order_by (f"-{firstField}")
+
+		form       = self.DOCFORM (request.GET)
+		if not form.is_valid():
+			return ("Forma inválida")
+
+		searchPattern      = form.cleaned_data.get ('buscar')
+
+		if searchPattern:
+			object    = self.DOCMODEL()
+			instances = object.searchModelAllFields (searchPattern)
+
+		table = self.DOCTABLE (instances)
+		RequestConfig (request, paginate={'per_page': 15}).configure (table) # Pagination
+
+		args =	{'itemsTipo':self.docsTipo, 'itemsLista': instances, 
+				 'itemsForma': form, 'itemsTable': table}
+		return render(request, 'app_docs/listing_entities.html', args)
 
 ##----------------------------------------------------------
 ## Base table used for listing Ecuapass docs 
@@ -50,7 +86,7 @@ class EntitiesListadoTable (BaseListadoTable):
 #----------------------------------------------------------
 #-- Vehiculos listing
 #----------------------------------------------------------
-class VehiculosListadoView (DocumentosListadoView):
+class VehiculosListadoView (EntidadesListadoView):
 	def __init__(self):
 		super().__init__ ("vehiculos", Vehiculo, BuscarForma, VehiculosListadoTable)
 
@@ -69,7 +105,7 @@ class VehiculosListadoTable (EntitiesListadoTable):
 #----------------------------------------------------------
 #-- Conductores listing
 #----------------------------------------------------------
-class ConductoresListadoView (DocumentosListadoView):
+class ConductoresListadoView (EntidadesListadoView):
 	def __init__(self):
 		super().__init__ ("conductores", Conductor, BuscarForma, ConductoresListadoTable)
 
@@ -87,7 +123,7 @@ class ConductoresListadoTable (EntitiesListadoTable):
 #----------------------------------------------------------
 #-- Clientes listing
 #----------------------------------------------------------
-class ClientesListadoView (DocumentosListadoView):
+class ClientesListadoView (EntidadesListadoView):
 	def __init__(self):
 		super().__init__ ("clientes", Cliente, BuscarForma, ClientesListadoTable)
 

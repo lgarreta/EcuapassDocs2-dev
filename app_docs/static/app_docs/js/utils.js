@@ -1,10 +1,13 @@
-// csrf_utils.js
+// Return a valid value for text area
+function getValidValue (value) {
+    if (value=="None")
+        return ""
+    else
+        return value
+}
 
-/**
- * Get the value of a cookie by name.
- * @param {string} name - The name of the cookie to retrieve.
- * @returns {string|null} - The value of the cookie if found, otherwise null.
- */
+
+// Get the value of a cookie by name.
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {

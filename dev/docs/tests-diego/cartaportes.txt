@@ -1,0 +1,18 @@
+CARTAPORTE:
+1. Muy lento el despliegue de la imagen de fondo
+2. Las opciones no salen inmediatamente mientras digita
+3. Pocas ciudades principales (cambiar de 5 a 10)
+4. Talvez desactivar correccion ortografía
+
+MANIFIESTO:
+1. Talvez saltar a placa primero que todo
+2. Verificar en Byza si está la conexión entre manifiesto-vehiculo-conductor-remolque
+
+LOGITRANS:
+1. Cargar datos nuevamente, actualizarlos con los últimos
+
+
+TODOS:
+1. Las opciones no deberían mostrarse más cuando la cadena inicial no coincide
+
+

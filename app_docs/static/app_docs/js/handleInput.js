@@ -8,11 +8,12 @@ function handleInput (textArea) {
 	textArea.addEventListener ('keydown', controlMaxLines (textArea, maxLines));
 }
 
+// Check max lines considering when AUTOCOMPLETE is working
 function controlMaxLines (textArea, maxLines) {
 	return function (event) {
 		if (event.key === 'Enter') {
 			const numLines = textArea.value.split('\n').length;
-			if (numLines >= maxLines) {
+			if (numLines >= maxLines && !AUTOCOMPLETE_ACTIVE) {
 				event.preventDefault();
 				alert ('Límite de líneas alcanzado.')
 			}

@@ -42,37 +42,45 @@ from bot_migration_docs import docs
 def main ():
 	args = sys.argv
 	option   = args [1]
-	inputDir = args [2]
 	try:
 		if option == "--save":
+			inputDir = args [2]
 			saveDocs (inputDir)
 		elif option == "--download":
+			inputDir = args [2]
 			downloadDocs (inputDir)
+		elif option == "--update":
+			updateDocs ()
 		else:
 			print ("Opción desconocida")
 	except:
 		Utils.printException ()
 
+def updateDocs ():
+	bot = BotMigration ("BYZA", "COLOMBIA", "MANIFIESTO", 0, 0, webdriver)
+	bot.updateCurrentDBAssociations ()
+
 def saveDocs (inputDir):
-		webdriver = BotMigration.getWaitWebdriver (DEBUG=True)
-		#bot = BotMigration ("LOGITRANS", "COLOMBIA", "DECLARACION", 0, 0, webdriver)
-		bot = BotMigration ("BYZA", "COLOMBIA", "MANIFIESTO", 0, 0, webdriver)
-		bot.saveDocFilesToDB (inputDir)
+	webdriver = BotMigration.getWaitWebdriver (DEBUG=True)
+	#bot = BotMigration ("LOGITRANS", "COLOMBIA", "DECLARACION", 0, 0, webdriver)
+	bot = BotMigration ("BYZA", "COLOMBIA", "MANIFIESTO", 0, 0, webdriver)
+	bot.saveDocFilesToDB (inputDir)
 
 def downloadDocs (inputDir):
-		webdriver = BotMigration.getWaitWebdriver (DEBUG=False)
-		#------------------------ SETTINGS --------------------#
-		empresa, doctype, prefix, year, pais, code = "LOGITRANS", "CARTAPORTE", "CPI", "2023", "COLOMBIA", "CO"
-		#empresa, doctype, prefix, year, pais, code = "BYZA", "CARTAPORTE", "CPI", "2019", "COLOMBIA", "CO"
-		#empresa, doctype, prefix, year, pais, code = "BYZA", "MANIFIESTO", "MCI", "2019", "COLOMBIA", "CO"
-		INI = docs [f"{empresa}"][f"{year}-{code}-{prefix}"]["ini"]["id"]
-		END = docs [f"{empresa}"][f"{year}-{code}-{prefix}"]["end"]["id"]
-		bot = BotMigration (f"{empresa}", f"{pais}", f"{doctype}", INI, END, webdriver)
-		#------------------------------------------------------#
-		bot.enterCodebin ()
-		bot.loginCodebin (bot.pais)
-		bot.downloadDocuments (inputDir)
-		webdriver.close()  # Close the window with the matching title
+	webdriver = BotMigration.getWaitWebdriver (DEBUG=False)
+	#------------------------ SETTINGS --------------------#
+	#empresa, doctype, prefix, year, pais, code = "LOGITRANS", "CARTAPORTE", "CPI", "2024", "COLOMBIA", "CO"
+	#empresa, doctype, prefix, year, pais, code = "BYZA", "CARTAPORTE", "CPI", "2024", "COLOMBIA", "CO"
+	empresa, doctype, prefix, year, pais, code = "BYZA", "MANIFIESTO", "MCI", "2024", "COLOMBIA", "CO"
+	#empresa, doctype, prefix, year, pais, code = "BYZA", "MANIFIESTO", "MCI", "2019", "COLOMBIA", "CO"
+	INI = docs [f"{empresa}"][f"{year}-{code}-{prefix}"]["ini"]["id"]
+	END = docs [f"{empresa}"][f"{year}-{code}-{prefix}"]["end"]["id"]
+	bot = BotMigration (f"{empresa}", f"{pais}", f"{doctype}", INI, END, webdriver)
+	#------------------------------------------------------#
+	bot.enterCodebin ()
+	bot.loginCodebin (bot.pais)
+	bot.downloadDocuments (inputDir)
+	webdriver.close()  # Close the window with the matching title
 
 #--------------------------------------------------------------------
 # Class with properties and functios for migration: dowload/save docs
@@ -87,7 +95,7 @@ class BotMigration:
 			self.finalId	= finalId
 			self.webdriver	= webdriver
 			self.settings	= self.getCodebinSettingsForEmpresa ()
-			self.user		= self.settings [pais]["user"]
+			self.usuario	= self.settings [pais]["user"]
 			self.password	= self.settings [pais]["password"]
 			self.docPrefix	= self.settings ["docPrefix"]
 			
@@ -276,7 +284,7 @@ class BotMigration:
 		loginForm = self.webdriver.find_element (By.TAG_NAME, "form")
 		userInput = loginForm.find_element (By.NAME, "user")
 		#userInput.send_keys ("GRUPO BYZA")
-		userInput.send_keys (self.user)
+		userInput.send_keys (self.usuario)
 		pswdInput = loginForm.find_element (By.NAME, "pass")
 		#pswdInput.send_keys ("GrupoByza2020*")
 		pswdInput.send_keys (self.password)
@@ -343,7 +351,7 @@ class BotMigration:
 		migrationFilesList = [f"{inputDir}/{x}" for x in self.getSortedFiles (inputDir)]
 		for migrationFilename in migrationFilesList:
 			formFields = Utils.getFormFieldsFromMigrationFieldsFile (migrationFilename)
-			usuario    = UsuarioEcuapass.objects.get (username=self.user)
+			usuario    = UsuarioEcuapass.objects.get (username=self.usuario)
 			self.saveNewDocToDB (formFields, self.docType, self.pais, usuario)
 
 	#-- Get doc files from dir sorted by number : CO#####, EC#####, PE#####
@@ -393,6 +401,37 @@ class BotMigration:
 
 		return docModel.id, docModel.numero, formModel, docModel
 
+	#-------------------------------------------------------------------
+	#-- Update/Recreate asociations from current documents in DB
+	#-------------------------------------------------------------------
+	def updateCurrentDBAssociations (self):
+		FormModel, DocModel = self.getFormAndDocModels (self.docType)
+		documents = DocModel.objects.all ()
+		for docModel in documents:
+			formModel = docModel.documento
+			docFields = self.getDocFieldsFromFormModel (self.docType, formModel)
+			docModel.setValues (formModel, docFields, self.pais, self.usuario)
+			docModel.save ()
+
+	#-------------------------------------------------------------------
+	#-- Return document fields from form Model dict
+	#-- {key:{value:XXX, content:XXX}}  <-- {numero:XX, txt00:XX,...,txt24}
+	#-------------------------------------------------------------------
+	def getDocFieldsFromFormModel (self, docType, formModel):
+		formFields = formModel.__dict__
+		paramFields = Utils.getParamFieldsForDocument (docType)
+		
+		docFields = {}
+		for key, value in formFields.items():
+			try:
+				params  = paramFields [key]
+				ecudocsField = params ["ecudocsField"]
+				docFields [ecudocsField] = {"value": value, "content":value}
+			except:
+				print (f"Problemas con clave '{key}' obteniendo DocFields")
+
+		return docFields
+			
 	#-------------------------------------------------------------------
 	# Return form document class and register class from document type
 	#-------------------------------------------------------------------

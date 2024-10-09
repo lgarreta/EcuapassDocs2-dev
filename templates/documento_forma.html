@@ -13,9 +13,10 @@
 	<!-------------------------------------------------------------------->
 	<style>
 		#background {
-			background-image: url('{% static background_image %}?v={{ timestamp }}');
-			#background-size: 1699px 2200px; /* Tamaño fijo de la imagen de fondo */
-			#background-size: cover; /* Adjust as needed */
+			/*background-image: url('{% static background_image %}?v={{ timestamp }}');*/
+			/*background-size: 1699px 2200px; /* Tamaño fijo de la imagen de fondo */
+			/*#background-size: cover; /* Adjust as needed */
+			background-image: url('{% static background_image %}');
 			background-repeat: no-repeat;
 			width: 1100px; /* Ancho fijo de la imagen de fondo */
 			height: 1424px; /* Alto fijo de la imagen de fondo */
@@ -33,12 +34,13 @@
 	<!-------------------------------------------------------------------->
 	<!-- ECUAPASS Document JS Scripts -->
 	<!-------------------------------------------------------------------->
-	<script src="{% static 'app_docs/js/csrf_utils.js' %}"></script>
+	<script src="{% static 'app_docs/js/utils.js' %}"></script>
 	<script src="{% static 'app_docs/js/createInputTextareas.js' %}"></script>
 	<script src="{% static 'app_docs/js/handleInput.js' %}"></script>
 	<script src="{% static 'app_docs/js/setParametersToInputs.js' %}"></script>
 	<script src="{% static 'app_docs/js/autocomplete-documents.js' %}"></script>
 	<script src="{% static 'app_docs/js/enable_disable_doc_buttons.js' %}"></script>
+	
 	<!-------------------------------------------------------------------->
 	<!-------------------------------------------------------------------->
 	<script> 

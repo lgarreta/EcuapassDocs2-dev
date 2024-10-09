@@ -1,5 +1,8 @@
 // Functions for autocomplete in document forms
 //
+
+let AUTOCOMPLETE_ACTIVE = false;
+
 // Get last CSRF token (after redirects)
 function getCookie(name) {
     let cookieValue = null;
@@ -22,11 +25,11 @@ function createAutocomplete (entity) {
 
 	let inputSelector = entity.inputSelector
 	let sourceUrl     = "/" + entity.sourceUrl
-	console.log (">>> sourceUrl: ", sourceUrl)
 	
 	$(inputSelector).autocomplete({
 		// List of autocomplete options
 		source: function (request, response) {
+	        console.log (">>> AUTO auto:", AUTOCOMPLETE_ACTIVE)
 			$.ajax({ url: sourceUrl, type:'POST', dataType: 'json', data: {query: request.term},
 
 				beforeSend: function (xhr, settings) {
@@ -35,6 +38,7 @@ function createAutocomplete (entity) {
 				},
 
 				success: function (data) {
+                    AUTOCOMPLETE_ACTIVE = true;
 					responseData = entity.onAjaxSuccess (data)
 					response (responseData)
 				}
@@ -88,6 +92,12 @@ function setAutocompleteForDocument (documentType) {
 			createAutocomplete(new AutoCompleteCartaporte (inputName, 'opciones-cartaporte', documentType)) 
 		});
 
+		// Placa-Pais (Used in Declaracion)
+		let placaPaisInputs = getTextAreasByClassName ("input_placaPais")
+		placaPaisInputs.forEach (inputName => {
+			createAutocomplete(new AutoComplete (inputName, 'opciones-placa')) 
+		});
+
 		// Vehiculo (Used in Manifiesto)
 		let vehiculoInputs = getTextAreasByClassName ("input_vehiculo")
 		vehiculoInputs.forEach (inputName => {
@@ -100,12 +110,6 @@ function setAutocompleteForDocument (documentType) {
 			createAutocomplete(new AutoCompleteConductor (inputName, 'opciones-conductor')) 
 		});
 
-		// Placa-Pais (Used in Declaracion)
-		let placaPaisInputs = getTextAreasByClassName ("input_placaPais")
-		placaPaisInputs.forEach (inputName => {
-			createAutocomplete(new AutoComplete (inputName, 'opciones-placa')) 
-		});
-
 		// Numero Manifiesto (Used in Declaracion)
 		let manifiestoInputs = getTextAreasByClassName ("input_manifiesto")
 		manifiestoInputs.forEach (inputName => {
@@ -115,7 +119,6 @@ function setAutocompleteForDocument (documentType) {
 }
 
 //----------------------------------------------------------------------
-//---------------- Autocomplet for "cartaporte" ------------------------
 //----------------------------------------------------------------------
 
 //-- General class for autocomplete only with the value of the option
@@ -196,20 +199,33 @@ class AutoCompleteManifiesto extends AutoComplete {
 class AutoCompleteVehiculo extends AutoComplete {
 	// When an item is selected, populate the textarea 
 	onItemSelected (ui) {
+        AUTOCOMPLETE_ACTIVE = false;
 		let index  = ui.item.value.split (".")[0]
 		let text   = this.fullData [index]["itemText"]
 		let values = text.split ("||");
 		let input  = this.inputSelector
 		if (input.id === "txt06") {
-			document.getElementById("txt04").value = values [0]
-			document.getElementById("txt05").value = values [1]
-			document.getElementById("txt06").value = values [2]
-			document.getElementById("txt07").value = values [3]
+            //-- Vehiculo
+			document.getElementById("txt04").value = getValidValue (values [0])
+			document.getElementById("txt05").value = getValidValue (values [1])
+			document.getElementById("txt06").value = getValidValue (values [2])
+			document.getElementById("txt07").value = getValidValue (values [3])
+            //-- Remolque
+			document.getElementById("txt09").value = getValidValue (values [4])
+			document.getElementById("txt10").value = getValidValue (values [5])
+			document.getElementById("txt11").value = getValidValue (values [6])
+			document.getElementById("txt12").value = getValidValue (values [7])
+            //-- Conductor
+			document.getElementById("txt13").value = getValidValue (values [8])
+			document.getElementById("txt14").value = getValidValue (values [9])
+			document.getElementById("txt15").value = getValidValue (values [10])
+			document.getElementById("txt16").value = getValidValue (values [11])
+
 		}else {
-			document.getElementById("txt09").value = values [0]
-			document.getElementById("txt10").value = values [1]
-			document.getElementById("txt11").value = values [2]
-			document.getElementById("txt12").value = values [3]
+			document.getElementById("txt09").value = getValidValue (values [0])
+			document.getElementById("txt10").value = getValidValue (values [1])
+			document.getElementById("txt11").value = getValidValue (values [2])
+			document.getElementById("txt12").value = getValidValue (values [3])
 		}
 	}
 }

@@ -3,7 +3,7 @@ from django.urls import path
 from app_docs.views_EcuapassDocView import docView
 from app_declaracion.views_DeclaracionDocView import *
 from app_declaracion import views_dti
-from app_docs.views_Options import *
+from app_docs.views_Autocomplete import *
 
 from .listing_dti import DeclaracionesListadoView
 

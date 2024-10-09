@@ -103,6 +103,7 @@ class Manifiesto (EcuapassDoc):
 		# Document values
 		jsonFieldsPath, runningDir = self.createTemporalJson (docFields)
 		manifiestoInfo     = ManifiestoByza (jsonFieldsPath, runningDir)
+		self.cartaporte    = self.getCartaporteInstance (manifiestoInfo)
 
 		self.getSaveVehiculoConductorInstance (manifiestoInfo)
 		self.fecha_emision = EcuInfo.getFechaEmision (docFields, "MANIFIESTO")
