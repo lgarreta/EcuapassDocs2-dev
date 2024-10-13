@@ -1,0 +1,816 @@
+SERVER: Getting webdriver...
+
+
+------------------------------------------
++++ Guardando documento 'CO11950' nuevo en la BD...
+------------------------------------------
++++ key:value 'txt0a':'CO'
++++ key:value 'txt00':'CO11950'
++++ key:value 'txt01':''
++++ key:value 'txt02':''
++++ key:value 'txt03':''
++++ key:value 'txt04':'INTERNATIONAL'
++++ key:value 'txt05':'2008'
++++ key:value 'txt06':'KUL700 COLOMBIA'
++++ key:value 'txt07':'N632077'
++++ key:value 'txt08':'CH-CO-0003-22 CR-CO-0050-22'
++++ key:value 'txt09':'DITE S.A.'
++++ key:value 'txt10':'2007'
++++ key:value 'txt11':'R44507 COLOMBIA'
++++ key:value 'txt12':'N/A'
++++ key:value 'txt13':'BYRON MORA CHAMORRO 24-09-1991'
++++ key:value 'txt14':'1085924502'
++++ key:value 'txt15':'COLOMBIA'
++++ key:value 'txt16':'1085924502'
++++ key:value 'txt17':'N/A'
++++ key:value 'txt18':'NO TIENE'
++++ key:value 'txt19':'X X X'
++++ key:value 'txt20':'X X X'
++++ key:value 'txt21':'X X X'
++++ key:value 'txt22':'X X X'
++++ key:value 'txt23':'RIOFRIO / TULUA - COLOMBIA'
++++ key:value 'txt24':'TULCAN - ECUADOR'
++++ key:value 'txt25_1':''
++++ key:value 'txt25_2':''
++++ key:value 'txt25_3':''
++++ key:value 'txt25_4':''
++++ key:value 'txt25_5':'FACIL MANEJO'
++++ key:value 'txt26':''
++++ key:value 'txt27':''
++++ key:value 'txt28':'CO7367'
++++ key:value 'txt29':'AZUCAR TIPO B CARMELITA 50 KILOS
+
+
+CPI: CO7367
+AMPARA: 4200 YY, SALDO ANTERIOR 2400 YY, SALEN 600 YY, SALDO 1800 YY.
+
+SAE: 6027735795122
+AMPARA: 4200 YY, SALDO ANTERIOR 2400 YY, SALEN 600 YY, SALDO 1800 YY.
+
+NUMERO DE CARGA: CEC202420340502-0001
+INGRESA A BODEGAS ADUANOR
+NUMERO DE BODEGA: 48627 CODIGO: 9371'
++++ key:value 'txt30':'600 SACOS'
++++ key:value 'txt31':'CARMELITA '
++++ key:value 'txt32_1':'30050.00'
++++ key:value 'txt32_2':'30050.00'
++++ key:value 'txt32_3':'30000.00'
++++ key:value 'txt32_4':'30000.00'
++++ key:value 'txt33_1':''
++++ key:value 'txt33_2':''
++++ key:value 'txt34':'EXW: RIOFRIO / TULUA - COLOMBIA USD: 19200.00'
++++ key:value 'txt35':''
++++ key:value 'txt37':'IPIALES COLOMBIA'
++++ key:value 'txt38':'TULCAN ECUADOR'
++++ key:value 'txt40':'RIOFRIO / TULUA - COLOMBIA, SEPTIEMBRE 17 DE 2024'
++++ key:value 'txt41':''
++++ DEBUG: getCodigoPais: docNumber: CO11950
+SERVER: ALERTA: Cartaporte número 'CO7367' no encontrado.
++++ DEBUG: getPlacaPais 'KUL700 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2008', 'pais': 'COLOMBIA', 'placa': 'KUL700', 'chasis': 'N632077', 'certificado': 'CH-CO-0003-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R44507 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE S.A.', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'R44507', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11951' nuevo en la BD...
+------------------------------------------
++++ key:value 'txt0a':'CO'
++++ key:value 'txt00':'CO11951'
++++ key:value 'txt01':''
++++ key:value 'txt02':''
++++ key:value 'txt03':''
++++ key:value 'txt04':'INTERNATIONAL'
++++ key:value 'txt05':'2006'
++++ key:value 'txt06':'UYT740 COLOMBIA'
++++ key:value 'txt07':'3HSCNAPT76N368798'
++++ key:value 'txt08':'CH-CO-0902-24 CR-CO-0674-24'
++++ key:value 'txt09':'TECNITRAILERS'
++++ key:value 'txt10':'2024'
++++ key:value 'txt11':'S28521 COLOMBIA'
++++ key:value 'txt12':'N/A'
++++ key:value 'txt13':'GUSTAVO FREDY QUENGUAN VELASQUEZ 1983-08-15'
++++ key:value 'txt14':'87063776'
++++ key:value 'txt15':'COLOMBIA'
++++ key:value 'txt16':'87063776'
++++ key:value 'txt17':'N/A'
++++ key:value 'txt18':'NO TIENE'
++++ key:value 'txt19':'X X X'
++++ key:value 'txt20':'X X X'
++++ key:value 'txt21':'X X X'
++++ key:value 'txt22':'X X X'
++++ key:value 'txt23':'RIOFRIO / TULUA - COLOMBIA'
++++ key:value 'txt24':'TULCAN - ECUADOR'
++++ key:value 'txt25_1':''
++++ key:value 'txt25_2':''
++++ key:value 'txt25_3':''
++++ key:value 'txt25_4':''
++++ key:value 'txt25_5':'FACIL MANEJO'
++++ key:value 'txt26':''
++++ key:value 'txt27':''
++++ key:value 'txt28':'CO7367'
++++ key:value 'txt29':'AZUCAR TIPO B CARMELITA 50 KILOS
+
+
+CPI: CO7367
+AMPARA: 4200 YY, SALDO ANTERIOR 1800 YY, SALEN 600 YY, SALDO 1200 YY.
+
+SAE: 6027735795122
+AMPARA: 4200 YY, SALDO ANTERIOR 1800 YY, SALEN 600 YY, SALDO 1200 YY.
+
+NUMERO DE CARGA: CEC202420340502-0001
+INGRESA A BODEGAS ADUANOR
+NUMERO DE BODEGA: 48627 CODIGO: 9371'
++++ key:value 'txt30':'600 SACOS'
++++ key:value 'txt31':'CARMELITA '
++++ key:value 'txt32_1':'30050.00'
++++ key:value 'txt32_2':'30050.00'
++++ key:value 'txt32_3':'30000.00'
++++ key:value 'txt32_4':'30000.00'
++++ key:value 'txt33_1':''
++++ key:value 'txt33_2':''
++++ key:value 'txt34':'EXW: RIOFRIO / TULUA - COLOMBIA USD: 19200.00'
++++ key:value 'txt35':''
++++ key:value 'txt37':'IPIALES COLOMBIA'
++++ key:value 'txt38':'TULCAN ECUADOR'
++++ key:value 'txt40':'RIOFRIO / TULUA - COLOMBIA, SEPTIEMBRE 17 DE 2024'
++++ key:value 'txt41':''
++++ DEBUG: getCodigoPais: docNumber: CO11951
+SERVER: ALERTA: Cartaporte número 'CO7367' no encontrado.
++++ DEBUG: getPlacaPais 'UYT740 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'UYT740', 'chasis': '3HSCNAPT76N368798', 'certificado': 'CH-CO-0902-24', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S28521 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TECNITRAILERS', 'anho': '2024', 'pais': 'COLOMBIA', 'placa': 'S28521', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11952' nuevo en la BD...
+------------------------------------------
++++ key:value 'txt0a':'CO'
++++ key:value 'txt00':'CO11952'
++++ key:value 'txt01':''
++++ key:value 'txt02':''
++++ key:value 'txt03':''
++++ key:value 'txt04':'KENWORTH	'
++++ key:value 'txt05':'2006'
++++ key:value 'txt06':'SOW170 COLOMBIA'
++++ key:value 'txt07':'130467'
++++ key:value 'txt08':'CH-CO-0941-24 CR-CO-0144-21'
++++ key:value 'txt09':'TRAILERS SANTANDER'
++++ key:value 'txt10':'2007'
++++ key:value 'txt11':'R45199 COLOMBIA'
++++ key:value 'txt12':'N/A'
++++ key:value 'txt13':'CRISTHIAN DAVID CASTRO TABARES 2001-05-06'
++++ key:value 'txt14':'1193219132'
++++ key:value 'txt15':'COLOMBIA'
++++ key:value 'txt16':'1193219132'
++++ key:value 'txt17':'N/A'
++++ key:value 'txt18':'NO TIENE'
++++ key:value 'txt19':'X X X'
++++ key:value 'txt20':'X X X'
++++ key:value 'txt21':'X X X'
++++ key:value 'txt22':'X X X'
++++ key:value 'txt23':'RIOFRIO / TULUA - COLOMBIA'
++++ key:value 'txt24':'TULCAN - ECUADOR'
++++ key:value 'txt25_1':''
++++ key:value 'txt25_2':''
++++ key:value 'txt25_3':''
++++ key:value 'txt25_4':''
++++ key:value 'txt25_5':'FACIL MANEJO'
++++ key:value 'txt26':''
++++ key:value 'txt27':''
++++ key:value 'txt28':'CO7367'
++++ key:value 'txt29':'AZUCAR TIPO B CARMELITA 50 KILOS
+
+
+CPI: CO7367
+AMPARA: 4200 YY, SALDO ANTERIOR 1200 YY, SALEN 600 YY, SALDO 600 YY.
+
+SAE: 6027735795122
+AMPARA: 4200 YY, SALDO ANTERIOR 1200 YY, SALEN 600 YY, SALDO 600 YY.
+
+NUMERO DE CARGA: CEC202420340502-0001
+INGRESA A BODEGAS ADUANOR
+NUMERO DE BODEGA: 48627 CODIGO: 9371'
++++ key:value 'txt30':'600 SACOS'
++++ key:value 'txt31':'CARMELITA '
++++ key:value 'txt32_1':'30050.00'
++++ key:value 'txt32_2':'30050.00'
++++ key:value 'txt32_3':'30000.00'
++++ key:value 'txt32_4':'30000.00'
++++ key:value 'txt33_1':''
++++ key:value 'txt33_2':''
++++ key:value 'txt34':'EXW: RIOFRIO / TULUA - COLOMBIA USD: 19200.00'
++++ key:value 'txt35':''
++++ key:value 'txt37':'IPIALES COLOMBIA'
++++ key:value 'txt38':'TULCAN ECUADOR'
++++ key:value 'txt40':'RIOFRIO / TULUA - COLOMBIA, SEPTIEMBRE 17 DE 2024'
++++ key:value 'txt41':''
++++ DEBUG: getCodigoPais: docNumber: CO11952
+SERVER: ALERTA: Cartaporte número 'CO7367' no encontrado.
++++ DEBUG: getPlacaPais 'SOW170 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH\t', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'SOW170', 'chasis': '130467', 'certificado': 'CH-CO-0941-24', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R45199 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TRAILERS SANTANDER', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'R45199', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11953' nuevo en la BD...
+------------------------------------------
++++ key:value 'txt0a':'CO'
++++ key:value 'txt00':'CO11953'
++++ key:value 'txt01':''
++++ key:value 'txt02':''
++++ key:value 'txt03':''
++++ key:value 'txt04':'KENWORTH'
++++ key:value 'txt05':'2015'
++++ key:value 'txt06':'LAA1816 ECUADOR '
++++ key:value 'txt07':'3WKDD40X8FF722404'
++++ key:value 'txt08':'CH-EC-1851-23 CR-CO-0139-23'
++++ key:value 'txt09':'DITE'
++++ key:value 'txt10':'1997'
++++ key:value 'txt11':'R28653 COLOMBIA'
++++ key:value 'txt12':'N/A'
++++ key:value 'txt13':'JAIRO IBARRA ORTIZ 12-11-1963'
++++ key:value 'txt14':'13012675'
++++ key:value 'txt15':'COLOMBIA'
++++ key:value 'txt16':'13012675'
++++ key:value 'txt17':'N/A'
++++ key:value 'txt18':'NO TIENE'
++++ key:value 'txt19':'X X X'
++++ key:value 'txt20':'X X X'
++++ key:value 'txt21':'X X X'
++++ key:value 'txt22':'X X X'
++++ key:value 'txt23':'RIOFRIO / TULUA - COLOMBIA'
++++ key:value 'txt24':'TULCAN - ECUADOR'
++++ key:value 'txt25_1':''
++++ key:value 'txt25_2':''
++++ key:value 'txt25_3':''
++++ key:value 'txt25_4':''
++++ key:value 'txt25_5':'FACIL MANEJO'
++++ key:value 'txt26':''
++++ key:value 'txt27':''
++++ key:value 'txt28':'CO7367'
++++ key:value 'txt29':'AZUCAR TIPO B CARMELITA 50 KILOS
+
+
+CPI: CO7367
+AMPARA: 4200 YY, SALDO ANTERIOR 600 YY, SALEN 600 YY, SALDO 0 YY.
+
+SAE: 6027735795122
+AMPARA: 4200 YY, SALDO ANTERIOR 600 YY, SALEN 600 YY, SALDO 0 YY.
+
+NUMERO DE CARGA: CEC202420340502-0001
+INGRESA A BODEGAS ADUANOR
+NUMERO DE BODEGA: 48627 CODIGO: 9371'
++++ key:value 'txt30':'600 SACOS'
++++ key:value 'txt31':'CARMELITA '
++++ key:value 'txt32_1':'30050.00'
++++ key:value 'txt32_2':'30050.00'
++++ key:value 'txt32_3':'30000.00'
++++ key:value 'txt32_4':'30000.00'
++++ key:value 'txt33_1':''
++++ key:value 'txt33_2':''
++++ key:value 'txt34':'EXW: RIOFRIO / TULUA - COLOMBIA USD: 19200.00'
++++ key:value 'txt35':''
++++ key:value 'txt37':'IPIALES COLOMBIA'
++++ key:value 'txt38':'TULCAN ECUADOR'
++++ key:value 'txt40':'RIOFRIO / TULUA - COLOMBIA, SEPTIEMBRE 17 DE 2024'
++++ key:value 'txt41':''
++++ DEBUG: getCodigoPais: docNumber: CO11953
+SERVER: ALERTA: Cartaporte número 'CO7367' no encontrado.
++++ DEBUG: getPlacaPais 'LAA1816 ECUADOR '
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2015', 'pais': 'ECUADOR', 'placa': 'LAA1816', 'chasis': '3WKDD40X8FF722404', 'certificado': 'CH-EC-1851-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R28653 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE', 'anho': '1997', 'pais': 'COLOMBIA', 'placa': 'R28653', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11954' nuevo en la BD...
+------------------------------------------
++++ key:value 'txt0a':'CO'
++++ key:value 'txt00':'CO11954'
++++ key:value 'txt01':''
++++ key:value 'txt02':''
++++ key:value 'txt03':''
++++ key:value 'txt04':'CHEVROLET'
++++ key:value 'txt05':'2007'
++++ key:value 'txt06':'CBO0076 ECUADOR'
++++ key:value 'txt07':'JALFVR32P77000212'
++++ key:value 'txt08':'CH-EC-2272-23'
++++ key:value 'txt09':''
++++ key:value 'txt10':''
++++ key:value 'txt11':''
++++ key:value 'txt12':''
++++ key:value 'txt13':' OMAR TREJO 16-07-1989'
++++ key:value 'txt14':'0401745435'
++++ key:value 'txt15':'ECUADOR'
++++ key:value 'txt16':'0401745435'
++++ key:value 'txt17':'N/A'
++++ key:value 'txt18':'NO TIENE'
++++ key:value 'txt19':'X X X'
++++ key:value 'txt20':'X X X'
++++ key:value 'txt21':'X X X'
++++ key:value 'txt22':'X X X'
++++ key:value 'txt23':'IPIALES - COLOMBIA'
++++ key:value 'txt24':'QUITO - ECUADOR'
++++ key:value 'txt25_1':''
++++ key:value 'txt25_2':''
++++ key:value 'txt25_3':''
++++ key:value 'txt25_4':''
++++ key:value 'txt25_5':'FACIL MANEJO'
++++ key:value 'txt26':''
++++ key:value 'txt27':''
++++ key:value 'txt28':'CO7368'
++++ key:value 'txt29':'Sabor Natural y Artificial Naranja.
+
+
+CPI: CO7368
+AMPARA: 5 YY, SALEN 5 YY, SALDO 0.
+
+SAE: 6027735917199
+AMPARA: 5 YY, SALEN 5 YY, SALDO 0.
+
+NUMERO DE CARGA: CEC202420340503-0001
+INGRESA A BODEGAS TRANSBOLIVARIANA
+NUMERO DE BODEGA: TB-20150 CODIGO: 9443'
++++ key:value 'txt30':'5 BULTOS'
++++ key:value 'txt31':'SILESIA'
++++ key:value 'txt32_1':'117.50'
++++ key:value 'txt32_2':'117.50'
++++ key:value 'txt32_3':'100.00'
++++ key:value 'txt32_4':'100.00'
++++ key:value 'txt33_1':''
++++ key:value 'txt33_2':''
++++ key:value 'txt34':'FCA: IPIALES - COLOMBIA USD: 5010.00'
++++ key:value 'txt35':''
++++ key:value 'txt37':'IPIALES-COLOMBIA'
++++ key:value 'txt38':'TULCAN-ECUADOR'
++++ key:value 'txt40':'IPIALES - COLOMBIA, SEPTIEMBRE 18 DE 2024'
++++ key:value 'txt41':''
++++ DEBUG: getCodigoPais: docNumber: CO11954
+SERVER: ALERTA: Cartaporte número 'CO7368' no encontrado.
++++ DEBUG: getPlacaPais 'CBO0076 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2007', 'pais': 'ECUADOR', 'placa': 'CBO0076', 'chasis': 'JALFVR32P77000212', 'certificado': 'CH-EC-2272-23', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
+
+
+------------------------------------------
++++ Guardando documento 'CO11955' nuevo en la BD...
+------------------------------------------
++++ key:value 'txt0a':'CO'
++++ key:value 'txt00':'CO11955'
++++ key:value 'txt01':''
++++ key:value 'txt02':''
++++ key:value 'txt03':''
++++ key:value 'txt04':'CHEVROLET'
++++ key:value 'txt05':'2007'
++++ key:value 'txt06':'UYW 288 COLOMBIA'
++++ key:value 'txt07':'9GDP7H1C97B006022'
++++ key:value 'txt08':'CH-CO-0271-24  CRU-CO-0275-24 '
++++ key:value 'txt09':'INNALTRACK'
++++ key:value 'txt10':'2011'
++++ key:value 'txt11':'R64461 COLOMBIA'
++++ key:value 'txt12':''
++++ key:value 'txt13':'MOTIVAR ALBA MILTON 1991-03-22'
++++ key:value 'txt14':'1050220636'
++++ key:value 'txt15':'COLOMBIANO'
++++ key:value 'txt16':'1050220636'
++++ key:value 'txt17':'N/A'
++++ key:value 'txt18':'NO TIENE'
++++ key:value 'txt19':'X X X'
++++ key:value 'txt20':'X X X'
++++ key:value 'txt21':'X X X'
++++ key:value 'txt22':'X X X'
++++ key:value 'txt23':'BARRANQUILLA - COLOMBIA'
++++ key:value 'txt24':'TULCAN-ECUADOR'
++++ key:value 'txt25_1':''
++++ key:value 'txt25_2':''
++++ key:value 'txt25_3':''
++++ key:value 'txt25_4':''
++++ key:value 'txt25_5':'FACIL MANEJO'
++++ key:value 'txt26':'MSCU927374-3'
++++ key:value 'txt27':'CBC8124 - ANM3543 -ANM3545'
++++ key:value 'txt28':'CO7369'
++++ key:value 'txt29':'TOALLAS 100% ALGODON DIELCY
+
+EXPORTADOR: INDUSTRIAS CANNON DE COLOMBIA SA
+IMPORTADOR: ALMACENES DE PRATI S.A
+
+S.A.E No 	60277 xx
+ AMPARA 3240 CT  SALEN 1080 CT SALDO 2160 CT
+
+CPI No.CO7369 AMPARA 3240 CT  SALEN 1080 CT SALDO 2160 CT
+
+
+NUMERO DE CARGA: CEC202420340455-0001
+BODEGA: BOSEFO 
+CODIGO:  9678
+REGIMEN: 10
+
+
+
+
+'
++++ key:value 'txt30':'1080 CAJAS'
++++ key:value 'txt31':'ALMACENES DE PRATI S.A'
++++ key:value 'txt32_1':'9245.00'
++++ key:value 'txt32_2':'9245'
++++ key:value 'txt32_3':'8165.00'
++++ key:value 'txt32_4':'8165'
++++ key:value 'txt33_1':''
++++ key:value 'txt33_2':'0'
++++ key:value 'txt34':'FCA BARRANQUILA COLOMBIA USD 67392.00'
++++ key:value 'txt35':''
++++ key:value 'txt37':'IPIALES COLOMBIA'
++++ key:value 'txt38':'TULCAN ECUADOR'
++++ key:value 'txt40':'BARRANQUILLA - COLOMBIA SEPTIEMBRE 19 DEL 2024'
++++ key:value 'txt41':''
++++ DEBUG: getCodigoPais: docNumber: CO11955
+SERVER: ALERTA: Cartaporte número 'CO7369' no encontrado.
++++ DEBUG: getPlacaPais 'UYW 288 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'UYW', 'chasis': '9GDP7H1C97B006022', 'certificado': 'CH-CO-0271-24', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R64461 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INNALTRACK', 'anho': '2011', 'pais': 'COLOMBIA', 'placa': 'R64461', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11956' nuevo en la BD...
+------------------------------------------
++++ key:value 'txt0a':'CO'
++++ key:value 'txt00':'CO11956'
++++ key:value 'txt01':''
++++ key:value 'txt02':''
++++ key:value 'txt03':''
++++ key:value 'txt04':'KENWORTH'
++++ key:value 'txt05':'2023'
++++ key:value 'txt06':'KRM 224 COLOMBIA'
++++ key:value 'txt07':'731059'
++++ key:value 'txt08':'CH-CO-0709.22  CRU-CO-0964-24'
++++ key:value 'txt09':'ROMARCO'
++++ key:value 'txt10':'2024'
++++ key:value 'txt11':'S30083 COLOMBIA'
++++ key:value 'txt12':''
++++ key:value 'txt13':'PORTILLA JARAMILLO HECTOR  2000-08-22'
++++ key:value 'txt14':'1004578098'
++++ key:value 'txt15':'COLOMBIANO'
++++ key:value 'txt16':'1004578098'
++++ key:value 'txt17':'N/A'
++++ key:value 'txt18':'NO TIENE'
++++ key:value 'txt19':'X X X'
++++ key:value 'txt20':'X X X'
++++ key:value 'txt21':'X X X'
++++ key:value 'txt22':'X X X'
++++ key:value 'txt23':'BARRANQUILLA - COLOMBIA'
++++ key:value 'txt24':'TULCAN-ECUADOR'
++++ key:value 'txt25_1':''
++++ key:value 'txt25_2':''
++++ key:value 'txt25_3':''
++++ key:value 'txt25_4':''
++++ key:value 'txt25_5':'FACIL MANEJO'
++++ key:value 'txt26':'AMFU-890218-1'
++++ key:value 'txt27':'CBC8126 - ANM3542 - ANM3548'
++++ key:value 'txt28':'CO7369'
++++ key:value 'txt29':'TOALLAS 100% ALGODON DIELCY
+
+EXPORTADOR: INDUSTRIAS CANNON DE COLOMBIA SA
+IMPORTADOR: ALMACENES DE PRATI S.A
+
+S.A.E No 	60277  AMPARA 3240 CT
+ SALDO ANTERIOR 2160 CT  SALEN 1080 CT SALDO 1080 CT
+
+CPI No.CO7369 AMPARA  SALDO ANTERIOR 2160 CT  SALEN 1080 CT SALDO 1080 CT
+
+
+NUMERO DE CARGA: CEC202420340455-0001
+BODEGA: BOSEFO 
+CODIGO:  9678
+REGIMEN: 10
+
+
+
+
+'
++++ key:value 'txt30':'1080 CAJAS'
++++ key:value 'txt31':'ALMACENES DE PRATI S.A'
++++ key:value 'txt32_1':'9245.00'
++++ key:value 'txt32_2':'9245'
++++ key:value 'txt32_3':'8165.00'
++++ key:value 'txt32_4':'8165'
++++ key:value 'txt33_1':''
++++ key:value 'txt33_2':'0'
++++ key:value 'txt34':'FCA BARRANQUILA COLOMBIA USD 67392.00'
++++ key:value 'txt35':''
++++ key:value 'txt37':'IPIALES COLOMBIA'
++++ key:value 'txt38':'TULCAN ECUADOR'
++++ key:value 'txt40':'BARRANQUILLA - COLOMBIA SEPTIEMBRE 19 DEL 2024'
++++ key:value 'txt41':''
++++ DEBUG: getCodigoPais: docNumber: CO11956
+SERVER: ALERTA: Cartaporte número 'CO7369' no encontrado.
++++ DEBUG: getPlacaPais 'KRM 224 COLOMBIA'
+SERVER: Error validando certificado de <VEHICULO> en texto: 'CH-CO-07-09'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'KRM', 'chasis': '731059', 'certificado': '||LOW', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S30083 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2024', 'pais': 'COLOMBIA', 'placa': 'S30083', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11957' nuevo en la BD...
+------------------------------------------
++++ key:value 'txt0a':'CO'
++++ key:value 'txt00':'CO11957'
++++ key:value 'txt01':''
++++ key:value 'txt02':''
++++ key:value 'txt03':''
++++ key:value 'txt04':'VOLVO'
++++ key:value 'txt05':'2005'
++++ key:value 'txt06':'SNN 136 COLOMBIA'
++++ key:value 'txt07':'9BVBN60D05E711475'
++++ key:value 'txt08':'CH-CO-0664-22  CRU-CO-0767-23'
++++ key:value 'txt09':'FERRELAMINAS'
++++ key:value 'txt10':'2012'
++++ key:value 'txt11':'R80708 COLOMBIA'
++++ key:value 'txt12':''
++++ key:value 'txt13':'CUASPUD REINA JOSE GABRIEL  1983-05-24'
++++ key:value 'txt14':'87216265'
++++ key:value 'txt15':'COLOMBIANO'
++++ key:value 'txt16':'87216265'
++++ key:value 'txt17':'N/A'
++++ key:value 'txt18':'NO TIENE'
++++ key:value 'txt19':'X X X'
++++ key:value 'txt20':'X X X'
++++ key:value 'txt21':'X X X'
++++ key:value 'txt22':'X X X'
++++ key:value 'txt23':'BARRANQUILLA - COLOMBIA'
++++ key:value 'txt24':'TULCAN-ECUADOR'
++++ key:value 'txt25_1':''
++++ key:value 'txt25_2':''
++++ key:value 'txt25_3':''
++++ key:value 'txt25_4':''
++++ key:value 'txt25_5':'FACIL MANEJO'
++++ key:value 'txt26':'TRLU-552068-2'
++++ key:value 'txt27':'CBC8122 - ANM3547 -ANM8901'
++++ key:value 'txt28':'CO7369'
++++ key:value 'txt29':'TOALLAS 100% ALGODON DIELCY
+
+EXPORTADOR: INDUSTRIAS CANNON DE COLOMBIA SA
+IMPORTADOR: ALMACENES DE PRATI S.A
+
+S.A.E No 	60277  AMPARA 3240 CT
+ SALDO ANTERIOR 1080 CT  SALEN 1080 CT SALDO -0-
+
+CPI No.CO7369 AMPARA 3240 CT
+ SALDO ANTERIOR 1080 CT  SALEN 1080 CT SALDO -0-
+
+
+NUMERO DE CARGA: CEC202420340455-0001
+BODEGA: BOSEFO 
+CODIGO:  9678
+REGIMEN: 10
+
+
+
+
+'
++++ key:value 'txt30':'1080 CAJAS'
++++ key:value 'txt31':'ALMACENES DE PRATI S.A'
++++ key:value 'txt32_1':'9245.00'
++++ key:value 'txt32_2':'9245'
++++ key:value 'txt32_3':'8165.00'
++++ key:value 'txt32_4':'8165'
++++ key:value 'txt33_1':''
++++ key:value 'txt33_2':'0'
++++ key:value 'txt34':'FCA BARRANQUILA COLOMBIA USD 67392.00'
++++ key:value 'txt35':''
++++ key:value 'txt37':'IPIALES COLOMBIA'
++++ key:value 'txt38':'TULCAN ECUADOR'
++++ key:value 'txt40':'BARRANQUILLA - COLOMBIA SEPTIEMBRE 19 DEL 2024'
++++ key:value 'txt41':''
++++ DEBUG: getCodigoPais: docNumber: CO11957
+SERVER: ALERTA: Cartaporte número 'CO7369' no encontrado.
++++ DEBUG: getPlacaPais 'SNN 136 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'VOLVO', 'anho': '2005', 'pais': 'COLOMBIA', 'placa': 'SNN', 'chasis': '9BVBN60D05E711475', 'certificado': 'CH-CO-0664-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R80708 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'FERRELAMINAS', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'R80708', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11958' nuevo en la BD...
+------------------------------------------
++++ key:value 'txt0a':'CO'
++++ key:value 'txt00':'CO11958'
++++ key:value 'txt01':''
++++ key:value 'txt02':''
++++ key:value 'txt03':''
++++ key:value 'txt04':'CHEVROLET'
++++ key:value 'txt05':'2014'
++++ key:value 'txt06':'CAA 1278 ECUADOR'
++++ key:value 'txt07':'JALFTR34PE7000212'
++++ key:value 'txt08':'CH-EC-0298-20'
++++ key:value 'txt09':'XXX'
++++ key:value 'txt10':'XXX'
++++ key:value 'txt11':'XXX'
++++ key:value 'txt12':'XXX'
++++ key:value 'txt13':'JHON JAIRO TAPIA            04-10-1983'
++++ key:value 'txt14':'87.217.616'
++++ key:value 'txt15':'COLOMBIANO'
++++ key:value 'txt16':'87.217.616'
++++ key:value 'txt17':'N/A'
++++ key:value 'txt18':'NO TIENE'
++++ key:value 'txt19':'X X X'
++++ key:value 'txt20':'X X X'
++++ key:value 'txt21':'X X X'
++++ key:value 'txt22':'X X X'
++++ key:value 'txt23':'MEDELLIN-COLOMBIA'
++++ key:value 'txt24':'TULCAN-ECUADOR'
++++ key:value 'txt25_1':''
++++ key:value 'txt25_2':''
++++ key:value 'txt25_3':''
++++ key:value 'txt25_4':''
++++ key:value 'txt25_5':'FACIL MANEJO'
++++ key:value 'txt26':''
++++ key:value 'txt27':''
++++ key:value 'txt28':'CO7370'
++++ key:value 'txt29':'CALENTADOR ELECTRICO DE AGUA AL PASO RECIRCULADA 10.5 KW 220 V 2 PH 47.7 A Y 5.5 KW 220 V 2 PH 25 A, CONTROL TIEMPO DIGITAL TURCO THERMES THTP BLANCO 0-90 MIN, BOQUILLA SALIDA VAPOR TURCO 1/2 Y 3/4 ALUMINIO, EQUIPO TURCO THERMES THTP 6KW 220V 2PH, EQUIPO SAUNA THERMES 12KW 220V 3PH.
+
+
+EXPORTADOR: INDUSTRIAS OVELMA S.A.S.
+IMPORTADOR: HECTOR IVAN AQUIETA MASAPANTA.
+
+S.A.E. No. 6027735760371
+AMPARA: 1 YY    SALE: 1 YY    SALDO: -0-
+
+CPI No. CO7370
+AMPARA: 1 Huacal   SALE: 1 Huacal    SALDO: -0-
+
+NUMERO DE CARGA CEC202420340491 REGIMEN 10
+BODEGA: Teran No. 72734 CODIGO: 6012
+'
++++ key:value 'txt30':'1 HUACAL'
++++ key:value 'txt31':'HECTOR IVAN AQUIETA MASAPANTA '
++++ key:value 'txt32_1':'181.70'
++++ key:value 'txt32_2':'181.70'
++++ key:value 'txt32_3':'121.70'
++++ key:value 'txt32_4':'121.70'
++++ key:value 'txt33_1':''
++++ key:value 'txt33_2':''
++++ key:value 'txt34':'CPT TULCANUSD 8.358,00'
++++ key:value 'txt35':''
++++ key:value 'txt37':'IPIALES-COLOMBIA'
++++ key:value 'txt38':'TULCAN-ECUADOR'
++++ key:value 'txt40':'MEDELLIN-COLOMBIA, SEPTIEMBRE 19 DE 2024'
++++ key:value 'txt41':''
++++ DEBUG: getCodigoPais: docNumber: CO11958
+SERVER: ALERTA: Cartaporte número 'CO7370' no encontrado.
++++ DEBUG: getPlacaPais 'CAA 1278 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2014', 'pais': 'ECUADOR', 'placa': 'CAA', 'chasis': 'JALFTR34PE7000212', 'certificado': 'CH-EC-0298-20', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
+
+
+------------------------------------------
++++ Guardando documento 'CO11959' nuevo en la BD...
+------------------------------------------
++++ key:value 'txt0a':'CO'
++++ key:value 'txt00':'CO11959'
++++ key:value 'txt01':''
++++ key:value 'txt02':''
++++ key:value 'txt03':''
++++ key:value 'txt04':'CHEVROLET	'
++++ key:value 'txt05':'2022'
++++ key:value 'txt06':'JZX098 COLOMBIA'
++++ key:value 'txt07':'9GDFVR348NB005177'
++++ key:value 'txt08':'CH-CO-0862-24'
++++ key:value 'txt09':''
++++ key:value 'txt10':''
++++ key:value 'txt11':''
++++ key:value 'txt12':''
++++ key:value 'txt13':'EDUAR FERNEY CORAL PASCUMAL 2004-12-10'
++++ key:value 'txt14':'1085901101'
++++ key:value 'txt15':'COLOMBIA'
++++ key:value 'txt16':'1085901101'
++++ key:value 'txt17':'N/A'
++++ key:value 'txt18':'NO TIENE'
++++ key:value 'txt19':'X X X'
++++ key:value 'txt20':'X X X'
++++ key:value 'txt21':'X X X'
++++ key:value 'txt22':'X X X'
++++ key:value 'txt23':'MANIZALES - COLOMBIA'
++++ key:value 'txt24':'GUAYAQUIL - ECUADOR'
++++ key:value 'txt25_1':''
++++ key:value 'txt25_2':''
++++ key:value 'txt25_3':''
++++ key:value 'txt25_4':''
++++ key:value 'txt25_5':'FACIL MANEJO'
++++ key:value 'txt26':''
++++ key:value 'txt27':''
++++ key:value 'txt28':'CO7373'
++++ key:value 'txt29':'PREFORMA 145 grs B-120 mm, TAPAS PLASTICAS (TAPA LISA 120 VERDE, TAPA LISA 120 ROJA, TAPA CON MANIJA VERDE SNACK, TAPA CON MANIJA VERDE OSCURO)
+
+CPI: CO7373
+AMPARA 506 CT, SALEN 506 CT, SALDO 0 CT.
+
+SAE: 6027736146905
+AMPARA 506 CT, SALEN 506 CT, SALDO 0 CT.
+
+NUMERO DE CARGA: CEC202420340504-0001
+INGRESA A BODEGAS TRANSCOMERINTER
+NUMERO DE BODEGA: 2047113 CODIGO: 8903'
++++ key:value 'txt30':'506 CAJAS'
++++ key:value 'txt31':'INYEKTO '
++++ key:value 'txt32_1':'7004.66'
++++ key:value 'txt32_2':'7004.66'
++++ key:value 'txt32_3':'6625.16'
++++ key:value 'txt32_4':'6625.16'
++++ key:value 'txt33_1':''
++++ key:value 'txt33_2':''
++++ key:value 'txt34':'DAP: GUAYAQUIL - ECUADOR USD: 21499.96'
++++ key:value 'txt35':''
++++ key:value 'txt37':'IPIALES - COLOMBIA'
++++ key:value 'txt38':'TULCAN - ECUADOR '
++++ key:value 'txt40':'MANIZALES - COLOMBIA, SEPTIEMBRE 21 DE 2024'
++++ key:value 'txt41':''
++++ DEBUG: getCodigoPais: docNumber: CO11959
+SERVER: ALERTA: Cartaporte número 'CO7373' no encontrado.
++++ DEBUG: getPlacaPais 'JZX098 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET\t', 'anho': '2022', 'pais': 'COLOMBIA', 'placa': 'JZX098', 'chasis': '9GDFVR348NB005177', 'certificado': 'CH-CO-0862-24', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
+
+
+------------------------------------------
++++ Guardando documento 'CO11960' nuevo en la BD...
+------------------------------------------
++++ key:value 'txt0a':'CO'
++++ key:value 'txt00':'CO11960'
++++ key:value 'txt01':''
++++ key:value 'txt02':''
++++ key:value 'txt03':''
++++ key:value 'txt04':'CHEVROLET'
++++ key:value 'txt05':'2011'
++++ key:value 'txt06':'SAV322 COLOMBIA'
++++ key:value 'txt07':'9GDNNR710BB042621'
++++ key:value 'txt08':'CH-CO-0059-22'
++++ key:value 'txt09':'XXX'
++++ key:value 'txt10':'XXX'
++++ key:value 'txt11':'XXX'
++++ key:value 'txt12':'XXX'
++++ key:value 'txt13':'JHON JAIRO TAPIA 1983-10-04'
++++ key:value 'txt14':'87217616'
++++ key:value 'txt15':'COLOMBIANO'
++++ key:value 'txt16':'87217616'
++++ key:value 'txt17':'N/A'
++++ key:value 'txt18':'NO TIENE'
++++ key:value 'txt19':'X X X'
++++ key:value 'txt20':'X X X'
++++ key:value 'txt21':'X X X'
++++ key:value 'txt22':'X X X'
++++ key:value 'txt23':'IPIALES-COLOMBIA'
++++ key:value 'txt24':'TULCAN-ECUADOR'
++++ key:value 'txt25_1':''
++++ key:value 'txt25_2':''
++++ key:value 'txt25_3':''
++++ key:value 'txt25_4':''
++++ key:value 'txt25_5':'FACIL MANEJO'
++++ key:value 'txt26':''
++++ key:value 'txt27':''
++++ key:value 'txt28':'CO7371'
++++ key:value 'txt29':'PRODUCTOS PARA LIMPIEZA: GTI REFRIGERANTE VERDE Y ROJO, GTI SILICONA PRO ECUADOR PICADURA DE TABACO, CHICLE, CITRUS, CARRO NUEVO, FRESA.
+
+
+EXPORTADOR: MERCADEO SIN LIMITES S.A.S. 
+IMPORTADOR: ULTIMATE MOTORS ULTIMOTOR S.A.S.
+
+S.A.E. No. 6027736058602
+AMPARA: 460 CT    SALEN: 460 CT    SALDO: -0-
+
+CPI No. CO7371
+AMPARA: 460 Cajas   SALEN: 460 Cajas   SALDO: -0-
+                                                             
+NUMERO DE CARGA CEC202420340492 REGIMEN 10
+BODEGA: El Rosal No. 71759 CODIGO: 6600
+
+
+
+
+
+
+'
++++ key:value 'txt30':'460 CAJAS
+'
++++ key:value 'txt31':'ULTIMATE MOTORS ULTIMOTOR S.A.S.'
++++ key:value 'txt32_1':'5042.00'
++++ key:value 'txt32_2':'5042.00'
++++ key:value 'txt32_3':'4541.00'
++++ key:value 'txt32_4':'4541.00'
++++ key:value 'txt33_1':''
++++ key:value 'txt33_2':''
++++ key:value 'txt34':'FCA IPIALESUSD 4.721,20'
++++ key:value 'txt35':''
++++ key:value 'txt37':'IPIALES-COLOMBIA'
++++ key:value 'txt38':'TULCAN-ECUADOR'
++++ key:value 'txt40':'IPIALES-COLOMBIA, SEPTIEMBRE 19 DE 2024'
++++ key:value 'txt41':''
++++ DEBUG: getCodigoPais: docNumber: CO11960
+SERVER: ALERTA: Cartaporte número 'CO7371' no encontrado.
++++ DEBUG: getPlacaPais 'SAV322 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2011', 'pais': 'COLOMBIA', 'placa': 'SAV322', 'chasis': '9GDNNR710BB042621', 'certificado': 'CH-CO-0059-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}

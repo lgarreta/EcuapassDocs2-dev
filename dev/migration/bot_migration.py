@@ -63,7 +63,7 @@ def updateDocs ():
 def saveDocs (inputDir):
 	webdriver = BotMigration.getWaitWebdriver (DEBUG=True)
 	#bot = BotMigration ("LOGITRANS", "COLOMBIA", "DECLARACION", 0, 0, webdriver)
-	bot = BotMigration ("BYZA", "COLOMBIA", "MANIFIESTO", 0, 0, webdriver)
+	bot = BotMigration ("BYZA", "COLOMBIA", "CARTAPORTE", 0, 0, webdriver)
 	bot.saveDocFilesToDB (inputDir)
 
 def downloadDocs (inputDir):
@@ -348,22 +348,11 @@ class BotMigration:
 	# Save docs files (JSON) in input dir to DB
 	#-------------------------------------------------------------------
 	def saveDocFilesToDB (self, inputDir):
-		migrationFilesList = [f"{inputDir}/{x}" for x in self.getSortedFiles (inputDir)]
+		migrationFilesList = [f"{inputDir}/{x}" for x in Utils.getSortedFielsFromDir (inputDir)]
 		for migrationFilename in migrationFilesList:
 			formFields = Utils.getFormFieldsFromMigrationFieldsFile (migrationFilename)
 			usuario    = UsuarioEcuapass.objects.get (username=self.usuario)
 			self.saveNewDocToDB (formFields, self.docType, self.pais, usuario)
-
-	#-- Get doc files from dir sorted by number : CO#####, EC#####, PE#####
-	def getSortedFiles (self, inputDir):
-		filesAll = [x for x in os.listdir (inputDir) if ".json" in x]
-		dicFiles = {}
-		for file in filesAll:
-			docNumber = file.split("-")[2][2:]
-			dicFiles [docNumber] = file
-
-		sortedFiles = [x[1] for x in sorted (dicFiles.items())]
-		return sortedFiles
 
 	#-------------------------------------------------------------------
 	# Save form fields from Ecuapass document to DB
@@ -383,19 +372,14 @@ class BotMigration:
 		# Second: set and save values to each field of FormModel
 		formModel = FormModel (id=docModel.id, numero=docModel.numero)
 		formFields ["txt00"] = formModel.numero
-		#print (f"+++ formFields: ", formFields)
 		for key, value in formFields.items():
-			#if key not in ["id", "numero", "referencia", "fecha_creacion"]:
 			if "txt" in key: 
-				print (f"+++ key:value '{key}':'{value}'")
 				setattr (formModel, key, value)
 		formModel.save ()
 
 		# Update DocModel with FormModel's values
 		docFields	= Utils.getAzureValuesFromInputsValues (docType, formFields)
-		#print (f"+++ docFields: ", docFields)
 		docFields ["referencia"] = formFields ["referencia"]
-		#print (f"+++ DEBUG: docFields '{docFields}'")
 		docModel.setValues (formModel, docFields, pais,  usuario)
 		docModel.save ()
 

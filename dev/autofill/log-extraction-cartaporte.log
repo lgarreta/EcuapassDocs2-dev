@@ -1,0 +1,56 @@
+
+>>>>>> Carta de Porte Internacional por Carretera <<<
+SERVER: Extrayendo código para el deposito 'SYTSA'
++++ Subject Info: Inital Text '{'nombre': None, 'direccion': None, 'pais': None, 'ciudad': None, 'tipoId': None, 'numeroId': None}' 'INVERSIONES POMAR ROA Y CIA S.A.S.
+AUT MEDELLIN KM 7.5 CELTA TRADE PARK BODEGA 144 A01
+BOGOTA-COLOMBIA.  NIT. 900.043.802-1 '
++++ Subject Info: Removed Id '{'nombre': None, 'direccion': None, 'pais': None, 'ciudad': None, 'tipoId': 'NIT', 'numeroId': '900043802-1'}' 'INVERSIONES POMAR ROA Y CIA S.A.S.
+AUT MEDELLIN KM 7.5 CELTA TRADE PARK BODEGA 144 A01
+BOGOTA-COLOMBIA.'
++++ Subject Info: Removed Ciudad-Pais '{'nombre': None, 'direccion': None, 'pais': 'COLOMBIA', 'ciudad': 'BOGOTA', 'tipoId': 'NIT', 'numeroId': '900043802-1'}' 'INVERSIONES POMAR ROA Y CIA S.A.S.
+AUT MEDELLIN KM 7.5 CELTA TRADE PARK BODEGA 144 A01'
++++ Subject Info: Removed NombreDireccion '{'nombre': 'INVERSIONES POMAR ROA Y CIA S.A.S.', 'direccion': 'AUT MEDELLIN KM 7.5 CELTA TRADE PARK BODEGA 144 A01', 'pais': 'COLOMBIA', 'ciudad': 'BOGOTA', 'tipoId': 'NIT', 'numeroId': '900043802-1'}' 'INVERSIONES POMAR ROA Y CIA S.A.S.
+AUT MEDELLIN KM 7.5 CELTA TRADE PARK BODEGA 144 A01'
++++ Subject Info: Inital Text '{'nombre': None, 'direccion': None, 'pais': None, 'ciudad': None, 'tipoId': None, 'numeroId': None}' 'GOLDEN DISTRIBUCIONES GOLDEN POMAR S.A.S.
+9 DE OCTUBRE Y MALECON
+GUAYAQUIL-ECUADOR. RUC No. 0993375422001'
++++ Subject Info: Removed Id '{'nombre': None, 'direccion': None, 'pais': None, 'ciudad': None, 'tipoId': None, 'numeroId': None}' 'GOLDEN DISTRIBUCIONES GOLDEN POMAR S.A.S.
+9 DE OCTUBRE Y MALECON
+GUAYAQUIL-ECUADOR. RUC No. 0993375422001'
++++ Subject Info: Removed Ciudad-Pais '{'nombre': None, 'direccion': None, 'pais': 'ECUADOR', 'ciudad': 'GUAYAQUIL', 'tipoId': None, 'numeroId': None}' 'GOLDEN DISTRIBUCIONES GOLDEN POMAR S.A.S.
+9 DE OCTUBRE Y MALECON
+RUC NO. 0993375422001'
++++ Subject Info: Removed NombreDireccion '{'nombre': 'GOLDEN DISTRIBUCIONES GOLDEN POMAR S.A.S. 9 DE OCTUBRE Y MALECON||LOW', 'direccion': 'RUC NO. 0993375422001||LOW', 'pais': 'ECUADOR', 'ciudad': 'GUAYAQUIL', 'tipoId': None, 'numeroId': None}' 'GOLDEN DISTRIBUCIONES GOLDEN POMAR S.A.S.
+9 DE OCTUBRE Y MALECON
+RUC NO. 0993375422001'
++++ Subject Info: Inital Text '{'nombre': None, 'direccion': None, 'pais': None, 'ciudad': None, 'tipoId': None, 'numeroId': None}' 'GOLDEN DISTRIBUCIONES GOLDEN POMAR S.A.S.
+9 DE OCTUBRE Y MALECON
+GUAYAQUIL-ECUADOR. RUC No. 0993375422001'
++++ Subject Info: Removed Id '{'nombre': None, 'direccion': None, 'pais': None, 'ciudad': None, 'tipoId': None, 'numeroId': None}' 'GOLDEN DISTRIBUCIONES GOLDEN POMAR S.A.S.
+9 DE OCTUBRE Y MALECON
+GUAYAQUIL-ECUADOR. RUC No. 0993375422001'
++++ Subject Info: Removed Ciudad-Pais '{'nombre': None, 'direccion': None, 'pais': 'ECUADOR', 'ciudad': 'GUAYAQUIL', 'tipoId': None, 'numeroId': None}' 'GOLDEN DISTRIBUCIONES GOLDEN POMAR S.A.S.
+9 DE OCTUBRE Y MALECON
+RUC NO. 0993375422001'
++++ Subject Info: Removed NombreDireccion '{'nombre': 'GOLDEN DISTRIBUCIONES GOLDEN POMAR S.A.S. 9 DE OCTUBRE Y MALECON||LOW', 'direccion': 'RUC NO. 0993375422001||LOW', 'pais': 'ECUADOR', 'ciudad': 'GUAYAQUIL', 'tipoId': None, 'numeroId': None}' 'GOLDEN DISTRIBUCIONES GOLDEN POMAR S.A.S.
+9 DE OCTUBRE Y MALECON
+RUC NO. 0993375422001'
++++ Subject Info: Inital Text '{'nombre': None, 'direccion': None, 'pais': None, 'ciudad': None, 'tipoId': None, 'numeroId': None}' 'GOLDEN DISTRIBUCIONES GOLDEN POMAR S.A.S.
+9 DE OCTUBRE Y MALECON
+GUAYAQUIL-ECUADOR. RUC No. 0993375422001'
++++ Subject Info: Removed Id '{'nombre': None, 'direccion': None, 'pais': None, 'ciudad': None, 'tipoId': None, 'numeroId': None}' 'GOLDEN DISTRIBUCIONES GOLDEN POMAR S.A.S.
+9 DE OCTUBRE Y MALECON
+GUAYAQUIL-ECUADOR. RUC No. 0993375422001'
++++ Subject Info: Removed Ciudad-Pais '{'nombre': None, 'direccion': None, 'pais': 'ECUADOR', 'ciudad': 'GUAYAQUIL', 'tipoId': None, 'numeroId': None}' 'GOLDEN DISTRIBUCIONES GOLDEN POMAR S.A.S.
+9 DE OCTUBRE Y MALECON
+RUC NO. 0993375422001'
++++ Subject Info: Removed NombreDireccion '{'nombre': 'GOLDEN DISTRIBUCIONES GOLDEN POMAR S.A.S. 9 DE OCTUBRE Y MALECON||LOW', 'direccion': 'RUC NO. 0993375422001||LOW', 'pais': 'ECUADOR', 'ciudad': 'GUAYAQUIL', 'tipoId': None, 'numeroId': None}' 'GOLDEN DISTRIBUCIONES GOLDEN POMAR S.A.S.
+9 DE OCTUBRE Y MALECON
+RUC NO. 0993375422001'
+SERVER: No existe fecha en texto 'TULCAN-ECUADOR'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/autofill/ecuapassdocs/info/ecuapass_utils.py", line 489, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+

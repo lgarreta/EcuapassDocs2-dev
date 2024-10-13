@@ -102,12 +102,19 @@ class VehiculoOptionsView (View):
 			            f"{vehiculo.placa}-{vehiculo.pais}", vehiculo.chasis)
 			#-- Remolque
 			remolque = vehiculo.remolque
-			itemText += "||%s||%s||%s||%s" % (remolque.marca, remolque.anho, 
-			            f"{remolque.placa}-{remolque.pais}", remolque.chasis)
+			if remolque:
+				itemText += "||%s||%s||%s||%s" % (remolque.marca, remolque.anho, 
+							f"{remolque.placa}-{remolque.pais}", remolque.chasis)
+			else:
+				itemText += "||None||None||None||None"
+
 			#-- Conductor
 			conductor = vehiculo.conductor
-			itemText += "||%s||%s||%s||%s" % (conductor.nombre, conductor.documento, 
-			            conductor.pais, conductor.licencia)
+			if conductor:
+				itemText += "||%s||%s||%s||%s" % (conductor.nombre, conductor.documento, 
+							conductor.pais, conductor.licencia)
+			else:
+				itemText += "||None||None||None||None"
 
 			newOption = {"itemLine" : itemLine, "itemText" : itemText}
 			items.append (newOption)

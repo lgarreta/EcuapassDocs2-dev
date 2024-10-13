@@ -138,19 +138,22 @@ class Manifiesto (EcuapassDoc):
 		instance,  changeFlag = None, False
 		try:
 			if instanceName == "vehiculo":
-				instance, createFlag = Vehiculo.objects.get_or_create (placa=info['placa'])
+				if info ['placa']:
+					instance, createFlag = Vehiculo.objects.get_or_create (placa=info ['placa'])
 			elif instanceName == "conductor":
-				instance, createFlag = Conductor.objects.get_or_create (documento=info['documento'])
+				if info ['documento']:
+					instance, createFlag = Conductor.objects.get_or_create (documento=info ['documento'])
 			else:
 				raise Exception (f"Tipo entidad '{instanceName}' no existe")
 
-			for key in info.keys ():
-				if getattr (instance, key) != info [key]:
-					setattr (instance, key, info [key])
-					changeFlag = True
+			if instance:
+				for key in info.keys ():
+					if getattr (instance, key) != info [key]:
+						setattr (instance, key, info [key])
+						changeFlag = True
 
-			if createFlag or changeFlag:
-				instance.save ()
+				if createFlag or changeFlag:
+					instance.save ()
 		except:
 			Utils.printException (f"Error con nombre de instancia '{instanceName}'")
 		return instance, changeFlag
