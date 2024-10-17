@@ -21,8 +21,8 @@ class ManifiestoDocView (EcuapassDocView):
 		super ().initDocumentConstants (request)
 
 		# Permisos values for BYZA 
-		self.inputParams ["txt02"]["value"] = "PO-CO-0033-22"
-		self.inputParams ["txt03"]["value"] = "PO-CO-0033-22"
+		self.inputParams ["txt02"]["value"] = self.empresaInfo ["permisos"]["originario"]
+		self.inputParams ["txt03"]["value"] = self.empresaInfo ["permisos"]["servicios1"]
 
 		# Aduanas cruce/destino
 		#urlName = resolve(request.path_info).url_name

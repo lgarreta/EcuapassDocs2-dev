@@ -4,6 +4,11 @@ Scripts for read/write models into DB
 from datetime import timedelta
 from django.utils import timezone # For getting recent cartaportes
 
+# For advance DB search on texts
+from django.contrib.postgres.search import TrigramSimilarity
+from django.db.models import F
+
+
 from ecuapassdocs.info.ecuapass_utils import Utils
 from ecuapassdocs.info.ecuapass_info import EcuInfo
 from ecuapassdocs.info.ecuapass_data import EcuData
@@ -53,6 +58,7 @@ def getSaveClienteInstance (docKey, docFields):
 	else:
 		return None
 
+#-- Get cliente info from full doc fields
 def getClienteInfo (docKey, docFields):
 	info = None
 	try:
@@ -68,6 +74,35 @@ def getClienteInfo (docKey, docFields):
 		Utils.printException (f"Obteniedo info de cliente tipo: '{docKey}'")
 
 	return info
+
+#-- Get cleinte instance from DB by numeroId
+def getClienteInstanceByNumeroId (numeroId):
+	try:
+		instance = Cliente.objects.get (numeroId=numeroId)
+		return (instance)
+	except Cliente.DoesNotExist:
+		print (f"Cliente no encontrado con numeroId: '{numeroId}'")
+		return None
+
+#-- Get cleinte instance from DB by nombre
+def getClienteInstanceByNombre (nombre):
+	try:
+		#instance = Cliente.objects.get (nombre=nombre)
+
+		results = (
+			Cliente.objects
+			.annotate (similarity=TrigramSimilarity ('nombre', nombre))
+			.filter (similarity__gt=0.3)  # Threshold for similarity
+			.order_by ('-similarity')  # Optional: sort by most similar
+		)
+		if not results:
+			return None
+		else:
+			return (results [0])
+	except Cliente.DoesNotExist:
+		print (f"Cliente no encontrado con nombre: '{nombre}'")
+		return None
+
 
 #-- Save instance of Cliente with info: id, nombre, direccion, ciudad, pais, tipoId, numeroId
 def saveClienteInfoToDB (info):

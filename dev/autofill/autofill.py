@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 
-import os, sys
-import csv
+import os, sys, csv, re, pickle
 import pandas as pd
 import psycopg2
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
+
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+#from sklearn.cluster import DBSCAN
+import hdbscan
+
+from TextClusterEncoder import TextClusterEncoder
 
 from ecuapassdocs.info.ecuapass_utils import Utils
 from ecuapassdocs.info.ecuapass_info_cartaporte_BYZA import CartaporteByza
@@ -23,28 +29,49 @@ def main ():
 #	getDataFromDB (pg, start_doc, 100, dataFilename)
 	
 	filename  = renameColumns (filename, "SHORTNAMES")
-
 	filename  = preprocessData (filename)
-
-	filename  = cleanData (filename)
-
-	filename  = renameColumns (filename, "DOCNAMES")
-
 	filename, encoders = encodeData (filename)
-
 	models = trainModels (filename)
 
+#	models, encoders = loadModelsEncoders ()
 	testModels (models, encoders)
+
+	saveModelsEncoders (models, encoders)
+
+#----------------------------------------------------------
+# Load the saved models and encoders
+#----------------------------------------------------------
+def loadModelsEncoders ():
+	with open('randomforest-cartaporte-models.pkl', 'rb') as f:
+		models = pickle.load(f)
+
+	with open('randomforest-cartaporte-encoders.pkl', 'rb') as f:
+		encoders = pickle.load(f)
+
+	return models, encoders
+
+#----------------------------------------------------------
+# Save the model and encoder to files
+#----------------------------------------------------------
+def saveModelsEncoders (models, encoders):
+	with open('randomforest-cartaporte-models.pkl', 'wb') as f:
+		pickle.dump (models, f)
+
+	with open('randomforest-cartaporte-encoders.pkl', 'wb') as f:
+		pickle.dump (encoders, f)
 
 #----------------------------------------------------------
 #----------------------------------------------------------
 def testModels (models, encoders):
 	value     = "891401705-8"
-	value     = "901473190-9"
-	print ("+++ 02:", value)
-	enc       = encoders ["02"]
+	#value     = "901473190-9"
+	#value     = "860001999-7"
+	#value      = "890916155-4"
+	#value      = "810004621"
+	print ("+++ Starting value txt02:", value)
+	enc       = encoders ["txt02"]
 	encValue  = enc.transform ([value])[0]
-	inputsDic = {"02":encValue}     
+	inputsDic = {"txt02":encValue}     
 
 	colnames  = models.keys()
 	for name in colnames:
@@ -55,25 +82,28 @@ def testModels (models, encoders):
 		prdValue          = enc.inverse_transform (prdEncValue)
 		print (f" Column '{name}': '{prdValue}'")
 
-		inputsDic [name]  = prdEncValue
+		if name < "txt10":
+			inputsDic [name]  = prdEncValue
 	
 #----------------------------------------------------------
+# encode simple and complex string values to numbers
 #----------------------------------------------------------
 def encodeData (dataFilename):
-	df = pd.read_csv (dataFilename)
+	df          = pd.read_csv (dataFilename)
+	dfe         = pd.DataFrame (columns=df.columns)
+	encodersDic = {}
+	for name in df.columns:
+		#if name == ["12Dsc", "18Dcm", "21Ins", "22Obs"]:  # Complex text
+		encoder = LabelEncoder ()   # Default, for simple text
+		if name == ["txt12", "txt18", "txt21", "txt22"]:  # Complex text
+			encoder = TextClusterEncoder ()
 
-	colnames = df.columns[:7]
-	encoders = {}
-	for name in colnames:
-		encoders [name] = LabelEncoder()
-
-	dfe = pd.DataFrame (columns=colnames)
-	for name in colnames:
-		dfe [name] = encoders [name].fit_transform (df [name])		
+		encodersDic [name] = encoder
+		dfe [name] = encoder.fit_transform (df [name])		
 
 	outFilename  = dataFilename.split (".")[0] + "-ENC.csv"
 	dfe.to_csv (outFilename, index=False, header=True)
-	return outFilename, encoders
+	return outFilename, encodersDic
 
 #----------------------------------------------------------
 #----------------------------------------------------------
@@ -84,9 +114,11 @@ def trainModels (dataFilename):
 
 	models = {}
 	xCols = []
-	for i in range (len(colnames)-1):
-		xCols.append (colnames [i])
-		yCol = colnames [i+1]
+	#for i in range (len(colnames)-1):
+	mainColumns = ["txt02","txt03","txt04","txt05","txt06","txt07","txt08","txt09"]
+	for i in range (len (mainColumns)-1):
+		xCols.append (mainColumns [i])
+		yCol = mainColumns [i+1]
 		print (f"+++ Creating model y:{yCol} : X:{xCols}")
 
 		X = df [xCols]
@@ -94,40 +126,71 @@ def trainModels (dataFilename):
 		mdl = RandomForestClassifier ()
 		mdl.fit (X, y)
 		models [yCol] = mdl
+	
+	xCols.append (mainColumns [i])
+
+	# Alternate models depending only of fixed values
+	minorColumns = ["txt10","txt11","txt12","txt16","txt18","txt21","txt22"]
+	for col in minorColumns:
+		xCols = mainColumns
+		yCol = col
+		print (f"+++ Creating model y:{yCol} : X:{xCols}")
+
+		X = df [xCols]
+		y = df [yCol]
+		mdl = RandomForestClassifier ()
+		mdl.fit (X, y)
+		models [yCol] = mdl
+
 	return models
+
 
 #----------------------------------------------------------
 # Preprocess data by organizing/joining columns
 #----------------------------------------------------------
 def preprocessData (dataFilename):
-	def selectColumns (df):
-		cols = map (str, [12,18,23,26,29,30,32,33,35,36,38,39,46,49,60,61,62,63,64,65,68,69,79])
-		mainCols = []
-		for col in cols:
-			for colname in df.columns:
-				if colname.startswith (col):
-					mainCols.append (colname)
-		return df.filter (mainCols)
+	def removeNumberLowSufix (df):
+		def removeNumbers (input_str):
+			return re.sub(r'\d+', '', input_str) if isinstance(input_str, str) else input_str
 
-	def removeLow (df):
-		return df.map (Utils.removeLow)
+		df ["68"] = df ["68"].apply (removeNumbers)  # 10_Cantidad_Clase_Bultos
+		return df.map (Extractor.removeLowSufix)           # Removd "||LOW"
 
 	def joinColumns (df):
-		df ["30"] = df ["30"] + "-" +  df ["29"]   # Ciudad-Pais Recepcion
-		df ["33"] = df ["33"] + "-" +  df ["32"]   # Ciudad-Pais Embarque
-		df ["36"] = df ["36"] + "-" +  df ["35"]   # Ciudad-Pais Entrega
-		df ["49"] = df ["49"] + "-" +  df ["48"]   # Ciudad-Pais Mercancia
-		df ["63"] = df ["63"] + "-" +  df ["62"]   # Ciudad-Pais Emision
-	
-	def reorderColumns (df):
-		
+		df ["30"] = df ["30"] + "-"  + df ["29"]; del df ["29"]   # Ciudad-Pais Recepcion
+		df ["33"] = df ["33"] + "-"  + df ["32"]; del df ["32"]   # Ciudad-Pais Embarque
+		df ["36"] = df ["36"] + "-"  + df ["35"]; del df ["35"]   # Ciudad-Pais Entrega
+		df ["39"] = df ["38"] + ". " + df ["39"]; del df ["38"]   # Condiciones Tranporte-Pago
+		df ["49"] = df ["46"] + ": " + df ["49"] + "-" + df ["48"]; del df ["46"]; del df ["48"]   # Ciudad-Pais Mercancia
+		return df
 
+	def selectRenameColumns (df):
+		selCols = [12,18,23,26,30,33,36,39,68,69,79,49,60,64,65]
+		docCols = [ 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,16,18,21,22]
+		new_df = pd.DataFrame()
+		for selcol, doccol in zip (selCols, docCols):
+			selcolname = str (selcol).zfill (2)
+			doccolname = "txt" + str (doccol).zfill (2)
+			for colname in df.columns:
+				if colname.startswith (selcolname):
+					new_df [doccolname] = df [selcolname]
+					break
+		return new_df
+
+	def selRenameCols (df):
+		#docNamesList = ["02Rmt","03Dst","04Cns","05Ntf", "06Rcp","07Emb","08Ent","09Cnd", "10Cnt","11Mrc","12Dsc","16Mrc", "18Dcm","21Ins","22Obs"]
+		formNamesList = ["02","03","04","05","06","07","08","09","10","11","12","16", "18","21","22"]
+		formNamesList = [f"txt{x}" for x in formNamesList]
+		docNames = dict (zip (df.columns, formNamesList))
+		for k,v in docNames.items():
+			print (k,v)
+		df = df.rename (columns=docNames)
 		return df
 
 	df = pd.read_csv (dataFilename)
-	df = removeLow (df)
+	df = removeNumberLowSufix (df)
 	df = joinColumns (df)
-	df = selectColumns (df)
+	df = selectRenameColumns (df)
 
 	outFilename  = dataFilename.split (".")[0] + "-PRP.csv"
 	df.to_csv (outFilename, index=False, header=True)
@@ -153,6 +216,30 @@ def cleanData (dataFilename):
 	outFilename = dataFilename.split (".")[0] + "-CLN.csv"
 	df.to_csv (outFilename, index=False, header=True)
 	return (outFilename)
+
+#----------------------------------------------------------
+#-- Rename columns to short names
+#----------------------------------------------------------
+def renameColumns (dataFilename, type="SHORTNAMES"):
+	df = pd.read_csv (dataFilename)
+
+	newColnames = {}
+	for i, colname in enumerate (df.columns):
+		if type == "SHORTNAMES":
+			newColnames [colname] = colname [:2]
+			outFilename  = dataFilename.split (".")[0] + "-RNMs.csv"
+		else:
+			newColnames [colname] = str (i+2).zfill(2)
+			outFilename  = dataFilename.split (".")[0] + "-RNMd.csv"
+
+	df = df.rename (columns=newColnames)
+#		"12_NroIdRemitente": "12",
+#		"18_NroIdDestinatario": "18",
+#		"23_NroIdConsignatario":"23",
+#		"26_NombreNotificado": "26"})
+
+	df.to_csv (outFilename, index=False, header=True)
+	return outFilename
 
 #----------------------------------------------------------
 #-- Export document DB instances to a table
@@ -207,31 +294,6 @@ def getDataFromDB (pg, start_doc, limit, dataFilename):
 		if conn:
 			cursor.close()
 			conn.close()
-
-
-#----------------------------------------------------------
-#-- Rename columns to short names
-#----------------------------------------------------------
-def renameColumns (dataFilename, type="SHORTNAMES"):
-	df = pd.read_csv (dataFilename)
-
-	newColnames = {}
-	for i, colname in enumerate (df.columns):
-		if type == "SHORTNAMES":
-			newColnames [colname] = colname [:2]
-			outFilename  = dataFilename.split (".")[0] + "-RNMs.csv"
-		else:
-			newColnames [colname] = str (i+2).zfill(2)
-			outFilename  = dataFilename.split (".")[0] + "-RNMd.csv"
-
-	df = df.rename (columns=newColnames)
-#		"12_NroIdRemitente": "12",
-#		"18_NroIdDestinatario": "18",
-#		"23_NroIdConsignatario":"23",
-#		"26_NombreNotificado": "26"})
-
-	df.to_csv (outFilename, index=False, header=True)
-	return outFilename
 
 #----------------------------------------------------------
 #-- Postgress env vars

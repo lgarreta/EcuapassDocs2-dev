@@ -37,10 +37,10 @@
 	<script src="{% static 'app_docs/js/utils.js' %}"></script>
 	<script src="{% static 'app_docs/js/createInputTextareas.js' %}"></script>
 	<script src="{% static 'app_docs/js/handleInput.js' %}"></script>
+	<script src="{% static 'app_docs/js/handlePredictions.js' %}"></script>
 	<script src="{% static 'app_docs/js/setParametersToInputs.js' %}"></script>
 	<script src="{% static 'app_docs/js/autocomplete-documents.js' %}"></script>
 	<script src="{% static 'app_docs/js/enable_disable_doc_buttons.js' %}"></script>
-	
 	<!-------------------------------------------------------------------->
 	<!-------------------------------------------------------------------->
 	<script> 
@@ -118,6 +118,9 @@
 
 		// Set values, restrictions and styles for each input textarea
 		setParametersToInputs (textAreas, inputsParameters, docType);
+
+		// Predict the field values based on previous filed values
+		handleFieldValuesPredictions (textAreas) 
 
 		// Enable / Disable document buttons
 		let docNumber = document.getElementById ("numero")

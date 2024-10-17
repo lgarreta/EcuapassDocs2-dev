@@ -64,6 +64,11 @@ class Cliente (DocEntity):
 
 	def __str__ (self):
 		return f"{self.nombre} {self.ciudad}-{self.pais}"
+
+	#-- Format info as used in form document
+	def toDocFormat (self):
+		text = f"{self.nombre}\n{self.direccion}\n{self.tipoId}:{self.numeroId}.  {self.ciudad}-{self.pais}"
+		return text
 	
 #--------------------------------------------------------------------
 # Model Conductor

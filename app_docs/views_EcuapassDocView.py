@@ -57,11 +57,11 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		self.pais	          = None				 
 		self.docType	      = docType
 		self.template_name    = "documento_forma.html"
-		#self.template_name    = "documento_forma_iframe.html"
 		self.background_image = background_image
 		self.parameters_file  = parameters_file
 		self.inputParams      = ResourceLoader.loadJson ("docs", self.parameters_file)
 		self.inputValues      = Utils.getFormFieldsFromInputParams (self.inputParams)
+		self.empresaInfo      = EcuData.empresas [self.cliente] 
 
 	#-------------------------------------------------------------------
 	# Usado para llenar una forma (manifiesto) vacia
@@ -70,9 +70,8 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	def get (self, request, *args, **kwargs):
 		print ("\n\n+++ GET : EcuapassDocView +++")
 		self.initDocumentConstants (request)
-		print ("+++ URL :", request.path_info)
-		command = resolve(request.path_info).url_name
-		print ("+++ URL name:", command)
+		command = resolve (request.path_info).url_name
+		print ("+++ URLs :", request.path_info, command)
 
 		response = self.getResponseForCommand (command, request, *args, **kwargs)
 		return response
@@ -85,10 +84,11 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	def post (self, request, *args, **kwargs):
 		print ("\n\n+++ POST : EcuapassDocView +++")
 		self.initDocumentConstants (request)
-		print ("+++ URL :", request.path_info)
+		command = resolve (request.path_info).url_name
+		print ("+++ URLs :", request.path_info, command)
 
 		self.inputValues = self.getInputValuesFromForm (request)		  # Values without CPI number
-		commandButton    = request.POST.get('boton_seleccionado', '').lower()
+		commandButton    = request.POST.get ('boton_seleccionado', '').lower()
 		docId            = self.inputValues ["id"]
 
 		# Handle commandButton actions from doc menu
@@ -188,8 +188,8 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	# Save document to DB checking max docs for user
 	#-------------------------------------------------------------------
 	def onSaveCommand (self, request, *args, **kwargs):
-		print ("+++ Save command")
-		documentParams    = self.getDocumentParams (request, *args, **kwargs)
+		print ("+++ Save command...")
+		documentParams = self.getDocumentParams (request, *args, **kwargs)
 
 		# Check if user has reached his total number of documents
 		if self.checkLimiteDocumentos (documentParams ["user"], self.docType):

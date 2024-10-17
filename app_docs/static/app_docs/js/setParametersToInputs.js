@@ -127,6 +127,7 @@ function setParametersToInputs (textAreas, inputParameters, docType) {
 		textArea.addEventListener ("blur", function (event) {
 			handleBlur (event.target.id, docType, textAreasDict, this);
 		});
+
 	});
 }
 

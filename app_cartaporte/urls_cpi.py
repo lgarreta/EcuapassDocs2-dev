@@ -6,6 +6,7 @@ from app_cartaporte import views_cpi
 from app_docs.views_Autocomplete import *
 
 from .listing_cpi import CartaportesListadoView
+from .views_CartaportePredictions import CartaportePredictionsView
 
 urlpatterns = [
 	#-- URLs cartaporte -----------------------------------------------
@@ -24,6 +25,9 @@ urlpatterns = [
 	path('pdf_paquete/<int:pk>', CartaporteDocView.as_view(), name='cartaporte-pdf_paquete'),
 	path('clonar/<int:pk>', CartaporteDocView.as_view(), name='cartaporte-clonar'),
     path('detalle/<pk>', views_cpi.CartaporteDetailView.as_view(), name='cartaporte-detalle'),
-	path('borrar/<int:pk>', views_cpi.CartaporteDelete.as_view(), name='cartaporte-delete')
+	path('borrar/<int:pk>', views_cpi.CartaporteDelete.as_view(), name='cartaporte-delete'),
+
+	# Input fields prediction
+    path('prediccion/<txtId>', CartaportePredictionsView.as_view(), name='cartaporte-prediccion'),
 ]
 

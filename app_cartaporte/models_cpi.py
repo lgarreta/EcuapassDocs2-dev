@@ -116,3 +116,9 @@ class Cartaporte (EcuapassDoc):
 		self.destinatario  = Scripts.getSaveClienteInstance ("03_Destinatario", docFields)
 		self.fecha_emision = EcuInfo.getFechaEmision (docFields, "CARTAPORTE")
 		
+		# Create "suggested" manifiesto
+		suggestedManifiesto = self.createUpdateSuggestedManifiesto ()details
+
+	#-- Create or update suggested Manifiesto according to Cartaporte values
+	def createUpdateSuggestedManifiesto (self):
+		pass
