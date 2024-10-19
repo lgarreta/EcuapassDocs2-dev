@@ -8,7 +8,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
 
-
 from sklearn.feature_extraction.text import TfidfVectorizer
 #from sklearn.cluster import DBSCAN
 import hdbscan
@@ -16,6 +15,7 @@ import hdbscan
 from TextClusterEncoder import TextClusterEncoder
 
 from ecuapassdocs.info.ecuapass_utils import Utils
+from ecuapassdocs.info.ecuapass_extractor import Extractor
 from ecuapassdocs.info.ecuapass_info_cartaporte_BYZA import CartaporteByza
 
 def main ():
@@ -26,7 +26,7 @@ def main ():
 	filename = "data-byza-cartaportes.csv"
 #
 #	#-- Step 01: Get data
-#	getDataFromDB (pg, start_doc, 100, dataFilename)
+	getDataFromDB (pg, start_doc, 100, filename)
 	
 	filename  = renameColumns (filename, "SHORTNAMES")
 	filename  = preprocessData (filename)
@@ -95,14 +95,14 @@ def encodeData (dataFilename):
 	for name in df.columns:
 		#if name == ["12Dsc", "18Dcm", "21Ins", "22Obs"]:  # Complex text
 		encoder = LabelEncoder ()   # Default, for simple text
-		if name == ["txt12", "txt18", "txt21", "txt22"]:  # Complex text
+		if name == ["txt12", "txt16", "txt18", "txt21", "txt22"]:  # Complex text
 			encoder = TextClusterEncoder ()
 
 		encodersDic [name] = encoder
 		dfe [name] = encoder.fit_transform (df [name])		
 
 	outFilename  = dataFilename.split (".")[0] + "-ENC.csv"
-	dfe.to_csv (outFilename, index=False, header=True)
+	dfe.to_csv (outFilename, na_rep=None, index=False, header=True)
 	return outFilename, encodersDic
 
 #----------------------------------------------------------
@@ -154,7 +154,7 @@ def preprocessData (dataFilename):
 			return re.sub(r'\d+', '', input_str) if isinstance(input_str, str) else input_str
 
 		df ["68"] = df ["68"].apply (removeNumbers)  # 10_Cantidad_Clase_Bultos
-		return df.map (Extractor.removeLowSufix)           # Removd "||LOW"
+		return df.map (Extractor.removeLowSufix)     # Remove "||LOW"
 
 	def joinColumns (df):
 		df ["30"] = df ["30"] + "-"  + df ["29"]; del df ["29"]   # Ciudad-Pais Recepcion
@@ -193,7 +193,8 @@ def preprocessData (dataFilename):
 	df = selectRenameColumns (df)
 
 	outFilename  = dataFilename.split (".")[0] + "-PRP.csv"
-	df.to_csv (outFilename, index=False, header=True)
+	df = df.where (pd.notna(df), '')
+	df.to_csv (outFilename, na_rep=None, index=False, header=True)
 	return (outFilename)
 
 #----------------------------------------------------------
@@ -214,7 +215,7 @@ def cleanData (dataFilename):
 #	df          = filterMainCols (df)
 	df          = filterLowVarianceCols (df)
 	outFilename = dataFilename.split (".")[0] + "-CLN.csv"
-	df.to_csv (outFilename, index=False, header=True)
+	df.to_csv (outFilename, na_rep=None, index=False, header=True)
 	return (outFilename)
 
 #----------------------------------------------------------
@@ -238,7 +239,7 @@ def renameColumns (dataFilename, type="SHORTNAMES"):
 #		"23_NroIdConsignatario":"23",
 #		"26_NombreNotificado": "26"})
 
-	df.to_csv (outFilename, index=False, header=True)
+	df.to_csv (outFilename, na_rep=None, index=False, header=True)
 	return outFilename
 
 #----------------------------------------------------------
@@ -252,7 +253,7 @@ def getDataFromDB (pg, start_doc, limit, dataFilename):
 		cursor = conn.cursor()
 
 		# Query the database
-		query = """ SELECT * FROM cartaportedoc WHERE numero <= %s
+		query = """ SELECT * FROM cartaporteform WHERE numero <= %s
 			        ORDER BY numero LIMIT %s; """
 		cursor.execute (query, (start_doc, limit))
 
@@ -273,7 +274,7 @@ def getDataFromDB (pg, start_doc, limit, dataFilename):
 				runningDir     = os.getcwd ()
 				ecudocFields   = Utils.getEcudocFieldsFromFormFields ("CARTAPORTE", formFields)
 				cartaporteInfo = CartaporteByza (None, runningDir, ecudocFields)
-				ecuapassFields = cartaporteInfo.extractEcuapassFields ()
+				ecuapassFields = cartaporteInfo.extractEcuapassFields (analysisType="PREDICTION")
 				keys           = ecuapassFields.keys ()
 
 				# Write the header row (column names)

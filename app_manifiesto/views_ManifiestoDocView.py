@@ -39,4 +39,3 @@ class ManifiestoDocView (EcuapassDocView):
 		self.inputParams ["txt37"]["value"] = aduanaCruce
 		self.inputParams ["txt38"]["value"] = aduanaDestino
 
-

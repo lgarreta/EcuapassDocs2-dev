@@ -4,6 +4,7 @@
 - Custom user management
 
 ## LOG
+Oct/18: r0.853 : Testing predictions for CPI. Modified extractInfo: analysysType.
 Oct/16: r0.852 : Working predictions for CPI, no testing. Create JS handler for prediction.
 Oct/09: r0.850 : Improved vehiculo autocomplete: Added AUTOFIXED flag when handling maxlines.
 Oct/07: r0.849 : Doc view with left sidebar using iframes. Removed default "fecha emision".

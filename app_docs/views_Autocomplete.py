@@ -13,7 +13,7 @@ from ecuapassdocs.info.ecuapass_utils import Utils
 
 import app_docs.models_Scripts as Scripts
 from app_cartaporte.models_cpi import Cartaporte
-from app_manifiesto.models_mci import Manifiesto, ManifiestoDoc
+from app_manifiesto.models_mci import Manifiesto, ManifiestoForm
 
 from .models_Entidades import Vehiculo, Conductor, Cliente
 
@@ -27,20 +27,12 @@ class CartaporteOptionsView (View):
 	@method_decorator(csrf_protect)
 	def post (self, request, *args, **kwargs):
 		itemOptions = []
+		days = 30
 		try:
 			# Get cartaporte docs from query
 			query = request.POST.get ('query', '')
 
-			cartaportes  = Scripts.getRecentDocuments (Cartaporte)
-			print (f"+++ DEBUG: cartaportes '{cartaportes}'")
-			for cpi in cartaportes:
-				print (f"+++ DEBUG: CPI '{cpi.documento}'")
-
-			if not cartaportes.exists():
-				print (f"+++ DEBUG: no cartaportes '{cartaportes}'")
-				cartaportes = Cartaporte.objects.filter (numero__startswith=query,
-				 									 fecha_emision=current_date)
-
+			cartaportes     = Scripts.getRecentDocuments (Cartaporte, days)
 			docsCartaportes = [model.documento.__dict__ for model in cartaportes]
 
 			for i, doc in enumerate (docsCartaportes):
@@ -61,6 +53,8 @@ class CartaporteOptionsView (View):
 
 				newOption = {"itemLine" : itemLine, "itemText" : itemText}
 				itemOptions.append (newOption)
+		except Cartaporte.DoesNotExist:
+			print (f"+++ No existe cartaportes desde hace '{dias}'  ")
 		except:
 			Utils.printException (">>> Excepcion obteniendo opciones de cartaportes")
 			

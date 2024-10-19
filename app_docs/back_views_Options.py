@@ -13,7 +13,7 @@ from ecuapassdocs.info.ecuapass_utils import Utils
 
 import app_docs.models_Scripts as Scripts
 from app_cartaporte.models_cpi import Cartaporte
-from app_manifiesto.models_mci import Manifiesto, ManifiestoDoc
+from app_manifiesto.models_mci import Manifiesto, ManifiestoForm
 
 from .models_Entidades import Vehiculo, Conductor, Cliente
 

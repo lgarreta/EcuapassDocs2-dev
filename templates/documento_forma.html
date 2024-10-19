@@ -92,7 +92,7 @@
 					<button class="submit" type="submit" onclick="setActionUrl('/clonar/')" 
 									id="boton_clonar" name="action" value="clonar" disabled>Clonar</button>
 					<button class="submit" type="submit" onclick="setActionUrl('/detalle/')" 
-									id="boton_detalle" name="action" value="detalle" disabled>Detalle</button>
+									id="boton_detalle" name="action" value="detalle" disabled>Detalles</button>
 				</div>
 				<!--------------------------------------------------------------->
 				<!------------- Input fields added dynamically ------------------>
@@ -120,7 +120,7 @@
 		setParametersToInputs (textAreas, inputsParameters, docType);
 
 		// Predict the field values based on previous filed values
-		handleFieldValuesPredictions (textAreas) 
+		handlePredictions (docType, textAreas) 
 
 		// Enable / Disable document buttons
 		let docNumber = document.getElementById ("numero")

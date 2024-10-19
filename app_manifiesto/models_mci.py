@@ -13,11 +13,11 @@ from app_docs.models_Entidades import Vehiculo, Conductor
 import app_docs.models_Scripts as Scripts
 
 #--------------------------------------------------------------------
-# Model ManifiestoDoc
+# Model ManifiestoForm
 #--------------------------------------------------------------------
-class ManifiestoDoc (models.Model):
+class ManifiestoForm (models.Model):
 	class Meta:
-		db_table = "manifiestodoc"
+		db_table = "manifiestoform"
 
 	numero = models.CharField (max_length=20)
 
@@ -69,8 +69,8 @@ class ManifiestoDoc (models.Model):
 	txt34 = models.CharField (max_length=200, null=True)    # INCOTERMS
 	#------------------------------------------------------------
 	txt35 = models.CharField (max_length=200, null=True)
-	txt37 = models.CharField (max_length=200, null=True)
-	txt38 = models.CharField (max_length=200, null=True)
+	txt37 = models.CharField (max_length=200, null=True)    # Aduana cruce
+	txt38 = models.CharField (max_length=200, null=True)    # Aduana destino
 	txt40 = models.CharField (max_length=200, null=True)
 
 	def getConductor (self):
@@ -79,6 +79,33 @@ class ManifiestoDoc (models.Model):
 	def __str__ (self):
 		return f"{self.numero}, {self.txt03}"
 	
+	def setMercanciaInfo (self, mercanciaInfo):
+		self.txt20 = mercanciaInfo ["cartaporte"]
+		self.txt29 = mercanciaInfo ["descripcion"]
+		self.txt30 = mercanciaInfo ["cantidad"]
+		self.txt31 = mercanciaInfo ["marcas"]
+
+	def getInputValuesFromInfo (cartaporteInfo):
+		inputValues = {}
+		inputValues ["txt0a"]	= cartaporteInfo ["pais"]
+		inputValues ["txt02"]	= cartaporteInfo ["permisoOriginario"]
+		inputValues ["txt03"]	= cartaporteInfo ["permisoServicios"]
+		inputValues ["txt28"]	= cartaporteInfo ["cartaporte"]
+		inputValues ["txt29"]	= cartaporteInfo ["descripcion"]
+		inputValues ["txt30"]	= cartaporteInfo ["cantidad"]
+		inputValues ["txt31"]	= cartaporteInfo ["marcas"]
+		inputValues ["txt32_1"] = cartaporteInfo ["pesoBruto"]
+		inputValues ["txt32_3"] = cartaporteInfo ["pesoNeto"]
+		inputValues ["txt33_1"]	= cartaporteInfo ["otrasUnd"]
+		inputValues ["txt34"]	= cartaporteInfo ["incoterms"]
+		inputValues ["txt37"]	= cartaporteInfo ["aduanaCruce"]
+		inputValues ["txt38"]	= cartaporteInfo ["aduanaDestino"]
+		inputValues ["txt40"]	= cartaporteInfo ["fechaEmision"]
+
+		return inputValues
+
+
+
 #--------------------------------------------------------------------
 # Model Manifiesto
 #--------------------------------------------------------------------
@@ -86,7 +113,7 @@ class Manifiesto (EcuapassDoc):
 	class Meta:
 		db_table = "manifiesto"
 
-	documento     = models.OneToOneField (ManifiestoDoc, on_delete=models.CASCADE, null=True)
+	documento     = models.OneToOneField (ManifiestoForm, on_delete=models.CASCADE, null=True)
 
 	vehiculo      = models.ForeignKey (Vehiculo, on_delete=models.SET_NULL, related_name='vehiculo', null=True)
 	conductor     = models.ForeignKey (Conductor, on_delete=models.SET_NULL, related_name='conductor', null=True)
@@ -94,16 +121,20 @@ class Manifiesto (EcuapassDoc):
 
 	def get_absolute_url (self):
 		"""Returns the url to access a particular language instance."""
-		return reverse('manifiesto-detalle', args=[str(self.id)])
+		return reverse('manifiesto-editardoc', args=[str(self.id)])
 
 	def setValues (self, manifiestoForm, docFields, pais, username):
+		print (f"+++ Setting values for Manifiesto...")
 		# Base values
 		super().setValues (manifiestoForm, docFields, pais, username)
 
 		# Document values
 		jsonFieldsPath, runningDir = self.createTemporalJson (docFields)
-		manifiestoInfo     = ManifiestoByza (jsonFieldsPath, runningDir)
-		self.cartaporte    = self.getCartaporteInstance (manifiestoInfo)
+		manifiestoInfo   = ManifiestoByza (jsonFieldsPath, runningDir)
+		cartaporteNumber = manifiestoInfo.getNumeroCartaporte ()
+		print (f"\t+++ cartaporteNumber: '{cartaporteNumber}'")
+		self.cartaporte  = Scripts.getCartaporteInstanceByNumero (cartaporteNumber)
+		print (f"\t+++ cartaporte instance:'{self.cartaporte}'")
 
 		self.getSaveVehiculoConductorInstance (manifiestoInfo)
 		self.fecha_emision = EcuInfo.getFechaEmision (docFields, "MANIFIESTO")
@@ -113,29 +144,32 @@ class Manifiesto (EcuapassDoc):
 	#-- Get and save info vehiculo/remolque/conductor/auxiliar
 	def getSaveVehiculoConductorInstance (self, manifiestoInfo):
 		# Vehiculo
-		veinfo = manifiestoInfo.extractVehiculoInfo ()
+		veinfo = manifiestoInfo.extractVehiculoInfo (type="VEHICULO")
 		vehiculo, changeFlag = self.getSaveUpdateInstance ("vehiculo", veinfo)
 
 		# Remolque
 		reinfo = manifiestoInfo.extractVehiculoInfo (type="REMOLQUE")
 		remolque, changeFlag = self.getSaveUpdateInstance ("vehiculo", reinfo)
-		if not Scripts.areEqualsInstances (vehiculo.remolque, remolque):
-			vehiculo.remolque = remolque
-			vehiculo.save ()
 
 		# Conductor
 		coinfo = manifiestoInfo.extractConductorInfo ()
 		conductor, changeFlag = self.getSaveUpdateInstance ("conductor", coinfo)
-		if not Scripts.areEqualsInstances (vehiculo.conductor, conductor):
-			vehiculo.conductor = conductor
-			vehiculo.save ()
+
+		if vehiculo:
+			if not Scripts.areEqualsInstances (vehiculo.remolque, remolque):
+				vehiculo.remolque = remolque
+				vehiculo.save ()
+
+			if not Scripts.areEqualsInstances (vehiculo.conductor, conductor):
+				vehiculo.conductor = conductor
+				vehiculo.save ()
 
 		self.vehiculo = vehiculo
 		self.save ()
 
 	#-- Get or create, and save instance and flags if it was created or it has changed
 	def getSaveUpdateInstance (self, instanceName, info):
-		instance,  changeFlag = None, False
+		instance, changeFlag = None, False
 		try:
 			if instanceName == "vehiculo":
 				if info ['placa']:
@@ -161,13 +195,13 @@ class Manifiesto (EcuapassDoc):
 
 	#-- Get cartaporte from manifiesto info
 	def getCartaporteInstance (self, manifiestoInfo):
-		numeroCartaporte = None
+		cartaporteNumber = None
 		try:
-			numeroCartaporte = manifiestoInfo.getNumeroCartaporte ()
-			record = Cartaporte.objects.get (numero=numeroCartaporte)
-			return record
+			cartaporteNumber = manifiestoInfo.getNumeroCartaporte ()
+			instance = Cartaporte.objects.get (numero=cartaporteNumber)
+			return instance
 		except: 
-			Utils.printx (f"ALERTA: Cartaporte número '{numeroCartaporte}' no encontrado.")
+			Utils.printx (f"ALERTA: Cartaporte número '{cartaporteNumber}' no encontrado.")
 			#Utils.printException ()
 		return None
 
@@ -219,4 +253,10 @@ class Manifiesto (EcuapassDoc):
 		json.dump (docFields, open (jsonFieldsPath, "w"))
 		return (jsonFieldsPath, tmpPath)
 
+
+    #------------------------------------------------------
+    # Get initial values from cartaporte
+    #------------------------------------------------------
+    #def getInitialValuesFromCartaporte (cartaporteNumber):
+    #def getInitialValuesFromEmpresa (empresaName):
 

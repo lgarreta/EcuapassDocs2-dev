@@ -32,10 +32,10 @@ if input ("Desea continuar (yes/no): ")!="yes":
 
 
 def main ():
-	#dropUserAndDatabase ()
-	#createUserAndDatabase ()
-	#resetMigrations ()
-	runMigrationsAndCreateSuperuser ()
+	dropUserAndDatabase ()
+	createUserAndDatabase ()
+	resetMigrations ()
+	runMigrationsSuperuserExtensions ()
 	#runCollectStatics ()
 
 	#---
@@ -92,7 +92,7 @@ def resetMigrations ():
 #----------------------------------------------------------
 #-- Run migrations and create superuser
 #----------------------------------------------------------
-def runMigrationsAndCreateSuperuser ():
+def runMigrationsSuperuserExtensions ():
 	cmm = f"python3 {APPPATH}/manage.py flush --noinput"
 	print (cmm) ; sb.run (cmm, shell=True, env=os.environ)
 
@@ -108,7 +108,10 @@ def runMigrationsAndCreateSuperuser ():
 	cmm = f"python3 {APPPATH}/manage.py createsuperuser --username {DJUSER} --email {DJEMAIL}"
 	print (cmm) ; sb.run (cmm, shell=True, env=os.environ)
 
-	sql = f"UPDATE usuarioecuapass SET pais='TODOS' WHERE username='admin';"; exe (sql)
+	sql = f"UPDATE usuarioecuapass SET pais='TODOS' WHERE username='admin';"; exe (sql, DB=PGDATABASE)
+
+	# Create extension for advanced text searches
+	sql = f"CREATE EXTENSION IF NOT EXISTS pg_trgm;"; exe (sql, DB=PGDATABASE)
 #----------------------------------------------------------
 # Collect migrations
 #----------------------------------------------------------

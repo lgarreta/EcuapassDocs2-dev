@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 Bot for migration of CODEBIN documents
+Downloads docs from Codebin, Save Codebin docs to DB, Update existe DB relations
 """
 
 import json, time, sys, os, random
@@ -17,7 +18,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 #----------------------------------------------------------
 import django
-from django.db import connection
 
 os.environ.setdefault ("DJANGO_SETTINGS_MODULE", "app_main.settings") #appdocs_main") #/settings")
 
@@ -25,10 +25,10 @@ APPDOCS_PATH="/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-de
 sys.path.append (f"{APPDOCS_PATH}")
 django.setup ()
 
-from app_cartaporte.models_cpi import Cartaporte, CartaporteDoc
-from app_cartaporte.models_cpi import Cartaporte, CartaporteDoc
-from app_manifiesto.models_mci import Manifiesto, ManifiestoDoc
-from app_declaracion.models_dti import Declaracion, DeclaracionDoc
+from app_cartaporte.models_cpi import Cartaporte, CartaporteForm
+from app_cartaporte.models_cpi import Cartaporte, CartaporteForm
+from app_manifiesto.models_mci import Manifiesto, ManifiestoForm
+from app_declaracion.models_dti import Declaracion, DeclaracionForm
 from app_usuarios.models import UsuarioEcuapass
 
 from ecuapassdocs.info.ecuapass_utils import Utils
@@ -36,12 +36,20 @@ from ecuapassdocs.info.resourceloader import ResourceLoader
 #----------------------------------------------------------
 from bot_migration_docs import docs
 
+USAGE="""\n
+bot_migration.py --[save|download|update] <InputDir>
+\n"""
+
 #----------------------------------------------------------
 # main
 #----------------------------------------------------------
 def main ():
-	args = sys.argv
-	option   = args [1]
+	args   = sys.argv
+	if len (args) == 1:
+		print (USAGE)
+		sys.exit (0)
+
+	option = args [1]
 	try:
 		if option == "--save":
 			inputDir = args [2]
@@ -64,6 +72,7 @@ def saveDocs (inputDir):
 	webdriver = BotMigration.getWaitWebdriver (DEBUG=True)
 	#bot = BotMigration ("LOGITRANS", "COLOMBIA", "DECLARACION", 0, 0, webdriver)
 	bot = BotMigration ("BYZA", "COLOMBIA", "CARTAPORTE", 0, 0, webdriver)
+	#bot = BotMigration ("BYZA", "COLOMBIA", "MANIFIESTO", 0, 0, webdriver)
 	bot.saveDocFilesToDB (inputDir)
 
 def downloadDocs (inputDir):
@@ -100,9 +109,9 @@ class BotMigration:
 			self.docPrefix	= self.settings ["docPrefix"]
 			
 #			types = {
-#				"CARTAPORTE" :{"doc":Cartaporte, "form":CartaporteDoc},
-#				"MANIFIESTO" :{"doc":Manifiesto, "form":ManifiestoDoc},
-#				"DECLARACION":{"doc":Declaracion, "form":DeclaracionDoc}
+#				"CARTAPORTE" :{"doc":Cartaporte, "form":CartaporteForm},
+#				"MANIFIESTO" :{"doc":Manifiesto, "form":ManifiestoForm},
+#				"DECLARACION":{"doc":Declaracion, "form":DeclaracionForm}
 #			}
 #			self.DOCMODEL  = types[docType] ["doc"]
 #			self.FORMMODEL = types[docType] ["form"]
@@ -422,11 +431,11 @@ class BotMigration:
 	def getFormAndDocModels (self, docType):
 		FormModel, DocModel = None, None
 		if docType.upper() == "CARTAPORTE":
-			FormModel, DocModel = CartaporteDoc, Cartaporte
+			FormModel, DocModel = CartaporteForm, Cartaporte
 		elif docType.upper() == "MANIFIESTO":
-			FormModel, DocModel = ManifiestoDoc, Manifiesto
+			FormModel, DocModel = ManifiestoForm, Manifiesto
 		elif docType.upper() == "DECLARACION":
-			FormModel, DocModel = DeclaracionDoc, Declaracion 
+			FormModel, DocModel = DeclaracionForm, Declaracion 
 		else:
 			print (f"Error: Tipo de documento '{docType}' no soportado")
 			sys.exit (0)

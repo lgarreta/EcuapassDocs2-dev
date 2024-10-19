@@ -13,9 +13,9 @@ from django.conf import settings
 
 from django.contrib import messages
 
-from app_cartaporte.models_cpi import Cartaporte, CartaporteDoc
-from app_manifiesto.models_mci import Manifiesto, ManifiestoDoc
-from app_declaracion.models_dti import Declaracion, DeclaracionDoc
+from app_cartaporte.models_cpi import Cartaporte, CartaporteForm
+from app_manifiesto.models_mci import Manifiesto, ManifiestoForm
+from app_declaracion.models_dti import Declaracion, DeclaracionForm
 from .models_Entidades import Cliente, Conductor, Vehiculo
 
 def index (request):

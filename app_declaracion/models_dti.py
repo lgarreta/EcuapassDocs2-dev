@@ -17,11 +17,11 @@ from app_cartaporte.models_cpi import Cartaporte
 from app_usuarios.models import UsuarioEcuapass
 
 #--------------------------------------------------------------------
-# Model DeclaracionDoc
+# Model DeclaracionForm
 #--------------------------------------------------------------------
-class DeclaracionDoc (models.Model):
+class DeclaracionForm (models.Model):
 	class Meta:
-		db_table = "declaraciondoc"
+		db_table = "declaracionform"
 
 	numero = models.CharField (max_length=20)
 	txt0a = models.CharField (max_length=20, null=True)
@@ -68,7 +68,7 @@ class Declaracion (EcuapassDoc):
 	class Meta:
 		db_table = "declaracion"
 
-	documento    = models.OneToOneField (DeclaracionDoc,
+	documento    = models.OneToOneField (DeclaracionForm,
 									   on_delete=models.CASCADE, null=True)
 	#declarante   = models.ForeignKey (Cliente, related_name="declaraciones_declarante",
 	#                                   on_delete=models.SET_NULL, null=True)
@@ -96,5 +96,5 @@ class Declaracion (EcuapassDoc):
 		self.destinatario  = Scripts.getSaveClienteInstance ("04_Destinatario", docFields)
 		self.fecha_emision = EcuInfo.getFechaEmision (docFields, "DECLARACION")
 
-		self.cartaporte    = Scripts.getCartaporteInstance ("15_Cartaporte", docFields, "DECLARACION")
+		self.cartaporte    = Scripts.getCartaporteInstanceFromDocFields (docFields, "DECLARACION")
 

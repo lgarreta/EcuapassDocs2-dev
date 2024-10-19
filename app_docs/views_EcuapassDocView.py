@@ -23,9 +23,10 @@ from ecuapassdocs.info.ecuapass_utils import Utils
 from ecuapassdocs.info.ecuapass_data import EcuData 
 from ecuapassdocs.info.resourceloader import ResourceLoader 
 
-from app_cartaporte.models_cpi import Cartaporte, CartaporteDoc
-from app_manifiesto.models_mci import Manifiesto, ManifiestoDoc
-from app_declaracion.models_dti import Declaracion, DeclaracionDoc
+from app_cartaporte.models_cpi import Cartaporte, CartaporteForm
+from app_manifiesto.models_mci import Manifiesto, ManifiestoForm
+from app_declaracion.models_dti import Declaracion, DeclaracionForm
+import app_docs.models_Scripts as Scripts
 
 from app_usuarios.models import UsuarioEcuapass
 
@@ -53,7 +54,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 
 	def __init__(self, docType, background_image, parameters_file, *args, **kwargs):
 		super().__init__ (*args, **kwargs)
-		self.cliente          = "BYZA"
+		self.empresa          = "BYZA"
 		self.pais	          = None				 
 		self.docType	      = docType
 		self.template_name    = "documento_forma.html"
@@ -61,7 +62,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		self.parameters_file  = parameters_file
 		self.inputParams      = ResourceLoader.loadJson ("docs", self.parameters_file)
 		self.inputValues      = Utils.getFormFieldsFromInputParams (self.inputParams)
-		self.empresaInfo      = EcuData.empresas [self.cliente] 
+		self.empresaInfo      = EcuData.empresas [self.empresa] 
 
 	#-------------------------------------------------------------------
 	# Usado para llenar una forma (manifiesto) vacia
@@ -188,7 +189,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	# Save document to DB checking max docs for user
 	#-------------------------------------------------------------------
 	def onSaveCommand (self, request, *args, **kwargs):
-		print ("+++ Save command...")
+		print ("+++ Guardando documento...")
 		documentParams = self.getDocumentParams (request, *args, **kwargs)
 
 		# Check if user has reached his total number of documents
@@ -250,7 +251,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 			regsManifiestos = Manifiesto.objects.filter (cartaporte=regCartaporte)
 
 			for reg in regsManifiestos:
-				docManifiesto  = ManifiestoDoc.objects.get (id=reg.id)
+				docManifiesto  = ManifiestoForm.objects.get (id=reg.id)
 				inputValues = model_to_dict (docManifiesto)
 				inputValues ["txt41"] = "COPIA"
 
@@ -353,11 +354,11 @@ class EcuapassDocView (LoginRequiredMixin, View):
 	def copySavedValuesToInputs (self, recordId):
 		instanceDoc = None
 		if (self.docType.upper() == "CARTAPORTE"):
-			instanceDoc = CartaporteDoc.objects.get (id=recordId)
+			instanceDoc = CartaporteForm.objects.get (id=recordId)
 		elif (self.docType.upper() == "MANIFIESTO"):
-			instanceDoc = ManifiestoDoc.objects.get (id=recordId)
+			instanceDoc = ManifiestoForm.objects.get (id=recordId)
 		elif (self.docType.upper() == "DECLARACION"):
-			instanceDoc = DeclaracionDoc.objects.get (id=recordId)
+			instanceDoc = DeclaracionForm.objects.get (id=recordId)
 		else:
 			print (f"Error: Tipo de documento '{self.docType}' no soportado")
 			return None
@@ -423,6 +424,7 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		docNumber	= inputValues ["numero"]
 
 		if docNumber == "":
+			#or docNumber == "SUGERIDO":
 			docId, docNumber, formModel, docModel = self.saveNewDocToDB (inputValues)
 			inputValues ["id"]     = docId
 			inputValues ["numero"] = docNumber
@@ -430,26 +432,30 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		else:
 			docId, docNumber, formModel, docModel = self.saveExistingDocToDB (inputValues)
 
-		# Save docModel
+		# Update docModel with inputValues
 		docFields	= Utils.getAzureValuesFromInputsValues (self.docType, inputValues)
 		docModel.setValues (formModel, docFields, self.pais,  self.usuario)
 		docModel.save ()
+
+		if (self.docType == "CARTAPORTE"):
+			self.createUpdateSuggestedManifiesto (docModel)
 
 		return docId, docNumber
 
 	#-- Save new document
 	def saveNewDocToDB (self, inputValues):
-		print (">>> Guardando documento nuevo en la BD...")
-		FormModel, DocModel = self.getFormAndDocClass (self.docType)
+		print (f">>> Guardando '{self.docType}' nuevo en la BD...")
+		FormModel, DocModel = Scripts.getFormAndDocClass (self.docType)
 
 		# First: save DocModel
-		docModel  = DocModel (pais=self.pais, usuario=self.usuario)
+		#docNumber = docModel.generateDocNumber ()
+		docNumber = Scripts.generateDocNumber (DocModel, self.pais)
+		docModel  = DocModel (numero=docNumber, pais=self.pais, usuario=self.usuario)
 		docModel.save ()
-		docNumber = docModel.numero
 
 		# Second, save FormModel
-		formModel = FormModel (id=docModel.id, numero=docModel.numero)
-		inputValues ["txt00"] = formModel.numero
+		formModel = FormModel (id=docModel.id, numero=docNumber)
+		inputValues ["txt00"] = docNumber
 
 		# Third, set FormModel values from input form values
 		for key, value in inputValues.items():
@@ -468,22 +474,29 @@ class EcuapassDocView (LoginRequiredMixin, View):
 
 	#-- Save existing document
 	def saveExistingDocToDB (self, inputValues):
-		print (">>> Guardando documento existente en la BD...")
-		FormModel, DocModel = self.getFormAndDocClass (self.docType)
-		docId	  = inputValues ["id"]
-		docNumber = inputValues ["numero"]
-		docModel  = get_object_or_404 (FormModel, id=docId)
+		print (f">>> Guardando '{self.docType}' existente en la BD...")
+		FormModel, DocModel = Scripts.getFormAndDocClass (self.docType)
 
-		# Assign values to docModel from form values
+		docId	            = inputValues ["id"]
+		formModel           = get_object_or_404 (FormModel, id=docId)
+		docModel            = get_object_or_404 (DocModel, id=docId)
+		docNumber           = inputValues ["numero"]
+
+		if docNumber== "SUGERIDO":
+			docNumber = Scripts.generateDocNumber (DocModel, self.pais)
+			docModel.numero       = docNumber
+			formModel.numero      = docNumber
+			inputValues ["txt00"] = docNumber
+
+		# Assign values to formModel from form values
 		for key, value in inputValues.items():
-			setattr (docModel, key, value)
+			if key not in ["id", "numero"]:
+				setattr (formModel, key, value)
 
-		#docModel.numero = inputValues ["txt00"]
-		docModel.numero = inputValues ["txt00"]
+		formModel.save ()
 		docModel.save ()
-		regModel = get_object_or_404 (DocModel, id=docId)
 
-		return docId, docNumber, docModel, regModel
+		return docId, docNumber, formModel, docModel
 
 
 	#-- Create doc number
@@ -493,21 +506,43 @@ class EcuapassDocView (LoginRequiredMixin, View):
 		return docNumber
 
 	#-------------------------------------------------------------------
-	# Return form document class and register class from document type
+	#-- Create or update suggested Manifiesto according to Cartaporte values
 	#-------------------------------------------------------------------
-	def getFormAndDocClass (self, docType):
-		FormModel, DocModel = None, None
-		if docType.upper() == "CARTAPORTE":
-			FormModel, DocModel = CartaporteDoc, Cartaporte
-		elif docType.upper() == "MANIFIESTO":
-			FormModel, DocModel = ManifiestoDoc, Manifiesto
-		elif docType.upper() == "DECLARACION":
-			FormModel, DocModel = DeclaracionDoc, Declaracion 
-		else:
-			print (f"Error: Tipo de documento '{docType}' no soportado")
-			sys.exit (0)
+	def createUpdateSuggestedManifiesto (self, cartaporteDoc):
+		if cartaporteDoc.hasManifiesto ():
+			return
 
-		return FormModel, DocModel
+		print ("+++ Creando manifiesto sugerido. ")
+		cartaporteForm  = cartaporteDoc.documento    # CPI form
+		manifiestoInfo  = cartaporteForm.getManifiestoInfo (self.empresa, self.pais)
+		inputValues     = ManifiestoForm.getInputValuesFromInfo (manifiestoInfo)
+		self.saveSuggestedManifiesto (cartaporteDoc, inputValues)
+
+	#-- Save suggested manifiesto
+	#-- TO OPTIMIZE: It is similar to EcuapassDocView::saveNewDocToDB
+	def saveSuggestedManifiesto (self, cartaporteDoc, inputValues):
+		print ("+++ Guardando manifiesto sugerido en la BD...")
+		print ("+++ Pais:", self.pais, ". Usuario:", self.usuario)
+		# First: save DocModel
+		docModel        = Manifiesto (pais=self.pais, usuario=self.usuario)
+		docModel.numero = "SUGERIDO"
+		docModel.save ()
+
+		# Second, save FormModel
+		formModel = ManifiestoForm (id=docModel.id, numero=docModel.numero)
+		inputValues ["txt00"] = formModel.numero
+
+		# Third, set FormModel values from input form values
+		for key, value in inputValues.items():
+			if key not in ["id", "numero"]:
+				setattr (formModel, key, value)
+
+		# Fourth, save FormModel and update DocModel with FormModel
+		formModel.save ()
+		docModel.documento  = formModel
+		docModel.cartaporte = cartaporteDoc
+		docModel.save ()
+		return docModel
 
 	#-------------------------------------------------------------------
 	# Handle assigned documents for "externo" user profile

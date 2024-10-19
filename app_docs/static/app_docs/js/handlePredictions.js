@@ -1,13 +1,15 @@
 // Handle field values predictions
 // When field get the focus, it call view for predicting current value
 
-function handleFieldValuesPredictions (textareas) {
-	const mainFields  = ["txt03","txt04","txt05","txt06","txt07","txt08","txt09"]
-	const minorFields = ["txt10","txt11","txt12","txt16","txt18","txt21","txt22"]
+function handlePredictions (docType, textareas) {
+    if (docType === "CARTAPORTE") {
+        const mainFields  = ["txt03","txt04","txt05","txt06","txt07","txt08","txt09"]
+        const minorFields = ["txt10","txt11","txt12","txt16","txt18","txt21","txt22"]
 
-	for (const ta of textareas) 
-        if (mainFields.includes (ta.id) || minorFields.includes (ta.id)) 
-		    ta.addEventListener("focus", (event) => handleFocus(event, ta, mainFields));
+        for (const ta of textareas) 
+            if (mainFields.includes (ta.id) || minorFields.includes (ta.id)) 
+                ta.addEventListener("focus", (event) => handleFocus(event, ta, mainFields));
+    }
 }
 
 function handleFocus (event, textarea, mainFields) {
@@ -33,7 +35,6 @@ function handleFocus (event, textarea, mainFields) {
 		contentType : 'application/json',
 		headers     : { 'X-CSRFToken': csrftoken },  // Send token in headers
 		success     : function (response) {
-			console.log (">>> Predicted value:", response);
             if (textarea.value === "") {
 			    textarea.value = response ["predictedValue"]
                 textarea.select ()

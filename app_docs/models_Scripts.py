@@ -8,19 +8,56 @@ from django.utils import timezone # For getting recent cartaportes
 from django.contrib.postgres.search import TrigramSimilarity
 from django.db.models import F
 
-
 from ecuapassdocs.info.ecuapass_utils import Utils
 from ecuapassdocs.info.ecuapass_info import EcuInfo
 from ecuapassdocs.info.ecuapass_data import EcuData
-import app_cartaporte.models_cpi as cpiModels
+
+# For Cartaporte, Manifiesto, Declacion
+import app_manifiesto
+import app_cartaporte
+import app_declaracion
+#import app_cartaporte.models_cpi as models_cpi
+#from app_manifiesto.models_mci import Manifiesto
+
 from ecuapassdocs.info.ecuapass_info_cartaporte_BYZA import CartaporteByza
 from app_docs.models_Entidades import Cliente
+
+#-------------------------------------------------------------------
+#-- Generate doc number from last doc number saved in DB
+#-------------------------------------------------------------------
+def generateDocNumber (DocModel, pais):
+	num_zeros = EcuData.configuracion ["num_zeros"]
+	lastDoc   = DocModel.objects.filter (pais=pais).exclude (numero="SUGERIDO").order_by ("-id").first ()
+	if lastDoc:
+		lastNumber = Utils.getNumberFromDocNumber (lastDoc.numero)
+		newNumber  = str (lastNumber + 1).zfill (num_zeros)
+	else:
+		newNumber  = str (1).zfill (num_zeros)
+
+	docNumber = Utils.getCodigoPaisFromPais (pais) + newNumber
+	return docNumber
+
+#-------------------------------------------------------------------
+# Return form document class and register class from document type
+#-------------------------------------------------------------------
+def getFormAndDocClass (docType):
+	FormModel, DocModel = None, None
+	if docType.upper() == "CARTAPORTE":
+		FormModel, DocModel = app_cartaporte.models_cpi.CartaporteForm, app_cartaporte.models_cpi.Cartaporte
+	elif docType.upper() == "MANIFIESTO":
+		FormModel, DocModel = app_manifiesto.models_mci.ManifiestoForm, app_manifiesto.models_mci.Manifiesto
+	elif docType.upper() == "DECLARACION":
+		FormModel, DocModel = app_declaracion.models_dti.DeclaracionForm, app_declaracion.models_dti.Declaracion 
+	else:
+		print (f"Error: Tipo de documento '{docType}' no soportado")
+		sys.exit (0)
+
+	return FormModel, DocModel
 
 #-------------------------------------------------------------------
 # Search a pattern in all fields of a model
 #-------------------------------------------------------------------
 from django.db.models import Q
-
 def searchModelAllFields (searchPattern, DOCMODEL):
     queries = Q()
     for field in DOCMODEL._meta.fields:
@@ -31,21 +68,30 @@ def searchModelAllFields (searchPattern, DOCMODEL):
     return results
 
 #-------------------------------------------------------------------
-# Get cartaporte from doc fields and save to DB
+#-- Get cartaporte instance
 #-------------------------------------------------------------------
-def getCartaporteInstance (docKey, docFields, docType):
-	cartaporte = None
+#-- Get cartaporte instance from DocFields
+def getCartaporteInstanceFromDocFields (docFields, docType):
+	cartaporteNumber = None
 	try:
-		cartaporteNumber    = EcuInfo.getNumeroCartaporte (docFields, docType)
-		print (f"+++ DEBUG: getCartaporteInstance:cartaporteNumber '{cartaporteNumber}'")
-		
-		cartaporte = cpiModels.Cartaporte.objects.get (numero=cartaporteNumber)
+		cartaporteNumber = EcuInfo.getNumeroCartaporte (docFields, docType)
+		cartaporte       = getCartaporteInstanceByNumero (cartaporteNumber)
 		return cartaporte
-	except cpiModels.Cartaporte.DoesNotExist:
-		Utils.printException (f"No existe cartaporte nro: '{cartaporteNumber}'!")
-	except cpiModels.Cartaporte.MultipleObjectsReturned:
-		Utils.printException (f"Múltiples instancias de cartaporte nro: '{cartaporteNumber}'!")
-	return cartaporte
+	except: 
+		Utils.printException (f"+++ ERROR: Obteniendo cartaporte número '{cartaporteNumber}'")
+		return None
+
+
+#-- Get cartaporte instance from number
+def getCartaporteInstanceByNumero (cartaporteNumber):
+	try:
+		instance = app_cartaporte.models_cpi.Cartaporte.objects.get (numero=cartaporteNumber)
+		return instance
+	except app_cartaporte.models_cpi.Cartaporte.DoesNotExist:
+		print (f"+++ No existe cartaporte nro: '{cartaporteNumber}'!")
+	except app_cartaporte.models_cpi.Cartaporte.MultipleObjectsReturned:
+		print (f"+++ Múltiples instancias de cartaporte nro: '{cartaporteNumber}'!")
+	return None
 #-------------------------------------------------------------------
 #-- Get/Save cliente info. Only works for BYZA
 #-- field keys correspond to: remitente, destinatario,... (Cartaporte)
@@ -166,34 +212,41 @@ def saveClienteInfoToDB (info):
 #		Utils.printException (f"Obteniedo información del vehiculo.")
 #	return vehiculo
 #
+
 #----------------------------------------------------------
 #-- Return recent cartaportes (within the past week)
 #----------------------------------------------------------
-def getRecentDocuments (DOCMODEL):
-	diasRecientes = EcuData.configuracion ["dias_cartaportes_recientes"] + 15
-	oneWeekAgo = timezone.now () - timedelta (days=diasRecientes)
-	recentDocuments = DOCMODEL.objects.filter (fecha_emision__gte=oneWeekAgo)
-	for doc in recentDocuments:
-		print (doc.numero, doc.fecha_emision)
+def getRecentDocuments (DOCMODEL, days):
+	diasRecientes = EcuData.configuracion ["dias_cartaportes_recientes"] + days
+	daysAgo = timezone.now () - timedelta (days=diasRecientes)
+	recentDocuments = DOCMODEL.objects.filter (fecha_emision__gte=daysAgo)
+	if not recentDocuments.exists():
+		print (f"+++ No existen documentos de más de '{days}' dias")
+
 	return recentDocuments
 
-
+#----------------------------------------------------------
 #-- Compare whether two instances have the same values for all fields,
+#----------------------------------------------------------
 def areEqualsInstances (instance1, instance2):
-	if instance1 is None and instance2 is None:
-		return True  # Equals
-	elif instance1 is None or instance2 is None:
-		return False # Different
+	try:
+		if instance1 is None and instance2 is None:
+			return True  # Equals
+		elif instance1 is None or instance2 is None:
+			return False # Different
 
-	if instance1._meta.model != instance2._meta.model:
-		return False  # They are not even the same model
+		if instance1._meta.model != instance2._meta.model:
+			return False  # They are not even the same model
 
-	# Compare field values
-	for field in instance1._meta.fields:
-		value1 = getattr(instance1, field.name)
-		value2 = getattr(instance2, field.name)
-		if value1 != value2:
-			return False  # Return False if any field value is different
+		# Compare field values
+		for field in instance1._meta.fields:
+			value1 = getattr(instance1, field.name)
+			value2 = getattr(instance2, field.name)
+			if value1 != value2:
+				return False  # Return False if any field value is different
 
-	return True  # All fields match
+		return True  # All fields match
+	except:
+		return False
+
 

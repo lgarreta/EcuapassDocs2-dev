@@ -10,12 +10,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_protect
 
-from sklearn.preprocessing import LabelEncoder
-
 from ecuapassdocs.info.ecuapass_extractor import Extractor
-from .TextClusterEncoder import TextClusterEncoder
+from ecuapassdocs.info.ecuapass_utils import Utils 
 import app_docs.models_Scripts as Scripts
-
 
 #----------------------------------------------------------
 # Print varname and varvalue
@@ -61,29 +58,28 @@ class CartaportePredictionsView (LoginRequiredMixin, View):
 	#----------------------------------------------------------
 	#-----------------------------------------c-----------------
 	def doPrediction (self, txtId, inputsValues):
-		print (f"+++ DEBUG: doPrediction txtId:", txtId)
+		print (f"+++ Doing predictions for txtId:", txtId)
 
 		# Skip fields with prices 
-		if "13" in txtId or txtId in ["txt02", "txt14", "txt15"] or "17" in txtId:
+		if txtId in ["txt02","txt14","txt15"] or "13" in txtId or "17" in txtId:
 			return None
 
 		modelsDic, encodersDic = self.loadModelsEncoders ()
-		encodedValues    = self.getEncodedValues (inputsValues, encodersDic)
+		encodedValues          = self.getEncodedValues (inputsValues, encodersDic)
+		inputs                 = pd.DataFrame ([encodedValues]); 
+		prdEncValue            = modelsDic [txtId].predict (inputs); 
+		prdValue               = encodersDic [txtId].inverse_transform (prdEncValue)[0]; 
 
-		inputs           = pd.DataFrame ([encodedValues]); debug (inputs)
-
-		prdEncValue      = modelsDic [txtId].predict (inputs); debug (prdEncValue)
-
-		prdValue         = encodersDic [txtId].inverse_transform (prdEncValue)[0]; debug (prdValue)
-
-		# Given the id, get full company info from DB
-		if txtId in ["txt03", "txt04"]:
+		# Subjects: Given the id, get full company info from DB
+		if txtId in ["txt03", "txt04"]: # Destinatario, Consignatario
 			cliente = Scripts.getClienteInstanceByNumeroId (prdValue)
 			prdValue = cliente.toDocFormat () if cliente else ""
-		elif txtId in ["txt05"]:
+		elif txtId in ["txt05"]:        # Notificado
 			cliente = Scripts.getClienteInstanceByNombre (prdValue)
 			prdValue = cliente.toDocFormat () if cliente else ""
-
+		elif txtId in ["txt06"]:        # Recepcion: add cur date
+			prdValue = prdValue + ". " + Utils.getCurrentDate ()
+			
 		#prdValue         = None if np.isnan (prdValue) else prdValue
 
 		print (f" Input '{txtId}' - Prediction: '{prdValue}'")
