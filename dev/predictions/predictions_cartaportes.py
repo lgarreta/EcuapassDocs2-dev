@@ -29,12 +29,9 @@ def main ():
 	getDataFromDB (pg, start_doc, 100, filename)
 	
 	filename  = renameColumns (filename, "SHORTNAMES")
-
 	filename  = preprocessData (filename)
-
 	filename, encoders = encodeData (filename)
-
-	models    = trainModels (filename)
+	models = trainModels (filename)
 
 #	models, encoders = loadModelsEncoders ()
 	testModels (models, encoders)

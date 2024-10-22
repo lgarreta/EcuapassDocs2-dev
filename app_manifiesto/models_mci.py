@@ -57,7 +57,7 @@ class ManifiestoForm (models.Model):
 	txt27 = models.CharField (max_length=200, null=True)
 	#-- Info mercancia (cartaporte, descripcion, ...totales ----
 	txt28 = models.CharField (max_length=200, null=True)    # Cartaporte
-	txt29 = models.CharField (max_length=800, null=True)    # Descripcion
+	txt29 = models.CharField (max_length=900, null=True)    # Descripcion
 	txt30 = models.CharField (max_length=200, null=True)    # Cantidad
 	txt31 = models.CharField (max_length=200, null=True)    # Marca
 	txt32_1 = models.CharField (max_length=200, null=True)  # Peso bruto
@@ -115,9 +115,9 @@ class Manifiesto (EcuapassDoc):
 
 	documento     = models.OneToOneField (ManifiestoForm, on_delete=models.CASCADE, null=True)
 
-	vehiculo      = models.ForeignKey (Vehiculo, on_delete=models.SET_NULL, related_name='vehiculo', null=True)
-	conductor     = models.ForeignKey (Conductor, on_delete=models.SET_NULL, related_name='conductor', null=True)
-	cartaporte    = models.ForeignKey (Cartaporte, on_delete=models.SET_NULL, null=True)
+	vehiculo      = models.ForeignKey (Vehiculo, on_delete=models.SET_NULL, related_name='manifiestos', null=True)
+	conductor     = models.ForeignKey (Conductor, on_delete=models.SET_NULL, related_name='manifiestos', null=True)
+	cartaporte    = models.ForeignKey (Cartaporte, on_delete=models.SET_NULL, related_name="manifiestos", null=True)
 
 	def get_absolute_url (self):
 		"""Returns the url to access a particular language instance."""
@@ -156,16 +156,23 @@ class Manifiesto (EcuapassDoc):
 		conductor, changeFlag = self.getSaveUpdateInstance ("conductor", coinfo)
 
 		if vehiculo:
-			if not Scripts.areEqualsInstances (vehiculo.remolque, remolque):
-				vehiculo.remolque = remolque
-				vehiculo.save ()
-
-			if not Scripts.areEqualsInstances (vehiculo.conductor, conductor):
-				vehiculo.conductor = conductor
-				vehiculo.save ()
+			self.updateInstanceFromVehiculo (conductor, vehiculo)
+			self.updateInstanceFromVehiculo (remolque, vehiculo)
 
 		self.vehiculo = vehiculo
 		self.save ()
+
+	#-- Update/set Remolque, Conductor to Vehiculo
+	def updateInstanceFromVehiculo (self, instance, vehiculo):
+		if not instance or not vehiculo: 
+			return
+		# Instance is in another Vehiculo	
+		if instance.__class__.__name__== Vehiculo:      # Remolque
+			vehiculo.remolque = instance
+		elif instance.__class__.__name__== Conductor:   # Conductor
+			vehiculo.conductor = instance
+
+		vehiculo.save ()
 
 	#-- Get or create, and save instance and flags if it was created or it has changed
 	def getSaveUpdateInstance (self, instanceName, info):

@@ -17,29 +17,27 @@ from TextClusterEncoder import TextClusterEncoder
 from ecuapassdocs.info.ecuapass_utils import Utils
 from ecuapassdocs.info.ecuapass_extractor import Extractor
 from ecuapassdocs.info.ecuapass_info_cartaporte_BYZA import CartaporteByza
+from ecuapassdocs.info.ecuapass_info_manifiesto_BYZA import ManifiestoByza
 
 def main ():
-	start_doc	  = "CO7405"
+	start_doc	  = "CO11871"
 
 	# Set db vars
 	pg       = readCheckDBVars ()
-	filename = "data-byza-cartaportes.csv"
+	filename = "data-byza-manifiestos.csv"
 #
 #	#-- Step 01: Get data
 	getDataFromDB (pg, start_doc, 100, filename)
 	
-	filename  = renameColumns (filename, "SHORTNAMES")
-
 	filename  = preprocessData (filename)
 
-	filename, encoders = encodeData (filename)
-
-	models    = trainModels (filename)
+#	filename, encoders = encodeData (filename)
+#	models = trainModels (filename)
 
 #	models, encoders = loadModelsEncoders ()
-	testModels (models, encoders)
+#	testModels (models, encoders)
 
-	saveModelsEncoders (models, encoders)
+#	saveModelsEncoders (models, encoders)
 
 #----------------------------------------------------------
 # Load the saved models and encoders
@@ -156,47 +154,17 @@ def trainModels (dataFilename):
 #----------------------------------------------------------
 def preprocessData (dataFilename):
 	def removeNumberLowSufix (df):
-		def removeNumbers (input_str):
-			return re.sub(r'\d+', '', input_str) if isinstance(input_str, str) else input_str
-
-		df ["68"] = df ["68"].apply (removeNumbers)  # 10_Cantidad_Clase_Bultos
 		return df.map (Extractor.removeLowSufix)     # Remove "||LOW"
 
-	def joinColumns (df):
-		df ["30"] = df ["30"] + "-"  + df ["29"]; del df ["29"]   # Ciudad-Pais Recepcion
-		df ["33"] = df ["33"] + "-"  + df ["32"]; del df ["32"]   # Ciudad-Pais Embarque
-		df ["36"] = df ["36"] + "-"  + df ["35"]; del df ["35"]   # Ciudad-Pais Entrega
-		df ["39"] = df ["38"] + ". " + df ["39"]; del df ["38"]   # Condiciones Tranporte-Pago
-		df ["49"] = df ["46"] + ": " + df ["49"] + "-" + df ["48"]; del df ["46"]; del df ["48"]   # Ciudad-Pais Mercancia
-		return df
-
-	def selectRenameColumns (df):
-		selCols = [12,18,23,26,30,33,36,39,68,69,79,49,60,64,65]
-		docCols = [ 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,16,18,21,22]
-		new_df = pd.DataFrame()
-		for selcol, doccol in zip (selCols, docCols):
-			selcolname = str (selcol).zfill (2)
-			doccolname = "txt" + str (doccol).zfill (2)
-			for colname in df.columns:
-				if colname.startswith (selcolname):
-					new_df [doccolname] = df [selcolname]
-					break
-		return new_df
-
-	def selRenameCols (df):
-		#docNamesList = ["02Rmt","03Dst","04Cns","05Ntf", "06Rcp","07Emb","08Ent","09Cnd", "10Cnt","11Mrc","12Dsc","16Mrc", "18Dcm","21Ins","22Obs"]
-		formNamesList = ["02","03","04","05","06","07","08","09","10","11","12","16", "18","21","22"]
-		formNamesList = [f"txt{x}" for x in formNamesList]
-		docNames = dict (zip (df.columns, formNamesList))
-		for k,v in docNames.items():
-			print (k,v)
-		df = df.rename (columns=docNames)
-		return df
+	def selectDocColumns (df):
+		docCols = ["06","23","24"]
+		docColsTxt = [f"txt{x}" for x in docCols]
+		dfSel = df [docColsTxt] 
+		return dfSel
 
 	df = pd.read_csv (dataFilename)
 	df = removeNumberLowSufix (df)
-	df = joinColumns (df)
-	df = selectRenameColumns (df)
+	df = selectDocColumns (df)
 
 	outFilename  = dataFilename.split (".")[0] + "-PRP.csv"
 	df = df.where (pd.notna(df), '')
@@ -225,30 +193,6 @@ def cleanData (dataFilename):
 	return (outFilename)
 
 #----------------------------------------------------------
-#-- Rename columns to short names
-#----------------------------------------------------------
-def renameColumns (dataFilename, type="SHORTNAMES"):
-	df = pd.read_csv (dataFilename)
-
-	newColnames = {}
-	for i, colname in enumerate (df.columns):
-		if type == "SHORTNAMES":
-			newColnames [colname] = colname [:2]
-			outFilename  = dataFilename.split (".")[0] + "-RNMs.csv"
-		else:
-			newColnames [colname] = str (i+2).zfill(2)
-			outFilename  = dataFilename.split (".")[0] + "-RNMd.csv"
-
-	df = df.rename (columns=newColnames)
-#		"12_NroIdRemitente": "12",
-#		"18_NroIdDestinatario": "18",
-#		"23_NroIdConsignatario":"23",
-#		"26_NombreNotificado": "26"})
-
-	df.to_csv (outFilename, na_rep=None, index=False, header=True)
-	return outFilename
-
-#----------------------------------------------------------
 #-- Export document DB instances to a table
 #----------------------------------------------------------
 def getDataFromDB (pg, start_doc, limit, dataFilename):
@@ -259,8 +203,11 @@ def getDataFromDB (pg, start_doc, limit, dataFilename):
 		cursor = conn.cursor()
 
 		# Query the database
-		query = """ SELECT * FROM cartaporteform WHERE numero <= %s
-			        ORDER BY numero LIMIT %s; """
+		query = """ select mf.* FROM manifiestoform mf 
+					JOIN manifiesto m ON m.documento_id=mf.id 
+					JOIN cartaporte c ON c.id = m.cartaporte_id
+					WHERE mf.numero <= %s ORDER BY mf.numero LIMIT %s;
+				"""
 		cursor.execute (query, (start_doc, limit))
 
 		# Fetch all results
@@ -277,18 +224,14 @@ def getDataFromDB (pg, start_doc, limit, dataFilename):
 			HEADERS_FLAG = True
 			for record in records:
 				formFields     = dict (zip (column_names, record))
-				runningDir     = os.getcwd ()
-				ecudocFields   = Utils.getEcudocFieldsFromFormFields ("CARTAPORTE", formFields)
-				cartaporteInfo = CartaporteByza (None, runningDir, ecudocFields)
-				ecuapassFields = cartaporteInfo.extractEcuapassFields (analysisType="PREDICTION")
-				keys           = ecuapassFields.keys ()
+				keys           = formFields.keys ()
 
 				# Write the header row (column names)
 				if HEADERS_FLAG:
 					writer.writerow (keys)
 					HEADERS_FLAG = False
 
-				writer.writerow ([ecuapassFields[key] for key in keys])
+				writer.writerow ([formFields[key] for key in keys])
 
 		return (dataFilename)
 

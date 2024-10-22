@@ -91,12 +91,12 @@ class CartaporteForm (models.Model):
 		empresaInfo = EcuData.empresas [empresa]
 
 		if pais == "COLOMBIA":
-
 			aduanaCruce, aduanaDestino  = "IPIALES-COLOMBIA", "TULCAN-ECUADOR" # "COLOMBIA" as default
 		elif pais == "ECUADOR":
 			aduanaCruce, aduanaDestino   = "TULCAN-ECUADOR", "IPIALES-COLOMBIA"
 		else:
-			print (f"Alerta: No se pudo determinar aduana cruce/destino desde país: '{pais}'")
+			raise Exception (f"Alerta: No se pudo determinar aduana cruce/destino desde país: '{pais}'")
+			
 
 		info = {
 			"pais"              : pais[:2],

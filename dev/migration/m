@@ -1,0 +1,2990 @@
+SERVER: Getting webdriver...
+
+
+------------------------------------------
++++ Guardando documento 'CO11175' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11175
+	+++ cartaporteNumber: 'CO6913'
+	+++ cartaporte instance:'CO6913, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'XEK093 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'XEK093', 'chasis': '162145', 'certificado': 'CH-CO-0219-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S28517 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TECNI TRAILER JP', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'S28517', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, XEK093, COLOMBIA'
++++ DEBUG: conductor 'JORGE IBARRA ORTIZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11176' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11176
+	+++ cartaporteNumber: 'CO6913'
+	+++ cartaporte instance:'CO6913, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'WHM245 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'WHM245', 'chasis': '3HSCNAPT47N400866', 'certificado': 'CH-CO-0100-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R49695 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'R49695', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'INTERNATIONAL, WHM245, COLOMBIA'
++++ DEBUG: conductor 'LUIS ALFREDO IBARRA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11177' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11177
+	+++ cartaporteNumber: 'CO6913'
+	+++ cartaporte instance:'CO6913, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SPC005 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2008', 'pais': 'COLOMBIA', 'placa': 'SPC005', 'chasis': '224991', 'certificado': 'CH-CO-0008-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R49600 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'SERVIMECOL', 'anho': '2008', 'pais': 'COLOMBIA', 'placa': 'R49600', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SPC005, COLOMBIA'
++++ DEBUG: conductor 'CARLOS ANDRES CADENA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11178' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11178
+	+++ cartaporteNumber: 'CO6913'
+	+++ cartaporte instance:'CO6913, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SXV249 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'SXV249', 'chasis': '704457', 'certificado': 'CH-CO-0032-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R71171 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE S.A.', 'anho': '2013', 'pais': 'COLOMBIA', 'placa': 'R71171', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SXV249, COLOMBIA'
++++ DEBUG: conductor 'DIEGO BAYARDO MEJIA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11179' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11179
+	+++ cartaporteNumber: 'CO6913'
+	+++ cartaporte instance:'CO6913, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'TZP401 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2015', 'pais': 'COLOMBIA', 'placa': 'TZP401', 'chasis': '3HSCNAPT5FN680313', 'certificado': 'CH-EC-1011-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S30019 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2019', 'pais': 'COLOMBIA', 'placa': 'S30019', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'INTERNATIONAL, TZP401, COLOMBIA'
++++ DEBUG: conductor 'CHRISTIAN FERNANDO AGUIRRE GUEVARA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11180' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11180
+	+++ cartaporteNumber: 'CO6912'
++++ No existe cartaporte nro: 'CO6912'!
+	+++ cartaporte instance:'None'
++++ DEBUG: getPlacaPais 'CAE0263 ECUADOR '
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2002', 'pais': 'ECUADOR', 'placa': 'CAE0263', 'chasis': 'JALFTR32M27000069', 'certificado': 'CH-EC-0317-20', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'xxxxxxxxxxxxxxxxxxx'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXXXXXXXXXXXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'xxxxxxxxxxxxxx', 'anho': 'xxxx', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, CAE0263, ECUADOR'
++++ DEBUG: conductor 'JULIO CERON'
+
+
+------------------------------------------
++++ Guardando documento 'CO11181' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11181
+	+++ cartaporteNumber: 'CO6915'
+	+++ cartaporte instance:'CO6915, TOPTEC S.A. - TECNOLOGIA EN CUBRIMIENTO S.A. MANIZALES-COLOMBIA'
++++ DEBUG: getPlacaPais 'SNM702 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'SNM702', 'chasis': '3HSCNAPT07N388957', 'certificado': 'CH-CO-0264-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R23547 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE', 'anho': '1995', 'pais': 'COLOMBIA', 'placa': 'R23547', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'INTERNATIONAL, SNM702, COLOMBIA'
++++ DEBUG: conductor 'HECTOR GILBERTO ARTEAGA RIASCOS'
+
+
+------------------------------------------
++++ Guardando documento 'CO11182' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11182
+	+++ cartaporteNumber: 'CO6915'
+	+++ cartaporte instance:'CO6915, TOPTEC S.A. - TECNOLOGIA EN CUBRIMIENTO S.A. MANIZALES-COLOMBIA'
++++ DEBUG: getPlacaPais 'ESQ683 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2020', 'pais': 'COLOMBIA', 'placa': 'ESQ683', 'chasis': '3WKDD40XXLF725493', 'certificado': 'CH-CO-0003-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S57069 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2018', 'pais': 'COLOMBIA', 'placa': 'S57069', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, ESQ683, COLOMBIA'
++++ DEBUG: conductor 'ALVARO MARTIN BERNAL PORTILLA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11183' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11183
+	+++ cartaporteNumber: 'CO6915'
+	+++ cartaporte instance:'CO6915, TOPTEC S.A. - TECNOLOGIA EN CUBRIMIENTO S.A. MANIZALES-COLOMBIA'
++++ DEBUG: getPlacaPais 'SWM122 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'SWM122', 'chasis': '182750', 'certificado': 'CH-CO-0184-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S30023 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TECNI TRAILER JP', 'anho': '2021', 'pais': 'COLOMBIA', 'placa': 'S30023', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SWM122, COLOMBIA'
++++ DEBUG: conductor 'JULIAN DAVID LUCERO OLIVA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11184' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11184
+	+++ cartaporteNumber: 'CO6915'
+	+++ cartaporte instance:'CO6915, TOPTEC S.A. - TECNOLOGIA EN CUBRIMIENTO S.A. MANIZALES-COLOMBIA'
++++ DEBUG: getPlacaPais 'WRD129 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2003', 'pais': 'COLOMBIA', 'placa': 'WRD129', 'chasis': '709897', 'certificado': 'CH-CO-0152-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R36770 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TRACTEC', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'R36770', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, WRD129, COLOMBIA'
++++ DEBUG: conductor 'VICTOR HUGO ROSERO NARVAEZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11185' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11185
+	+++ cartaporteNumber: 'CO6915'
+	+++ cartaporte instance:'CO6915, TOPTEC S.A. - TECNOLOGIA EN CUBRIMIENTO S.A. MANIZALES-COLOMBIA'
++++ DEBUG: getPlacaPais 'VMT144 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '1994', 'pais': 'COLOMBIA', 'placa': 'VMT144', 'chasis': 'R627244', 'certificado': 'CH-CO-0102-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R25541 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INCA FRUEHAUF', 'anho': '1999', 'pais': 'COLOMBIA', 'placa': 'R25541', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, VMT144, COLOMBIA'
++++ DEBUG: conductor 'JORGE IBARRA GUAQUEZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11186' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11186
+	+++ cartaporteNumber: 'CO6915'
+	+++ cartaporte instance:'CO6915, TOPTEC S.A. - TECNOLOGIA EN CUBRIMIENTO S.A. MANIZALES-COLOMBIA'
++++ DEBUG: getPlacaPais 'SPX583 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2013', 'pais': 'COLOMBIA', 'placa': 'SPX583', 'chasis': '707483', 'certificado': 'CH-CO-0166-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S30017 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2018', 'pais': 'COLOMBIA', 'placa': 'S30017', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SPX583, COLOMBIA'
++++ DEBUG: conductor 'HERMAN ROLANDO MALLAMA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11187' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11187
+	+++ cartaporteNumber: 'CO6914'
+	+++ cartaporte instance:'CO6914, None'
++++ DEBUG: getPlacaPais 'CBO0076 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2007', 'pais': 'ECUADOR', 'placa': 'CBO0076', 'chasis': 'JALFVR32P77000212', 'certificado': 'CH-EC-2272-23', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET, CBO0076, ECUADOR'
++++ DEBUG: conductor 'DIEGO SANTIAGO ROSERO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11188' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11188
+	+++ cartaporteNumber: 'CO6916'
+	+++ cartaporte instance:'CO6916, None'
++++ DEBUG: getPlacaPais 'CAA1213 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2014', 'pais': 'ECUADOR', 'placa': 'CAA1213', 'chasis': 'JALFTR34PE7000032', 'certificado': 'CH-EC-11385-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, CAA1213, ECUADOR'
++++ DEBUG: conductor 'RENE GUSTAVO NARVAEZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11189' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11189
+	+++ cartaporteNumber: 'CO6917'
+	+++ cartaporte instance:'CO6917, None'
++++ DEBUG: getPlacaPais 'SAV859 COLOMBIA'
+SERVER: Error validando certificado de <VEHICULO> en texto: 'CH---'
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'SAV859', 'chasis': '9F3GH8JM8PXX10936', 'certificado': '||LOW', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'HINO, SAV859, COLOMBIA'
++++ DEBUG: conductor 'PINCHAO JESUS DANIEL'
+
+
+------------------------------------------
++++ Guardando documento 'CO11190' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11190
+	+++ cartaporteNumber: 'CO6918'
+	+++ cartaporte instance:'CO6918, CFC CAFARCOL SAS COTA-COLOMBIA'
++++ DEBUG: getPlacaPais 'KRM303 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'KRM303', 'chasis': '9GDFVR345PB004586', 'certificado': 'CH-CO-0070-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET, KRM303, COLOMBIA'
++++ DEBUG: conductor 'LUIS ENRIQUE MALPUD VASQUEZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11191' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11191
+	+++ cartaporteNumber: 'CO6920'
+	+++ cartaporte instance:'CO6920, MAPEI COLOMBIA S.A.S. LA ESTRELLA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SEY078 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2008', 'pais': 'COLOMBIA', 'placa': 'SEY078', 'chasis': '3HSCNAPT28N636241', 'certificado': 'CH-CO-0005-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S29023 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2020', 'pais': 'COLOMBIA', 'placa': 'S29023', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'INTERNATIONAL, SEY078, COLOMBIA'
++++ DEBUG: conductor 'MILTON ANDRES GUAQUEZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11192' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11192
+	+++ cartaporteNumber: 'CO6921'
+	+++ cartaporte instance:'CO6921, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'ESQ683 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2020', 'pais': 'COLOMBIA', 'placa': 'ESQ683', 'chasis': '3WKDD40XXLF725493', 'certificado': 'CH-CO-0003-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S57069 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2018', 'pais': 'COLOMBIA', 'placa': 'S57069', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11193' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11193
+	+++ cartaporteNumber: 'CO6921'
+	+++ cartaporte instance:'CO6921, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'VMT144 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '1994', 'pais': 'COLOMBIA', 'placa': 'VMT144', 'chasis': 'R627244', 'certificado': 'CH-CO-0102-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R49695 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'R49695', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11194' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11194
+	+++ cartaporteNumber: 'CO6921'
+	+++ cartaporte instance:'CO6921, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'TDM511 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2004', 'pais': 'COLOMBIA', 'placa': 'TDM511', 'chasis': '60738', 'certificado': 'CH-CO-0007-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R31643 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE S.A.\t', 'anho': '2003', 'pais': 'COLOMBIA', 'placa': 'R31643', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, TDM511, COLOMBIA'
++++ DEBUG: conductor 'EULISES RAMIRO OLIVA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11195' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11195
+	+++ cartaporteNumber: 'CO6919'
+	+++ cartaporte instance:'CO6919, None'
++++ DEBUG: getPlacaPais 'CBO0076 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2007', 'pais': 'ECUADOR', 'placa': 'CBO0076', 'chasis': 'JALFVR32P77000212', 'certificado': 'CH-EC-2272-23', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
+
+
+------------------------------------------
++++ Guardando documento 'CO11196' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11196
+	+++ cartaporteNumber: 'CO6923'
+	+++ cartaporte instance:'CO6923, None'
++++ DEBUG: getPlacaPais 'CAA1213 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2014', 'pais': 'ECUADOR', 'placa': 'CAA1213', 'chasis': 'JALFTR34PE7000032', 'certificado': 'CH-EC-11385-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11197' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11197
+	+++ cartaporteNumber: 'CO6924'
+	+++ cartaporte instance:'CO6924, AUTOINDUSTRIAL CAMEL S.A. ITAGUI-COLOMBIA'
++++ DEBUG: getPlacaPais 'PBI-9990 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'HYUNDAI', 'anho': '2010', 'pais': 'ECUADOR', 'placa': 'PBI', 'chasis': 'KMFGA17PPAC125925', 'certificado': 'CH-EC-11714-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'HYUNDAI, PBI, ECUADOR'
++++ DEBUG: conductor 'EDWIN ANDRES CUASPA CABRERA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11198' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11198
+	+++ cartaporteNumber: 'CO6926'
+	+++ cartaporte instance:'CO6926, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'LQO469 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'SHACMAN', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'LQO469', 'chasis': 'LZGJL5X44PX000577', 'certificado': 'CH-CO-0189-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R13609 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '1990', 'pais': 'COLOMBIA', 'placa': 'R13609', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'SHACMAN, LQO469, COLOMBIA'
++++ DEBUG: conductor 'DIEGO MANUEL NARVAEZ BENAVIDES'
+
+
+------------------------------------------
++++ Guardando documento 'CO11199' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11199
+	+++ cartaporteNumber: 'CO6926'
+	+++ cartaporte instance:'CO6926, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'VMT402 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '1999', 'pais': 'COLOMBIA', 'placa': 'VMT402', 'chasis': '9GD1DBJF8XB982805', 'certificado': 'CH-CO-0158-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R34735 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2005', 'pais': 'COLOMBIA', 'placa': 'R34735', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, VMT402, COLOMBIA'
++++ DEBUG: conductor 'JOSE IGNACIO TUTALCHA HERNANDEZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11200' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11200
+	+++ cartaporteNumber: 'CO6926'
+	+++ cartaporte instance:'CO6926, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'JZX256 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2022', 'pais': 'COLOMBIA', 'placa': 'JZX256', 'chasis': '730306', 'certificado': 'CH-CO-0087-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S47440 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'SEMIREMOLQUE', 'anho': '2022', 'pais': 'COLOMBIA', 'placa': 'S47440', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, JZX256, COLOMBIA'
++++ DEBUG: conductor 'MARLON FERNANDO CORAL IBARRA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11201' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11201
+	+++ cartaporteNumber: 'CO6926'
+	+++ cartaporte instance:'CO6926, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'WDP522 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2022', 'pais': 'COLOMBIA', 'placa': 'WDP522', 'chasis': '203861', 'certificado': 'CH-CO-0750-24', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S29885 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TECNI TRAILER JP', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'S29885', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, WDP522, COLOMBIA'
++++ DEBUG: conductor 'GERMAN DARIO CORDERO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11202' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11202
+	+++ cartaporteNumber: 'CO6925'
+	+++ cartaporte instance:'CO6925, PRODIA SAS ENVIGADO-COLOMBIA'
++++ DEBUG: getPlacaPais 'GTY651 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2021', 'pais': 'COLOMBIA', 'placa': 'GTY651', 'chasis': '9F3GH8JM8MXX10162', 'certificado': 'CH-CO-0167-24', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'HINO, GTY651, COLOMBIA'
++++ DEBUG: conductor 'GIRALDO RODRIGO PISMAG JURADO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11203' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11203
+	+++ cartaporteNumber: 'CO6927'
+	+++ cartaporte instance:'CO6927,  -'
++++ DEBUG: getPlacaPais 'CAA1429 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2015', 'pais': 'ECUADOR', 'placa': 'CAA1429', 'chasis': 'JAANPR75HF7101355', 'certificado': 'CH-EC-0285-20', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET, CAA1429, ECUADOR'
++++ DEBUG: conductor 'WILMER EDISON HERRERA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11204' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11204
+	+++ cartaporteNumber: 'CO6922'
+	+++ cartaporte instance:'CO6922, THE GREEN GENIE SAS CACHIPAY-COLOMBIA'
++++ DEBUG: getPlacaPais 'SXV671 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'SXV671', 'chasis': '9GDFRR903CB059833', 'certificado': 'CH-CO-0753-24', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET, SXV671, COLOMBIA'
++++ DEBUG: conductor 'JHON JAIRO TAPIA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11205' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11205
+	+++ cartaporteNumber: 'CO6928'
+	+++ cartaporte instance:'CO6928, MISSIONPETROLEUM COLOMBIA SAS BOGOTA-COLOMBIA'
++++ DEBUG: getPlacaPais 'CBO0076 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2007', 'pais': 'ECUADOR', 'placa': 'CBO0076', 'chasis': 'JALFVR32P77000212', 'certificado': 'CH-EC-2272-23', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
+
+
+------------------------------------------
++++ Guardando documento 'CO11206' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11206
+	+++ cartaporteNumber: 'CO6929'
+	+++ cartaporte instance:'CO6929, None'
++++ DEBUG: getPlacaPais 'CBN-0543 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2007', 'pais': 'ECUADOR', 'placa': 'CBN', 'chasis': 'JALFVR32P77000147', 'certificado': 'CH-EC-0255-20', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, CBN, ECUADOR'
++++ DEBUG: conductor 'JAIME EDMUNDO FRIAS CUSANGUA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11207' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11207
+	+++ cartaporteNumber: 'CO6930'
+	+++ cartaporte instance:'CO6930, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'XEK086 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'XEK086', 'chasis': 'F143483', 'certificado': 'CH-CO-0153-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S30034 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TECNI TRAILER JP', 'anho': '2022', 'pais': 'COLOMBIA', 'placa': 'S30034', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, XEK086, COLOMBIA'
++++ DEBUG: conductor 'LUIS ALBERTO CABRERA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11208' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11208
+	+++ cartaporteNumber: 'CO6930'
+	+++ cartaporte instance:'CO6930, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SUK074 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '1994', 'pais': 'COLOMBIA', 'placa': 'SUK074', 'chasis': 'J637677', 'certificado': 'CH-CO-0186-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S52089 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'BULL TRAILERS SAS', 'anho': '2017', 'pais': 'COLOMBIA', 'placa': 'S52089', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SUK074, COLOMBIA'
++++ DEBUG: conductor 'LUIS CARLOS IBARRA GUAQUEZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11209' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11209
+	+++ cartaporteNumber: 'CO6930'
+	+++ cartaporte instance:'CO6930, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SKR773 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2011', 'pais': 'COLOMBIA', 'placa': 'SKR773', 'chasis': '3HSCWAPT8BN376724', 'certificado': 'CH-CO-0196-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S49819 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE S.A.', 'anho': '2017', 'pais': 'COLOMBIA', 'placa': 'S49819', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'INTERNATIONAL, SKR773, COLOMBIA'
++++ DEBUG: conductor 'JUAN GABRIEL DORADO ROSERO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11210' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11210
+	+++ cartaporteNumber: 'CO6930'
+	+++ cartaporte instance:'CO6930, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'TDM666 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'TDM666', 'chasis': '187864', 'certificado': 'CH-CO-0530-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R37661 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'R37661', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, TDM666, COLOMBIA'
++++ DEBUG: conductor 'FERNANDO OSVALDO  NARVAEZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11211' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11211
+	+++ cartaporteNumber: 'CO6930'
+	+++ cartaporte instance:'CO6930, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'TDX534 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'FREIGHTLINER', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'TDX534', 'chasis': '3AKJA6CG8CDBR3891', 'certificado': 'CH-CO-0059-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R78799 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'MULTRACK S.A.S.', 'anho': '2013', 'pais': 'COLOMBIA', 'placa': 'R78799', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'FREIGHTLINER, TDX534, COLOMBIA'
++++ DEBUG: conductor 'EUSEBIO MANUEL ROSERO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11212' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11212
+	+++ cartaporteNumber: 'CO6930'
+	+++ cartaporte instance:'CO6930, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'XEK063 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'XEK063', 'chasis': '3HSCNAPT46N237117', 'certificado': 'CH-CO-0081-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R61903 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'RODRIREMOLQUES', 'anho': '2011', 'pais': 'COLOMBIA', 'placa': 'R61903', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'INTERNATIONAL, XEK063, COLOMBIA'
++++ DEBUG: conductor 'VICTOR HUGO LUCERO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11213' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11213
+	+++ cartaporteNumber: 'CO6842'
++++ No existe cartaporte nro: 'CO6842'!
+	+++ cartaporte instance:'None'
++++ DEBUG: getPlacaPais 'SAV279 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2008', 'pais': 'COLOMBIA', 'placa': 'SAV279', 'chasis': '3HTWYAHT38N682952', 'certificado': 'CH-EC-1359-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'INTERNATIONAL, SAV279, COLOMBIA'
++++ DEBUG: conductor 'OSCAR MIGUEL BASTIDAS'
+
+
+------------------------------------------
++++ Guardando documento 'CO11214' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11214
+	+++ cartaporteNumber: 'CO6931'
+	+++ cartaporte instance:'CO6931, WEIZUR COLOMBIA S.A.S. BOGOTA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SAV823 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'SAV823', 'chasis': '3WKDD40X8PF731119', 'certificado': 'CH-CO-0197-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S29868 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2021', 'pais': 'COLOMBIA', 'placa': 'S29868', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SAV823, COLOMBIA'
++++ DEBUG: conductor 'JOSE MIGUEL GOYES'
+
+
+------------------------------------------
++++ Guardando documento 'CO11215' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11215
+	+++ cartaporteNumber: 'CO6932'
+	+++ cartaporte instance:'CO6932, INYEKTO S.A. MANIZALES-COLOMBIA'
++++ DEBUG: getPlacaPais 'WCT109 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2014', 'pais': 'COLOMBIA', 'placa': 'WCT109', 'chasis': '9F3FG8JMSEXX13021', 'certificado': 'CH-CO-0544-23', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'HINO, WCT109, COLOMBIA'
++++ DEBUG: conductor 'GERMAN EDGARDO LOPEZ BRAVO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11216' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11216
+	+++ cartaporteNumber: 'CO6935'
+	+++ cartaporte instance:'CO6935, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SNM702 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'SNM702', 'chasis': '3HSCNAPT07N388957', 'certificado': 'CH-CO-0264-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R23547 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE', 'anho': '1995', 'pais': 'COLOMBIA', 'placa': 'R23547', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11217' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11217
+	+++ cartaporteNumber: 'CO6935'
+	+++ cartaporte instance:'CO6935, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SSL043 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2015', 'pais': 'COLOMBIA', 'placa': 'SSL043', 'chasis': '722291', 'certificado': 'CH-CO-0263-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S47446 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'SEMIREMOLQUE', 'anho': '2024', 'pais': 'COLOMBIA', 'placa': 'S47446', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SSL043, COLOMBIA'
++++ DEBUG: conductor 'BREDMAN DARIO IBARRA IBARRA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11218' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11218
+	+++ cartaporteNumber: 'CO6935'
+	+++ cartaporte instance:'CO6935, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SHT987 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2020', 'pais': 'COLOMBIA', 'placa': 'SHT987', 'chasis': '725621', 'certificado': 'CH-CO-0161-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S15423 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'SEMIREMOLQUE', 'anho': '2019', 'pais': 'COLOMBIA', 'placa': 'S15423', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SHT987, COLOMBIA'
++++ DEBUG: conductor 'ALEX FERNANDO CORAL PASCUMAL'
+
+
+------------------------------------------
++++ Guardando documento 'CO11219' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11219
+	+++ cartaporteNumber: 'CO6624'
++++ No existe cartaporte nro: 'CO6624'!
+	+++ cartaporte instance:'None'
++++ DEBUG: getPlacaPais 'PBI-9990 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'HYUNDAI', 'anho': '2010', 'pais': 'ECUADOR', 'placa': 'PBI', 'chasis': 'KMFGA17PPAC125925', 'certificado': 'CH-EC-11714-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11220' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11220
+	+++ cartaporteNumber: 'CO6937'
+	+++ cartaporte instance:'CO6937, INDUSTRIAS CATO S.A.S. CALI-COLOMBIA'
++++ DEBUG: getPlacaPais 'RBA1704 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2010', 'pais': 'ECUADOR', 'placa': 'RBA1704', 'chasis': 'JALFVR32PA7000133', 'certificado': 'CH-EC-2212-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, RBA1704, ECUADOR'
++++ DEBUG: conductor 'WILSON SANTIAGO GUERRON QUIROZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11221' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11221
+	+++ cartaporteNumber: 'CO6934'
+	+++ cartaporte instance:'CO6934, None'
++++ DEBUG: getPlacaPais 'SEY423 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'SEY423', 'chasis': '9F3GH8JP8PXX10221', 'certificado': 'CH-CO-0413-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'HINO, SEY423, COLOMBIA'
++++ DEBUG: conductor 'ANDY SEBASTIAN ESTRADA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11222' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11222
+	+++ cartaporteNumber: 'CO6936'
+	+++ cartaporte instance:'CO6936, None'
++++ DEBUG: getPlacaPais 'LQO511 COLOMBIA '
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2024', 'pais': 'COLOMBIA', 'placa': 'LQO511', 'chasis': '3WKZD40X6RF208741', 'certificado': 'CH-CO-0760-24', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S29899 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2024', 'pais': 'COLOMBIA', 'placa': 'S29899', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, LQO511, COLOMBIA'
++++ DEBUG: conductor 'SEBASTIAN MONA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11223' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11223
+	+++ cartaporteNumber: 'CO6933'
+	+++ cartaporte instance:'CO6933, None'
++++ DEBUG: getPlacaPais 'CBO0076 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2007', 'pais': 'ECUADOR', 'placa': 'CBO0076', 'chasis': 'JALFVR32P77000212', 'certificado': 'CH-EC-2272-23', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
+
+
+------------------------------------------
++++ Guardando documento 'CO11224' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11224
+	+++ cartaporteNumber: 'CO6940'
+	+++ cartaporte instance:'CO6940, None'
++++ DEBUG: getPlacaPais 'CAA1213 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2014', 'pais': 'ECUADOR', 'placa': 'CAA1213', 'chasis': 'JALFTR34PE7000032', 'certificado': 'CH-EC-11385-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11225' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11225
+	+++ cartaporteNumber: 'CO6624'
++++ No existe cartaporte nro: 'CO6624'!
+	+++ cartaporte instance:'None'
++++ DEBUG: getPlacaPais 'PBI-9990 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'HYUNDAI', 'anho': '2010', 'pais': 'ECUADOR', 'placa': 'PBI', 'chasis': 'KMFGA17PPAC125925', 'certificado': 'CH-EC-11714-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11226' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11226
+	+++ cartaporteNumber: 'CO6941'
+	+++ cartaporte instance:'CO6941, HERRAGRO S.A. - HERRAMIENTAS AGRICOLAS S.A. MANIZALES-COLOMBIA'
++++ DEBUG: getPlacaPais 'PZB435 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DODGE', 'anho': '1976', 'pais': 'COLOMBIA', 'placa': 'PZB435', 'chasis': '6006211', 'certificado': 'CH-CO-0375-23', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'DODGE, PZB435, COLOMBIA'
++++ DEBUG: conductor 'LUIS ALFONSO ATIZ BENAVIDES'
+
+
+------------------------------------------
++++ Guardando documento 'CO11227' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11227
+	+++ cartaporteNumber: 'CO6974'
+	+++ cartaporte instance:'CO6974, INYEKTO S.A. MANIZALES-COLOMBIA'
++++ DEBUG: getPlacaPais 'WNL819 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2016', 'pais': 'COLOMBIA', 'placa': 'WNL819', 'chasis': '9F3GH8JPTGXX10684', 'certificado': 'CH-CO-0295-21', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'HINO, WNL819, COLOMBIA'
++++ DEBUG: conductor 'RAMIRO JAVIER CUATIN TERMAL'
+
+
+------------------------------------------
++++ Guardando documento 'CO11228' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11228
+	+++ cartaporteNumber: 'CO6938'
+	+++ cartaporte instance:'CO6938, None'
++++ DEBUG: getPlacaPais 'KRM303 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'KRM303', 'chasis': '9GDFVR345PB004586', 'certificado': 'CH-CO-0070-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
+
+
+------------------------------------------
++++ Guardando documento 'CO11229' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11229
+	+++ cartaporteNumber: 'CO6939'
+	+++ cartaporte instance:'CO6939, BYBELECTRIC S.A.S. MANIZALES-COLOMBIA'
++++ DEBUG: getPlacaPais 'PBI-9990 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'HYUNDAI', 'anho': '2010', 'pais': 'ECUADOR', 'placa': 'PBI', 'chasis': 'KMFGA17PPAC125925', 'certificado': 'CH-EC-11714-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11230' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11230
+	+++ cartaporteNumber: 'CO6942'
+	+++ cartaporte instance:'CO6942, HERRAGRO S.A. - HERRAMIENTAS AGRICOLAS S.A. MANIZALES-COLOMBIA'
++++ DEBUG: getPlacaPais 'LFX224 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET\t', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'LFX224', 'chasis': '9GDFVR340PB002356', 'certificado': 'CH-CO-0012-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET	, LFX224, COLOMBIA'
++++ DEBUG: conductor 'EMERSON JAVIER MINO SEPULVEDA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11231' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11231
+	+++ cartaporteNumber: 'CO6943'
+	+++ cartaporte instance:'CO6943, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'VMT897 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'VMT897', 'chasis': '3WKDD40X77F210778', 'certificado': 'CH-CO-0286-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R46034 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'R46034', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, VMT897, COLOMBIA'
++++ DEBUG: conductor 'LUIS ALBERTO CAICEDO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11232' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11232
+	+++ cartaporteNumber: 'CO6943'
+	+++ cartaporte instance:'CO6943, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'TDX534 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'FREIGHTLINER', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'TDX534', 'chasis': '3AKJA6CG8CDBR3891', 'certificado': 'CH-CO-0059-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R78799 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'MULTRACK S.A.S.', 'anho': '2013', 'pais': 'COLOMBIA', 'placa': 'R78799', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11233' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11233
+	+++ cartaporteNumber: 'CO6943'
+	+++ cartaporte instance:'CO6943, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'UZN288 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2008', 'pais': 'COLOMBIA', 'placa': 'UZN288', 'chasis': '211146', 'certificado': 'CH-CO-0260-24', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R37654 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INCA FRUEHAUF ', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'R37654', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, UZN288, COLOMBIA'
++++ DEBUG: conductor 'JOSE LUIS HERNANDEZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11234' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11234
+	+++ cartaporteNumber: 'CO6943'
+	+++ cartaporte instance:'CO6943, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SJP856 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'SJP856', 'chasis': '135294', 'certificado': 'CH-CO-0273-24', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R38417 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE S.A.', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'R38417', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SJP856, COLOMBIA'
++++ DEBUG: conductor 'HOMERO GUERRERO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11235' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11235
+	+++ cartaporteNumber: 'CO6943'
+	+++ cartaporte instance:'CO6943, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SXV243 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'SXV243', 'chasis': '701998', 'certificado': 'CH-CO-0201-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R64966 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'RODRIREMOLQUES', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'R64966', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SXV243, COLOMBIA'
++++ DEBUG: conductor 'MANUEL SEBASTIAN MORAN ESTRADA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11236' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11236
+	+++ cartaporteNumber: 'CO6943'
+	+++ cartaporte instance:'CO6943, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'LQO469 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'SHACMAN', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'LQO469', 'chasis': 'LZGJL5X44PX000577', 'certificado': 'CH-CO-0189-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R47622 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'RODRIREMOLQUES', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'R47622', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11237' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11237
+	+++ cartaporteNumber: 'CO6943'
+	+++ cartaporte instance:'CO6943, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SNZ865 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2017', 'pais': 'COLOMBIA', 'placa': 'SNZ865', 'chasis': '723640', 'certificado': 'CH-CO-0249-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S67422 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2021', 'pais': 'COLOMBIA', 'placa': 'S67422', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SNZ865, COLOMBIA'
++++ DEBUG: conductor 'ANGEL OSWALDO RECALDE GUERRERO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11238' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11238
+	+++ cartaporteNumber: 'CO6852'
++++ No existe cartaporte nro: 'CO6852'!
+	+++ cartaporte instance:'None'
++++ DEBUG: getPlacaPais 'PBI-9990 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'HYUNDAI', 'anho': '2010', 'pais': 'ECUADOR', 'placa': 'PBI', 'chasis': 'KMFGA17PPAC125925', 'certificado': 'CH-EC-11714-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11239' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11239
+	+++ cartaporteNumber: 'CO6852'
++++ No existe cartaporte nro: 'CO6852'!
+	+++ cartaporte instance:'None'
++++ DEBUG: getPlacaPais 'PBI-9990 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'HYUNDAI', 'anho': '2010', 'pais': 'ECUADOR', 'placa': 'PBI', 'chasis': 'KMFGA17PPAC125925', 'certificado': 'CH-EC-11714-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11240' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11240
+	+++ cartaporteNumber: 'CO6969'
+	+++ cartaporte instance:'CO6969, INYEKTO S.A. MANIZALES-COLOMBIA'
++++ DEBUG: getPlacaPais 'SBN509 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2011', 'pais': 'COLOMBIA', 'placa': 'SBN509', 'chasis': '9F3FG8JMSBXX12426', 'certificado': 'CH-CO-0267-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'HINO, SBN509, COLOMBIA'
++++ DEBUG: conductor 'DIEGO ALEXANDER FUELAGAN PAGUAY'
+
+
+------------------------------------------
++++ Guardando documento 'CO11241' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11241
+	+++ cartaporteNumber: 'CO6944'
+	+++ cartaporte instance:'CO6944, SUDAMIN SAS SOGAMOSO-COLOMBIA'
++++ DEBUG: getPlacaPais 'XEJ-158 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '1993', 'pais': 'COLOMBIA', 'placa': 'XEJ', 'chasis': 'S612626', 'certificado': 'CH-CO-0001-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R-23106 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'REM SAMDEL', 'anho': '1995', 'pais': 'COLOMBIA', 'placa': '23106', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, XEJ, COLOMBIA'
++++ DEBUG: conductor 'LUIS EDUARDO OLIVA REVELO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11242' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11242
+	+++ cartaporteNumber: 'CO6948'
+	+++ cartaporte instance:'CO6948, None'
++++ DEBUG: getPlacaPais 'SEY284  COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2016', 'pais': 'COLOMBIA', 'placa': 'SEY284', 'chasis': '9F3GH8JPTGXX10707', 'certificado': 'CH-CO-0328-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'xxxxxxxx'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'xxxxxxxx', 'anho': 'xxxx', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'HINO, SEY284, COLOMBIA'
++++ DEBUG: conductor 'SEGUNDO LUIS ESTRADA ORTEGA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11243' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11243
+	+++ cartaporteNumber: 'CO6945'
+	+++ cartaporte instance:'CO6945, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SDO338 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '1998', 'pais': 'COLOMBIA', 'placa': 'SDO338', 'chasis': '9GD1DBJG8WB983502', 'certificado': 'CH-CO-0213-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R37676 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'R37676', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, SDO338, COLOMBIA'
++++ DEBUG: conductor 'ERNESTO ARTEMIO VILLOTA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11244' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11244
+	+++ cartaporteNumber: 'CO6945'
+	+++ cartaporte instance:'CO6945, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'VCM148 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'VCM148', 'chasis': '209920', 'certificado': 'CH-CO-0318-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R36338 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE S.A.', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'R36338', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, VCM148, COLOMBIA'
++++ DEBUG: conductor 'JESUS FRANCISCO URBANO OVIEDO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11245' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11245
+	+++ cartaporteNumber: 'CO6946'
+	+++ cartaporte instance:'CO6946, COHA S.A.S. BOGOTA-COLOMBIA'
++++ DEBUG: getPlacaPais 'PBI-9990 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'HYUNDAI', 'anho': '2010', 'pais': 'ECUADOR', 'placa': 'PBI', 'chasis': 'KMFGA17PPAC125925', 'certificado': 'CH-EC-11714-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11246' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11246
+	+++ cartaporteNumber: 'CO6947'
+	+++ cartaporte instance:'CO6947, None'
++++ DEBUG: getPlacaPais 'PAC2230 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2015', 'pais': 'ECUADOR', 'placa': 'PAC2230', 'chasis': 'JAANPR75HF7101430', 'certificado': 'CH-CO-0002-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, PAC2230, ECUADOR'
++++ DEBUG: conductor 'KLEVER ALEXANDER LOPEZ PASTAZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11247' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11247
+	+++ cartaporteNumber: 'CO6950'
+	+++ cartaporte instance:'CO6950, None'
++++ DEBUG: getPlacaPais 'CAA1213 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2014', 'pais': 'ECUADOR', 'placa': 'CAA1213', 'chasis': 'JALFTR34PE7000032', 'certificado': 'CH-EC-11385-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11248' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11248
+	+++ cartaporteNumber: 'CO6949'
+	+++ cartaporte instance:'CO6949, None'
++++ DEBUG: getPlacaPais 'CBO0076 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2007', 'pais': 'ECUADOR', 'placa': 'CBO0076', 'chasis': 'JALFVR32P77000212', 'certificado': 'CH-EC-2272-23', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
+
+
+------------------------------------------
++++ Guardando documento 'CO11249' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11249
+	+++ cartaporteNumber: 'CO6954'
+	+++ cartaporte instance:'CO6954, None'
++++ DEBUG: getPlacaPais 'PBI-9990 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'HYUNDAI', 'anho': '2010', 'pais': 'ECUADOR', 'placa': 'PBI', 'chasis': 'KMFGA17PPAC125925', 'certificado': 'CH-EC-11714-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11250' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11250
+	+++ cartaporteNumber: 'CO6952'
+	+++ cartaporte instance:'CO6952, WEG COLOMBIA S.A.S. COTA-COLOMBIA'
++++ DEBUG: getPlacaPais 'WFQ236 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2017', 'pais': 'COLOMBIA', 'placa': 'WFQ236', 'chasis': '9GDFRR906HB035338', 'certificado': 'CH-CO-0071-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET, WFQ236, COLOMBIA'
++++ DEBUG: conductor 'TITO ALEXANDER ZAMBRANO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11251' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11251
+	+++ cartaporteNumber: 'CO7342'
+	+++ cartaporte instance:'CO7342, None'
++++ DEBUG: getPlacaPais 'CBN-0543 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2007', 'pais': 'ECUADOR', 'placa': 'CBN', 'chasis': 'JALFVR32P77000147', 'certificado': 'CH-EC-0255-20', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11252' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11252
+	+++ cartaporteNumber: 'CO6953'
+	+++ cartaporte instance:'CO6953, None'
++++ DEBUG: getPlacaPais 'SWM122 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'SWM122', 'chasis': '182750', 'certificado': 'CH-CO-0184-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S30023 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TECNI TRAILER JP', 'anho': '2021', 'pais': 'COLOMBIA', 'placa': 'S30023', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11253' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11253
+	+++ cartaporteNumber: 'CO6953'
+	+++ cartaporte instance:'CO6953, None'
++++ DEBUG: getPlacaPais 'VMT402 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '1999', 'pais': 'COLOMBIA', 'placa': 'VMT402', 'chasis': '9GD1DBJF8XB982805', 'certificado': 'CH-CO-0158-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R34735 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2005', 'pais': 'COLOMBIA', 'placa': 'R34735', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11254' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11254
+	+++ cartaporteNumber: 'CO6955'
+	+++ cartaporte instance:'CO6955, BUJES Y HERRAJES IBH S.A.S MEDELLIN-COLOMBIA'
++++ DEBUG: getPlacaPais 'TMX683 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'TMX683', 'chasis': 'JALFTR32K77000047', 'certificado': 'CH-CO-0283-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET, TMX683, COLOMBIA'
++++ DEBUG: conductor 'CRISTIAN JAVIER LIMA MONTENEGRO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11255' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11255
+	+++ cartaporteNumber: 'CO6951'
+	+++ cartaporte instance:'CO6951, ASERINDUSTRIA SAS TULUA-COLOMBIA'
++++ DEBUG: getPlacaPais 'AGE-0936 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2009', 'pais': 'ECUADOR', 'placa': 'AGE', 'chasis': 'JALFVR23P97000069', 'certificado': 'CH-EC-11281-20', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': None, 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, AGE, ECUADOR'
++++ DEBUG: conductor 'BRAYAN SANCHEZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11256' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11256
+	+++ cartaporteNumber: 'CO6958'
+	+++ cartaporte instance:'CO6958, OXICORTES SAS MEDELLIN-COLOMBIA'
++++ DEBUG: getPlacaPais 'LQO 569 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'LQO569', 'chasis': '9GDFVR348PB502961', 'certificado': 'CH-CO-0097-23', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET, LQO569, COLOMBIA'
++++ DEBUG: conductor 'CARLOS ANDRES CABRERA BAEZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11257' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11257
+	+++ cartaporteNumber: 'CO6959'
+	+++ cartaporte instance:'CO6959, MAPEI COLOMBIA S.A.S. LA ESTRELLA-COLOMBIA'
++++ DEBUG: getPlacaPais 'UFP283 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '1995', 'pais': 'COLOMBIA', 'placa': 'UFP283', 'chasis': 'CH95953906', 'certificado': 'CH-CO-0013-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R39881 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'STRIKE', 'anho': '1987', 'pais': 'COLOMBIA', 'placa': 'R39881', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, UFP283, COLOMBIA'
++++ DEBUG: conductor 'JULIO CESAR ESCOBAR GUERRERO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11258' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11258
+	+++ cartaporteNumber: 'CO6961'
+	+++ cartaporte instance:'CO6961, None'
++++ DEBUG: getPlacaPais 'SET 293 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'SET293', 'chasis': '9GDNPR7146B005071', 'certificado': 'CH-CO-0134-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET, SET293, COLOMBIA'
++++ DEBUG: conductor 'JHOAN FAVIAN PINTA PORTILLA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11259' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11259
+	+++ cartaporteNumber: 'CO6957'
+	+++ cartaporte instance:'CO6957, None'
++++ DEBUG: getPlacaPais 'WHM245 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'WHM245', 'chasis': '3HSCNAPT47N400866', 'certificado': 'CH-CO-0100-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R49695 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'R49695', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11260' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11260
+	+++ cartaporteNumber: 'CO6957'
+	+++ cartaporte instance:'CO6957, None'
++++ DEBUG: getPlacaPais 'SUK074 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '1994', 'pais': 'COLOMBIA', 'placa': 'SUK074', 'chasis': 'J637677', 'certificado': 'CH-CO-0186-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S52089 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'BULL TRAILERS SAS', 'anho': '2017', 'pais': 'COLOMBIA', 'placa': 'S52089', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11261' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11261
+	+++ cartaporteNumber: 'CO6960'
+	+++ cartaporte instance:'CO6960, None'
++++ DEBUG: getPlacaPais 'ESQ683 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2020', 'pais': 'COLOMBIA', 'placa': 'ESQ683', 'chasis': '3WKDD40XXLF725493', 'certificado': 'CH-CO-0003-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S57069 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2018', 'pais': 'COLOMBIA', 'placa': 'S57069', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11262' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11262
+	+++ cartaporteNumber: 'CO6960'
+	+++ cartaporte instance:'CO6960, None'
++++ DEBUG: getPlacaPais 'SJQ003 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'SJQ003', 'chasis': '135017', 'certificado': 'CH-CO-0002-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R35382 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INCA FRUEHAUF', 'anho': '2005', 'pais': 'COLOMBIA', 'placa': 'R35382', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SJQ003, COLOMBIA'
++++ DEBUG: conductor 'PAREDES ARTURO LEONIDAS'
+
+
+------------------------------------------
++++ Guardando documento 'CO11263' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11263
+	+++ cartaporteNumber: 'CO6960'
+	+++ cartaporte instance:'CO6960, None'
++++ DEBUG: getPlacaPais 'WLB921 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2011', 'pais': 'COLOMBIA', 'placa': 'WLB921', 'chasis': '281518', 'certificado': 'CH-CO-0143-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S29902 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TECNI TRAILER JP', 'anho': '2024', 'pais': 'COLOMBIA', 'placa': 'S29902', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, WLB921, COLOMBIA'
++++ DEBUG: conductor 'SEGUNDO ALBERTO ROSERO ROSERO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11264' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11264
+	+++ cartaporteNumber: 'CO6960'
+	+++ cartaporte instance:'CO6960, None'
++++ DEBUG: getPlacaPais 'XLE848 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '1994', 'pais': 'COLOMBIA', 'placa': 'XLE848', 'chasis': 'CH94935611', 'certificado': 'CH-EC-1092-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R33099 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CAPRI', 'anho': '2005', 'pais': 'COLOMBIA', 'placa': 'R33099', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, XLE848, COLOMBIA'
++++ DEBUG: conductor 'WASHINGTON REMIGIO HERNANDEZ ALVAREZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11265' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11265
+	+++ cartaporteNumber: 'CO6960'
+	+++ cartaporte instance:'CO6960, None'
++++ DEBUG: getPlacaPais 'SJP568 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'SJP568', 'chasis': 'F136271', 'certificado': 'CH-CO-0167-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R45021 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'R45021', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SJP568, COLOMBIA'
++++ DEBUG: conductor 'JOSE EFRAIN MORILLO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11266' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11266
+	+++ cartaporteNumber: 'CO6960'
+	+++ cartaporte instance:'CO6960, None'
++++ DEBUG: getPlacaPais 'SNM702 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'SNM702', 'chasis': '3HSCNAPT07N388957', 'certificado': 'CH-CO-0264-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R23547 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE', 'anho': '1995', 'pais': 'COLOMBIA', 'placa': 'R23547', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11267' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11267
+	+++ cartaporteNumber: 'CO6960'
+	+++ cartaporte instance:'CO6960, None'
++++ DEBUG: getPlacaPais 'VMB285 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '1998', 'pais': 'COLOMBIA', 'placa': 'VMB285', 'chasis': '9GD1DBJG8WB983209', 'certificado': 'CH-CO-0235-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R38409 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'R38409', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, VMB285, COLOMBIA'
++++ DEBUG: conductor 'SILVIO EFRAIN TOBAR'
+
+
+------------------------------------------
++++ Guardando documento 'CO11268' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11268
+	+++ cartaporteNumber: 'CO6960'
+	+++ cartaporte instance:'CO6960, None'
++++ DEBUG: getPlacaPais 'SNT198 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2013', 'pais': 'COLOMBIA', 'placa': 'SNT198', 'chasis': '715645', 'certificado': 'CH-CO-0051-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R53536 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'RANDON', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'R53536', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SNT198, COLOMBIA'
++++ DEBUG: conductor 'SILVIO LEVI BASTIDAS PASQUEL'
+
+
+------------------------------------------
++++ Guardando documento 'CO11269' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11269
+	+++ cartaporteNumber: 'CO6960'
+	+++ cartaporte instance:'CO6960, None'
++++ DEBUG: getPlacaPais 'SLE496 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'SLE496', 'chasis': '173580', 'certificado': 'CH-CO-0135-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S29866 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TECNI TRAILER JP', 'anho': '2022', 'pais': 'COLOMBIA', 'placa': 'S29866', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SLE496, COLOMBIA'
++++ DEBUG: conductor 'HENRY ANTONIO NARVAEZ BURGOS'
+
+
+------------------------------------------
++++ Guardando documento 'CO11270' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11270
+	+++ cartaporteNumber: 'CO6960'
+	+++ cartaporte instance:'CO6960, None'
++++ DEBUG: getPlacaPais 'SCN073 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2005', 'pais': 'COLOMBIA', 'placa': 'SCN073', 'chasis': '3HSNGAPTX5N006465', 'certificado': 'CH-CO-0121-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S28448 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TECNI TRAILER JP', 'anho': '2018', 'pais': 'COLOMBIA', 'placa': 'S28448', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'INTERNATIONAL, SCN073, COLOMBIA'
++++ DEBUG: conductor 'LUIS ENRIQUE MEJIA MORA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11271' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11271
+	+++ cartaporteNumber: 'CO6956'
+	+++ cartaporte instance:'CO6956, INYEKTO S.A. MANIZALES-COLOMBIA'
++++ DEBUG: getPlacaPais 'ADF0689 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'ISUZU', 'anho': '1998', 'pais': 'ECUADOR', 'placa': 'ADF0689', 'chasis': 'JALFTR32MW7000061', 'certificado': 'CH-EC-1741-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'ISUZU, ADF0689, ECUADOR'
++++ DEBUG: conductor 'WILFRIDO DAVID SALAZAR POZO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11272' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11272
+	+++ cartaporteNumber: 'CO6962'
+	+++ cartaporte instance:'CO6962, INYEKTO S.A. MANIZALES-COLOMBIA'
++++ DEBUG: getPlacaPais 'TDL863 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'TDL863', 'chasis': '9F3FG8JMSCXX12499', 'certificado': 'CH-CO-0462-21', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'HINO, TDL863, COLOMBIA'
++++ DEBUG: conductor 'WILMER FERNANDO BASTIDAS GUEVARA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11273' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11273
+	+++ cartaporteNumber: 'CO6963'
+	+++ cartaporte instance:'CO6963, None'
++++ DEBUG: getPlacaPais 'CBN-0543 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2007', 'pais': 'ECUADOR', 'placa': 'CBN', 'chasis': 'JALFVR32P77000147', 'certificado': 'CH-EC-0255-20', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11274' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11274
+	+++ cartaporteNumber: 'CO6832'
++++ No existe cartaporte nro: 'CO6832'!
+	+++ cartaporte instance:'None'
++++ DEBUG: getPlacaPais 'PBI-9990 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'HYUNDAI', 'anho': '2010', 'pais': 'ECUADOR', 'placa': 'PBI', 'chasis': 'KMFGA17PPAC125925', 'certificado': 'CH-EC-11714-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11275' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11275
+	+++ cartaporteNumber: 'CO6964'
+	+++ cartaporte instance:'CO6964, None'
++++ DEBUG: getPlacaPais 'PBI-9990 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'HYUNDAI', 'anho': '2010', 'pais': 'ECUADOR', 'placa': 'PBI', 'chasis': 'KMFGA17PPAC125925', 'certificado': 'CH-EC-11714-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11276' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11276
+	+++ cartaporteNumber: 'CO6966'
+	+++ cartaporte instance:'CO6966, ASERINDUSTRIA SAS TULUA-COLOMBIA'
++++ DEBUG: getPlacaPais 'CAA2712 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'VOLKSWAGEN', 'anho': '2022', 'pais': 'ECUADOR', 'placa': 'CAA2712', 'chasis': '953658243NR039299', 'certificado': 'CH-EC-1794-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'VOLKSWAGEN, CAA2712, ECUADOR'
++++ DEBUG: conductor 'CARLOS REVELO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11277' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11277
+	+++ cartaporteNumber: 'CO6967'
+	+++ cartaporte instance:'CO6967, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'UZN227 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'UZN227', 'chasis': '3HSCNAPT47N478290', 'certificado': 'CH-CO-0215-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R43294 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INCA FRUEHAUF', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'R43294', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'INTERNATIONAL, UZN227, COLOMBIA'
++++ DEBUG: conductor 'GERARDO CARLOSAMA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11278' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11278
+	+++ cartaporteNumber: 'CO6967'
+	+++ cartaporte instance:'CO6967, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SDL469 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '1995', 'pais': 'COLOMBIA', 'placa': 'SDL469', 'chasis': 'S648355', 'certificado': 'CH-CO-0080-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R61098 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'BAYONA TRAILER', 'anho': '2010', 'pais': 'COLOMBIA', 'placa': 'R61098', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SDL469, COLOMBIA'
++++ DEBUG: conductor 'CHILANGUAD JORGE ERASMO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11279' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11279
+	+++ cartaporteNumber: 'CO6967'
+	+++ cartaporte instance:'CO6967, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'THR035 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2013', 'pais': 'COLOMBIA', 'placa': 'THR035', 'chasis': '711875', 'certificado': 'CH-CO-0036-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S05017 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2020', 'pais': 'COLOMBIA', 'placa': 'S05017', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, THR035, COLOMBIA'
++++ DEBUG: conductor 'FREDY ADALBERTO ROSERO SARASTY'
+
+
+------------------------------------------
++++ Guardando documento 'CO11280' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11280
+	+++ cartaporteNumber: 'CO6965'
+	+++ cartaporte instance:'CO6965, None'
++++ DEBUG: getPlacaPais 'CAE0263 ECUADOR '
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2002', 'pais': 'ECUADOR', 'placa': 'CAE0263', 'chasis': 'JALFTR32M27000069', 'certificado': 'CH-EC-0317-20', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'xxxxxxxxxxxxxxxxxxx'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXXXXXXXXXXXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'xxxxxxxxxxxxxx', 'anho': 'xxxx', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11281' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11281
+	+++ cartaporteNumber: 'CO6968'
+	+++ cartaporte instance:'CO6968, OXICORTES SAS MEDELLIN-COLOMBIA'
++++ DEBUG: getPlacaPais 'LQO 569 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'LQO569', 'chasis': '9GDFVR348PB502961', 'certificado': 'CH-CO-0097-23', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
+
+
+------------------------------------------
++++ Guardando documento 'CO11282' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11282
+	+++ cartaporteNumber: 'CO6972'
+	+++ cartaporte instance:'CO6972, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SJP856 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'SJP856', 'chasis': '135294', 'certificado': 'CH-CO-0273-24', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R38417 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE S.A.', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'R38417', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11283' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11283
+	+++ cartaporteNumber: 'CO6972'
+	+++ cartaporte instance:'CO6972, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SOW266 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'SOW266', 'chasis': '3HSCNAPT07N407748', 'certificado': 'CH-CO-0019-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R61342 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2011', 'pais': 'COLOMBIA', 'placa': 'R61342', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'INTERNATIONAL, SOW266, COLOMBIA'
++++ DEBUG: conductor 'EDGAR ALBEIRO PEREZ TOBAR'
+
+
+------------------------------------------
++++ Guardando documento 'CO11284' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11284
+	+++ cartaporteNumber: 'CO6972'
+	+++ cartaporte instance:'CO6972, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SOW170 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH\t', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'SOW170', 'chasis': '130467', 'certificado': 'CH-CO-0111-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S29050 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TECNI TRAILER JP', 'anho': '2022', 'pais': 'COLOMBIA', 'placa': 'S29050', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH	, SOW170, COLOMBIA'
++++ DEBUG: conductor 'OMAR JESUS HERRERA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11285' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11285
+	+++ cartaporteNumber: 'CO6970'
+	+++ cartaporte instance:'CO6970, None'
++++ DEBUG: getPlacaPais 'PBI-9990 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'HYUNDAI', 'anho': '2010', 'pais': 'ECUADOR', 'placa': 'PBI', 'chasis': 'KMFGA17PPAC125925', 'certificado': 'CH-EC-11714-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11286' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11286
+	+++ cartaporteNumber: 'CO6971'
+	+++ cartaporte instance:'CO6971, CFC CAFARCOL SAS COTA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SEY329 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2017', 'pais': 'COLOMBIA', 'placa': 'SEY329', 'chasis': '9F3FC9JJTHXX10661', 'certificado': 'CH-CO-0025-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'HINO, SEY329, COLOMBIA'
++++ DEBUG: conductor 'DIEGO ARMANDO CORAL CEBALLOS'
+
+
+------------------------------------------
++++ Guardando documento 'CO11288' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11288
+	+++ cartaporteNumber: 'CO6973'
+	+++ cartaporte instance:'CO6973, None'
++++ DEBUG: getPlacaPais 'GTY863 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2020', 'pais': 'COLOMBIA', 'placa': 'GTY863', 'chasis': '9F3GH8JPTLXX11239', 'certificado': 'CH-EC-0660-21', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'HINO, GTY863, COLOMBIA'
++++ DEBUG: conductor 'JAVIER ORLANDO MIRAMA PINCHAO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11289' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11289
+	+++ cartaporteNumber: 'CO6973'
+	+++ cartaporte instance:'CO6973, None'
++++ DEBUG: getPlacaPais 'SNX794 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2015', 'pais': 'COLOMBIA', 'placa': 'SNX794', 'chasis': '9F3FG8JMSFXX13380', 'certificado': 'CH-EC-0912-21', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'HINO, SNX794, COLOMBIA'
++++ DEBUG: conductor 'LUIS MIGUEL NARVAEZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11290' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11290
+	+++ cartaporteNumber: 'CO6973'
+	+++ cartaporte instance:'CO6973, None'
++++ DEBUG: getPlacaPais 'SXF118 COLOMBIA '
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2014', 'pais': 'COLOMBIA', 'placa': 'SXF118', 'chasis': '9F3FG8JMSEXX13111', 'certificado': 'CH-CO-0571-21', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'HINO, SXF118, COLOMBIA'
++++ DEBUG: conductor 'OSCAR ALEXIS RIVERA CUASPUD'
+
+
+------------------------------------------
++++ Guardando documento 'CO11291' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11291
+	+++ cartaporteNumber: 'CO6973'
+	+++ cartaporte instance:'CO6973, None'
++++ DEBUG: getPlacaPais 'USD623 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2009', 'pais': 'COLOMBIA', 'placa': 'USD623', 'chasis': '9GDFTR3259B000450', 'certificado': 'CH-CO-0217-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET, USD623, COLOMBIA'
++++ DEBUG: conductor 'ROBERTO ALEXANDER CUARAN'
+
+
+------------------------------------------
++++ Guardando documento 'CO11292' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11292
+	+++ cartaporteNumber: 'CO6975'
+	+++ cartaporte instance:'CO6975, None'
++++ DEBUG: getPlacaPais 'HAJ0079 ECUADOR '
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2003', 'pais': 'ECUADOR', 'placa': 'HAJ0079', 'chasis': '9GDNPR71L3B982309', 'certificado': 'CH-EC-0636-21', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET, HAJ0079, ECUADOR'
++++ DEBUG: conductor 'CRISTIAN DARIO ROMO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11293' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11293
+	+++ cartaporteNumber: 'CO6978'
+	+++ cartaporte instance:'CO6978, DANFOSS SAS BOGOTA-COLOMBIA'
++++ DEBUG: getPlacaPais 'AGE-0936 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2009', 'pais': 'ECUADOR', 'placa': 'AGE', 'chasis': 'JALFVR23P97000069', 'certificado': 'CH-EC-11281-20', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': None, 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11294' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11294
+	+++ cartaporteNumber: 'CO6976'
+	+++ cartaporte instance:'CO6976, None'
++++ DEBUG: getPlacaPais 'XEK086 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'XEK086', 'chasis': 'F143483', 'certificado': 'CH-CO-0153-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S30034 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TECNI TRAILER JP', 'anho': '2022', 'pais': 'COLOMBIA', 'placa': 'S30034', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11295' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11295
+	+++ cartaporteNumber: 'CO6977'
+	+++ cartaporte instance:'CO6977, None'
++++ DEBUG: getPlacaPais 'CBO0076 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2007', 'pais': 'ECUADOR', 'placa': 'CBO0076', 'chasis': 'JALFVR32P77000212', 'certificado': 'CH-EC-2272-23', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
+
+
+------------------------------------------
++++ Guardando documento 'CO11296' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11296
+	+++ cartaporteNumber: 'CO6980'
+	+++ cartaporte instance:'CO6980, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'TDM511 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2004', 'pais': 'COLOMBIA', 'placa': 'TDM511', 'chasis': '60738', 'certificado': 'CH-CO-0007-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R31643 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE S.A.\t', 'anho': '2003', 'pais': 'COLOMBIA', 'placa': 'R31643', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11297' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11297
+	+++ cartaporteNumber: 'CO6980'
+	+++ cartaporte instance:'CO6980, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'TDM616 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'TDM616', 'chasis': '3WK0D40X37F173579', 'certificado': 'CH-CO-0089-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R81021 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'R81021', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, TDM616, COLOMBIA'
++++ DEBUG: conductor 'ROBERTO ORTIZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11298' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11298
+	+++ cartaporteNumber: 'CO6980'
+	+++ cartaporte instance:'CO6980, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'WSJ919 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2008', 'pais': 'COLOMBIA', 'placa': 'WSJ919', 'chasis': '215544', 'certificado': 'CH-CO-0205-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R33806 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TRACTEC', 'anho': '2004', 'pais': 'COLOMBIA', 'placa': 'R33806', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, WSJ919, COLOMBIA'
++++ DEBUG: conductor 'DIEGO LIBARDO ORTIZ DIAZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11299' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11299
+	+++ cartaporteNumber: 'CO6982'
+	+++ cartaporte instance:'CO6982, None'
++++ DEBUG: getPlacaPais 'PBI-9990 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'HYUNDAI', 'anho': '2010', 'pais': 'ECUADOR', 'placa': 'PBI', 'chasis': 'KMFGA17PPAC125925', 'certificado': 'CH-EC-11714-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11300' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11300
+	+++ cartaporteNumber: 'CO6983'
+	+++ cartaporte instance:'CO6983, INYEKTO S.A. MANIZALES-COLOMBIA'
++++ DEBUG: getPlacaPais 'WHN320 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2008', 'pais': 'COLOMBIA', 'placa': 'WHN320', 'chasis': '9GDFTR32X8B000183', 'certificado': 'CH-CO-0271-24', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET, WHN320, COLOMBIA'
++++ DEBUG: conductor 'DARWIN ANDERSON CANACUAN CUARAN'
+
+
+------------------------------------------
++++ Guardando documento 'CO11301' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11301
+	+++ cartaporteNumber: 'CO6986'
+	+++ cartaporte instance:'CO6986, None'
++++ DEBUG: getPlacaPais 'ZAP 727 COLOMBIA'
+SERVER: Error validando certificado de <VEHICULO> en texto: 'CH-CO-00-98'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2008', 'pais': 'COLOMBIA', 'placa': 'ZAP727', 'chasis': '220702', 'certificado': '||LOW', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R27145 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INCA FRUEHAUF', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'R27145', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, ZAP727, COLOMBIA'
++++ DEBUG: conductor 'IGNACIO RODRIGO IBARRA CHAVEZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11302' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11302
+	+++ cartaporteNumber: 'CO6987'
+	+++ cartaporte instance:'CO6987, OXICORTES SAS MEDELLIN-COLOMBIA'
++++ DEBUG: getPlacaPais 'LQO 569 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'LQO569', 'chasis': '9GDFVR348PB502961', 'certificado': 'CH-CO-0097-23', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
+
+
+------------------------------------------
++++ Guardando documento 'CO11303' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11303
+	+++ cartaporteNumber: 'CO6985'
+	+++ cartaporte instance:'CO6985, None'
++++ DEBUG: getPlacaPais 'SAK644 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2008', 'pais': 'COLOMBIA', 'placa': 'SAK644', 'chasis': '232172', 'certificado': 'CH-CO-0120-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R40588 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INCA FRUEHAUF', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'R40588', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SAK644, COLOMBIA'
++++ DEBUG: conductor 'OSCAR ANDRES VILLOTA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11304' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11304
+	+++ cartaporteNumber: 'CO6985'
+	+++ cartaporte instance:'CO6985, None'
++++ DEBUG: getPlacaPais 'SOW105 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2005', 'pais': 'COLOMBIA', 'placa': 'SOW105', 'chasis': '095210', 'certificado': 'CH-CO-0040-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R63927 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INCA ', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'R63927', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SOW105, COLOMBIA'
++++ DEBUG: conductor 'GABRIEL JESUS'
+
+
+------------------------------------------
++++ Guardando documento 'CO11305' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11305
+	+++ cartaporteNumber: 'CO6985'
+	+++ cartaporte instance:'CO6985, None'
++++ DEBUG: getPlacaPais 'SBN 307 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2008', 'pais': 'COLOMBIA', 'placa': 'SBN307', 'chasis': '215669', 'certificado': 'CH-CO-0131-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R49683  COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'R49683', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SBN307, COLOMBIA'
++++ DEBUG: conductor 'HUGO GERMAN CASANOVA SARASTY'
+
+
+------------------------------------------
++++ Guardando documento 'CO11306' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11306
+	+++ cartaporteNumber: 'CO6985'
+	+++ cartaporte instance:'CO6985, None'
++++ DEBUG: getPlacaPais 'XJA 415 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'XJA415', 'chasis': '197745', 'certificado': 'CH-CO-0586-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R27953 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE SA', 'anho': '2005', 'pais': 'COLOMBIA', 'placa': 'R27953', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, XJA415, COLOMBIA'
++++ DEBUG: conductor 'VICTOR ALFONSO HERNANDEZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11307' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11307
+	+++ cartaporteNumber: 'CO6985'
+	+++ cartaporte instance:'CO6985, None'
++++ DEBUG: getPlacaPais 'SPV967 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2011', 'pais': 'COLOMBIA', 'placa': 'SPV967', 'chasis': '291036', 'certificado': 'CH-CO-0088-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S29035 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2021', 'pais': 'COLOMBIA', 'placa': 'S29035', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SPV967, COLOMBIA'
++++ DEBUG: conductor 'JORGE ALBERTO IMBACUAN'
+
+
+------------------------------------------
++++ Guardando documento 'CO11308' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11308
+	+++ cartaporteNumber: 'CO6985'
+	+++ cartaporte instance:'CO6985, None'
++++ DEBUG: getPlacaPais 'TTL013 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'FORD', 'anho': '2004', 'pais': 'COLOMBIA', 'placa': 'TTL013', 'chasis': '8YTYTHZT948A38840', 'certificado': 'CH-CO-0060-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R08571 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CARREMOL', 'anho': '1987', 'pais': 'COLOMBIA', 'placa': 'R08571', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'FORD, TTL013, COLOMBIA'
++++ DEBUG: conductor 'CARLOS ALFREDO BENAVIDES VELASCO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11309' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11309
+	+++ cartaporteNumber: 'CO6985'
+	+++ cartaporte instance:'CO6985, None'
++++ DEBUG: getPlacaPais 'TDM727 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2011', 'pais': 'COLOMBIA', 'placa': 'TDM727', 'chasis': '284523', 'certificado': 'CH-CO-0579-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R44309 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2010', 'pais': 'COLOMBIA', 'placa': 'R44309', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, TDM727, COLOMBIA'
++++ DEBUG: conductor 'MEDARDO FERNANDO SANCHEZ GUERRERO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11310' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11310
+	+++ cartaporteNumber: 'CO6985'
+	+++ cartaporte instance:'CO6985, None'
++++ DEBUG: getPlacaPais 'STO453 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2013', 'pais': 'COLOMBIA', 'placa': 'STO453', 'chasis': '706203', 'certificado': 'CH-CO-0288-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S30813 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2021', 'pais': 'COLOMBIA', 'placa': 'S30813', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, STO453, COLOMBIA'
++++ DEBUG: conductor 'WILLIAM CORDOBA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11311' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11311
+	+++ cartaporteNumber: 'CO6985'
+	+++ cartaporte instance:'CO6985, None'
++++ DEBUG: getPlacaPais 'SOA-049 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '1993', 'pais': 'COLOMBIA', 'placa': 'SOA', 'chasis': 'CHD23507', 'certificado': 'CH-CO-0325-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R12134 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '1988', 'pais': 'COLOMBIA', 'placa': 'R12134', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, SOA, COLOMBIA'
++++ DEBUG: conductor 'JAIRO RAMIRO VILLOTA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11312' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11312
+	+++ cartaporteNumber: 'CO6985'
+	+++ cartaporte instance:'CO6985, None'
++++ DEBUG: getPlacaPais 'SAK559 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2008', 'pais': 'COLOMBIA', 'placa': 'SAK559', 'chasis': '215708', 'certificado': 'CH-CO-0222-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S42231 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2021', 'pais': 'COLOMBIA', 'placa': 'S42231', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SAK559, COLOMBIA'
++++ DEBUG: conductor 'GUILLERMO ARTURO BASTIDAS'
+
+
+------------------------------------------
++++ Guardando documento 'CO11313' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11313
+	+++ cartaporteNumber: 'CO6981'
+	+++ cartaporte instance:'CO6981, PRODUCTORES DE ENVASES FARMACEUTICOS SAS BOGOTA-COLOMBIA'
++++ DEBUG: getPlacaPais 'WPQ520 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2017', 'pais': 'COLOMBIA', 'placa': 'WPQ520', 'chasis': '9GDN1R750HB009318', 'certificado': 'CH-CO-0034-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET, WPQ520, COLOMBIA'
++++ DEBUG: conductor 'FLORENCIO ALIRIO CEBALLOS FUELPAZ'
+
+
+------------------------------------------
++++ Guardando documento 'CO11314' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11314
+	+++ cartaporteNumber: 'CO6989'
+	+++ cartaporte instance:'CO6989, None'
++++ DEBUG: getPlacaPais 'KUL839 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'KUL839', 'chasis': '3HCMKADRX7L530342', 'certificado': 'CH-CO-0254-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R42818 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INDUCAM J.C', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'R42818', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'INTERNATIONAL, KUL839, COLOMBIA'
++++ DEBUG: conductor 'JUAN CARLOS BENAVIDES'
+
+
+------------------------------------------
++++ Guardando documento 'CO11315' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11315
+	+++ cartaporteNumber: 'CO6989'
+	+++ cartaporte instance:'CO6989, None'
++++ DEBUG: getPlacaPais 'TDM253 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '1998', 'pais': 'COLOMBIA', 'placa': 'TDM253', 'chasis': '9GD1DBJG7WB974805', 'certificado': 'CH-EC-2260-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R38275 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'R38275', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, TDM253, COLOMBIA'
++++ DEBUG: conductor 'LUIS ALVARO VERA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11316' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11316
+	+++ cartaporteNumber: 'CO6991'
+	+++ cartaporte instance:'CO6991, PRODIA SAS ENVIGADO-COLOMBIA'
++++ DEBUG: getPlacaPais 'GTY651 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2021', 'pais': 'COLOMBIA', 'placa': 'GTY651', 'chasis': '9F3GH8JM8MXX10162', 'certificado': 'CH-CO-0167-24', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11317' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11317
+	+++ cartaporteNumber: 'CO6988'
+	+++ cartaporte instance:'CO6988, ARNESES Y GOMAS SAA Y GSA BOGOTA-COLOMBIA'
++++ DEBUG: getPlacaPais 'KSO-403 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2022', 'pais': 'COLOMBIA', 'placa': 'KSO', 'chasis': '9GDFVR34XNB011871', 'certificado': 'CH-CO-0020-21', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET, KSO, COLOMBIA'
++++ DEBUG: conductor 'EVARISTO ALFREDO ONATE FUERTES'
+
+
+------------------------------------------
++++ Guardando documento 'CO11318' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11318
+	+++ cartaporteNumber: 'CO6979'
+	+++ cartaporte instance:'CO6979, ISOLUX S.A.S. ITAGUI-COLOMBIA'
++++ DEBUG: getPlacaPais 'CBN0181 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2006', 'pais': 'ECUADOR', 'placa': 'CBN0181', 'chasis': '9GDNPR7156B004589', 'certificado': 'CH-EC-11910-21', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET, CBN0181, ECUADOR'
++++ DEBUG: conductor 'BRAYAN ROBERTO PADILLA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11319' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11319
+	+++ cartaporteNumber: 'CO6992'
+	+++ cartaporte instance:'CO6992, CFC CAFARCOL SAS COTA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SXF118 COLOMBIA '
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2014', 'pais': 'COLOMBIA', 'placa': 'SXF118', 'chasis': '9F3FG8JMSEXX13111', 'certificado': 'CH-EC-12044-21', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
+
+
+------------------------------------------
++++ Guardando documento 'CO11320' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11320
+	+++ cartaporteNumber: 'CO6994'
+	+++ cartaporte instance:'CO6994, INYEKTO S.A. MANIZALES-COLOMBIA'
++++ DEBUG: getPlacaPais 'SEY412 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2022', 'pais': 'COLOMBIA', 'placa': 'SEY412', 'chasis': '9F3GH8JP8NXX10129', 'certificado': 'CH-CO-0071-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'HINO, SEY412, COLOMBIA'
++++ DEBUG: conductor 'CRISTIAN ALEXANDER MENA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11321' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11321
+	+++ cartaporteNumber: 'CO6995'
+	+++ cartaporte instance:'CO6995, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'UZN227 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'UZN227', 'chasis': '3HSCNAPT47N478290', 'certificado': 'CH-CO-0215-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R43294 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INCA FRUEHAUF', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'R43294', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11322' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11322
+	+++ cartaporteNumber: 'CO6995'
+	+++ cartaporte instance:'CO6995, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'WDP522 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2022', 'pais': 'COLOMBIA', 'placa': 'WDP522', 'chasis': '203861', 'certificado': 'CH-CO-0750-24', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S29885 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TECNI TRAILER JP', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'S29885', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11323' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11323
+	+++ cartaporteNumber: 'CO6995'
+	+++ cartaporte instance:'CO6995, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'XEK086 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'XEK086', 'chasis': 'F143483', 'certificado': 'CH-CO-0153-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S30034 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TECNI TRAILER JP', 'anho': '2022', 'pais': 'COLOMBIA', 'placa': 'S30034', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11324' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11324
+	+++ cartaporteNumber: 'CO6995'
+	+++ cartaporte instance:'CO6995, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'TGY905 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'TGY905', 'chasis': '705451', 'certificado': 'CH-CO-0682-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R83142 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2013', 'pais': 'COLOMBIA', 'placa': 'R83142', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, TGY905, COLOMBIA'
++++ DEBUG: conductor 'CARLOS ALEXANDER PINTO MARCILLO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11325' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11325
+	+++ cartaporteNumber: 'CO6995'
+	+++ cartaporte instance:'CO6995, INGENIO RISARALDA S.A. PEREIRA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SAV371 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'SAV371', 'chasis': '705679', 'certificado': 'CH-CO-0038-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S30007 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2015', 'pais': 'COLOMBIA', 'placa': 'S30007', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SAV371, COLOMBIA'
++++ DEBUG: conductor 'JORGE ALVEIRO CHAMORRO CORAL'
+
+
+------------------------------------------
++++ Guardando documento 'CO11326' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11326
+	+++ cartaporteNumber: 'CO6993'
+	+++ cartaporte instance:'CO6993, None'
++++ DEBUG: getPlacaPais 'RBA1704 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2010', 'pais': 'ECUADOR', 'placa': 'RBA1704', 'chasis': 'JALFVR32PA7000133', 'certificado': 'CH-EC-2212-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11327' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11327
+	+++ cartaporteNumber: 'CO6984'
+	+++ cartaporte instance:'CO6984, None'
++++ DEBUG: getPlacaPais 'PAB7483 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2020', 'pais': 'ECUADOR', 'placa': 'PAB7483', 'chasis': 'JALFTR34PL7000057', 'certificado': 'CH-EC-13052-24', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, PAB7483, ECUADOR'
++++ DEBUG: conductor 'SEGUNDO ALBERTO BOLIVAR MORILLO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11328' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11328
+	+++ cartaporteNumber: 'CO6997'
+	+++ cartaporte instance:'CO6997, GUIVAIM SAS BOGOTA-COLOMBIA'
++++ DEBUG: getPlacaPais 'KSP 446 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2022', 'pais': 'COLOMBIA', 'placa': 'KSP446', 'chasis': '9GDFVR34XNB012261', 'certificado': 'CH-CO-0058-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET, KSP446, COLOMBIA'
++++ DEBUG: conductor 'MENESES PINCHAO JESUS FREDY'
+
+
+------------------------------------------
++++ Guardando documento 'CO11329' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11329
+	+++ cartaporteNumber: 'CO6996'
+	+++ cartaporte instance:'CO6996, None'
++++ DEBUG: getPlacaPais 'CBN-0543 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2007', 'pais': 'ECUADOR', 'placa': 'CBN', 'chasis': 'JALFVR32P77000147', 'certificado': 'CH-EC-0255-20', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11330' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11330
+	+++ cartaporteNumber: 'CO6990'
+	+++ cartaporte instance:'CO6990, INDUSTRIAS OVELMA S.A.S. MEDELLIN-COLOMBIA'
++++ DEBUG: getPlacaPais 'PBI-9990 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'HYUNDAI', 'anho': '2010', 'pais': 'ECUADOR', 'placa': 'PBI', 'chasis': 'KMFGA17PPAC125925', 'certificado': 'CH-EC-11714-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11331' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11331
+	+++ cartaporteNumber: 'CO6998'
+	+++ cartaporte instance:'CO6998, None'
++++ DEBUG: getPlacaPais 'CAE-0419 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2001', 'pais': 'ECUADOR', 'placa': 'CAE', 'chasis': 'JHDFF1JMT1XX10040', 'certificado': 'CH-EC-2626-24', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'HINO, CAE, ECUADOR'
++++ DEBUG: conductor 'SEGUNDO GERMAN NARVAEZ LUCERO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11332' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11332
+	+++ cartaporteNumber: 'CO7000'
+	+++ cartaporte instance:'CO7000, None'
++++ DEBUG: getPlacaPais 'SJP856 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'SJP856', 'chasis': '135294', 'certificado': 'CH-CO-0273-24', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R38417 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE S.A.', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'R38417', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11333' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11333
+	+++ cartaporteNumber: 'CO7000'
+	+++ cartaporte instance:'CO7000, None'
++++ DEBUG: getPlacaPais 'SBN307 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2008', 'pais': 'COLOMBIA', 'placa': 'SBN307', 'chasis': '215669', 'certificado': 'CH-CO-0131-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R49683 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'R49683', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11334' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11334
+	+++ cartaporteNumber: 'CO7000'
+	+++ cartaporte instance:'CO7000, None'
++++ DEBUG: getPlacaPais 'SXP137 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2011', 'pais': 'COLOMBIA', 'placa': 'SXP137', 'chasis': '700014', 'certificado': 'CH-CO-0078-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R31481 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2003', 'pais': 'COLOMBIA', 'placa': 'R31481', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SXP137, COLOMBIA'
++++ DEBUG: conductor 'CARLOS EDMUNDO PAREDES'
+
+
+------------------------------------------
++++ Guardando documento 'CO11335' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11335
+	+++ cartaporteNumber: 'CO7000'
+	+++ cartaporte instance:'CO7000, None'
++++ DEBUG: getPlacaPais 'TPL502 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2000', 'pais': 'COLOMBIA', 'placa': 'TPL502', 'chasis': '9GD1DBJF8YB984407', 'certificado': 'CH-CO-0192-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R27126 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE S.A.\t', 'anho': '2005', 'pais': 'COLOMBIA', 'placa': 'R27126', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, TPL502, COLOMBIA'
++++ DEBUG: conductor 'MILTON EDGAR VALLADARES MORAN'
+
+
+------------------------------------------
++++ Guardando documento 'CO11336' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11336
+	+++ cartaporteNumber: 'CO7002'
+	+++ cartaporte instance:'CO7002, None'
++++ DEBUG: getPlacaPais 'KRM 171 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'HINO', 'anho': '2022', 'pais': 'COLOMBIA', 'placa': 'KRM171', 'chasis': '9F3GH8JM8NXX105565', 'certificado': 'CH-CO-0074-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'HINO, KRM171, COLOMBIA'
++++ DEBUG: conductor 'MELO ESCOBAR ALVARO'
+
+
+------------------------------------------
++++ Guardando documento 'CO11337' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11337
+	+++ cartaporteNumber: 'CO7001'
+	+++ cartaporte instance:'CO7001, None'
++++ DEBUG: getPlacaPais 'PQX-0884 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2007', 'pais': 'ECUADOR', 'placa': 'PQX', 'chasis': 'JALFVR32P77000198', 'certificado': 'CH-EC-0249-20', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'XXXXXXX'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'XXXXXXX'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'XXXXXXXX', 'anho': 'XXXX', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, PQX, ECUADOR'
++++ DEBUG: conductor 'GUSTAVO OSWALDO FUEL MENA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11338' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11338
+	+++ cartaporteNumber: 'CO7003'
+	+++ cartaporte instance:'CO7003, None'
++++ DEBUG: getPlacaPais 'CBO0076 ECUADOR'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2007', 'pais': 'ECUADOR', 'placa': 'CBO0076', 'chasis': 'JALFVR32P77000212', 'certificado': 'CH-EC-2272-23', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
+
+
+------------------------------------------
++++ Guardando documento 'CO11339' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11339
+	+++ cartaporteNumber: 'CO6999'
+	+++ cartaporte instance:'CO6999, PRODUCTORES DE ENVASES FARMACEUTICOS SAS BOGOTA-COLOMBIA'
++++ DEBUG: getPlacaPais 'WPQ520 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2017', 'pais': 'COLOMBIA', 'placa': 'WPQ520', 'chasis': '9GDN1R750HB009318', 'certificado': 'CH-CO-0034-22', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
+
+
+------------------------------------------
++++ Guardando documento 'CO11340' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11340
+	+++ cartaporteNumber: 'CO7005'
+	+++ cartaporte instance:'CO7005, None'
++++ DEBUG: getPlacaPais 'TDX534 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'FREIGHTLINER', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'TDX534', 'chasis': '3AKJA6CG8CDBR3891', 'certificado': 'CH-CO-0059-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R78799 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'MULTRACK S.A.S.', 'anho': '2013', 'pais': 'COLOMBIA', 'placa': 'R78799', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11341' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11341
+	+++ cartaporteNumber: 'CO7005'
+	+++ cartaporte instance:'CO7005, None'
++++ DEBUG: getPlacaPais 'TDM511 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2004', 'pais': 'COLOMBIA', 'placa': 'TDM511', 'chasis': '60738', 'certificado': 'CH-CO-0007-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R31643 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE S.A.\t', 'anho': '2003', 'pais': 'COLOMBIA', 'placa': 'R31643', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11342' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11342
+	+++ cartaporteNumber: 'CO7005'
+	+++ cartaporte instance:'CO7005, None'
++++ DEBUG: getPlacaPais 'XEK286 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2008', 'pais': 'COLOMBIA', 'placa': 'XEK286', 'chasis': '3HSCNAP118N665875', 'certificado': 'CH-CO-0057-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S28431 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2016', 'pais': 'COLOMBIA', 'placa': 'S28431', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'INTERNATIONAL, XEK286, COLOMBIA'
++++ DEBUG: conductor 'JULIAN EMILIO PAREDES'
+
+
+------------------------------------------
++++ Guardando documento 'CO11343' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11343
+	+++ cartaporteNumber: 'CO7005'
+	+++ cartaporte instance:'CO7005, None'
++++ DEBUG: getPlacaPais 'SDK297 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '1993', 'pais': 'COLOMBIA', 'placa': 'SDK297', 'chasis': 'CHD33409', 'certificado': 'CH-CO-0108-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R12492 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE S.A.', 'anho': '1993', 'pais': 'COLOMBIA', 'placa': 'R12492', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, SDK297, COLOMBIA'
++++ DEBUG: conductor 'MILTON EDUARDO BOLANOS CORAL'
+
+
+------------------------------------------
++++ Guardando documento 'CO11344' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11344
+	+++ cartaporteNumber: 'CO7005'
+	+++ cartaporte instance:'CO7005, None'
++++ DEBUG: getPlacaPais 'SNM702 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '2007', 'pais': 'COLOMBIA', 'placa': 'SNM702', 'chasis': '3HSCNAPT07N388957', 'certificado': 'CH-CO-0264-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R23547 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'DITE', 'anho': '1995', 'pais': 'COLOMBIA', 'placa': 'R23547', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11345' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11345
+	+++ cartaporteNumber: 'CO7005'
+	+++ cartaporte instance:'CO7005, None'
++++ DEBUG: getPlacaPais 'STO334 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'FREIGHTLINER', 'anho': '2012', 'pais': 'COLOMBIA', 'placa': 'STO334', 'chasis': '3AKJA6CG9CDBJ2266', 'certificado': 'CH-CO-0007-21', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R48623 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'COLTRAILER', 'anho': '2008', 'pais': 'COLOMBIA', 'placa': 'R48623', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'FREIGHTLINER, STO334, COLOMBIA'
++++ DEBUG: conductor 'RICHAR ARMANDO ASCUNTAR PENA'
+
+
+------------------------------------------
++++ Guardando documento 'CO11346' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11346
+	+++ cartaporteNumber: 'CO7005'
+	+++ cartaporte instance:'CO7005, None'
++++ DEBUG: getPlacaPais 'TOB043 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INTERNATIONAL', 'anho': '1994', 'pais': 'COLOMBIA', 'placa': 'TOB043', 'chasis': 'RCO76728', 'certificado': 'CH-CO-0042-22', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R14886 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'INCA FRUEHAUF', 'anho': '1996', 'pais': 'COLOMBIA', 'placa': 'R14886', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'INTERNATIONAL, TOB043, COLOMBIA'
++++ DEBUG: conductor 'TOMAS NOEMIO BENAVIDES BENAVIDES'
+
+
+------------------------------------------
++++ Guardando documento 'CO11347' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11347
+	+++ cartaporteNumber: 'CO7005'
+	+++ cartaporte instance:'CO7005, None'
++++ DEBUG: getPlacaPais 'XEK086 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2006', 'pais': 'COLOMBIA', 'placa': 'XEK086', 'chasis': 'F143483', 'certificado': 'CH-CO-0153-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S30034 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'TECNI TRAILER JP', 'anho': '2022', 'pais': 'COLOMBIA', 'placa': 'S30034', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11348' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11348
+	+++ cartaporteNumber: 'CO7005'
+	+++ cartaporte instance:'CO7005, None'
++++ DEBUG: getPlacaPais 'SRX114 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '1995', 'pais': 'COLOMBIA', 'placa': 'SRX114', 'chasis': 'CH94945907', 'certificado': 'CH-CO-0097-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R46483 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'SERVITRAILER', 'anho': '2008', 'pais': 'COLOMBIA', 'placa': 'R46483', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'CHEVROLET, SRX114, COLOMBIA'
++++ DEBUG: conductor 'LUCERO JUAN CARLOS'
+
+
+------------------------------------------
++++ Guardando documento 'CO11349' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11349
+	+++ cartaporteNumber: 'CO7005'
+	+++ cartaporte instance:'CO7005, None'
++++ DEBUG: getPlacaPais 'XLE848 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '1994', 'pais': 'COLOMBIA', 'placa': 'XLE848', 'chasis': 'CH94935611', 'certificado': 'CH-CO-0288-24', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'R33099 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CAPRI', 'anho': '2005', 'pais': 'COLOMBIA', 'placa': 'R33099', 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
+
+
+------------------------------------------
++++ Guardando documento 'CO11350' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11350
+	+++ cartaporteNumber: 'CO7007'
+	+++ cartaporte instance:'CO7007, OXICORTES SAS MEDELLIN-COLOMBIA'
++++ DEBUG: getPlacaPais 'LQO 569 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'LQO569', 'chasis': '9GDFVR348PB502961', 'certificado': 'CH-CO-0097-23', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
+
+
+------------------------------------------
++++ Guardando documento 'CO11351' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11351
+	+++ cartaporteNumber: 'CO7008'
+	+++ cartaporte instance:'CO7008, PETROBRAS COLOMBIA COMBUSTIBLES SA BOGOTA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SEY - 443 COLOMBIA'
++++ Información extraída del vehiculo: {'marca': 'KENWORTH', 'anho': '2023', 'pais': 'COLOMBIA', 'placa': 'SEY', 'chasis': '207846', 'certificado': 'CH-CO-0053-23', 'tipo': 'CAMION'}
++++ DEBUG: getPlacaPais 'S29064'
+SERVER: EXCEPCION:  Codigo Pais desconocido: 'None'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_utils.py", line 528, in getPaisFromCodigoPais
+    return paisesCodes [paisCode.upper()]
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+SERVER: EXCEPCION:  Extrayendo placa pais desde el texto: 'S29064'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/ecuapassdocs/info/ecuapass_extractor.py", line 344, in getPlacaPais
+    text             = text.replace (pais, "")
+TypeError: replace() argument 1 must be str, not None
+
++++ Información extraída del vehiculo: {'marca': 'ROMARCO', 'anho': '2023', 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': 'REMOLQUE'}
++++ DEBUG: vehiculo 'KENWORTH, SEY, COLOMBIA'
++++ DEBUG: conductor 'OSCAR JAVIER ESCOBAR'
+
+
+------------------------------------------
++++ Guardando documento 'CO11352' nuevo en la BD...
+------------------------------------------
++++ Setting values for Manifiesto...
++++ DEBUG: getCodigoPais: docNumber: CO11352
+	+++ cartaporteNumber: 'CO7009'
+	+++ cartaporte instance:'CO7009, IMPROTEC LTDA MOSQUERA-COLOMBIA'
++++ DEBUG: getPlacaPais 'SAV 322 COLOMBIA'
+SERVER: Error validando certificado de <VEHICULO> en texto: 'CH-CO--'
++++ Información extraída del vehiculo: {'marca': 'CHEVROLET', 'anho': '2011', 'pais': 'COLOMBIA', 'placa': 'SAV322', 'chasis': '9GDNNR710BB042621', 'certificado': '||LOW', 'tipo': 'CAMION'}
++++ Información extraída del vehiculo: {'marca': None, 'anho': None, 'pais': None, 'placa': None, 'chasis': None, 'certificado': None, 'tipo': None}
++++ DEBUG: vehiculo 'CHEVROLET, SAV322, COLOMBIA'
++++ DEBUG: conductor 'JHON JAIRO TAPIA'
+SERVER: Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "vehiculo_conductor_id_key"
+DETAIL:  Key (conductor_id)=(450) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/./bot_migration.py", line 57, in main
+    saveDocs (inputDir, pattern)
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/./bot_migration.py", line 77, in saveDocs
+    bot.saveDocFilesToDB (inputDir, pattern)
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/./bot_migration.py", line 366, in saveDocFilesToDB
+    self.saveNewDocToDB (formFields, self.docType, self.pais, usuario)
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/dev/migration/./bot_migration.py", line 394, in saveNewDocToDB
+    docModel.setValues (formModel, docFields, pais,  usuario)
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/app_manifiesto/models_mci.py", line 139, in setValues
+    self.getSaveVehiculoConductorInstance (manifiestoInfo)
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/EcuapassDocs/EcuapassDocs2-dev/app_manifiesto/models_mci.py", line 167, in getSaveVehiculoConductorInstance
+    vehiculo.save ()
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/venv/lib/python3.10/site-packages/django/db/models/base.py", line 822, in save
+    self.save_base(
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/venv/lib/python3.10/site-packages/django/db/models/base.py", line 909, in save_base
+    updated = self._save_table(
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1036, in _save_table
+    updated = self._do_update(
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1101, in _do_update
+    return filtered._update(values) > 0
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1276, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1990, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/lg/BIO/iaprojects/ecuapassdocs/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "vehiculo_conductor_id_key"
+DETAIL:  Key (conductor_id)=(450) already exists.
+
+

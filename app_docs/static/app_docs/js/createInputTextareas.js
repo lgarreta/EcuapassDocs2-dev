@@ -17,6 +17,8 @@ function createInputTextareas (inputsParameters, inputsContainer) {
 				if (restriction.includes ("color")) {
 					let color = restriction.split ("=")[1]
 					textarea.style.color = color
+                }else if (restriction.includes ("nofocus")) {
+					textarea.setAttribute('tabindex', '-1');
 				}else {
 					textarea.setAttribute (restriction, restriction);
 				}

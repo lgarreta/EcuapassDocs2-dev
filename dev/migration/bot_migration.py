@@ -32,6 +32,7 @@ from app_declaracion.models_dti import Declaracion, DeclaracionForm
 from app_usuarios.models import UsuarioEcuapass
 
 from ecuapassdocs.info.ecuapass_utils import Utils
+from ecuapassdocs.info.ecuapass_data import EcuData
 from ecuapassdocs.info.resourceloader import ResourceLoader
 #----------------------------------------------------------
 from bot_migration_docs import docs
@@ -53,7 +54,8 @@ def main ():
 	try:
 		if option == "--save":
 			inputDir = args [2]
-			saveDocs (inputDir)
+			pattern  = args [3]
+			saveDocs (inputDir, pattern)
 		elif option == "--download":
 			inputDir = args [2]
 			downloadDocs (inputDir)
@@ -68,12 +70,12 @@ def updateDocs ():
 	bot = BotMigration ("BYZA", "COLOMBIA", "MANIFIESTO", 0, 0, webdriver)
 	bot.updateCurrentDBAssociations ()
 
-def saveDocs (inputDir):
+def saveDocs (inputDir, pattern=""):
 	webdriver = BotMigration.getWaitWebdriver (DEBUG=True)
 	#bot = BotMigration ("LOGITRANS", "COLOMBIA", "DECLARACION", 0, 0, webdriver)
-	bot = BotMigration ("BYZA", "COLOMBIA", "CARTAPORTE", 0, 0, webdriver)
-	#bot = BotMigration ("BYZA", "COLOMBIA", "MANIFIESTO", 0, 0, webdriver)
-	bot.saveDocFilesToDB (inputDir)
+	#bot = BotMigration ("BYZA", "COLOMBIA", "CARTAPORTE", 0, 0, webdriver)
+	bot = BotMigration ("BYZA", "COLOMBIA", "MANIFIESTO", 0, 0, webdriver)
+	bot.saveDocFilesToDB ("BYZA", inputDir, pattern)
 
 def downloadDocs (inputDir):
 	webdriver = BotMigration.getWaitWebdriver (DEBUG=False)
@@ -356,13 +358,25 @@ class BotMigration:
 	#-------------------------------------------------------------------
 	# Save docs files (JSON) in input dir to DB
 	#-------------------------------------------------------------------
-	def saveDocFilesToDB (self, inputDir):
+	def saveDocFilesToDB (self, empresa, inputDir, pattern=""):
 		migrationFilesList = [f"{inputDir}/{x}" for x in Utils.getSortedFielsFromDir (inputDir)]
+		migrationFilesList = [x for x in migrationFilesList if pattern in x]
 		for migrationFilename in migrationFilesList:
 			formFields = Utils.getFormFieldsFromMigrationFieldsFile (migrationFilename)
+			formFields = self.addInfoEmpresa (empresa, formFields)
 			usuario    = UsuarioEcuapass.objects.get (username=self.usuario)
 			self.saveNewDocToDB (formFields, self.docType, self.pais, usuario)
 
+	#-------------------------------------------------------------------
+	# Add info (permiso) according to "empresa"
+	#-------------------------------------------------------------------
+	def addInfoEmpresa (self, empresa, formFields):
+		infoEmpresa = EcuData.empresas ["BYZA"]
+		print (infoEmpresa)
+		if empresa == "BYZA" and docType == "MANIFIESTO":
+			formFields ["txt02"] = infoEmpresa ["permisos"]["originario"]
+			formFields ["txt03"] = infoEmpresa ["permisos"]["servicios1"]
+		return formFields
 	#-------------------------------------------------------------------
 	# Save form fields from Ecuapass document to DB
 	#-------------------------------------------------------------------

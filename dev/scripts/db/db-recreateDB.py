@@ -32,9 +32,9 @@ if input ("Desea continuar (yes/no): ")!="yes":
 
 
 def main ():
-	dropUserAndDatabase ()
-	createUserAndDatabase ()
-	resetMigrations ()
+	#dropUserAndDatabase ()
+	#createUserAndDatabase ()
+	#resetMigrations ()
 	runMigrationsSuperuserExtensions ()
 	#runCollectStatics ()
 
@@ -53,7 +53,7 @@ def dropUserAndDatabase ():
 		exe (f"drop database {PGDATABASE};")
 		#exe (f"ALTER SCHEMA public OWNER TO postgres;")
 		exe (f"DROP OWNED BY {PGUSER};")
-		exe (f"drop user $PGUSER;")
+		#exe (f"drop user $PGUSER;")
 
 #----------------------------------------------------------
 #-- Create DB user, DB, and grant permissions

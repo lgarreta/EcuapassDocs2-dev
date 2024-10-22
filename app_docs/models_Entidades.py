@@ -104,7 +104,7 @@ class Conductor (DocEntity):
 		return results
 
 	def __str__ (self):
-		return f"{self.nombre}"
+		return f"{self.documento}, {self.nombre}"
 
 #--------------------------------------------------------------------
 # Vehiculo entity
@@ -120,10 +120,10 @@ class Vehiculo (DocEntity):
 	anho        = models.CharField (max_length=20, null=True, blank=True)
 	certificado = models.CharField (max_length=20, null=True, blank=True)
 	tipo        = models.CharField (max_length=20, null=True, blank=True)
-	conductor   = models.OneToOneField ('Conductor', null=True, blank=True,
-										 on_delete=models.SET_NULL, related_name='vehiculo_principal')
-	remolque    = models.OneToOneField ('self', null=True, blank=True, 
-										  on_delete=models.SET_NULL, related_name='vehiculo_principal')
+	conductor   = models.ForeignKey (Conductor, null=True, blank=True, 
+								  on_delete=models.SET_NULL, related_name="vehiculos")
+	remolque    = models.ForeignKey ('self', null=True, blank=True, 
+						on_delete=models.SET_NULL, related_name='vehiculos')
 
 	def get_absolute_url(self):
 		"""Returns the url to access a particular language instance."""
@@ -138,5 +138,5 @@ class Vehiculo (DocEntity):
 		return results
 
 	def __str__ (self):
-		return f"{self.marca}, {self.placa}, {self.pais}"
+		return f"{self.placa}, {self.marca}"
 	

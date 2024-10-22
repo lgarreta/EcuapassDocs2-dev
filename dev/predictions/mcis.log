@@ -1,0 +1,8 @@
+Postgres DB vars:
+	user:postgres
+	pswd:postgres2024
+	db:ecuapassdocsdb
+	host:localhost
+	port:5433
+
+['id', 'numero', 'txt0a', 'txt00', 'txt01', 'txt02', 'txt03', 'txt04', 'txt05', 'txt06', 'txt07', 'txt08', 'txt09', 'txt10', 'txt11', 'txt12', 'txt13', 'txt14', 'txt15', 'txt16', 'txt17', 'txt18', 'txt19', 'txt20', 'txt21', 'txt22', 'txt23', 'txt24', 'txt25_1', 'txt25_2', 'txt25_3', 'txt25_4', 'txt25_5', 'txt26', 'txt27', 'txt28', 'txt29', 'txt30', 'txt31', 'txt32_1', 'txt32_2', 'txt32_3', 'txt32_4', 'txt33_1', 'txt33_2', 'txt34', 'txt35', 'txt37', 'txt38', 'txt40']
